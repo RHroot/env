@@ -1,0 +1,12 @@
+--target=$HOME
+--ignore=\.git
+--ignore=\.gitignore
+--ignore=\guide
+--ignore=\LICENSE
+--ignore=\.stowrc
+--ignore=\nixos
+--ignore=\nixos-switch.log
+--ignore=\flake.nix
+--ignore=\flake.lock
+--ignore=\pictrs
+--ignore=\README.md

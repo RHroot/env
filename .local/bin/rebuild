@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+cd ~/env/
+echo "Rebuilding NixOS configuration..."
+sudo nixos-rebuild switch --impure --flake '.#rhroot-nix' --show-trace &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
+echo "NixOS configuration rebuilt successfully."

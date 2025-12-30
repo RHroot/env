@@ -1,0 +1,36 @@
+# === General ===
+set adjust-open width
+set database sqlite
+set selection-clipboard clipboard
+set smooth-scroll true
+set scroll-step 40
+set pages-per-row 1
+set statusbar-home-tilde true
+set statusbar-basename true
+set statusbar-h-padding 5
+set statusbar-v-padding 2
+
+set font "JetBrainsMono NF"
+set font 18
+
+# === Keybindings tweaks ===
+map u scroll half-up
+map d scroll half-down
+map r reload
+map R rotate
+map f toggle_fullscreen
+
+# ==========================
+# THEME: NORD
+# ==========================
+set default-bg "#2E3440"
+set default-fg "#D8DEE9"
+set inputbar-bg "#3B4252"
+set inputbar-fg "#ECEFF4"
+set statusbar-bg "#3B4252"
+set statusbar-fg "#ECEFF4"
+set highlight-color "#88C0D0"
+set highlight-active-color "#BF616A"
+set recolor true
+set recolor-darkcolor "#ECEFF4"
+set recolor-lightcolor "#2E3440"

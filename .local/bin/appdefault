@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# PDF documents
+xdg-mime default org.pwmt.zathura.desktop application/pdf
+
+# Document formats
+xdg-mime default org.gnome.gedit.desktop text/plain
+xdg-mime default org.libreoffice.libreoffice-writer.desktop application/vnd.oasis.opendocument.text
+xdg-mime default org.libreoffice.libreoffice-writer.desktop application/msword
+xdg-mime default org.libreoffice.libreoffice-writer.desktop application/vnd.openxmlformats-officedocument.wordprocessingml.document
+xdg-mime default org.libreoffice.libreoffice-calc.desktop application/vnd.oasis.opendocument.spreadsheet
+xdg-mime default org.libreoffice.libreoffice-calc.desktop application/vnd.ms-excel
+xdg-mime default org.libreoffice.libreoffice-calc.desktop application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+xdg-mime default org.libreoffice.libreoffice-impress.desktop application/vnd.oasis.opendocument.presentation
+xdg-mime default org.libreoffice.libreoffice-impress.desktop application/vnd.ms-powerpoint
+xdg-mime default org.libreoffice.libreoffice-impress.desktop application/vnd.openxmlformats-officedocument.presentationml.presentation
+
+# Web browsers (Librefox and floorp)
+xdg-mime default floorp.desktop text/html
+xdg-mime default floorp.desktop application/xhtml+xml
+xdg-mime default floorp.desktop x-scheme-handler/http
+xdg-mime default floorp.desktop x-scheme-handler/https
+xdg-mime default floorp.desktop x-scheme-handler/https
+# xdg-mime default floorp.desktop x-scheme-handler/https
+
+# Audio formats
+xdg-mime default org.videolan.vlc.desktop audio/mpeg
+xdg-mime default org.videolan.vlc.desktop audio/wav
+xdg-mime default org.videolan.vlc.desktop audio/ogg
+xdg-mime default org.videolan.vlc.desktop audio/flac
+xdg-mime default org.videolan.vlc.desktop audio/aac
+
+# Video formats
+xdg-mime default org.mpv.Mpv.desktop video/mp4
+xdg-mime default org.mpv.Mpv.desktop video/mpeg
+xdg-mime default org.mpv.Mpv.desktop video/quicktime
+xdg-mime default org.mpv.Mpv.desktop video/x-msvideo
+xdg-mime default org.mpv.Mpv.desktop video/x-ms-wmv
+xdg-mime default org.mpv.Mpv.desktop video/x-matroska
+xdg-mime default org.mpv.Mpv.desktop video/webm
+xdg-mime default org.videolan.vlc.desktop video/mp4
+
+# Code files (Neovim)
+xdg-mime default nvim.desktop text/x-python
+xdg-mime default nvim.desktop text/x-csrc
+xdg-mime default nvim.desktop text/x-c++src
+xdg-mime default nvim.desktop text/x-java
+xdg-mime default nvim.desktop text/x-sh
+xdg-mime default nvim.desktop text/x-ruby
+xdg-mime default nvim.desktop text/x-perl
+xdg-mime default nvim.desktop text/html
+xdg-mime default nvim.desktop text/css
+xdg-mime default nvim.desktop text/javascript
+xdg-mime default nvim.desktop application/json
+xdg-mime default nvim.desktop text/markdown
+xdg-mime default nvim.desktop application/yaml
+xdg-mime default nvim.desktop text/xml
+xdg-mime default nvim.desktop application/x-shellscript

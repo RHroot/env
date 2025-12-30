@@ -1,0 +1,43 @@
+[config]
+contrast = 1.0
+
+[config.wallpaper]
+command = 'swww'
+arguments = ['img', '--transition-type', 'center', '--transition-step', '15', '--transition-fps', '60']
+set = true
+
+[templates.Matugen]
+input_path = '~/.config/matugen/templates/Matugen.colors'
+output_path = '~/.cache/Matugen.colors'
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland-colors.conf'
+output_path = '~/.cache/hypr-colors.conf'
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/waybar-colors.css'
+output_path = '~/.cache/waybar-colors.css'
+
+[templates.alacritty]
+input_path = '~/.config/matugen/templates/alacritty.toml'
+output_path = '~/.cache/alacritty.toml'
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.cache/kitty-colors.conf'
+
+[templates.fuzzel]
+input_path = '~/.config/matugen/templates/fuzzel-colors.ini'
+output_path = '~/.cache/fuzzel-colors.ini'
+
+[templates.json]
+input_path = '~/.config/matugen/templates/colors.json'
+output_path = '~/.cache/colors.json'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/gtk.css'

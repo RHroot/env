@@ -1,0 +1,7 @@
+__pycache__/
+.zcompdump
+.uuid
+lazy-lock.json
+nvim-pack-lock.json
+nixos-switch.log
+gtk.css
