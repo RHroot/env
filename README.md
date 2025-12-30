@@ -69,7 +69,7 @@ To use these dotfiles, you can follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/rhroot/env.git
+    git clone https://gitlab.com/rhroot/env.git
     ```
 2.  **Install NixOS:**
     Follow the official NixOS installation guide to install NixOS on your system.
