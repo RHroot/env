@@ -23,6 +23,7 @@
     xclip
     killall
     busybox
+    img2pdf
     keychain
     coreutils
     moreutils
