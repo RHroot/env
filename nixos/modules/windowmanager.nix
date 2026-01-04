@@ -83,5 +83,6 @@
     appflowy
     heroic
     libreoffice-fresh
+    evince
   ];
 }
