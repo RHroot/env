@@ -89,6 +89,19 @@
     protonvpn-gui
   ];
 
+  systemd.services.cloudflare-warp = {
+    description = "Cloudflare WARP Service";
+    wantedBy = ["multi-user.target"];
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
+
+    serviceConfig = {
+      ExecStart = "${pkgs.cloudflare-warp}/bin/warp-svc";
+      Restart = "always";
+      RestartSec = 5;
+    };
+  };
+
   boot.kernelModules = ["tcp_bbr" "ipv6"];
   boot.kernel.sysctl = pkgs.lib.mkForce {
     "net.ipv4.tcp_congestion_control" = "bbr";
