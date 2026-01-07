@@ -85,6 +85,7 @@
 
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
+    cloudflare-warp
     protonvpn-gui
   ];
 
