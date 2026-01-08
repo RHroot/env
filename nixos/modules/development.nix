@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  env,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -36,7 +37,6 @@
     alejandra
     # === Utility tools ===
     unstable.neovide
-    ollama-cuda
     zed-editor
     lazygit
     pgcli
@@ -49,5 +49,12 @@
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;
     defaultEditor = true;
+  };
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-cuda;
+    port = 11111;
+    host = "127.0.0.2";
+    home = "/home/${env.username}";
   };
 }
