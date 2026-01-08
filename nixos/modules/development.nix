@@ -56,5 +56,8 @@
     port = 11111;
     host = "127.0.0.2";
     home = "/home/${env.username}";
+    syncModels = [
+      "qwen2.5:7b-instruct-q4"
+    ];
   };
 }
