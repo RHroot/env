@@ -36,6 +36,8 @@
     alejandra
     # === Utility tools ===
     unstable.neovide
+    ollama-cuda
+    zed-editor
     lazygit
     pgcli
     # === CyberSecurity ===
