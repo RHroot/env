@@ -20,6 +20,7 @@ alias sn="sudo nvim"
 alias snd="sudo neovide"
 alias v="vim"
 alias sv="sudo vim"
+alias ai="ollama run qwen2.5:7b"
 
 # Tmux
 alias tns="tmux new -s"

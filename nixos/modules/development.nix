@@ -53,11 +53,11 @@
   services.ollama = {
     enable = true;
     package = pkgs.ollama;
-    port = 11111;
-    host = "127.0.0.2";
+    port = 11434;
+    host = "127.0.0.1";
     syncModels = true;
     loadModels = [
-      "qwen2.5:7b-instruct-q4"
+      "qwen2.5:7b"
     ];
   };
 }
