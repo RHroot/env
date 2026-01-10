@@ -15,13 +15,13 @@ xdg-mime default org.libreoffice.libreoffice-impress.desktop application/vnd.oas
 xdg-mime default org.libreoffice.libreoffice-impress.desktop application/vnd.ms-powerpoint
 xdg-mime default org.libreoffice.libreoffice-impress.desktop application/vnd.openxmlformats-officedocument.presentationml.presentation
 
-# Web browsers (Librefox and floorp)
-xdg-mime default floorp.desktop text/html
-xdg-mime default floorp.desktop application/xhtml+xml
-xdg-mime default floorp.desktop x-scheme-handler/http
-xdg-mime default floorp.desktop x-scheme-handler/https
-xdg-mime default floorp.desktop x-scheme-handler/https
-# xdg-mime default floorp.desktop x-scheme-handler/https
+# Web browsers (Librefox and firefox-esr)
+xdg-mime default firefox-esr.desktop text/html
+xdg-mime default firefox-esr.desktop application/xhtml+xml
+xdg-mime default firefox-esr.desktop x-scheme-handler/http
+xdg-mime default firefox-esr.desktop x-scheme-handler/https
+xdg-mime default firefox-esr.desktop x-scheme-handler/https
+# xdg-mime default firefox-esr.desktop x-scheme-handler/https
 
 # Audio formats
 xdg-mime default org.videolan.vlc.desktop audio/mpeg
