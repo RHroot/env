@@ -81,7 +81,6 @@
     # === Utility ===
     telegram-desktop
     appflowy
-    heroic
     libreoffice-fresh
     evince
   ];
