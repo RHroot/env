@@ -50,14 +50,14 @@
     package = pkgs.unstable.neovim-unwrapped;
     defaultEditor = true;
   };
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama;
-    port = 11434;
-    host = "127.0.0.1";
-    syncModels = true;
-    loadModels = [
-      "qwen2.5:7b"
-    ];
-  };
+  # services.ollama = {
+  #   enable = true;
+  #   package = pkgs.ollama;
+  #   port = 11434;
+  #   host = "127.0.0.1";
+  #   syncModels = true;
+  #   loadModels = [
+  #     "qwen2.5:7b"
+  #   ];
+  # };
 }
