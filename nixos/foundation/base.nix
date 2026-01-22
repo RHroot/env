@@ -18,6 +18,7 @@
     dust
     stow
     tree
+    wtype
     gnupg
     delta
     xclip
