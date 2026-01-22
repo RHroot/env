@@ -4,7 +4,7 @@ DIR="$HOME/env/Stickers"
 
 FILE=$(find "$DIR" -type f \( -iname "*.png" -o -iname "*.webp" -o -iname "*.jpg" \) \
   | sed "s|$HOME/env/||" \
-  | fuzzel --dmenu --prompt="Sticker")
+  | fuzzel --dmenu --prompt="Sticker: ")
 
 [ -z "$FILE" ] && exit 0
 
