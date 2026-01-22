@@ -5,6 +5,7 @@
 --ignore=\LICENSE
 --ignore=\.stowrc
 --ignore=\nixos
+--ignore=\Stickers
 --ignore=\nixos-switch.log
 --ignore=\flake.nix
 --ignore=\flake.lock

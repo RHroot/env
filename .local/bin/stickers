@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+DIR="$HOME/env/Stickers"
+
+FILE=$(find "$DIR" -type f \( -iname "*.png" -o -iname "*.webp" -o -iname "*.jpg" \) \
+  | sed "s|$HOME/env/||" \
+  | fuzzel --dmenu --prompt="Sticker")
+
+[ -z "$FILE" ] && exit 0
+
+wl-copy <"$HOME/env/$FILE"
+sleep 0.05
+wtype -M ctrl v -m ctrl
