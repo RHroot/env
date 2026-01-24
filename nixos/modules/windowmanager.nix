@@ -46,42 +46,49 @@
   };
   environment.systemPackages = with pkgs; [
     # === HYPRLAND ===
-    hyprland
-    hyprcursor
-    hypridle
-    hyprland-protocols
-    hyprland-qt-support
-    hyprland-qtutils
-    hyprlock
-    hyprpicker
-    hyprshot
-    wlroots_0_19
+    hyprland # Wayland compositor for dynamic tiling (Hyprland)
+    hyprcursor # Cursor theme support for Hyprland
+    hypridle # Idle management daemon for Hyprland
+    hyprland-protocols # Wayland protocol extensions used by Hyprland
+    hyprland-qt-support # Qt integration support for Hyprland
+    hyprland-qtutils # Qt utilities for Hyprland components
+    hyprlock # Screen locker for Hyprland
+    hyprpicker # Color picker for Wayland/Hyprland
+    hyprshot # Screenshot utility for Hyprland
+    wlroots_0_19 # Wayland compositor library required by Hyprland
+
     # === basic ===
-    libnotify
-    dunst
-    waybar
-    swww
-    wl-clipboard
-    playerctl
-    fuzzel
+    libnotify # Desktop notification library
+    dunst # Lightweight notification daemon
+    waybar # Status bar for Wayland compositors
+    swww # Wayland wallpaper daemon with transitions
+    wl-clipboard # Clipboard utilities for Wayland
+    playerctl # Media player control via MPRIS
+    fuzzel # Wayland-native application launcher (rofi alternative)
+
     # === Theming ===
-    matugen
-    wallust
+    matugen # Generate color schemes from images
+    wallust # Dynamic color generation based on wallpapers
+
     # === Terminal emulators ===
-    alacritty
-    kitty
+    alacritty # GPU-accelerated terminal emulator
+    kitty # Feature-rich GPU-based terminal emulator
+
     # === Zathura ===
-    zathura
-    poppler
-    ps
+    zathura # Minimal PDF and document viewer
+    poppler # PDF rendering backend used by viewers
+    ps # PostScript interpreter and utilities
+
     # === File managers ===
-    nautilus
+    nautilus # GNOME file manager
+
     # === Polkit ===
-    kdePackages.polkit-kde-agent-1
+    kdePackages.polkit-kde-agent-1 # PolicyKit authentication agent for Wayland
+
     # === Utility ===
-    telegram-desktop
-    appflowy
-    libreoffice-fresh
-    evince
+    telegram-desktop # Telegram messaging desktop client
+    appflowy # Open-source Notion-style productivity app
+    libreoffice-fresh # Full-featured office suite (latest stable)
+    evince # Document viewer for PDF and other formats
   ];
 }

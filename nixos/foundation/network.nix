@@ -84,9 +84,9 @@
   };
 
   environment.systemPackages = with pkgs; [
-    networkmanagerapplet
-    cloudflare-warp
-    protonvpn-gui
+    networkmanagerapplet # System tray applet for managing NetworkManager connections
+    cloudflare-warp # Cloudflare WARP client for secure DNS and optional VPN routing
+    protonvpn-gui # Official ProtonVPN graphical client
   ];
 
   systemd.services.cloudflare-warp = {

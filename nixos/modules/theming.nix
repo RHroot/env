@@ -21,10 +21,10 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    gtk3
-    flat-remix-gtk
-    papirus-icon-theme
-    rose-pine-hyprcursor
+    gtk3 # GTK+ 3 toolkit for graphical applications
+    flat-remix-gtk # Flat Remix GTK theme for GTK-based apps
+    papirus-icon-theme # Papirus SVG-based icon theme
+    rose-pine-hyprcursor # Rose Pine cursor theme for Hyprland
   ];
 
   environment.pathsToLink = [

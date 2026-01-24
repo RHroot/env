@@ -5,8 +5,8 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    vlc
-    ffmpeg
-    gimp
+    vlc # Versatile media player supporting most audio and video formats
+    ffmpeg # Multimedia framework for encoding, decoding, and processing media
+    gimp # Advanced image editor (GNU Image Manipulation Program)
   ];
 }

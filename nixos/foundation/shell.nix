@@ -4,16 +4,16 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    zsh-system-clipboard
-    fzf
-    zoxide
-    tmux
-    ripgrep
-    bat
-    bind
-    man
-    eza
-    lolcat
+    zsh-system-clipboard # Zsh plugin to sync clipboard with the system
+    fzf # Fuzzy finder for interactive command-line filtering
+    zoxide # Smarter cd command with directory jump history
+    tmux # Terminal multiplexer for managing multiple sessions
+    ripgrep # Fast recursive text search tool (rg)
+    bat # cat replacement with syntax highlighting
+    bind # Command-line tools for DNS queries (dig, nslookup)
+    man # Manual page reader
+    eza # Modern ls replacement with icons and git info
+    lolcat # Colorful text output using rainbow gradients
   ];
 
   programs.zsh = {

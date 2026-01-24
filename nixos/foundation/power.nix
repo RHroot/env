@@ -73,7 +73,7 @@ in {
 
   # Merge the two independent configuration blocks
   config = lib.mkMerge [
-    batsignalConfig
-    tlpConfig
+    batsignalConfig # Configuration for batsignal battery warning daemon
+    tlpConfig # Power management configuration for TLP
   ];
 }

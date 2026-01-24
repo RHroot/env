@@ -14,6 +14,6 @@
     audio.enable = true;
   };
   environment.systemPackages = with pkgs; [
-    pavucontrol
+    pavucontrol # PulseAudio / PipeWire volume control GUI
   ];
 }

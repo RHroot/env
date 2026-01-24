@@ -9,9 +9,9 @@
   gitSigningKeyRelative = ".ssh/id_ed25519";
 in {
   environment.systemPackages = with pkgs; [
-    git
-    delta
-    openssh
+    git # Distributed version control system
+    delta # Syntax-highlighted pager for git diffs
+    openssh # OpenSSH client and server for secure remote access
   ];
   system.activationScripts.gitConfigUsers = lib.mkAfter ''
         for u in ${lib.concatStringsSep " " gitUsers}; do
