@@ -39,7 +39,6 @@
     unstable.neovide
     gemini-cli
     lazygit
-    pgcli
     # === CyberSecurity ===
     nmap
     tshark
