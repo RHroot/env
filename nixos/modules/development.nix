@@ -37,7 +37,7 @@
     alejandra
     # === Utility tools ===
     unstable.neovide
-    zed-editor
+    gemini-cli
     lazygit
     pgcli
     # === CyberSecurity ===
