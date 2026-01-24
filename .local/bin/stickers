@@ -1,13 +1,25 @@
-#!/usr/bin/env bash
+#!/bin/sh
+set -euo pipefail
 
-DIR="$HOME/env/Stickers"
+STICKER_DIR="$HOME/env/Stickers"
 
-FILE=$(find "$DIR" -type f \( -iname "*.png" -o -iname "*.webp" -o -iname "*.jpg" \) \
-  | sed "s|$HOME/env/||" \
-  | fuzzel --dmenu --prompt="Sticker: ")
+find "$STICKER_DIR" -type f \
+  \( -iname "*.png" -o -iname "*.webp" -o -iname "*.jpg" -o -iname "*.gif" \) \
+  | sort \
+  | while IFS= read -r file; do
+    rel="${file#$STICKER_DIR/}"
+    label="${rel%.*}"
+    printf "%s\0icon\x1f%s\n" "$label" "$file"
+  done \
+  | fuzzel --dmenu --prompt="Sticker" \
+  | while IFS= read -r label; do
+    [ -z "$label" ] && exit 0
+    FILE=$(find "$STICKER_DIR" -type f \
+      \( -iname "$label.png" \
+      -o -iname "$label.webp" \
+      -o -iname "$label.jpg" \
+      -o -iname "$label.gif" \) \
+      | head -n 1)
 
-[ -z "$FILE" ] && exit 0
-
-wl-copy <"$HOME/env/$FILE"
-sleep 0.05
-wtype -M ctrl v -m ctrl
+    [ -n "$FILE" ] && wl-copy <"$FILE"
+  done

@@ -1,21 +1,28 @@
 #!/bin/sh
+set -euo pipefail
 
-Wall_DIR="$HOME/Wallpapers"
+WALL_DIR="$HOME/Wallpapers"
 CWD="$(pwd)"
 
-cd "$Wall_DIR" || exit
+find "$WALL_DIR" -type f \
+  \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
+  | sort \
+  | while IFS= read -r file; do
+    rel="${file#$WALL_DIR/}"
+    label="${rel%.*}"
+    printf "%s\0icon\x1f%s\n" "$label" "$file"
+  done \
+  | fuzzel --dmenu --prompt="Select Wallpaper" \
+  | while IFS= read -r label; do
+    [ -z "$label" ] && exit 0
 
-IFS=$'\n'
+    FILE=$(find "$WALL_DIR" -type f \
+      \( -iname "$label.jpg" \
+      -o -iname "$label.jpeg" \
+      -o -iname "$label.png" \) \
+      | head -n 1)
 
-SELECTED_WALL=$(
-  for a in *.jpg *.png *.jpeg; do
-    echo "$a"
-  done | fuzzel --dmenu --prompt "Select Wallpaper: "
-)
+    [ -n "$FILE" ] && bash "$HOME/env/.local/bin/wset-backend" "$FILE"
+  done
 
-if [ -n "$SELECTED_WALL" ]; then
-  FULL_PATH="$Wall_DIR/$SELECTED_WALL"
-  bash "$HOME/env/.local/bin/wset-backend" "$FULL_PATH"
-fi
-
-cd "$CWD" || exit
+cd "$CWD" || exit 1
