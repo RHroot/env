@@ -27,7 +27,7 @@
     EDITOR = "nvim";
     TERM = "kitty";
     TERMINAL = "alacritty";
-    BROWSER = "firefox-esr";
+    BROWSER = "brave";
     COLORTERM = "truecolor";
     PAGER = "less";
     LESS = "-RFXSiM";
