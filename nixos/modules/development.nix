@@ -49,6 +49,8 @@
     # === CyberSecurity ===
     nmap # Network scanner and port discovery tool
     tshark # CLI network protocol analyzer (Wireshark backend)
+    tcpdump # Command-line packet analyzer
+    strace # Diagnostic tool to monitor system calls
   ];
   # === Neovim ===
   programs.neovim = {

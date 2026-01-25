@@ -55,7 +55,6 @@
     hyprlock # Screen locker for Hyprland
     hyprpicker # Color picker for Wayland/Hyprland
     hyprshot # Screenshot utility for Hyprland
-    wlroots_0_19 # Wayland compositor library required by Hyprland
 
     # === basic ===
     libnotify # Desktop notification library
@@ -90,5 +89,10 @@
     appflowy # Open-source Notion-style productivity app
     libreoffice-fresh # Full-featured office suite (latest stable)
     evince # Document viewer for PDF and other formats
+
+    # === XDG ===
+    xdg-utils # Desktop integration helpers (xdg-open, etc.)
+    xdg-desktop-portal # XDG desktop portal service
+    xdg-desktop-portal-hyprland # XDG portal backend for Hyprland
   ];
 }
