@@ -41,16 +41,15 @@
     shfmt # Shell script formatter
     alejandra # Opinionated Nix code formatter
 
-    # === Utility tools ===
-    unstable.neovide # GPU-accelerated Neovim GUI
-    gemini-cli # Command-line interface for Google Gemini
-    lazygit # Terminal UI for Git operations
-
     # === CyberSecurity ===
     nmap # Network scanner and port discovery tool
     tshark # CLI network protocol analyzer (Wireshark backend)
     tcpdump # Command-line packet analyzer
     strace # Diagnostic tool to monitor system calls
+
+    # === Utility tools ===
+    unstable.neovide # GPU-accelerated Neovim GUI
+    lazygit # Terminal UI for Git operations
   ];
   # === Neovim ===
   programs.neovim = {
