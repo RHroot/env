@@ -37,7 +37,6 @@ setup_fzf_integration
 
 # Source aliases and other modular files
 [ -f "$ZDOTDIR/prompt" ] && source "$ZDOTDIR/prompt"
-[ -f "$ZDOTDIR/.zprofile" ] && source "$ZDOTDIR/.zprofile"
 [ -f "$ZDOTDIR/alias" ] && source "$ZDOTDIR/alias"
 [ -f "$ZDOTDIR/func" ] && source "$ZDOTDIR/func"
 

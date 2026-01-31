@@ -52,16 +52,6 @@
     add_to_path "$HOME/.local/bin"
     add_to_path "$HOME/.local/sbin"
 
-    # npm global bin (from the prefix above)
-    add_to_path "$HOME/.local/share/npm/bin"
-
-    # pnpm
-    export PNPM_HOME="/home/sten/.local/share/pnpm"
-    case ":$PATH:" in
-      *":$PNPM_HOME:"*) ;;
-      *) export PATH="$PNPM_HOME:$PATH" ;;
-    esac
-
     # Optional traditional dirs (mostly empty on NixOS)
     for p in /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin; do
       case ":$PATH:" in

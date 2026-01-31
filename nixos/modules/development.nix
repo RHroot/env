@@ -28,7 +28,6 @@
 
     # === Web Development tools ===
     nodejs_latest # Latest Node.js runtime
-    pnpm # Fast, disk-efficient Node.js package manager
     bun # All-in-one JS runtime, bundler, and package manager
     nodePackages_latest.typescript-language-server # LSP server for TypeScript and JavaScript
     nodePackages_latest.vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers
