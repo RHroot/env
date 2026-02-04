@@ -48,6 +48,7 @@
 
     # === Utility tools ===
     unstable.neovide # GPU-accelerated Neovim GUI
+    vscodium # Open-source build of Visual Studio Code
     lazygit # Terminal UI for Git operations
   ];
   # === Neovim ===
