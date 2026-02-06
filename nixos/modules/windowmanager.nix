@@ -80,16 +80,17 @@
     # === Polkit ===
     kdePackages.polkit-kde-agent-1 # PolicyKit authentication agent for Wayland
 
-    # === Utility ===
-    brave # Privacy-focused web browser
-    evince # Document viewer for PDF and other formats
-    appflowy # Open-source Notion-style productivity app
-    telegram-desktop # Telegram messaging desktop client
-    libreoffice-fresh # Full-featured office suite (latest stable)
-
     # === XDG ===
     xdg-utils # Desktop integration helpers (xdg-open, etc.)
     xdg-desktop-portal # XDG desktop portal service
     xdg-desktop-portal-hyprland # XDG portal backend for Hyprland
+
+    # === Utility ===
+    brave # Privacy-focused web browser
+    steam # Gaming platform and client
+    evince # Document viewer for PDF and other formats
+    appflowy # Open-source Notion-style productivity app
+    telegram-desktop # Telegram messaging desktop client
+    libreoffice-fresh # Full-featured office suite (latest stable)
   ];
 }
