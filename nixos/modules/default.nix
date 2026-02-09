@@ -9,7 +9,7 @@
     ./content.nix
     ./theming.nix
     ./graphics.nix
-    ./development.nix
+    ./toolbox.nix
     ./windowmanager.nix
   ];
 }
