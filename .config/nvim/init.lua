@@ -6,9 +6,12 @@ require("core.maps")
 -- Prefer config/autoload, fall back to data/site/autoload
 local cfg = vim.fn.stdpath("config") .. "/autoload/plug.vim"
 local data = vim.fn.stdpath("data") .. "/site/autoload/plug.vim"
+
 if vim.fn.empty(vim.fn.glob(cfg)) > 0 and vim.fn.empty(vim.fn.glob(data)) > 0 then
 	vim.api.nvim_echo({ { "vim-plug missing: place plug.vim at " .. cfg .. " or " .. data, "WarningMsg" } }, false, {})
 end
+
+-- Needed because plug.vim lives in a custom place (INTENTIONAL)
 vim.opt.rtp:prepend(vim.fn.stdpath("config"))
 
 -- vim-plug (Lua)
@@ -17,54 +20,68 @@ vim.call("plug#begin", vim.fn.stdpath("data") .. "/plugged")
 
 -- NOTE: ColorScheme
 Plug("folke/tokyonight.nvim")
+
+-- NOTE: UI / Notifications
+Plug("MunifTanjim/nui.nvim")
 Plug("folke/noice.nvim")
--- NOTE: Notifier
 Plug("rcarriga/nvim-notify")
--- NOTE: For gitsigns
+
+-- NOTE: Git
 Plug("lewis6991/gitsigns.nvim")
--- NOTE: For Language Server Protocol
+
+-- NOTE: LSP
 Plug("neovim/nvim-lspconfig")
--- NOTE: For snippets
+
+-- NOTE: Snippets
 Plug("L3MON4D3/LuaSnip")
 Plug("rafamadriz/friendly-snippets")
--- NOTE: For Formatting
+
+-- NOTE: Formatting
 Plug("stevearc/conform.nvim")
--- NOTE: For completion
+
+-- NOTE: Completion
 Plug("saghen/blink.cmp")
--- NOTE: Mini Plugins
+
+-- NOTE: Mini plugins
 Plug("nvim-mini/mini.ai")
 Plug("nvim-mini/mini.icons")
 Plug("nvim-mini/mini.statusline")
 Plug("nvim-mini/mini.hipatterns")
--- NOTE: Snacks For just some plugins
+
+-- NOTE: Utility plugins
 Plug("folke/snacks.nvim")
--- NOTE: For Keyboard Shortcuts Help
 Plug("folke/which-key.nvim")
 Plug("windwp/nvim-autopairs")
+
 -- NOTE: TreeSitter
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
+
 -- NOTE: Icons
 Plug("nvim-tree/nvim-web-devicons")
+
 -- NOTE: MongoDB
 Plug("jrop/mongo.nvim")
+Plug("nvim-lua/plenary.nvim")
+
 -- NOTE: Copilot
 Plug("github/copilot.vim")
-Plug("nvim-lua/plenary.nvim")
 Plug("CopilotC-Nvim/CopilotChat.nvim")
+
 -- NOTE: Conceal Secrets
 Plug("laytan/cloak.nvim")
 
 vim.call("plug#end")
 
-require("plug.git")
-require("plug.mini")
-require("plug.notify")
-require("plug.snacks")
-require("plug.colors")
-require("plug.copilot")
-require("plug.lsp-cmp")
-require("plug.whichkey")
-require("plug.formatter")
-require("plug.autopairs")
-require("plug.treesitter")
-require("plug.cloak")
+-- Safe requires (won’t error on first install)
+pcall(require, "plug.git")
+pcall(require, "plug.mini")
+pcall(require, "plug.cloak")
+pcall(require, "plug.notify")
+pcall(require, "plug.snacks")
+pcall(require, "plug.colors")
+pcall(require, "plug.copilot")
+pcall(require, "plug.lsp-cmp")
+pcall(require, "plug.whichkey")
+pcall(require, "plug.formatter")
+pcall(require, "plug.autopairs")
+pcall(require, "plug.treesitter")
