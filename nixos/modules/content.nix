@@ -5,6 +5,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    lmms # Digital audio workstation for music production
     inkscape # Vector graphics editor for creating and editing scalable graphics
     audacity # Free, open-source audio editor and recorder
     obs-studio # Open Broadcaster Software for video recording and live streaming
