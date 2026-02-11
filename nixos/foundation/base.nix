@@ -29,7 +29,6 @@
     coreutils # GNU core command-line utilities
     moreutils # Additional Unix utilities not in coreutils
     fastfetch # System information fetch tool (neofetch alternative)
-    tree-sitter # Incremental parsing system for better syntax highlighting and code analysis
 
     # === Zip & Archive Tools ===
     zip # Create ZIP archives
