@@ -28,7 +28,8 @@ FILE: ~/.ssh/config
 # -------------------------
 # DEFAULT: Personal GitHub
 # -------------------------
-Host github.com
+Host github
+    HostName github.com
     User git
     IdentityFile ~/.ssh/id_ed25519_personal
     IdentitiesOnly yes
@@ -46,7 +47,8 @@ Host github-work
 # -------------------------
 # DEFAULT: Personal GitLab
 # -------------------------
-Host gitlab.com
+Host gitlab
+    HostName gitlab.com
     User git
     IdentityFile ~/.ssh/id_ed25519_personal
     IdentitiesOnly yes
@@ -77,8 +79,8 @@ HOW TO USE
 ========================================
 
 Personal (default):
-    git clone git@github.com:username/repo.git
-    git clone git@gitlab.com:user/repo.git
+    git clone git@github:username/repo.git
+    git clone git@gitlab:user/repo.git
 
 Work:
     git clone git@github-work:org/repo.git
