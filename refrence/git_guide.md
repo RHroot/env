@@ -64,7 +64,7 @@ git init
 ### Option B: Clone an existing repo
 
 ```bash
-git clone git@github.com:USER/REPO.git
+git clone git@github:USER/REPO.git
 ```
 
 ---
@@ -156,7 +156,7 @@ git merge new-feature
 ### Add a remote
 
 ```bash
-git remote add origin git@github.com:USER/REPO.git
+git remote add origin git@github:USER/REPO.git
 ```
 
 ### Push for the first time
@@ -179,8 +179,8 @@ git pull
 ### Best Practice: One fetch, multiple push
 
 ```bash
-git remote add all git@github.com:USER/REPO.git
-git remote set-url --add --push all git@github.com:USER/REPO.git
+git remote add all git@github:USER/REPO.git
+git remote set-url --add --push all git@github:USER/REPO.git
 git remote set-url --add --push all git@gitlab.com:USER/REPO.git
 ```
 
@@ -217,7 +217,7 @@ ssh-add ~/.ssh/id_ed25519
 ### Test
 
 ```bash
-ssh -T git@github.com
+ssh -T git@github
 ssh -T git@gitlab.com
 ```
 
@@ -451,8 +451,8 @@ ssh-add ~/.ssh/id_ed25519
 Use multiple remotes:
 
 ```bash
-git remote add all git@github.com:USER/REPO.git
-git remote set-url --add --push all git@github.com:USER/REPO.git
+git remote add all git@github:USER/REPO.git
+git remote set-url --add --push all git@github:USER/REPO.git
 git remote set-url --add --push all git@gitlab.com:USER/REPO.git
 ```
 
@@ -484,7 +484,7 @@ You now have:
 ### 2. Clone Your Fork
 
 ```bash
-git clone git@github.com:YOUR_USERNAME/REPO.git
+git clone git@github:YOUR_USERNAME/REPO.git
 cd REPO
 ```
 
@@ -493,7 +493,7 @@ cd REPO
 ### 3. Add Upstream Remote
 
 ```bash
-git remote add upstream git@github.com:ORIGINAL_OWNER/REPO.git
+git remote add upstream git@github:ORIGINAL_OWNER/REPO.git
 ```
 
 Verify:
