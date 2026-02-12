@@ -4,61 +4,43 @@
   lib,
   ...
 }: let
-  user = "sten";
-
-  identities = {
-    rhroot = {
-      name = "RHroot";
-      email = "rhroot@example.com";
-      signingKey = "~/.ssh/id_ed25519_rhroot";
-    };
-
-    rixspace = {
-      name = "rixspace";
-      email = "rixspace@example.com";
-      signingKey = "~/.ssh/id_ed25519_rixspace";
-    };
-  };
+  gitUsers = ["sten"];
 in {
   environment.systemPackages = with pkgs; [
     git
     delta
-    openssh
   ];
 
-  # -----------------------------
-  # SSH CONFIG (User-level via etc)
-  # -----------------------------
-  environment.etc."ssh/ssh_config.d/sten-multi.conf".text = ''
-    Host github-rhroot
-        HostName github.com
-        User git
-        IdentityFile ~/.ssh/id_ed25519_rhroot
-        IdentitiesOnly yes
+  system.activationScripts.gitSetup = lib.mkAfter ''
+        for u in ${lib.concatStringsSep " " gitUsers}; do
+          if [ "$u" = "root" ]; then continue; fi
 
-    Host github-rixspace
-        HostName github.com
-        User git
-        IdentityFile ~/.ssh/id_ed25519_rixspace
-        IdentitiesOnly yes
+          userHome=$(getent passwd "$u" | cut -d: -f6)
+          [ -z "$userHome" ] && continue
 
-    Host gitlab-rhroot
-        HostName gitlab.com
-        User git
-        IdentityFile ~/.ssh/id_ed25519_rhroot
-        IdentitiesOnly yes
+          gitMain="$userHome/.gitconfig"
+          gitWork="$userHome/.gitconfig-work"
 
-    Host gitlab-rixspace
-        HostName gitlab.com
-        User git
-        IdentityFile ~/.ssh/id_ed25519_rixspace
-        IdentitiesOnly yes
-  '';
+          # ---------------------------
+          # MAIN CONFIG (PUBLIC SAFE)
+          # ---------------------------
+          cat > "$gitMain" <<EOF
+    # Load private identity (not tracked in repo)
+    [include]
+        path = ~/.gitconfig-local
 
-  # -----------------------------
-  # Global Git Config
-  # -----------------------------
-  environment.etc."gitconfig".text = ''
+    # Load work identity only for work remotes
+    [includeIf "hasconfig:remote.origin.url:github-work:"]
+        path = ~/.gitconfig-work
+    [includeIf "hasconfig:remote.origin.url:gitlab-work:"]
+        path = ~/.gitconfig-work
+
+    [gpg]
+        format = ssh
+
+    [commit]
+        gpgsign = true
+
     [core]
         editor = nvim
         pager = delta
@@ -69,9 +51,16 @@ in {
 
     [delta]
         navigate = true
-        side-by-side = true
         line-numbers = true
+        side-by-side = true
         syntax-theme = Dracula
+        hyperlinks = true
+
+    [diff]
+        colorMoved = default
+
+    [init]
+        defaultBranch = main
 
     [pull]
         rebase = true
@@ -79,45 +68,23 @@ in {
     [push]
         default = current
 
-    [init]
-        defaultBranch = main
-
-    [includeIf "gitdir:~/projects/rhroot/"]
-        path = ~/.gitconfig-rhroot
-
-    [includeIf "gitdir:~/projects/rixspace/"]
-        path = ~/.gitconfig-rixspace
-  '';
-
-  # -----------------------------
-  # Per-Identity Git Config Files
-  # -----------------------------
-  users.users.${user}.packages = [];
-
-  users.users.${user}.shellInit = ''
-        # Ensure identity configs exist
-        if [ ! -f ~/.gitconfig-rhroot ]; then
-          cat > ~/.gitconfig-rhroot <<EOF
-    [user]
-        name = ${identities.rhroot.name}
-        email = ${identities.rhroot.email}
-        signingkey = ${identities.rhroot.signingKey}
-
-    [commit]
-        gpgsign = true
+    [color]
+        ui = auto
     EOF
-        fi
 
-        if [ ! -f ~/.gitconfig-rixspace ]; then
-          cat > ~/.gitconfig-rixspace <<EOF
+          # ---------------------------
+          # WORK IDENTITY (SAFE TO EDIT LOCALLY)
+          # ---------------------------
+          if [ ! -f "$gitWork" ]; then
+            cat > "$gitWork" <<EOF
+    # Define work identity locally (not committed)
     [user]
-        name = ${identities.rixspace.name}
-        email = ${identities.rixspace.email}
-        signingkey = ${identities.rixspace.signingKey}
-
-    [commit]
-        gpgsign = true
+        name = WORK_NAME
+        email = WORK_EMAIL
     EOF
-        fi
+          fi
+
+          chown "$u:users" "$gitMain" "$gitWork"
+        done
   '';
 }

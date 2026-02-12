@@ -1,0 +1,84 @@
+========================================
+FILE: ~/.gitconfig-local
+(Personal Identity - PRIVATE)
+========================================
+
+[user]
+    name = YOUR_REAL_NAME
+    email = YOUR_REAL_EMAIL
+
+
+========================================
+FILE: ~/.gitconfig-work
+(Work Identity - PRIVATE)
+========================================
+
+[user]
+    name = YOUR_WORK_NAME
+    email = YOUR_WORK_EMAIL
+
+
+========================================
+FILE: ~/.ssh/config
+(SSH Authentication Layer)
+========================================
+
+# -------------------------
+# DEFAULT: Personal GitHub
+# -------------------------
+Host github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_personal
+    IdentitiesOnly yes
+
+# -------------------------
+# Work GitHub (explicit)
+# -------------------------
+Host github-work
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_work
+    IdentitiesOnly yes
+
+
+# -------------------------
+# DEFAULT: Personal GitLab
+# -------------------------
+Host gitlab.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_personal
+    IdentitiesOnly yes
+
+# -------------------------
+# Work GitLab (explicit)
+# -------------------------
+Host gitlab-work
+    HostName gitlab.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_work
+    IdentitiesOnly yes
+
+
+========================================
+REQUIRED PERMISSIONS
+(Run these commands once)
+========================================
+
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/config
+chmod 600 ~/.ssh/id_ed25519_personal
+chmod 600 ~/.ssh/id_ed25519_work
+
+
+========================================
+HOW TO USE
+========================================
+
+Personal (default):
+    git clone git@github.com:username/repo.git
+    git clone git@gitlab.com:user/repo.git
+
+Work:
+    git clone git@github-work:org/repo.git
+    git clone git@gitlab-work:org/repo.git
+
