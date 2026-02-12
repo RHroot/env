@@ -6,6 +6,7 @@ FILE: ~/.gitconfig-local
 [user]
     name = YOUR_REAL_NAME
     email = YOUR_REAL_EMAIL
+    signingkey = ~/.ssh/id_ed25519_personal
 
 
 ========================================
@@ -16,6 +17,7 @@ FILE: ~/.gitconfig-work
 [user]
     name = YOUR_WORK_NAME
     email = YOUR_WORK_EMAIL
+    signingkey = ~/.ssh/id_ed25519_work
 
 
 ========================================
