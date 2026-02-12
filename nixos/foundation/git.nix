@@ -4,36 +4,61 @@
   lib,
   ...
 }: let
-  gitUsers = ["sten"];
-  gitUserName = "RHroot";
-  gitSigningKeyRelative = ".ssh/id_ed25519";
+  user = "sten";
+
+  identities = {
+    rhroot = {
+      name = "RHroot";
+      email = "rhroot@example.com";
+      signingKey = "~/.ssh/id_ed25519_rhroot";
+    };
+
+    rixspace = {
+      name = "rixspace";
+      email = "rixspace@example.com";
+      signingKey = "~/.ssh/id_ed25519_rixspace";
+    };
+  };
 in {
   environment.systemPackages = with pkgs; [
-    git # Distributed version control system
-    delta # Syntax-highlighted pager for git diffs
-    openssh # OpenSSH client and server for secure remote access
+    git
+    delta
+    openssh
   ];
-  system.activationScripts.gitConfigUsers = lib.mkAfter ''
-        for u in ${lib.concatStringsSep " " gitUsers}; do
-          # skip root if accidentally included
-          if [ "$u" = "root" ]; then continue; fi
 
-          # get home directory dynamically
-          userHome=$(getent passwd "$u" | cut -d: -f6)
-          if [ -z "$userHome" ]; then
-            echo "Warning: user $u not found, skipping .gitconfig"
-            continue
-          fi
+  # -----------------------------
+  # SSH CONFIG (User-level via etc)
+  # -----------------------------
+  environment.etc."ssh/ssh_config.d/sten-multi.conf".text = ''
+    Host github-rhroot
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_ed25519_rhroot
+        IdentitiesOnly yes
 
-          gitConfigFile="$userHome/.gitconfig"
+    Host github-rixspace
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_ed25519_rixspace
+        IdentitiesOnly yes
 
-          # create .gitconfig
-          mkdir -p "$userHome"
-          cat > "$gitConfigFile" <<EOF
-    [user]
-        name = ${gitUserName}
-        signingkey = \$HOME/${gitSigningKeyRelative}
+    Host gitlab-rhroot
+        HostName gitlab.com
+        User git
+        IdentityFile ~/.ssh/id_ed25519_rhroot
+        IdentitiesOnly yes
 
+    Host gitlab-rixspace
+        HostName gitlab.com
+        User git
+        IdentityFile ~/.ssh/id_ed25519_rixspace
+        IdentitiesOnly yes
+  '';
+
+  # -----------------------------
+  # Global Git Config
+  # -----------------------------
+  environment.etc."gitconfig".text = ''
     [core]
         editor = nvim
         pager = delta
@@ -44,16 +69,9 @@ in {
 
     [delta]
         navigate = true
-        line-numbers = true
         side-by-side = true
+        line-numbers = true
         syntax-theme = Dracula
-        hyperlinks = true
-
-    [diff]
-        colorMoved = default
-
-    [init]
-        defaultBranch = main
 
     [pull]
         rebase = true
@@ -61,12 +79,45 @@ in {
     [push]
         default = current
 
-    [color]
-        ui = auto
-    EOF
+    [init]
+        defaultBranch = main
 
-          # set ownership and permissions
-          chown "$u:users" "$gitConfigFile"
-        done
+    [includeIf "gitdir:~/projects/rhroot/"]
+        path = ~/.gitconfig-rhroot
+
+    [includeIf "gitdir:~/projects/rixspace/"]
+        path = ~/.gitconfig-rixspace
+  '';
+
+  # -----------------------------
+  # Per-Identity Git Config Files
+  # -----------------------------
+  users.users.${user}.packages = [];
+
+  users.users.${user}.shellInit = ''
+        # Ensure identity configs exist
+        if [ ! -f ~/.gitconfig-rhroot ]; then
+          cat > ~/.gitconfig-rhroot <<EOF
+    [user]
+        name = ${identities.rhroot.name}
+        email = ${identities.rhroot.email}
+        signingkey = ${identities.rhroot.signingKey}
+
+    [commit]
+        gpgsign = true
+    EOF
+        fi
+
+        if [ ! -f ~/.gitconfig-rixspace ]; then
+          cat > ~/.gitconfig-rixspace <<EOF
+    [user]
+        name = ${identities.rixspace.name}
+        email = ${identities.rixspace.email}
+        signingkey = ${identities.rixspace.signingKey}
+
+    [commit]
+        gpgsign = true
+    EOF
+        fi
   '';
 }
