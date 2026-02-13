@@ -43,12 +43,13 @@
     # === CyberSecurity ===
     nmap # Network scanner and port discovery tool
     tshark # CLI network protocol analyzer (Wireshark backend)
-    tcpdump # Command-line packet analyzer
     strace # Diagnostic tool to monitor system calls
+    tcpdump # Command-line packet analyzer
 
     # === Utility tools ===
-    unstable.neovide # GPU-accelerated Neovim GUI
     lazygit # Terminal UI for Git operations
+    opencode # Open source code search engine
+    unstable.neovide # GPU-accelerated Neovim GUI
   ];
   # === Neovim ===
   programs.neovim = {
