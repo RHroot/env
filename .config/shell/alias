@@ -75,6 +75,7 @@ alias myip="curl ifconfig.me"
 alias bright="brightnessctl set"
 alias pyr="python"
 alias gor="go run"
+alias oc="opencode --port 3000"
 
 # Utilities
 alias kssh="kitty +kitten ssh"
