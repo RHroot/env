@@ -10,7 +10,7 @@ autoload -Uz add-zsh-hook
 # -----------------------------
 
 if command -v keychain >/dev/null 2>&1; then
-  eval "$(keychain --quiet --eval ~/.ssh/id_ed25519_*)"
+  eval "$(keychain --quiet --eval)"
 fi
 if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
