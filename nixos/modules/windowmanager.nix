@@ -3,16 +3,6 @@
   pkgs,
   ...
 }: {
-  services.xserver = {
-    enable = false;
-    autoRepeatDelay = 200;
-    autoRepeatInterval = 50;
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
-  services.displayManager.ly.enable = false;
   services.greetd = {
     enable = true;
     settings = {
@@ -69,11 +59,6 @@
     kitty # Feature-rich GPU-based terminal emulator
     alacritty # GPU-accelerated terminal emulator
 
-    # === Zathura ===
-    ps # PostScript interpreter and utilities
-    zathura # Minimal PDF and document viewer
-    poppler # PDF rendering backend used by viewers
-
     # === File managers ===
     nautilus # GNOME file manager
 
@@ -84,14 +69,5 @@
     xdg-utils # Desktop integration helpers (xdg-open, etc.)
     xdg-desktop-portal # XDG desktop portal service
     xdg-desktop-portal-hyprland # XDG portal backend for Hyprland
-
-    # === Utility ===
-    brave # Privacy-focused web browser
-    steam # Gaming platform and client
-    evince # Document viewer for PDF and other formats
-    appflowy # Open-source Notion-style productivity app
-    librewolf # Privacy-focused web browser based on Firefox
-    telegram-desktop # Telegram messaging desktop client
-    libreoffice-fresh # Full-featured office suite (latest stable)
   ];
 }
