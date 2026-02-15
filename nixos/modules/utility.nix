@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-  virtualisation.waydroid.enable = true;
   environment.systemPackages = with pkgs; [
     # === Zathura ===
     ps # PostScript interpreter and utilities
