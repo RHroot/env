@@ -24,9 +24,8 @@
   };
 
   environment.sessionVariables = {
-    EDITOR = "neovide";
-    TERM = "kitty";
-    TERMINAL = "alacritty";
+    EDITOR = "neovim";
+    TERMINAL = "kitty";
     BROWSER = "brave";
     COLORTERM = "truecolor";
     PAGER = "less";
