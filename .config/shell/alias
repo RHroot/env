@@ -81,7 +81,7 @@ alias oc="opencode --port 3000"
 alias kssh="kitty +kitten ssh"
 alias web="cd /var/www/html"
 alias da='date "+%Y-%m-%d %A %T %Z"'
-alias aria2-down='aria2c --conf-path=~/.config/aria2/aria2.conf'
+alias aria2-down='aria2c --conf-path=$HOME/.config/aria2/aria2.conf'
 
 # Terminal based browser
 alias tb="BROWSER=w3m ddgr"
