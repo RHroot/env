@@ -32,7 +32,7 @@ gacp() {
   else
     git commit -m "$*"
   fi
-  git push all
+  git push
 }
 
 export FZF_DEFAULT_OPTS='
