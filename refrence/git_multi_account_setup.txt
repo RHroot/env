@@ -68,6 +68,9 @@ REQUIRED PERMISSIONS
 (Run these commands once)
 ========================================
 
+ssh-keygen -t ed25519 -C "personal@linux" -f ~/.ssh/id_ed25519_personal
+ssh-keygen -t ed25519 -C "work@linux" -f ~/.ssh/id_ed25519_work
+
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/config
 chmod 600 ~/.ssh/id_ed25519_personal
