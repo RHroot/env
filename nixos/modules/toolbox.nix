@@ -49,7 +49,6 @@
     # === Utility tools ===
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
-    unstable.neovide # GPU-accelerated Neovim GUI
   ];
   # === Neovim ===
   programs.neovim = {
@@ -57,14 +56,4 @@
     package = pkgs.unstable.neovim-unwrapped;
     defaultEditor = true;
   };
-  # services.ollama = {
-  #   enable = true;
-  #   package = pkgs.ollama;
-  #   port = 11434;
-  #   host = "127.0.0.1";
-  #   syncModels = true;
-  #   loadModels = [
-  #     "qwen2.5:7b"
-  #   ];
-  # };
 }

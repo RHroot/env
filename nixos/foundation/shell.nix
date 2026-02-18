@@ -92,8 +92,6 @@
       sn = "sudo nvim";
       v = "vim";
       sv = "sudo vim";
-      nv = "neovide";
-      snd = "sudo neovide";
 
       # tmux
       tns = "tmux new -s";
