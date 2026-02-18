@@ -1,56 +1,60 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   themeName = "Flat-Remix-GTK-Magenta-Darkest";
   iconTheme = "Papirus-Dark";
-  gtkFont = "JetBrainsMono Nerd Font 14";
   cursorTheme = "rose-pine-hyprcursor";
+  cursorSize = 40;
+  fontFamily = "JetBrainsMono Nerd Font";
 in {
-  fonts.fontconfig.defaultFonts = {
-    sansSerif = ["Sans"];
-    serif = ["Serif"];
-    monospace = ["JetBrainsMono Nerd Font"];
-  };
+  ########################################################
+  # 1. REQUIRED: dconf (GTK reads from here on Wayland)
+  ########################################################
+  programs.dconf.enable = true;
+
+  ########################################################
+  # 2. Fonts (Force JetBrains everywhere via fontconfig)
+  ########################################################
   fonts = {
-    fontDir.enable = true;
     packages = with pkgs; [
       nerd-fonts.jetbrains-mono
     ];
+
+    fontconfig = {
+      enable = true;
+
+      defaultFonts = {
+        serif = [fontFamily];
+        sansSerif = [fontFamily];
+        monospace = [fontFamily];
+      };
+    };
   };
 
+  ########################################################
+  # 3. Install Theme Assets
+  ########################################################
   environment.systemPackages = with pkgs; [
-    gtk3 # GTK+ 3 toolkit for graphical applications
-    flat-remix-gtk # Flat Remix GTK theme for GTK-based apps
-    papirus-icon-theme # Papirus SVG-based icon theme
-    rose-pine-hyprcursor # Rose Pine cursor theme for Hyprland
+    flat-remix-gtk
+    papirus-icon-theme
+    rose-pine-hyprcursor
+    adwaita-icon-theme
   ];
 
-  environment.pathsToLink = [
-    "/lib"
-    "/bin"
-    "/sbin"
-    "/include"
-    "/libexec"
-    "/share/man"
-    "/share/mime"
-    "/share/fonts"
-    "/share/icons"
-    "/share/pixmaps"
-    "/share/metainfo"
-    "/share/applications"
-    "/share/desktop-directories"
-  ];
-
+  ########################################################
+  # 4. System-wide GTK config (fallback layer)
+  ########################################################
   environment.etc = {
     "xdg/gtk-3.0/settings.ini".text = ''
       [Settings]
       gtk-theme-name=${themeName}
       gtk-icon-theme-name=${iconTheme}
-      gtk-font-name=${gtkFont}
+      gtk-font-name=${fontFamily} 14
       gtk-cursor-theme-name=${cursorTheme}
-      gtk-cursor-theme-size=40
+      gtk-cursor-theme-size=${toString cursorSize}
       gtk-application-prefer-dark-theme=1
     '';
 
@@ -58,14 +62,48 @@ in {
       [Settings]
       gtk-theme-name=${themeName}
       gtk-icon-theme-name=${iconTheme}
-      gtk-font-name=${gtkFont}
+      gtk-font-name=${fontFamily} 14
       gtk-cursor-theme-name=${cursorTheme}
-      gtk-cursor-theme-size=40
+      gtk-cursor-theme-size=${toString cursorSize}
       gtk-application-prefer-dark-theme=1
     '';
   };
 
+  ########################################################
+  # 5. Wayland Session Variables (Hyprland critical)
+  ########################################################
   environment.sessionVariables = {
     GTK_THEME = themeName;
+    XCURSOR_THEME = cursorTheme;
+    XCURSOR_SIZE = toString cursorSize;
+
+    # Make Electron behave correctly on Wayland
+    NIXOS_OZONE_WL = "1";
   };
+
+  ########################################################
+  # 6. Qt Integration (NO GNOME session required)
+  ########################################################
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita";
+  };
+
+  ########################################################
+  # 7. Hyprland Wayland portal (REQUIRED)
+  ########################################################
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  };
+
+  ########################################################
+  # 8. Optional safety: ensure GTK icon lookup works
+  ########################################################
+  environment.pathsToLink = [
+    "/share/icons"
+    "/share/themes"
+  ];
 }
