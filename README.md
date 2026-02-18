@@ -32,9 +32,9 @@ The repository is organized as follows:
 
 - **`nixos/`**: Contains the core NixOS configuration
   - `configuration.nix`: Main system configuration
-  - `flake.nix`: Flake configuration with stable (25.11) and unstable package channels
   - `foundation/`: Core system modules (base, git, network, power, shell)
-  - `modules/`: Feature-specific modules (audio, development, graphics, theming, video, windowmanager)
+  - `modules/`: Feature-specific modules (audio, content, graphics, theming, toolbox, utility, video, windowmanager)
+- **`flake.nix`**: Flake configuration with stable (25.11) and unstable package channels
 
 ### Application Configurations
 
@@ -46,22 +46,25 @@ The repository is organized as follows:
   - `shell/`: Zsh configuration with Powerlevel10k theme
   - `alacritty/`, `kitty/`: Terminal emulator configs
   - `waybar/`: Status bar configuration
-  - `dunst/`, `fuzzel/`, `matugen/`, `tmux/`, `zathura/`: Other application configs
+  - `dunst/`, `fuzzel/`, `matugen/`, `tmux/`: Other application configs
+  - `aria2/`: Aria2 download manager configuration
   - `pipewire/`, `wireplumber/`: Audio system configurations
+  - `MangoHud/`: MangoHud overlay configuration
 
 ### Scripts & Utilities
 
 - **`.local/bin/`**: Custom utility scripts
   - `wset`, `wset-backend`: Wallpaper management
   - `rebuild`, `uprebuild`: System rebuild helpers
-  - `menu`, `cwifi`, `bar-refresh`: UI utilities
+  - `menu`, `cwifi`, `bar-refresh`, `stickers`: UI utilities
   - `setup-git`, `age`, `appdefault`: System utilities
 
 ### Documentation & Misc
 
-- **`guide/`**: Technical guides and documentation
+- **`refrence/`**: Technical guides and documentation
 - **`.stowrc`**: GNU Stow configuration for dotfile management
 - **`.zshenv`**, **`.vimrc`**: Shell and editor environment files
+- **`nixos-switch.log`**: Saved NixOS rebuild log
 
 ## 🚀 Usage
 
@@ -145,9 +148,10 @@ To use these dotfiles, you can follow these steps:
 
 ## 📚 Guides
 
-This repository includes a collection of technical guides and resources in the `guide/` directory:
+This repository includes a collection of technical guides and resources in the `refrence/` directory:
 
-- **`git-subtree.md`**: Working with git subtrees for managing dependencies
+- **`git_guide.md`**: Git workflow notes and best practices
+- **`git_multi_account_setup.txt`**: Multi-account Git setup reference
 - **`substitution-regex-guide.md`**: Regular expression patterns and substitution techniques
 - **`systemd_guide.md`**: Systemd service management and configuration
 - **`xargs-guide.md`**: Advanced xargs usage and patterns
