@@ -1,7 +1,7 @@
 --target=$HOME
 --ignore=\.git
 --ignore=\.gitignore
---ignore=\refrences
+--ignore=\refrence
 --ignore=\LICENSE
 --ignore=\.stowrc
 --ignore=\nixos
