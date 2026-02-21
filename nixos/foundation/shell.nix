@@ -26,7 +26,7 @@
   environment.sessionVariables = {
     EDITOR = "nvim";
     TERMINAL = "kitty";
-    BROWSER = "brave";
+    BROWSER = "firefox";
     COLORTERM = "truecolor";
     PAGER = "less";
     LESS = "-RFXSiM";
