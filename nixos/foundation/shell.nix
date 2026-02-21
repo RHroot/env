@@ -24,7 +24,7 @@
   };
 
   environment.sessionVariables = {
-    EDITOR = "neovim";
+    EDITOR = "nvim";
     TERMINAL = "kitty";
     BROWSER = "brave";
     COLORTERM = "truecolor";
