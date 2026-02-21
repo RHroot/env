@@ -32,7 +32,9 @@
       "browser.underline_anchors" = true;
       ## Native vertical tabs
       "sidebar.revamp" = true;
-      "browser.tabs.vertical" = true;
+      "sidebar.visibility" = "collapsed"; # forces sidebar open
+      "sidebar.main.tools" = "tabs"; # selects tabs as the sidebar panel
+      "sidebar.verticalTabs" = true; # enables vertical tab mode
       ## Privacy hardening
       "privacy.trackingprotection.enabled" = true;
       "privacy.trackingprotection.socialtracking.enabled" = true;
