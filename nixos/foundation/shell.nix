@@ -4,23 +4,20 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    zsh-system-clipboard # Zsh plugin to sync clipboard with the system
-    fzf # Fuzzy finder for interactive command-line filtering
-    zoxide # Smarter cd command with directory jump history
-    tmux # Terminal multiplexer for managing multiple sessions
-    ripgrep # Fast recursive text search tool (rg)
     bat # cat replacement with syntax highlighting
-    bind # Command-line tools for DNS queries (dig, nslookup)
     man # Manual page reader
     eza # Modern ls replacement with icons and git info
+    tmux # Terminal multiplexer for managing multiple sessions
+    bind # Command-line tools for DNS queries (dig, nslookup)
     lolcat # Colorful text output using rainbow gradients
+    zoxide # Smarter cd command with directory jump history
+    ripgrep # Fast recursive text search tool (rg)
+    zsh-system-clipboard # Zsh plugin to sync clipboard with the system
   ];
 
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
     syntaxHighlighting.enable = true;
-    enableBashCompletion = true;
   };
 
   environment.sessionVariables = {
@@ -47,17 +44,8 @@
       esac
     }
 
-    # User bins
     add_to_path "$HOME/.local/bin"
-    add_to_path "$HOME/.local/sbin"
 
-    # Optional traditional dirs (mostly empty on NixOS)
-    for p in /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin; do
-      case ":$PATH:" in
-        *":$p:"*) ;;
-        *) PATH="$PATH:$p" ;;
-      esac
-    done
     export PATH
   '';
 
