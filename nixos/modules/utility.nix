@@ -5,17 +5,9 @@
 }: {
   environment.systemPackages = with pkgs; [
     # === Utility ===
+    brave # Privacy-focused web browser
     steam # Gaming platform and client
     evince # Document viewer for PDF and other formats
     libreoffice-fresh # Full-featured office suite (latest stable)
-    (pkgs.brave.override {
-      commandLineArgs = [
-        "--ozone-platform=wayland"
-        "--enable-features=UseOzonePlatform,CanvasOopRasterization,VaapiVideoDecoder"
-        "--force-dark-mode"
-        "--enable-features=WebUIDarkMode"
-        "--gtk-version=4"
-      ];
-    })
   ];
 }
