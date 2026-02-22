@@ -22,20 +22,4 @@
       ];
     })
   ];
-
-  # Chromium/Brave policies (system-wide, enforced)
-  environment.etc."chromium/policies/managed/brave.json".text = ''
-    {
-      "PasswordManagerEnabled": false,
-      "AutofillAddressEnabled": false,
-      "AutofillCreditCardEnabled": false,
-      "BraveWalletDisabled": true,
-      "BraveRewardsDisabled": true,
-      "TorDisabled": true,
-      "SyncDisabled": true,
-      "MetricsReportingEnabled": false,
-      "DefaultBrowserSettingEnabled": false,
-      "HardwareAccelerationModeEnabled": true
-    }
-  '';
 }
