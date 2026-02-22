@@ -1,7 +1,8 @@
 @import "./../../.cache/waybar-colors.css";
 
 * {
-  font-family: "JetBrainsMono NF ExtraBold", monospace;
+  font-family: "FiraCode Nerd Font Propo";
+  font-weight: 700;
   font-size: 14px;
   border: @primary;
   color: @on_background;

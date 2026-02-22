@@ -8,7 +8,7 @@
   iconTheme = "Papirus-Dark";
   cursorTheme = "rose-pine-hyprcursor";
   cursorSize = 40;
-  fontFamily = "JetBrainsMono Nerd Font";
+  fontFamily = "FiraCode Nerd Font";
 in {
   ########################################################
   # 1. REQUIRED: dconf (GTK reads from here on Wayland)
@@ -20,7 +20,7 @@ in {
   ########################################################
   fonts = {
     packages = with pkgs; [
-      nerd-fonts.jetbrains-mono
+      nerd-fonts.fira-code
     ];
 
     fontconfig = {
