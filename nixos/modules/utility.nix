@@ -12,10 +12,6 @@
       commandLineArgs = [
         "--ozone-platform=wayland"
         "--enable-features=UseOzonePlatform,CanvasOopRasterization,VaapiVideoDecoder"
-        "--enable-gpu-rasterization"
-        "--enable-zero-copy"
-        "--ignore-gpu-blocklist"
-        "--enable-accelerated-video-decode"
         "--force-dark-mode"
         "--enable-features=WebUIDarkMode"
         "--gtk-version=4"
