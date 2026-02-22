@@ -66,9 +66,9 @@
 
     defaultApplications = {
       # Browser
-      "text/html" = ["firefox.desktop"];
-      "x-scheme-handler/http" = ["firefox.desktop"];
-      "x-scheme-handler/https" = ["firefox.desktop"];
+      "text/html" = ["brave-browser.desktop"];
+      "x-scheme-handler/http" = ["brave-browser.desktop"];
+      "x-scheme-handler/https" = ["brave-browser.desktop"];
       # PDF
       "application/pdf" = ["org.gnome.Evince.desktop"];
       # Images
