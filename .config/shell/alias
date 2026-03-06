@@ -14,13 +14,11 @@ alias d="z"
 alias pd="cd -"
 
 # Editors
+alias v="vim"
 alias n="nvim"
 alias nv="neovide"
-alias sn="sudo nvim"
-alias snd="sudo neovide"
-alias v="vim"
 alias sv="sudo vim"
-alias ai="ollama run qwen2.5:7b"
+alias sn="sudo nvim"
 
 # Tmux
 alias tns="tmux new -s"
@@ -29,15 +27,14 @@ alias td="tmux detach"
 
 # System helpers
 alias ps="ps auxf"
-alias ping="ping -c 5"
 alias less="less -R"
-alias h="history | grep "
-alias p="ps aux | grep "
-alias topcpu="ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
-alias fda="fd --absolute-path"
 alias fdh="fd --hidden"
-alias fdah="fd --absolute-path --hidden"
+alias p="ps aux | grep "
+alias h="history | grep "
+alias fda="fd --absolute-path"
 alias openports="netstat -tulanp"
+alias fdah="fd --absolute-path --hidden"
+alias topcpu="ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 
 # System control
 alias reboot="systemctl reboot"
@@ -47,8 +44,8 @@ alias restart-dm="sudo systemctl restart display-manager"
 
 # File operations
 alias cp="cp -r"
-alias mkdir="mkdir -p"
 alias rmd="rm -rfv"
+alias mkdir="mkdir -p"
 alias img="kitty +kitten icat"
 
 # Disk usage
@@ -72,8 +69,6 @@ alias grep="grep --color=auto"
 alias rg="rg --color=auto"
 alias myip="curl ifconfig.me"
 alias bright="brightnessctl set"
-alias pyr="python"
-alias gor="go run"
 alias oc="opencode --port 3000"
 
 # Utilities
