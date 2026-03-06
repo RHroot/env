@@ -34,7 +34,6 @@ alias less="less -R"
 alias h="history | grep "
 alias p="ps aux | grep "
 alias topcpu="ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
-alias fn='sk --preview "bat {}" --bind "enter:execute(nvim {})"'
 alias fda="fd --absolute-path"
 alias fdh="fd --hidden"
 alias fdah="fd --absolute-path --hidden"

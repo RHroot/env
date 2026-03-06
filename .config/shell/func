@@ -39,6 +39,10 @@ nix-zsh() {
   nix-shell "$@" --command zsh
 }
 
+batman() {
+  man "$@" | col -bx | bat -l man -p
+}
+
 nix-clean() {
   emulate -L zsh
   setopt localoptions pipefail
