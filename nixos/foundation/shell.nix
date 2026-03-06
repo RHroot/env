@@ -60,68 +60,83 @@
       la = "ls -A --color=auto";
       l = "ls -CF --color=auto";
 
-      # navigation
+      # Navigation
       home = "cd ~";
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
+      c = "clear";
+      d = "z";
       pd = "cd -";
 
-      # misc
-      c = "clear";
-      d = "cd";
-      h = "history | grep";
-      p = "ps aux | grep";
-      less = "less -R";
-
-      # editors
-      n = "nvim";
-      sn = "sudo nvim";
+      # Editors
       v = "vim";
+      n = "nvim";
+      nv = "neovide";
       sv = "sudo vim";
+      sn = "sudo nvim";
 
-      # tmux
+      # Tmux
       tns = "tmux new -s";
       ta = "tmux attach";
       td = "tmux detach";
 
-      # networking / system
-      myip = "curl ifconfig.me";
-      ping = "ping -c 5";
-      openports = "ss -tulpen";
+      # System helpers
+      ps = "ps auxf";
+      less = "less -R";
+      fdh = "fd --hidden";
+      p = "ps aux | grep ";
+      h = "history | grep ";
+      fda = "fd --absolute-path";
+      openports = "netstat -tulanp";
+      fdah = "fd --absolute-path --hidden";
+      topcpu = "ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10";
+
+      # System control
       reboot = "systemctl reboot";
       shutdown = "shutdown now";
+      logout = "loginctl kill-session $XDG_SESSION_ID";
       restart-dm = "sudo systemctl restart display-manager";
 
-      # disk / fs
-      mkdir = "mkdir -p";
-      cp = "cp -iv";
-      cpr = "cp -r";
+      # File operations
+      cp = "cp -r";
       rmd = "rm -rfv";
-      mx = "chmod a+x";
+      mkdir = "mkdir -p";
+      img = "kitty +kitten icat";
 
-      # safer chmod aliases (explicit)
-      chmod644 = "chmod -R 644";
-      chmod755 = "chmod -R 755";
-      chmod777 = "chmod -R 777";
-
-      # utils
-      topcpu = "ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10";
+      # Disk usage
       diskspace = "du -S | sort -n -r | less";
       folders = "du -h --max-depth=1";
       mountedinfo = "df -hT";
       duf = "duf -hide special";
+
+      # Permissions & security
+      mx = "chmod a+x";
+      chmod000 = "chmod -R 000";
+      chmod644 = "chmod -R 644";
+      chmod666 = "chmod -R 666";
+      chmod755 = "chmod -R 755";
+      chmod777 = "chmod -R 777";
       sha1 = "openssl sha1";
       own = "sudo chown -R $USER";
+
+      # Dev & tools
+      grep = "grep --color=auto";
+      rg = "rg --color=auto";
+      myip = "curl ifconfig.me";
+      bright = "brightnessctl set";
+      oc = "opencode --port 3000";
+
+      # Utilities;
+      kssh = "kitty +kitten ssh";
+      web = "cd /var/www/html";
+      da = "date '+%Y-%m-%d %A %T %Z'";
+      aria2-down = "aria2c --conf-path=$HOME/.config/aria2/aria2.conf";
+
+      # System Information
       fetch = "fastfetch -c my.jsonc";
       open = "xdg-open";
-
-      # dev
-      pyr = "python";
-      gor = "go run";
-      phs = "python -m http.server";
-      phsd = "python -m http.server --directory";
     };
 
     promptInit = ''

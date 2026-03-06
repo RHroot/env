@@ -77,9 +77,6 @@ alias web="cd /var/www/html"
 alias da='date "+%Y-%m-%d %A %T %Z"'
 alias aria2-down='aria2c --conf-path=$HOME/.config/aria2/aria2.conf'
 
-# Terminal based browser
-alias tb="BROWSER=w3m ddgr"
-
 # System Information
 alias fetch="fastfetch -c my.jsonc"
 alias open="xdg-open"
@@ -117,8 +114,4 @@ else
   alias lw="ls -xA --color=auto"
   alias labc="ls -lhA --color=auto"
   alias tree="ls -R --color=auto"
-fi
-
-if command -v xdg-open >/dev/null 2>&1; then
-  alias open="xdg-open"
 fi
