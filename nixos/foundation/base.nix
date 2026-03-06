@@ -56,9 +56,11 @@
     enable = true;
     libraries = with pkgs; [
       stdenv.cc.cc
-      openssl
+      gcc
       zlib
+      openssl
       glib
+      libgcc
     ];
   };
   xdg.mime = {
