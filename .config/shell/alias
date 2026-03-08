@@ -4,14 +4,14 @@
 #   General aliases
 # ==============================
 # Navigation
+alias d="z"
+alias pd="cd -"
+alias c="clear"
 alias home="cd ~"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias c="clear"
-alias d="z"
-alias pd="cd -"
 
 # Editors
 alias v="vim"
@@ -26,27 +26,27 @@ alias ta="tmux attach"
 alias td="tmux detach"
 
 # System helpers
-alias ps="ps auxf"
+alias psa="ps auxf"
 alias less="less -R"
 alias fdh="fd --hidden"
-alias p="ps aux | grep "
-alias h="history | grep "
-alias fda="fd --absolute-path"
+alias pgrep="ps aux | rg"
+alias hg="history | rg"
 alias openports="netstat -tulanp"
+alias fda="fd --absolute-path"
 alias fdah="fd --absolute-path --hidden"
-alias topcpu="ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 
 # System control
 alias reboot="systemctl reboot"
-alias shutdown="shutdown now"
+alias shutnow="shutdown now"
 alias logout="loginctl kill-session $XDG_SESSION_ID"
 alias restart-dm="sudo systemctl restart display-manager"
 
 # File operations
-alias cp="cp -r"
+alias cp="cp -iv"
+alias cpr="cp -r"
+alias scp="sudo cp -iv"
 alias rmd="rm -rfv"
-alias mkdir="mkdir -p"
-alias img="kitty +kitten icat"
+alias mkdir="mkdir -pv"
 
 # Disk usage
 alias diskspace="du -S | sort -n -r | less"
@@ -55,12 +55,9 @@ alias mountedinfo="df -hT"
 alias duf="duf -hide special"
 
 # Permissions & security
-alias mx="chmod a+x"
-alias chmod000="chmod -R 000"
+alias chmodx="chmod a+x"
 alias chmod644="chmod -R 644"
-alias chmod666="chmod -R 666"
 alias chmod755="chmod -R 755"
-alias chmod777="chmod -R 777"
 alias sha1="openssl sha1"
 alias own="sudo chown -R $USER"
 
@@ -88,30 +85,18 @@ if command -v eza >/dev/null 2>&1; then
   alias ls="eza -a --icons"
   alias l="eza -a --icons"
   alias la="eza -a --icons -l"
-  alias ll="eza -a --icons -l"
   alias lx="eza -a --icons -l --sort=extension"
   alias lk="eza -a --icons -l --sort=size"
-  alias lc="eza -a --icons -l --sort=changed"
-  alias lu="eza -a --icons -l --sort=accessed"
   alias lr="eza -a --icons -l -R"
   alias lt="eza -a --icons -l --sort=modified"
-  alias lm="eza -a --icons -l | less"
-  alias lw="eza -a --icons -x"
-  alias labc="eza -a --icons --sort=name"
   alias tree="eza -a --icons --tree"
 else
   alias ls="ls -A --color=auto"
   alias l="ls -A --color=auto"
   alias la="ls -lhA --color=auto"
-  alias ll="ls -lhA --color=auto"
   alias lx="ls -lhA --color=auto"
   alias lk="ls -lhAS --color=auto"
-  alias lc="ls -lhAt --color=auto"
-  alias lu="ls -lhAu --color=auto"
   alias lr="ls -lhAR --color=auto"
   alias lt="ls -lhAt --color=auto"
-  alias lm="ls -lhA --color=auto | less"
-  alias lw="ls -xA --color=auto"
-  alias labc="ls -lhA --color=auto"
   alias tree="ls -R --color=auto"
 fi

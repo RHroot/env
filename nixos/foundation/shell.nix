@@ -55,20 +55,24 @@
 
     shellAliases = {
       # ls (safe defaults)
-      ls = "ls --color=auto";
-      ll = "ls -lah --color=auto";
-      la = "ls -A --color=auto";
-      l = "ls -CF --color=auto";
+      ls = "ls -A --color=auto";
+      l = "ls -A --color=auto";
+      la = "ls -lhA --color=auto";
+      lx = "ls -lhA --color=auto";
+      lk = "ls -lhAS --color=auto";
+      lr = "ls -lhAR --color=auto";
+      lt = "ls -lhAt --color=auto";
+      tree = "ls -R --color=auto";
 
       # Navigation
+      d = "z";
+      pd = "cd -";
+      c = "clear";
       home = "cd ~";
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
-      c = "clear";
-      d = "z";
-      pd = "cd -";
 
       # Editors
       v = "vim";
@@ -83,27 +87,27 @@
       td = "tmux detach";
 
       # System helpers
-      ps = "ps auxf";
+      psa = "ps auxf";
       less = "less -R";
       fdh = "fd --hidden";
-      p = "ps aux | grep ";
-      h = "history | grep ";
-      fda = "fd --absolute-path";
+      pgrep = "ps aux | rg";
+      hg = "history | rg";
       openports = "netstat -tulanp";
+      fda = "fd --absolute-path";
       fdah = "fd --absolute-path --hidden";
-      topcpu = "ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10";
 
       # System control
       reboot = "systemctl reboot";
-      shutdown = "shutdown now";
+      shutnow = "shutdown now";
       logout = "loginctl kill-session $XDG_SESSION_ID";
       restart-dm = "sudo systemctl restart display-manager";
 
       # File operations
-      cp = "cp -r";
+      cp = "cp -iv";
+      cpr = "cp -r";
+      scp = "sudo cp -iv";
       rmd = "rm -rfv";
-      mkdir = "mkdir -p";
-      img = "kitty +kitten icat";
+      mkdir = "mkdir -pv";
 
       # Disk usage
       diskspace = "du -S | sort -n -r | less";
@@ -112,12 +116,9 @@
       duf = "duf -hide special";
 
       # Permissions & security
-      mx = "chmod a+x";
-      chmod000 = "chmod -R 000";
+      chmodx = "chmod a+x";
       chmod644 = "chmod -R 644";
-      chmod666 = "chmod -R 666";
       chmod755 = "chmod -R 755";
-      chmod777 = "chmod -R 777";
       sha1 = "openssl sha1";
       own = "sudo chown -R $USER";
 
@@ -128,7 +129,7 @@
       bright = "brightnessctl set";
       oc = "opencode --port 3000";
 
-      # Utilities;
+      # Utilities
       kssh = "kitty +kitten ssh";
       web = "cd /var/www/html";
       da = "date '+%Y-%m-%d %A %T %Z'";
