@@ -40,7 +40,7 @@
       FallbackDNS=1.1.1.2#cloudflare-dns.com 1.0.0.2#cloudflare-dns.com 2606:4700:4700::1112#cloudflare-dns.com 2606:4700:4700::1002#cloudflare-dns.com
       Domains=~.
       DNSSEC=allow-downgrade
-      DNSOverTLS=opportunistic
+      DNSOverTLS=yes
       LLMNR=no
       MulticastDNS=no
       ReadEtcHosts=yes
@@ -84,22 +84,8 @@
 
   environment.systemPackages = with pkgs; [
     networkmanagerapplet # System tray applet for managing NetworkManager connections
-    cloudflare-warp # Cloudflare WARP client for secure DNS and optional VPN routing
     protonvpn-gui # Official ProtonVPN graphical client
   ];
-
-  systemd.services.cloudflare-warp = {
-    description = "Cloudflare WARP Service";
-    wantedBy = ["multi-user.target"];
-    after = ["network-online.target"];
-    wants = ["network-online.target"];
-
-    serviceConfig = {
-      ExecStart = "${pkgs.cloudflare-warp}/bin/warp-svc";
-      Restart = "always";
-      RestartSec = 5;
-    };
-  };
 
   boot.kernelModules = ["tcp_bbr" "ipv6"];
   boot.kernel.sysctl = pkgs.lib.mkForce {
