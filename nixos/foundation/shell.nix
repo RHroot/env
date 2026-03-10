@@ -36,18 +36,7 @@
     PYTHON_HISTORY = "$HOME/.local/share/python/history";
   };
 
-  environment.shellInit = ''
-    add_to_path () {
-      case ":$PATH:" in
-        *":$1:"*) ;;
-        *) PATH="$1:$PATH" ;;
-      esac
-    }
-
-    add_to_path "$HOME/.local/bin"
-
-    export PATH
-  '';
+  environment.localBinInPath = true;
 
   programs.bash = {
     enable = true;

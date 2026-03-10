@@ -1,17 +1,20 @@
 ========================================
-FILE: ~/.gitconfig-local
-(Personal Identity - PRIVATE)
+FILE: ~/.gitconfig
 ========================================
 
 [user]
-    name = YOUR_REAL_NAME
-    email = YOUR_REAL_EMAIL
+    name = Your Personal Name
+    email = personal@example.com
     signingkey = ~/.ssh/id_ed25519_personal
 
+[includeIf "hasconfig:remote.*.url:git@github-work:**"]
+    path = ~/.gitconfig-work
+
+[includeIf "hasconfig:remote.*.url:git@gitlab-work:**"]
+    path = ~/.gitconfig-work
 
 ========================================
 FILE: ~/.gitconfig-work
-(Work Identity - PRIVATE)
 ========================================
 
 [user]
@@ -22,40 +25,26 @@ FILE: ~/.gitconfig-work
 
 ========================================
 FILE: ~/.ssh/config
-(SSH Authentication Layer)
 ========================================
 
-# -------------------------
-# DEFAULT: Personal GitHub
-# -------------------------
 Host github
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_ed25519_personal
     IdentitiesOnly yes
 
-# -------------------------
-# Work GitHub (explicit)
-# -------------------------
 Host github-work
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_ed25519_work
     IdentitiesOnly yes
 
-
-# -------------------------
-# DEFAULT: Personal GitLab
-# -------------------------
 Host gitlab
     HostName gitlab.com
     User git
     IdentityFile ~/.ssh/id_ed25519_personal
     IdentitiesOnly yes
 
-# -------------------------
-# Work GitLab (explicit)
-# -------------------------
 Host gitlab-work
     HostName gitlab.com
     User git
@@ -88,4 +77,3 @@ Personal (default):
 Work:
     git clone git@github-work:org/repo.git
     git clone git@gitlab-work:org/repo.git
-
