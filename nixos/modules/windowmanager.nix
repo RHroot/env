@@ -56,6 +56,7 @@
     wallust # Dynamic color generation based on wallpapers
 
     # === Terminal emulators ===
+    foot # Fast and minimal Wayland terminal emulator
     kitty # Feature-rich GPU-based terminal emulator
     alacritty # GPU-accelerated terminal emulator
 
