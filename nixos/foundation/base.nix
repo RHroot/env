@@ -7,12 +7,8 @@
 }: {
   environment.systemPackages = with pkgs; [
     # === Essential CLI Tools ===
-    bc # Arbitrary precision command-line calculator
-    fd # Fast and user-friendly alternative to find
     git # Distributed version control system
-    bat # cat replacement with syntax highlighting
     btop # Modern resource monitor (CPU, RAM, disk, network)
-    htop # Interactive process viewer
     wget # Non-interactive file downloader
     curl # Data transfer tool for URLs
     dust # Disk usage analyzer (du alternative)
@@ -20,9 +16,6 @@
     tree # Display directory structure as a tree
     wtype # Wayland tool to simulate keyboard input
     gnupg # Encryption and signing tool (GPG)
-    delta # Syntax-highlighted git diff pager
-    xclip # X11 clipboard access from the terminal
-    killall # Kill processes by name
     busybox # Single binary providing common Unix utilities
     img2pdf # Convert images to PDF without re-encoding
     keychain # Manage SSH and GPG agent keys

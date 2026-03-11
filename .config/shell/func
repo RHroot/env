@@ -39,14 +39,6 @@ nix-zsh() {
   nix-shell "$@" --command zsh
 }
 
-man() {
-  if command -v bat >/dev/null 2>&1; then
-    command man "$@" | col -bx | bat -l man --paging=always --style=plain
-  else
-    command man "$@"
-  fi
-}
-
 nix-clean() {
   emulate -L zsh
   setopt localoptions pipefail

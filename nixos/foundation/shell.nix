@@ -4,8 +4,6 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    bat # cat replacement with syntax highlighting
-    man # Manual page reader
     eza # Modern ls replacement with icons and git info
     tmux # Terminal multiplexer for managing multiple sessions
     bind # Command-line tools for DNS queries (dig, nslookup)
@@ -14,6 +12,11 @@
     ripgrep # Fast recursive text search tool (rg)
     zsh-system-clipboard # Zsh plugin to sync clipboard with the system
   ];
+
+  documentation = {
+    enable = true;
+    man.enable = true;
+  };
 
   programs.zsh = {
     enable = true;
