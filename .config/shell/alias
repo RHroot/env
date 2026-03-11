@@ -83,13 +83,13 @@ alias open="xdg-open"
 # ==============================
 if command -v eza >/dev/null 2>&1; then
   alias ls="eza --icons"
-  alias lh="eza -a --icons | grep '^\.'"
-  alias la="eza -a --icons"
-  alias lz="eza -l -a --icons --header --inode"
+  alias lh="eza -A | grep '^\.'"
+  alias la="eza -A --icons"
+  alias lz="eza -l -A --icons --header --inode"
   alias tree="eza -a --icons --tree"
 else
   alias ls="ls --color=auto"
-  alias lh="ls -A --color=auto | grep '^\.'"
+  alias lh="ls -A --color=never | grep '^\.'"
   alias la="ls -A --color=auto"
   alias lz="ls -lhAi --color=auto"
   alias tree="ls -R --color=auto"
