@@ -107,7 +107,7 @@ To use these dotfiles, you can follow these steps:
 
 - **System changes**: Use `rebuild` or `uprebuild` scripts in `.local/bin/`, or run:
   ```bash
-  nixos-rebuild switch --flake /path/to/env#rhroot-nix
+  nixos-rebuild switch --flake /path/to/env'.#rhroot_nix'
   ```
 - **Dotfile changes**: Most application configs are symlinked via Stow and take effect immediately or after reloading the application
 - **Theme changes**: Run `wset` or `wset-backend` to regenerate colors from a new wallpaper
