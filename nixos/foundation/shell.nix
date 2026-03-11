@@ -47,13 +47,10 @@
 
     shellAliases = {
       # ls (safe defaults)
-      ls = "ls -A --color=auto";
-      l = "ls -A --color=auto";
-      la = "ls -lhA --color=auto";
-      lx = "ls -lhA --color=auto";
-      lk = "ls -lhAS --color=auto";
-      lr = "ls -lhAR --color=auto";
-      lt = "ls -lhAt --color=auto";
+      ls = "ls --color=auto";
+      lh = "ls -A --color=auto | grep '^\.'";
+      la = "ls -A --color=auto";
+      lz = "ls -lhAi --color=auto";
       tree = "ls -R --color=auto";
 
       # Navigation
