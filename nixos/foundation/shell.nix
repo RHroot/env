@@ -54,7 +54,7 @@
       tree = "ls -R --color=auto";
 
       # Navigation
-      d = "cd"
+      d = "cd";
       pd = "cd -";
       c = "clear";
       home = "cd ~";
