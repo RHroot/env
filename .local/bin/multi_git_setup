@@ -1,0 +1,178 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+confirm() {
+  local prompt="$1" default="${2:-Y}" resp display
+  # Set display style based on default
+  [[ "${default,,}" == "y" ]] && display="[Y/n]" || display="[y/N]"
+
+  while true; do
+    read -p "$prompt $display: " resp
+    resp=${resp:-$default} # Use default if empty
+    resp=${resp,,}         # Lowercase for checking
+    [[ "$resp" =~ ^y ]] && return 0
+    [[ "$resp" =~ ^n ]] && return 1
+    echo "Invalid: Please enter Yes or No."
+  done
+}
+
+# This script is to setup SSH keys for Github and Gitlab for 2 different accounts on both (personal and work).
+if confirm "This script is to setup SSH keys for Github and Gitlab for 2 different accounts on both (personal and work). Do you want to continue?"; then
+  echo "Continuing..."
+else
+  echo "Exiting..."
+  exit 0
+fi
+
+# Create the .ssh directory if it doesn't exist
+SSH_DIR="$HOME/.ssh"
+mkdir -p "$SSH_DIR"
+chmod 700 "$SSH_DIR"
+
+# Generate SSH keys for personal and work accounts
+if [[ -f "$SSH_DIR/id_ed25519_personal" || -f "$SSH_DIR/id_ed25519_work" ]]; then
+  echo "SSH keys already exist at $SSH_DIR/id_ed25519_personal or $SSH_DIR/id_ed25519_work"
+  if confirm "Overwrite SSH keys? This will delete existing keys and generate new ones. Do you want to continue?"; then
+    echo "Overwriting SSH keys..."
+    rm -rf "$SSH_DIR/id_ed25519_personal" "$SSH_DIR/id_ed25519_work"
+    ssh-keygen -t ed25519 -C "personal@linux" -f "$SSH_DIR/id_ed25519_personal"
+    ssh-keygen -t ed25519 -C "work@linux" -f "$SSH_DIR/id_ed25519_work"
+  else
+    echo "Kept existing SSH keys"
+  fi
+else
+  echo "Generating SSH keys..."
+  ssh-keygen -t ed25519 -C "personal@linux" -f "$SSH_DIR/id_ed25519_personal"
+  ssh-keygen -t ed25519 -C "work@linux" -f "$SSH_DIR/id_ed25519_work"
+  chmod 600 "$SSH_DIR/id_ed25519_personal" "$SSH_DIR/id_ed25519_work"
+fi
+
+# Get the email for Git Config
+read -p "Enter your email for Git config for the personal accounts: " GIT_PERSONAL_MAIL
+read -p "Enter your email for Git config for the work accounts: " GIT_WORK_MAIL
+# Get the name for Git Config
+read -p "Enter your name for Git config for the personal accounts: " GIT_PERSONAL_NAME
+read -p "Enter your name for Git config for the work accounts: " GIT_WORK_NAME
+
+# Making Git config for personal and work accounts
+if [[ -f "$HOME/.gitconfig" || -f "$HOME/.gitconfig-work" ]]; then
+  echo "Git config already exists at $HOME/.gitconfig or $HOME/.gitconfig-work"
+  if confirm "This will delete existing Git config and create new one. Do you want to continue?"; then
+    echo "Overwriting Git config..."
+    rm -rf "$HOME/.gitconfig" "$HOME/.gitconfig-work"
+    cat >"$HOME/.gitconfig" <<EOF
+[user]
+name = $GIT_PERSONAL_NAME
+email = $GIT_PERSONAL_MAIL
+signingkey = $SSH_DIR/id_ed25519_personal
+
+[includeIf "hasconfig:remote.*.url:git@github-work:**"]
+    path = $HOME/.gitconfig-work
+
+[includeIf "hasconfig:remote.*.url:git@gitlab-work:**"]
+    path = $HOME/.gitconfig-work
+EOF
+    cat >"$HOME/.gitconfig-work" <<EOF
+[user]
+name = $GIT_WORK_NAME
+email = $GIT_WORK_MAIL
+signingkey = $SSH_DIR/id_ed25519_work
+EOF
+  else
+    echo "Kept existing Git config"
+  fi
+else
+  cat >"$HOME/.gitconfig" <<EOF
+[user]
+name = $GIT_PERSONAL_NAME
+email = $GIT_PERSONAL_MAIL
+signingkey = $SSH_DIR/id_ed25519_personal
+
+[includeIf "hasconfig:remote.*.url:git@github-work:**"]
+    path = $HOME/.gitconfig-work
+
+[includeIf "hasconfig:remote.*.url:git@gitlab-work:**"]
+    path = $HOME/.gitconfig-work
+EOF
+  cat >"$HOME/.gitconfig-work" <<EOF
+[user]
+name = $GIT_WORK_NAME
+email = $GIT_WORK_MAIL
+signingkey = $SSH_DIR/id_ed25519_work
+EOF
+fi
+
+# Making SSH config for personal and work accounts
+if [ -f "$SSH_DIR/config" ]; then
+  echo "SSH config already exists at $SSH_DIR/config"
+  if confirm "This will delete existing SSH config and create new one. Do you want to continue?"; then
+    cat >"$SSH_DIR/config" <<EOF
+Host github
+    HostName github.com
+    User git
+    IdentityFile $SSH_DIR/id_ed25519_personal
+    IdentitiesOnly yes
+
+Host github-work
+    HostName github.com
+    User git
+    IdentityFile $SSH_DIR/id_ed25519_work
+    IdentitiesOnly yes
+
+Host gitlab
+    HostName gitlab.com
+    User git
+    IdentityFile $SSH_DIR/id_ed25519_personal
+    IdentitiesOnly yes
+
+Host gitlab-work
+    HostName gitlab.com
+    User git
+    IdentityFile $SSH_DIR/id_ed25519_work
+    IdentitiesOnly yes
+EOF
+    chmod 600 "$SSH_DIR/config"
+    echo "Overwrote $SSH_DIR/config"
+  else
+    echo "Kept existing config"
+  fi
+else
+  cat >"$SSH_DIR/config" <<EOF
+Host github
+    HostName github.com
+    User git
+    IdentityFile $SSH_DIR/id_ed25519_personal
+    IdentitiesOnly yes
+
+Host github-work
+    HostName github.com
+    User git
+    IdentityFile $SSH_DIR/id_ed25519_work
+    IdentitiesOnly yes
+
+Host gitlab
+    HostName gitlab.com
+    User git
+    IdentityFile $SSH_DIR/id_ed25519_personal
+    IdentitiesOnly yes
+
+Host gitlab-work
+    HostName gitlab.com
+    User git
+    IdentityFile $SSH_DIR/id_ed25519_work
+    IdentitiesOnly yes
+EOF
+fi
+
+cat <<EOF
+Personal (default):
+    git clone git@github:username/repo.git
+    git clone git@gitlab:user/repo.git
+
+Work:
+    git clone git@github-work:org/repo.git
+    git clone git@gitlab-work:org/repo.git
+
+Welcome, $USER
+EOF
