@@ -37,6 +37,16 @@
 
     LESSHISTFILE = "$HOME/.cache/less_history";
     PYTHON_HISTORY = "$HOME/.local/share/python/history";
+
+    LESS = "-R -N -X -F -g -i -M --use-color";
+    MANPAGER = "less -R";
+    LESS_TERMCAP_mb = "\u001b[1;31m";
+    LESS_TERMCAP_md = "\u001b[1;36m";
+    LESS_TERMCAP_me = "\u001b[0m";
+    LESS_TERMCAP_se = "\u001b[0m";
+    LESS_TERMCAP_so = "\u001b[1;44;33m";
+    LESS_TERMCAP_ue = "\u001b[0m";
+    LESS_TERMCAP_us = "\u001b[1;32m";
   };
 
   environment.localBinInPath = true;

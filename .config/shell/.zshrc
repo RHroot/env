@@ -72,17 +72,6 @@ bindkey "^[[Z" reverse-menu-complete  # Shift+Tab for reverse completion
 
 export OLLAMA_NO_UPDATE_CHECK=true
 
-# Less options for better readability
-export LESS='-R -N -X -F -g -i -M --use-color'
-export MANPAGER="less -R"
-export LESS_TERMCAP_mb=$'\E[1;31m'
-export LESS_TERMCAP_md=$'\E[1;36m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[1;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[1;32m'
-
 # Auto ls on directory change
 _ls_on_cd() {
   if command -v eza >/dev/null 2>&1; then
