@@ -29,7 +29,6 @@
     BROWSER = "brave";
     COLORTERM = "truecolor";
     PAGER = "less";
-    LESS = "-RFXSiM";
 
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
@@ -38,7 +37,7 @@
     LESSHISTFILE = "$HOME/.cache/less_history";
     PYTHON_HISTORY = "$HOME/.local/share/python/history";
 
-    LESS = "-R -N -X -F -g -i -M --use-color";
+    LESS = "-R -M -i -J -w -F -X -N -S --use-color";
     MANPAGER = "less -R";
     LESS_TERMCAP_mb = "\u001b[1;31m";
     LESS_TERMCAP_md = "\u001b[1;36m";
