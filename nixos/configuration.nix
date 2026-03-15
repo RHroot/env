@@ -27,7 +27,7 @@
 
   users.users.${env.username} = {
     isNormalUser = true;
-    shell = pkgs.bash;
+    shell = pkgs.zsh;
     description = "sten";
     extraGroups = ["networkmanager" "wheel" "input"];
   };
