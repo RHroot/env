@@ -65,7 +65,7 @@ if [[ -f "$HOME/.gitconfig" || -f "$HOME/.gitconfig-work" ]]; then
 [user]
 name = $GIT_PERSONAL_NAME
 email = $GIT_PERSONAL_MAIL
-signingkey = $SSH_DIR/id_ed25519_personal
+signingkey = $SSH_DIR/id_ed25519_personal.pub
 
 [includeIf "hasconfig:remote.*.url:git@github-work:**"]
     path = $HOME/.gitconfig-work
@@ -77,7 +77,7 @@ EOF
 [user]
 name = $GIT_WORK_NAME
 email = $GIT_WORK_MAIL
-signingkey = $SSH_DIR/id_ed25519_work
+signingkey = $SSH_DIR/id_ed25519_work.pub
 EOF
   else
     echo "Kept existing Git config"
@@ -87,7 +87,7 @@ else
 [user]
 name = $GIT_PERSONAL_NAME
 email = $GIT_PERSONAL_MAIL
-signingkey = $SSH_DIR/id_ed25519_personal
+signingkey = $SSH_DIR/id_ed25519_personal.pub
 
 [includeIf "hasconfig:remote.*.url:git@github-work:**"]
     path = $HOME/.gitconfig-work
@@ -99,7 +99,7 @@ EOF
 [user]
 name = $GIT_WORK_NAME
 email = $GIT_WORK_MAIL
-signingkey = $SSH_DIR/id_ed25519_work
+signingkey = $SSH_DIR/id_ed25519_work.pub
 EOF
 fi
 
