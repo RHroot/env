@@ -18,7 +18,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.systemd.dbus.enable = true;
   boot.loader.systemd-boot.consoleMode = "1";
 
   networking = {
@@ -50,40 +49,27 @@
   nix.settings.auto-optimise-store = true;
 
   console = {
-    font = "solar24x32";
+    packages = [pkgs.terminus_font];
+    font = "ter-u24n";
     useXkbConfig = true;
   };
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
   hardware.enableRedistributableFirmware = true;
 
   services.libinput.enable = true;
   services.udisks2.enable = true;
-  services.udev.extraRules = ''
-    # Example: Mount USB drives to /media/<label> automatically
-        ACTION=="add", SUBSYSTEM=="block", ENV{ID_FS_USAGE}=="filesystem", RUN+="${pkgs.systemd}/bin/systemd-mount --no-block --automount=yes --collect $devnode /media/%E{ID_FS_LABEL}"
-    # Allow input group to access input devices
-        KERNEL=="event*", NAME="input/%k", MODE="660", GROUP="input"
-  '';
+  services.gvfs.enable = true;
 
   time.timeZone = "Asia/Kolkata";
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-    LC_ALL = "en_US.UTF-8";
-  };
 
   swapDevices = [
     {
-      device = "/home/swapfile";
+      device = "/swapfile";
       size = 16384; # Size in MB(16Gb)
     }
   ];
