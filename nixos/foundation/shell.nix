@@ -43,7 +43,6 @@
     LESS_TERMCAP_md = "\u001b[1;36m";
     LESS_TERMCAP_me = "\u001b[0m";
     LESS_TERMCAP_so = "\u001b[1;44;33m";
-    LESS_TERMCAP_se = "\u001b[0m";
     LESS_TERMCAP_us = "\u001b[1;32m";
     LESS_TERMCAP_ue = "\u001b[0m";
     LESS_TERMCAP_mr = "\u001b[7m";
