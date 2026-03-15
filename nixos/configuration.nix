@@ -27,7 +27,7 @@
 
   users.users.${env.username} = {
     isNormalUser = true;
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
     description = "sten";
     extraGroups = ["networkmanager" "wheel" "input"];
   };
@@ -53,8 +53,6 @@
     font = "solar24x32";
     useXkbConfig = true;
   };
-
-  environment.shells = with pkgs; [bash];
 
   hardware.bluetooth.enable = true;
   hardware.enableRedistributableFirmware = true;

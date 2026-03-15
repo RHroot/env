@@ -1,3 +1,6 @@
+[shell]
+program = "/run/current-system/sw/bin/zsh"
+
 [colors.primary]
 background = "#000000"
 
