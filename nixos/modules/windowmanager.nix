@@ -3,6 +3,11 @@
   pkgs,
   ...
 }: {
+  services.xserver = {
+    displayManager.lightdm.enable = false;
+    displayManager.gdm.enable = false;
+    displayManager.sddm.enable = false;
+  };
   services.greetd = {
     enable = true;
     settings = {
