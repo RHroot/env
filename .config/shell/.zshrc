@@ -69,15 +69,6 @@ bindkey "^[n" down-line-or-history
 bindkey "^b" backward-char
 bindkey "^f" forward-char
 bindkey "^[[Z" reverse-menu-complete  # Shift+Tab for reverse completion
+bindkey '^W' backward-kill-word
 
 export OLLAMA_NO_UPDATE_CHECK=true
-
-# Auto ls on directory change
-_ls_on_cd() {
-  if command -v eza >/dev/null 2>&1; then
-    eza --icons
-  else
-    ls --color=auto
-  fi
-}
-add-zsh-hook chpwd _ls_on_cd

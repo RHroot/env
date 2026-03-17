@@ -3,53 +3,10 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    eza # Modern ls replacement with icons and git info
-    tmux # Terminal multiplexer for managing multiple sessions
-    bind # Command-line tools for DNS queries (dig, nslookup)
-    lolcat # Colorful text output using rainbow gradients
-    zoxide # Smarter cd command with directory jump history
-    ripgrep # Fast recursive text search tool (rg)
-    zsh-system-clipboard # Zsh plugin to sync clipboard with the system
-  ];
-
-  documentation = {
-    enable = true;
-    man.enable = true;
-  };
-
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
   };
-
-  environment.sessionVariables = {
-    EDITOR = "nvim";
-    TERMINAL = "kitty";
-    BROWSER = "brave";
-    COLORTERM = "truecolor";
-    PAGER = "less";
-
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_CACHE_HOME = "$HOME/.cache";
-
-    LESSHISTFILE = "$HOME/.cache/less_history";
-    PYTHON_HISTORY = "$HOME/.local/share/python/history";
-
-    LESS = "-R -M -i -w -F --use-color";
-    MANPAGER = "less -R -M -i -w -F --use-color";
-    LESS_TERMCAP_mb = "\u001b[1;31m";
-    LESS_TERMCAP_md = "\u001b[1;36m";
-    LESS_TERMCAP_me = "\u001b[0m";
-    LESS_TERMCAP_so = "\u001b[1;44;33m";
-    LESS_TERMCAP_us = "\u001b[1;32m";
-    LESS_TERMCAP_ue = "\u001b[0m";
-    LESS_TERMCAP_mr = "\u001b[7m";
-    LESS_TERMCAP_mh = "\u001b[2m";
-  };
-
-  environment.localBinInPath = true;
 
   programs.bash = {
     enable = true;
@@ -172,4 +129,47 @@
       export LESS="-R"
     '';
   };
+
+  documentation = {
+    enable = true;
+    man.enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    eza # Modern ls replacement with icons and git info
+    tmux # Terminal multiplexer for managing multiple sessions
+    bind # Command-line tools for DNS queries (dig, nslookup)
+    lolcat # Colorful text output using rainbow gradients
+    zoxide # Smarter cd command with directory jump history
+    ripgrep # Fast recursive text search tool (rg)
+    zsh-system-clipboard # Zsh plugin to sync clipboard with the system
+  ];
+
+  environment.sessionVariables = {
+    EDITOR = "nvim";
+    TERMINAL = "kitty";
+    BROWSER = "brave";
+    COLORTERM = "truecolor";
+    PAGER = "less";
+
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_CACHE_HOME = "$HOME/.cache";
+
+    LESSHISTFILE = "$HOME/.cache/less_history";
+    PYTHON_HISTORY = "$HOME/.local/share/python/history";
+
+    LESS = "-R -M -i -w -F --use-color";
+    MANPAGER = "less -R -M -i -w -F --use-color";
+    LESS_TERMCAP_mb = "\u001b[1;31m";
+    LESS_TERMCAP_md = "\u001b[1;36m";
+    LESS_TERMCAP_me = "\u001b[0m";
+    LESS_TERMCAP_so = "\u001b[1;44;33m";
+    LESS_TERMCAP_us = "\u001b[1;32m";
+    LESS_TERMCAP_ue = "\u001b[0m";
+    LESS_TERMCAP_mr = "\u001b[7m";
+    LESS_TERMCAP_mh = "\u001b[2m";
+  };
+
+  environment.localBinInPath = true;
 }
