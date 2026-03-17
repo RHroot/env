@@ -10,6 +10,6 @@ else
   echo "No changes to commit, skipping git commit"
 fi
 echo "Rebuilding NixOS configuration..."
-sudo nixos-rebuild switch --impure --upgrade --flake '.#rhroot_nix' --show-trace &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
+sudo nixos-rebuild switch --impure --upgrade --flake '.#rhroot' --show-trace &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
 echo "NixOS configuration rebuilt successfully."
 nix store optimise

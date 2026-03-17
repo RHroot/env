@@ -15,7 +15,7 @@
     system = "x86_64-linux";
     env = let
       username = "sten";
-      hostname = "rhroot_nix";
+      hostname = "rhroot";
       domain = "local";
       fqdn = "${hostname}.${domain}";
     in {inherit username hostname domain fqdn;};
