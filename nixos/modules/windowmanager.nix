@@ -8,6 +8,9 @@
     displayManager.gdm.enable = false;
     displayManager.sddm.enable = false;
   };
+
+  services.getty.autologinUser = "sten";
+
   services.greetd = {
     enable = true;
     settings = {
@@ -17,24 +20,28 @@
       };
     };
   };
+
   services.displayManager.defaultSession = "Hyprland";
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
+
   environment.sessionVariables = {
     WAYLAND_DISPLAY = "wayland-0";
     XDG_CURRENT_DESKTOP = "Hyprland";
   };
+
   programs.hyprlock.enable = true;
+
   programs.waybar.enable = true;
+
   services.hypridle.enable = true;
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-  };
+
   # Enable polkit for GUI privilege prompts
   security.polkit.enable = true;
+
   environment.systemPackages = with pkgs; [
     # === HYPRLAND ===
     hyprland # Wayland compositor for dynamic tiling (Hyprland)

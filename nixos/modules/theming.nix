@@ -6,7 +6,7 @@
 }: let
   themeName = "Flat-Remix-GTK-Magenta-Darkest";
   iconTheme = "Papirus-Dark";
-  cursorTheme = "rose-pine-hyprcursor";
+  cursorTheme = "Vimix-cursors";
   cursorSize = 40;
   fontFamily = "FiraCode Nerd Font";
 in {
@@ -28,6 +28,7 @@ in {
     flat-remix-gtk
     papirus-icon-theme
     rose-pine-hyprcursor
+    vimix-cursors
     adwaita-icon-theme
   ];
   environment.etc = {
