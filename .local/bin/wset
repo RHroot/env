@@ -12,7 +12,7 @@ find "$WALL_DIR" -type f \
     label="${rel%.*}"
     printf "%s\0icon\x1f%s\n" "$label" "$file"
   done \
-  | bemenu -l 10 --fn "FiraCode Nerd Font 20" \
+  | fuzzel --dmenu --prompt="Select Wallpaper:> " \
   | while IFS= read -r label; do
     [ -z "$label" ] && exit 0
 

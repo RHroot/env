@@ -10,9 +10,15 @@ IMAGE="$1"
 notify-send "Changing Theme" "Applying new wallpaper and updating colors, please wait until confirmation..."
 
 # Set wallpaper
-feh --bg-fill "$IMAGE" &
+swww img "$IMAGE" --transition-type="center" --transition-step=1 --transition-fps="60"
 
 # Generate theme with Matugen
 matugen image "$IMAGE" -m dark -t scheme-content
+wallust extract "$IMAGE"
+
+# Reload Hyprland
+hyprctl reload
+~/.local/bin/bar-refresh
+kill -SIGUSR1 $(pgrep kitty)
 
 notify-send "Theme Applied" "Wallpaper and Theme updated successfully"
