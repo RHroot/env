@@ -3,11 +3,11 @@
   pkgs,
   ...
 }: {
-  services.xserver.videoDrivers = ["modesetting"];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     open = false;
-    modesetting.enable = false;
+    modesetting.enable = true;
     powerManagement.enable = false;
     nvidiaSettings = true;
     prime = {
