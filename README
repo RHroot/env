@@ -62,8 +62,10 @@ The repository is organized as follows:
 ### Documentation & Misc
 
 - **`refrence/`**: Technical guides and documentation
+- **`Stickers/`**: Collection of sticker assets for customization
 - **`.stowrc`**: GNU Stow configuration for dotfile management
 - **`.zshenv`**, **`.vimrc`**: Shell and editor environment files
+- **`LICENSE`**: MIT License for the project
 - **`nixos-switch.log`**: Saved NixOS rebuild log
 
 ## 🚀 Usage
