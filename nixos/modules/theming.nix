@@ -27,7 +27,6 @@ in {
   environment.systemPackages = with pkgs; [
     flat-remix-gtk
     papirus-icon-theme
-    rose-pine-hyprcursor
     vimix-cursors
     adwaita-icon-theme
   ];
