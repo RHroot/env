@@ -3,14 +3,15 @@
   pkgs,
   ...
 }: {
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["modesetting"];
   hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     open = false;
-    modesetting.enable = true;
+    modesetting.enable = false;
     powerManagement.enable = false;
     nvidiaSettings = true;
     prime = {
-      offload.enable = true;
+      offload.enable = false;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
@@ -35,6 +36,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    config.boot.kernelPackages.nvidiaPackages.stable # NVIDIA proprietary driver package
     (pkgs.writeShellScriptBin "nvidia-run" ''
       #!/bin/sh
       export __NV_PRIME_RENDER_OFFLOAD=1
