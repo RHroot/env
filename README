@@ -30,43 +30,91 @@ The repository is organized as follows:
 
 ### Core Configuration
 
-- **`nixos/`**: Contains the core NixOS configuration
-  - `configuration.nix`: Main system configuration
-  - `foundation/`: Core system modules (base, git, network, power, shell)
-  - `modules/`: Feature-specific modules (audio, content, graphics, theming, toolbox, utility, video, windowmanager)
-- **`flake.nix`**: Flake configuration with stable (25.11) and unstable package channels
+- **`nixos/`**: Complete NixOS system configuration
+  - `configuration.nix`: Main system entry point
+  - `foundation/`: Core system layer (6 modules)
+    - `base.nix`: System base and core packages
+    - `git.nix`: Git and version control setup
+    - `network.nix`: Network and connectivity configuration
+    - `power.nix`: Power management and battery settings
+    - `shell.nix`: Shell environment and aliases
+    - `default.nix`: Foundation module aggregation
+  - `modules/`: Feature-specific modules (8 modules)
+    - `audio.nix`: PipeWire and audio system configuration
+    - `content.nix`: Content and media applications
+    - `graphics.nix`: GPU drivers and graphics settings
+    - `theming.nix`: Matugen and system-wide theming
+    - `toolbox.nix`: Development tools and languages
+    - `utility.nix`: System utilities and general tools
+    - `video.nix`: Video codecs and multimedia support
+    - `windowmanager.nix`: Hyprland and window management
+    - `default.nix`: Module aggregation and imports
+- **`flake.nix`**: Nix Flake configuration with stable and unstable channels
+- **`flake.lock`**: Locked dependency versions
 
 ### Application Configurations
 
-- **`.config/`**: Application-specific configurations
-  - `hypr/`: Modular Hyprland configuration
-    - `conf/`: Separated configs (animations, decorations, keybinds, monitors, settings, startup, windowrules)
-    - `hypridle.conf`, `hyprlock.conf`, `hyprshot.conf`: Additional Hyprland tools
-  - `nvim/`: Neovim configuration with Lua modules and LSP setup
-  - `shell/`: Zsh configuration with Powerlevel10k theme
-  - `alacritty/`, `kitty/`: Terminal emulator configs
-  - `waybar/`: Status bar configuration
-  - `dunst/`, `fuzzel/`, `matugen/`, `tmux/`: Other application configs
+- **`.config/`**: Application-specific configurations (~359 files total)
+  - `hypr/`: Hyprland window manager configuration
+    - `conf/`: Modular configuration files (animations, decorations, keybinds, monitors, settings, startup, windowrules)
+    - `hypridle.conf`: Idle management configuration
+    - `hyprlock.conf`: Lock screen configuration
+    - `hyprshot.conf`: Screenshot tool configuration
+  - `nvim/`: Neovim setup with modular Lua configuration
+    - `lua/core/`: Core editor settings and configuration
+    - `lua/plugins/`: Plugin specifications and lazy loading
+    - `snippets/`: LuaSnip snippet definitions
+  - `shell/`: Zsh shell configuration
+    - `.zshrc`: Main shell configuration
+    - `func`: Shell function definitions
+    - `alias`: Command aliases (managed by Stow)
+    - `.p10k.zsh`: Powerlevel10k prompt configuration
+    - `powerlevel10k/`: Powerlevel10k theme with gitstatus integration
+  - `alacritty/`: Alacritty terminal emulator configuration
+  - `kitty/`: Kitty terminal emulator configuration
+  - `tmux/`: Tmux multiplexer configuration
+  - `waybar/`: Waybar status bar configuration
+  - `dunst/`: Dunst notification daemon configuration
+  - `fuzzel/`: Fuzzel application launcher configuration
+  - `matugen/`: Dynamic color generation configuration
+    - `templates/`: Color templates for various applications
   - `aria2/`: Aria2 download manager configuration
-  - `pipewire/`, `wireplumber/`: Audio system configurations
-  - `MangoHud/`: MangoHud overlay configuration
+  - `pipewire/`: PipeWire audio server configuration
+  - `wireplumber/`: WirePlumber audio session management
+  - `MangoHud/`: MangoHud performance overlay configuration
 
 ### Scripts & Utilities
 
 - **`.local/bin/`**: Custom utility scripts
-  - `wset`, `wset-backend`: Wallpaper management
-  - `rebuild`, `uprebuild`: System rebuild helpers
-  - `menu`, `cwifi`, `bar-refresh`, `stickers`: UI utilities
-  - `setup-git`, `age`, `appdefault`: System utilities
+  - `wset`, `wset-backend`: Wallpaper management and backend color generation
+  - `rebuild`, `uprebuild`: NixOS system rebuild helpers
+  - `cwifi`: WiFi connection management utility
+  - `bar-refresh`: Status bar refresh script
+  - `stickers`: Sticker asset management
+  - `setup-git`: Git configuration setup
+  - `age`: Age encryption utility
+  - `multi_git_setup`: Multi-account Git setup helper
 
-### Documentation & Misc
+### Documentation & Miscellaneous
 
 - **`refrence/`**: Technical guides and documentation
-- **`Stickers/`**: Collection of sticker assets for customization
+  - `git_guide.md`: Git workflow notes and best practices
+  - `git_multi_account_setup.txt`: Multi-account Git setup reference
+  - `substitution-regex-guide.md`: Regular expression patterns and substitution techniques
+  - `systemd_guide.md`: Systemd service management and configuration
+  - `xargs-guide.md`: Advanced xargs usage and patterns
+  - `TIGER_STYLE.md`: Programming style guide and best practices
+  - `bookmarks.html`: Curated collection of useful web resources
+- **`.local/share/`**: Shared application data and assets
+- **`.config/shell/powerlevel10k/gitstatus/`**: Gitstatus C++ implementation for fast git status
+- **`.zshenv`**: Shell environment variables and initialization
+- **`.vimrc`**: Vim configuration (for compatibility)
+- **`.gitignore`**: Git ignore patterns
 - **`.stowrc`**: GNU Stow configuration for dotfile management
-- **`.zshenv`**, **`.vimrc`**: Shell and editor environment files
 - **`LICENSE`**: MIT License for the project
-- **`nixos-switch.log`**: Saved NixOS rebuild log
+- **`README`**: This file
+- **`Stickers/`**: Collection of sticker assets for customization
+- **`nixos-switch.log`**: Saved NixOS rebuild log (for reference)
 
 ## 🚀 Usage
 
