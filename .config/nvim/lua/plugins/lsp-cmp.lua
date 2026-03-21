@@ -51,6 +51,7 @@ return {
 		dependencies = {
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
+			"neovim/nvim-lspconfig",
 		},
 		config = function()
 			require("blink.cmp").setup({
