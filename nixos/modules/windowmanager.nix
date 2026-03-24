@@ -5,9 +5,10 @@
 }: {
   services.xserver = {
     displayManager.lightdm.enable = false;
-    displayManager.gdm.enable = false;
-    displayManager.sddm.enable = false;
   };
+
+  services.displayManager.gdm.enable = false;
+  services.displayManager.sddm.enable = false;
 
   services.getty.autologinUser = "sten";
 
