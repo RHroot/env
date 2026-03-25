@@ -4,12 +4,18 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     nixpkgs-unstable,
+    zen-browser,
     ...
   }: let
     system = "x86_64-linux";
@@ -38,8 +44,8 @@
           ];
 
           environment.systemPackages = with pkgs; [
+            zen-browser.packages.${system}.default
             unstable.vim
-            ticktick
           ];
         })
       ];
