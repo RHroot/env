@@ -17,8 +17,8 @@ confirm() {
   done
 }
 
-# This script is to setup SSH keys for Github and Gitlab for 2 different accounts on both (personal and work).
-if confirm "This script is to setup SSH keys for Github and Gitlab for 2 different accounts on both (personal and work). Do you want to continue?"; then
+# This script is to setup SSH keys for Github and Codeberg for 2 different accounts on both (personal and work).
+if confirm "This script is to setup SSH keys for Github and Codeberg for 2 different accounts on both (personal and work). Do you want to continue?"; then
   echo "Continuing..."
 else
   echo "Exiting..."
@@ -70,7 +70,7 @@ signingkey = $SSH_DIR/id_ed25519_personal.pub
 [includeIf "hasconfig:remote.*.url:git@github-work:**"]
     path = $HOME/.gitconfig-work
 
-[includeIf "hasconfig:remote.*.url:git@gitlab-work:**"]
+[includeIf "hasconfig:remote.*.url:git@codeberg-work:**"]
     path = $HOME/.gitconfig-work
 EOF
     cat >"$HOME/.gitconfig-work" <<EOF
@@ -92,7 +92,7 @@ signingkey = $SSH_DIR/id_ed25519_personal.pub
 [includeIf "hasconfig:remote.*.url:git@github-work:**"]
     path = $HOME/.gitconfig-work
 
-[includeIf "hasconfig:remote.*.url:git@gitlab-work:**"]
+[includeIf "hasconfig:remote.*.url:git@codeberg-work:**"]
     path = $HOME/.gitconfig-work
 EOF
   cat >"$HOME/.gitconfig-work" <<EOF
@@ -120,14 +120,14 @@ Host github-work
     IdentityFile $SSH_DIR/id_ed25519_work
     IdentitiesOnly yes
 
-Host gitlab
-    HostName gitlab.com
+Host codeberg
+    HostName codeberg.org
     User git
     IdentityFile $SSH_DIR/id_ed25519_personal
     IdentitiesOnly yes
 
-Host gitlab-work
-    HostName gitlab.com
+Host codeberg-work
+    HostName codeberg.org
     User git
     IdentityFile $SSH_DIR/id_ed25519_work
     IdentitiesOnly yes
@@ -151,14 +151,14 @@ Host github-work
     IdentityFile $SSH_DIR/id_ed25519_work
     IdentitiesOnly yes
 
-Host gitlab
-    HostName gitlab.com
+Host codeberg
+    HostName codeberg.org
     User git
     IdentityFile $SSH_DIR/id_ed25519_personal
     IdentitiesOnly yes
 
-Host gitlab-work
-    HostName gitlab.com
+Host codeberg-work
+    HostName codeberg.org
     User git
     IdentityFile $SSH_DIR/id_ed25519_work
     IdentitiesOnly yes
@@ -168,11 +168,11 @@ fi
 cat <<EOF
 Personal (default):
     git clone git@github:username/repo.git
-    git clone git@gitlab:user/repo.git
+    git clone git@codeberg:user/repo.git
 
 Work:
     git clone git@github-work:org/repo.git
-    git clone git@gitlab-work:org/repo.git
+    git clone git@codeberg-work:org/repo.git
 
 Welcome, $USER
 EOF
