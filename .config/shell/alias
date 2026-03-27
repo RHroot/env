@@ -82,16 +82,18 @@ alias open="xdg-open"
 # ==============================
 #   File Listing (eza / ls)
 # ==============================
-if command -v eza >/dev/null 2>&1; then
-  alias ls="eza --icons"
-  alias lh="eza -A | grep '^\.'"
-  alias la="eza -A --icons"
-  alias lz="eza -l -A --icons --header --inode"
-  alias tree="eza -a --icons --tree"
+LS_BIN="$(command -v eza || command -v ls)"
+
+if [[ "$LS_BIN" == *eza ]]; then
+  alias ls="$LS_BIN --icons"
+  alias la="$LS_BIN -A --icons"
+  alias lz="$LS_BIN -l -A --icons --header --inode"
+  alias lh="$LS_BIN -d .* --icons 2>/dev/null"
+  alias tree="$LS_BIN -a --icons --tree"
 else
-  alias ls="ls --color=auto"
-  alias lh="ls -A --color=never | grep '^\.'"
-  alias la="ls -A --color=auto"
-  alias lz="ls -lhAi --color=auto"
-  alias tree="ls -R --color=auto"
+  alias ls="$LS_BIN --color=auto"
+  alias la="$LS_BIN -A --color=auto"
+  alias lz="$LS_BIN -lhAi --color=auto"
+  alias lh="$LS_BIN -d .* 2>/dev/null"
+  alias tree="tree -a 2>/dev/null || $LS_BIN -R --color=auto"
 fi
