@@ -47,6 +47,7 @@ alias cpr="cp -r"
 alias scp="sudo cp -iv"
 alias rmd="rm -rfv"
 alias mkdir="mkdir -pv"
+alias bat="bat --paging=always"
 
 # Disk usage
 alias diskspace="du -S | sort -n -r | less"

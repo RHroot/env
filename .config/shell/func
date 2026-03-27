@@ -39,6 +39,10 @@ nix-zsh() {
   nix-shell "$@" --command zsh
 }
 
+lat() {
+  source-highlight -f esc -i "$1" 2>/dev/null | less
+}
+
 nix-clean() {
   emulate -L zsh
   setopt localoptions pipefail
