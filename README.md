@@ -1,4 +1,4 @@
-# <img src="refrence/logo.png" alt="Logo" width="40" align="center"> My NixOS Dotfiles
+# <img src="refrence/logo.png" alt="Logo" width="80" align="center"> My NixOS Dotfiles
 
 This repository contains my personal dotfiles for my NixOS setup. It's a comprehensive configuration that includes everything from the operating system itself to my terminal, editor, and theming.
 
