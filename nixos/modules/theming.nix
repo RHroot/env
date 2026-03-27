@@ -55,17 +55,11 @@ in {
     GTK_THEME = themeName;
     XCURSOR_THEME = cursorTheme;
     XCURSOR_SIZE = toString cursorSize;
-    NIXOS_OZONE_WL = "1";
   };
   qt = {
     enable = true;
     platformTheme = "gnome";
     style = "adwaita-dark";
-  };
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
   environment.pathsToLink = [
     "/share/icons"

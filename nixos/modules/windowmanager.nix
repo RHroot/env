@@ -32,16 +32,46 @@
   environment.sessionVariables = {
     WAYLAND_DISPLAY = "wayland-0";
     XDG_CURRENT_DESKTOP = "Hyprland";
+    NIXOS_OZONE_WL = "1";
+  };
+
+  environment.variables = {
+    CHROMIUM_FLAGS = ''
+      --enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecoder
+      --ozone-platform-hint=auto
+      --ignore-gpu-blocklist
+      --enable-gpu-rasterization
+      --enable-zero-copy
+      --enable-accelerated-video-decode
+      --process-per-site
+      --renderer-process-limit=6
+      --enable-quic
+      --smooth-scrolling
+    '';
   };
 
   programs.hyprlock.enable = true;
-
   programs.waybar.enable = true;
-
   services.hypridle.enable = true;
 
   # Enable polkit for GUI privilege prompts
   security.polkit.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  };
+
+  xdg.mime.defaultApplications = {
+    # Images
+    "image/png" = ["imv.desktop"];
+    "image/jpeg" = ["imv.desktop"];
+    "image/webp" = ["imv.desktop"];
+    "image/gif" = ["imv.desktop"];
+    # File manager
+    "inode/directory" = ["org.gnome.Nautilus.desktop"];
+  };
 
   environment.systemPackages = with pkgs; [
     # === HYPRLAND ===
@@ -63,6 +93,8 @@
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
     wl-clipboard # Clipboard utilities for Wayland
+    wtype # Wayland tool to simulate keyboard input
+    imv # Image viewer for Wayland
 
     # === Theming ===
     matugen # Generate color schemes from images

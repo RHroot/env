@@ -15,7 +15,6 @@
     dust # Disk usage analyzer (du alternative)
     stow # Symlink-based dotfile manager
     tree # Display directory structure as a tree
-    wtype # Wayland tool to simulate keyboard input
     gnupg # Encryption and signing tool (GPG)
     busybox # Single binary providing common Unix utilities
     img2pdf # Convert images to PDF without re-encoding
@@ -32,7 +31,6 @@
     unzip # Extract ZIP archives
 
     # === System Utilities ===
-    imv # Image viewer for Wayland
     blueman # Bluetooth manager (GUI)
     brightnessctl # Control screen backlight and LEDs
 
@@ -59,24 +57,5 @@
   };
   xdg.mime = {
     enable = true;
-
-    defaultApplications = {
-      # Browser
-      "text/html" = ["brave-browser.desktop"];
-      "x-scheme-handler/http" = ["brave-browser.desktop"];
-      "x-scheme-handler/https" = ["brave-browser.desktop"];
-      # PDF
-      "application/pdf" = ["org.gnome.Evince.desktop"];
-      # Images
-      "image/png" = ["imv.desktop"];
-      "image/jpeg" = ["imv.desktop"];
-      "image/webp" = ["imv.desktop"];
-      "image/gif" = ["imv.desktop"];
-      # Video
-      "video/mp4" = ["vlc.desktop"];
-      "video/x-matroska" = ["vlc.desktop"];
-      # File manager
-      "inode/directory" = ["org.gnome.Nautilus.desktop"];
-    };
   };
 }

@@ -10,18 +10,15 @@
     brave
   ];
 
-  environment.variables = {
-    CHROMIUM_FLAGS = ''
-      --enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecoder
-      --ozone-platform-hint=auto
-      --ignore-gpu-blocklist
-      --enable-gpu-rasterization
-      --enable-zero-copy
-      --enable-accelerated-video-decode
-      --process-per-site
-      --renderer-process-limit=6
-      --enable-quic
-      --smooth-scrolling
-    '';
+  xdg.mime.defaultApplications = {
+    # Browser
+    "text/html" = ["brave-browser.desktop"];
+    "x-scheme-handler/http" = ["brave-browser.desktop"];
+    "x-scheme-handler/https" = ["brave-browser.desktop"];
+    # PDF viewer
+    "application/pdf" = ["org.gnome.Evince.desktop"];
+    # Video
+    "video/mp4" = ["vlc.desktop"];
+    "video/x-matroska" = ["vlc.desktop"];
   };
 }
