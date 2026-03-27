@@ -36,8 +36,8 @@ word_wrap = yes
 ellipsize = middle
 format = "<b>%s</b>\n%a\n%b"
 browser = xdg-open 
-mouse_left_click = open_url    
-mouse_middle_click = do_action 
+mouse_left_click = open_url, close_current
+mouse_middle_click = do_action, close_current
 mouse_right_click = close_current
 
 [urgency_low]
