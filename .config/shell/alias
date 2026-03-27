@@ -83,7 +83,6 @@ alias open="xdg-open"
 #   File Listing (eza / ls)
 # ==============================
 LS_BIN="$(command -v eza || command -v ls)"
-
 if [[ "$LS_BIN" == *eza ]]; then
   alias ls="$LS_BIN --icons"
   alias la="$LS_BIN -A --icons"
