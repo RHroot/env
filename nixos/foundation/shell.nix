@@ -15,10 +15,10 @@
     shellAliases = {
       # ls (safe defaults)
       ls = "ls --color=auto";
-      lh = "ls -A --color=never | grep '^\.'";
       la = "ls -A --color=auto";
       lz = "ls -lhAi --color=auto";
-      tree = "ls -R --color=auto";
+      lh = "ls -d .* 2>/dev/null";
+      tree = "tree -a 2>/dev/null || ls -R --color=auto";
 
       # Navigation
       d = "cd";
