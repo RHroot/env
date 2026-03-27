@@ -72,3 +72,6 @@ bindkey "^[[Z" reverse-menu-complete  # Shift+Tab for reverse completion
 bindkey '^W' backward-kill-word
 
 export OLLAMA_NO_UPDATE_CHECK=true
+
+unalias l
+unalias ll
