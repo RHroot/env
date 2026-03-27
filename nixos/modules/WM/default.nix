@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
-    ./windowmanager.nix
+    ./graphics.nix
+    ./hyprland.nix
   ];
 }

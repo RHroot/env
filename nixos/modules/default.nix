@@ -11,6 +11,6 @@
     ./theming.nix
     ./graphics.nix
     ./toolbox.nix
-    ./windowmanager
+    ./WM
   ];
 }
