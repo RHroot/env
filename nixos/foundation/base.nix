@@ -8,6 +8,7 @@
   environment.systemPackages = with pkgs; [
     # === Essential CLI Tools ===
     git # Distributed version control system
+    bat # Cat clone with syntax highlighting and Git integration
     btop # Modern resource monitor (CPU, RAM, disk, network)
     wget # Non-interactive file downloader
     curl # Data transfer tool for URLs
