@@ -9,12 +9,32 @@ IMAGE="$1"
 
 notify-send "Changing Theme" "Applying new wallpaper and updating colors, please wait until confirmation..."
 
-# Set wallpaper
-swww img "$IMAGE" --transition-type="center" --transition-step=1 --transition-fps="60"
+# === Set wallpaper ===
+# Random transition selection
+TRANSITIONS="simple fade wipe left right top bottom center outer grow wave any"
+TRANSITION=$(printf "%s\n" $TRANSITIONS | shuf -n 1)
+# Randomized parameters
+DURATION=$(shuf -i 1-3 -n 1)
+FPS=60
+ANGLE=$(shuf -i 0-360 -n 1)
+BEZIER=$(printf "0.%d,0.%d,0.%d,1" $(shuf -i 2-8 -n 1) $(shuf -i 2-8 -n 1) $(shuf -i 2-8 -n 1))
+swww img "$IMAGE" \
+  --transition-type="$TRANSITION" \
+  --transition-duration="$DURATION" \
+  --transition-fps="$FPS" \
+  --transition-angle="$ANGLE" \
+  --transition-bezier="$BEZIER"
 
 # Generate theme with Matugen
 matugen image "$IMAGE" -m dark -t scheme-content
-wallust extract "$IMAGE"
+# wallust extract "$IMAGE"
+
+if command -v tmux >/dev/null 2>&1; then
+  tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null
+  tmux list-clients -F '#{client_tty}' 2>/dev/null | while read -r tty; do
+    tmux refresh-client -S -t "$tty"
+  done
+fi
 
 # Reload Hyprland
 hyprctl reload
