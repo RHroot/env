@@ -9,7 +9,6 @@
     ./content.nix
     ./utility.nix
     ./theming.nix
-    ./graphics.nix
     ./toolbox.nix
     ./WM
   ];
