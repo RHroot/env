@@ -10,6 +10,7 @@
     ./utility.nix
     ./theming.nix
     ./toolbox.nix
+    ./graphics.nix
     ./WM
   ];
 }

@@ -7,7 +7,18 @@
     steam
     evince
     libreoffice-fresh
-    brave
+    (brave.override {
+      commandLineArgs = [
+        "--ozone-platform-hint=auto"
+        "--use-gl=angle"
+        "--use-angle=gl"
+        "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,Vulkan"
+        "--disable-features=UseChromeOSDirectVideoDecoder"
+        "--enable-gpu-rasterization"
+        "--enable-zero-copy"
+        "--ignore-gpu-blocklist"
+      ];
+    })
   ];
 
   xdg.mime.defaultApplications = {

@@ -35,21 +35,6 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  environment.variables = {
-    CHROMIUM_FLAGS = ''
-      --enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecoder
-      --ozone-platform-hint=auto
-      --ignore-gpu-blocklist
-      --enable-gpu-rasterization
-      --enable-zero-copy
-      --enable-accelerated-video-decode
-      --process-per-site
-      --renderer-process-limit=6
-      --enable-quic
-      --smooth-scrolling
-    '';
-  };
-
   programs.hyprlock.enable = true;
   programs.waybar.enable = true;
   services.hypridle.enable = true;
