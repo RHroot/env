@@ -33,6 +33,7 @@
     # === System Utilities ===
     blueman # Bluetooth manager (GUI)
     brightnessctl # Control screen backlight and LEDs
+    imagemagick # Image manipulation tools (convert, mogrify, etc.)
 
     # === For Fast Downloads ===
     aria2 # Multi-source, resumable download manager
