@@ -7,44 +7,48 @@ arguments = ['img', '--transition-type', 'center', '--transition-step', '15', '-
 set = true
 
 [templates.Matugen]
-input_path = '~/.config/matugen/templates/Matugen.colors'
-output_path = '~/.cache/Matugen/Matugen.colors'
+input_path = '$HOME/.config/matugen/templates/Matugen.colors'
+output_path = '$HOME/.cache/Matugen/Matugen.colors'
 
 [templates.hyprland]
-input_path = '~/.config/matugen/templates/hyprland-colors.conf'
-output_path = '~/.cache/Matugen/hypr-colors.conf'
+input_path = '$HOME/.config/matugen/templates/hyprland-colors.conf'
+output_path = '$HOME/.cache/Matugen/hypr-colors.conf'
 post_hook = 'hyprctl reload'
 
 [templates.waybar]
-input_path = '~/.config/matugen/templates/waybar-colors.css'
-output_path = '~/.cache/Matugen/waybar-colors.css'
+input_path = '$HOME/.config/matugen/templates/waybar-colors.css'
+output_path = '$HOME/.cache/Matugen/waybar-colors.css'
 post_hook = 'pkill -SIGUSR2 waybar'
 
+[templates.rofi]
+imput_path = '$HOME/.config/matugen/templates/rofi-colors.rasi'
+output_path = '$HOME/.cache/Matugen/rofi-colors.rasi'
+
 [templates.alacritty]
-input_path = '~/.config/matugen/templates/alacritty.toml'
-output_path = '~/.cache/Matugen/alacritty.toml'
+input_path = '$HOME/.config/matugen/templates/alacritty.toml'
+output_path = '$HOME/.cache/Matugen/alacritty.toml'
 
 [templates.kitty]
-input_path = '~/.config/matugen/templates/kitty-colors.conf'
-output_path = '~/.cache/Matugen/kitty-colors.conf'
+input_path = '$HOME/.config/matugen/templates/kitty-colors.conf'
+output_path = '$HOME/.cache/Matugen/kitty-colors.conf'
 
 [templates.fuzzel]
-input_path = '~/.config/matugen/templates/fuzzel-colors.ini'
-output_path = '~/.cache/Matugen/fuzzel-colors.ini'
+input_path = '$HOME/.config/matugen/templates/fuzzel-colors.ini'
+output_path = '$HOME/.cache/Matugen/fuzzel-colors.ini'
 
 [templates.json]
-input_path = '~/.config/matugen/templates/colors.json'
-output_path = '~/.cache/Matugen/colors.json'
+input_path = '$HOME/.config/matugen/templates/colors.json'
+output_path = '$HOME/.cache/Matugen/colors.json'
 
 [templates.tmux]
-input_path = '~/.config/matugen/templates/tmux-colors.conf'
-output_path = '~/.config/tmux/generated.conf'
-post_hook = 'tmux source-file ~/.config/tmux/generated.conf'
+input_path = '$HOME/.config/matugen/templates/tmux-colors.conf'
+output_path = '$HOME/.config/tmux/generated.conf'
+post_hook = 'tmux source-file $HOME/.config/tmux/generated.conf'
 
 [templates.gtk3]
-input_path = '~/.config/matugen/templates/gtk-colors.css'
-output_path = '~/.config/gtk-3.0/gtk.css'
+input_path = '$HOME/.config/matugen/templates/gtk-colors.css'
+output_path = '$HOME/.config/gtk-3.0/gtk.css'
 
 [templates.gtk4]
-input_path = '~/.config/matugen/templates/gtk-colors.css'
-output_path = '~/.config/gtk-4.0/gtk.css'
+input_path = '$HOME/.config/matugen/templates/gtk-colors.css'
+output_path = '$HOME/.config/gtk-4.0/gtk.css'
