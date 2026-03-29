@@ -21,7 +21,7 @@ This repository contains my personal dotfiles for my NixOS setup. It's a compreh
 | **🔊 Audio Server**         | [PipeWire](https://pipewire.org/) & [WirePlumber](https://pipewire.pages.freedesktop.org/wireplumber/)                                                                                     |
 | **📄 PDF Viewer**           | [Zathura](https://pwmt.org/projects/zathura/)                                                                                                                                              |
 | **🎮 Performance Overlay**  | [MangoHud](https://github.com/flightlessmango/MangoHud)                                                                                                                                    |
-| **🏞️ Wallpaper Setter**     | Custom scripts at [`~/.local/bin/wset`](./.local/bin/wset) and [`~/.local/bin/wset-backend`](./.local/bin/wset-backend)                                                                    |
+| **🏞️ Wallpaper Setter**     | Custom scripts at [`nixos/modules/WM/wset`](./nixos/modules/WM/wset) and [`nixos/modules/WM/wset-backend`](./nixos/modules/WM/wset-backend)                                                |
 | **📦 Dotfile Manager**      | [GNU Stow](https://www.gnu.org/software/stow/)                                                                                                                                             |
 
 ## 📂 Structure
@@ -47,16 +47,20 @@ The repository is organized as follows:
     - `toolbox.nix`: Development tools and languages
     - `utility.nix`: System utilities and general tools
     - `video.nix`: Video codecs and multimedia support
-    - `windowmanager.nix`: Hyprland and window management
+    - `WM/`: Window management module
+      - `hyprland.nix`: Hyprland window manager configuration
+      - `default.nix`: WM module aggregation
+      - `wset`, `wset-backend`, `bar-refresh`: Utility scripts
     - `default.nix`: Module aggregation and imports
 - **`flake.nix`**: Nix Flake configuration with stable and unstable channels
 - **`flake.lock`**: Locked dependency versions
 
 ### Application Configurations
 
-- **`.config/`**: Application-specific configurations (~359 files total)
+- **`.config/`**: Application-specific configurations (~141 files across 27 directories)
   - `hypr/`: Hyprland window manager configuration
-    - `conf/`: Modular configuration files (animations, decorations, keybinds, monitors, settings, startup, windowrules)
+    - `conf/`: Modular configuration files (animations, decorations, environmental variables, keybinds, monitors, settings, startup, windowrules)
+    - `hyprland.conf`: Main Hyprland configuration entry point
     - `hypridle.conf`: Idle management configuration
     - `hyprlock.conf`: Lock screen configuration
     - `hyprshot.conf`: Screenshot tool configuration
@@ -67,7 +71,8 @@ The repository is organized as follows:
   - `shell/`: Zsh shell configuration
     - `.zshrc`: Main shell configuration
     - `func`: Shell function definitions
-    - `alias`: Command aliases (managed by Stow)
+    - `alias`: Command aliases
+    - `prompt`: Custom prompt script
     - `.p10k.zsh`: Powerlevel10k prompt configuration
     - `powerlevel10k/`: Powerlevel10k theme with gitstatus integration
   - `alacritty/`: Alacritty terminal emulator configuration
@@ -76,24 +81,22 @@ The repository is organized as follows:
   - `waybar/`: Waybar status bar configuration
   - `dunst/`: Dunst notification daemon configuration
   - `fuzzel/`: Fuzzel application launcher configuration
+  - `aria2/`: Aria2 download manager configuration
   - `matugen/`: Dynamic color generation configuration
     - `templates/`: Color templates for various applications
-  - `aria2/`: Aria2 download manager configuration
-  - `pipewire/`: PipeWire audio server configuration
-  - `wireplumber/`: WirePlumber audio session management
-  - `MangoHud/`: MangoHud performance overlay configuration
 
 ### Scripts & Utilities
 
 - **`.local/bin/`**: Custom utility scripts
-  - `wset`, `wset-backend`: Wallpaper management and backend color generation
   - `rebuild`, `uprebuild`: NixOS system rebuild helpers
   - `cwifi`: WiFi connection management utility
-  - `bar-refresh`: Status bar refresh script
-  - `stickers`: Sticker asset management
   - `setup-git`: Git configuration setup
+  - `stickers`: Sticker asset management
   - `age`: Age encryption utility
   - `multi_git_setup`: Multi-account Git setup helper
+- **`nixos/modules/WM/`**: Wallpaper and display utilities
+  - `wset`, `wset-backend`: Wallpaper management and backend color generation
+  - `bar-refresh`: Status bar refresh script
 
 ### Documentation & Miscellaneous
 
@@ -105,6 +108,9 @@ The repository is organized as follows:
   - `xargs-guide.md`: Advanced xargs usage and patterns
   - `TIGER_STYLE.md`: Programming style guide and best practices
   - `bookmarks.html`: Curated collection of useful web resources
+  - `useful_commands.md`: Collection of useful system commands and patterns
+  - `animestowatch.txt`: Anime watchlist notes
+  - `logo.png`: Repository logo image
 - **`.local/share/`**: Shared application data and assets
 - **`.config/shell/powerlevel10k/gitstatus/`**: Gitstatus C++ implementation for fast git status
 - **`.zshenv`**: Shell environment variables and initialization
@@ -112,9 +118,8 @@ The repository is organized as follows:
 - **`.gitignore`**: Git ignore patterns
 - **`.stowrc`**: GNU Stow configuration for dotfile management
 - **`LICENSE`**: MIT License for the project
-- **`README`**: This file
+- **`README.md`**: This file
 - **`Stickers/`**: Collection of sticker assets for customization
-- **`nixos-switch.log`**: Saved NixOS rebuild log (for reference)
 
 ## 🚀 Usage
 
@@ -122,7 +127,7 @@ To use these dotfiles, you can follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://gitlab.com/rhroot/env.git
+    git clone -b Hyprland https://github.com/RHroot/env.git
     ```
 2.  **Install NixOS:**
     Follow the official NixOS installation guide to install NixOS on your system.
@@ -207,6 +212,7 @@ This repository includes a collection of technical guides and resources in the `
 - **`xargs-guide.md`**: Advanced xargs usage and patterns
 - **`TIGER_STYLE.md`**: Programming style guide and best practices
 - **`bookmarks.html`**: Curated collection of useful web resources
+- **`useful_commands.md`**: Collection of useful system commands and patterns
 
 ## 📜 License
 
