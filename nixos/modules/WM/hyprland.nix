@@ -7,6 +7,29 @@
     displayManager.lightdm.enable = false;
   };
 
+  services.libinput = {
+    enable = true;
+
+    touchpad = {
+      disableWhileTyping = true;
+      tapping = true;
+      naturalScrolling = false;
+
+      clickMethod = "clickfinger"; # better multi-finger clicks
+      scrollMethod = "twofinger"; # standard
+      accelProfile = "flat"; # or "adaptive"
+      accelSpeed = "0.4"; # range: -1 to 1
+
+      middleEmulation = true; # 3-finger middle click
+    };
+
+    mouse = {
+      accelProfile = "flat";
+      accelSpeed = "0.0";
+      middleEmulation = true;
+    };
+  };
+
   services.displayManager.gdm.enable = false;
   services.displayManager.sddm.enable = false;
 
@@ -80,6 +103,7 @@
     wl-clipboard # Clipboard utilities for Wayland
     wtype # Wayland tool to simulate keyboard input
     imv # Image viewer for Wayland
+    libinput # Input device management library
 
     # === Theming ===
     matugen # Generate color schemes from images
