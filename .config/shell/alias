@@ -78,6 +78,7 @@ alias aria2-down='aria2c --conf-path=$HOME/.config/aria2/aria2.conf'
 # System Information
 alias fetch="fastfetch -c my.jsonc"
 alias open="xdg-open"
+alias vol="wpctl get-volume @DEFAULT_AUDIO_SINK@"
 
 # ==============================
 #   File Listing (eza / ls)
