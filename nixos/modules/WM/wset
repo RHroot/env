@@ -22,7 +22,7 @@ find "$WALL_DIR" -type f \
       -o -iname "$label.png" \) \
       | head -n 1)
 
-    [ -n "$FILE" ] && bash "$HOME/env/nixos/modules/windowmanager/wset-backend" "$FILE"
+    [ -n "$FILE" ] && bash "$HOME/env/nixos/modules/WM/wset-backend" "$FILE"
   done
 
 cd "$CWD" || exit 1
