@@ -39,6 +39,7 @@ fi
 # Reload Hyprland
 hyprctl reload
 $HOME/env/nixos/modules/WM/bar-refresh
-kill -SIGUSR1 $(pgrep kitty)
+kill -12 $(pgrep kitty)
+kill -10 $(pgrep kitty)
 
 notify-send "Theme Applied" "Wallpaper and Theme updated successfully"
