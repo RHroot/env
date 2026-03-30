@@ -1,4 +1,3 @@
 #!/bin/sh
 
 kill -12 $(pgrep waybar)
-kill -10 $(pgrep waybar)
