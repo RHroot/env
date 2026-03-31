@@ -56,9 +56,6 @@ alias mountedinfo="df -hT"
 alias duf="duf -hide special"
 
 # Permissions & security
-alias chmodx="chmod a+x"
-alias chmod644="chmod -R 644"
-alias chmod755="chmod -R 755"
 alias sha1="openssl sha1"
 alias own="sudo chown -R $USER"
 
