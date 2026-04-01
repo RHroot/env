@@ -10,12 +10,12 @@
   batterySettings =
     (builtins.listToAttrs (map (b: {
         name = "START_CHARGE_THRESH_${b}";
-        value = "80";
+        value = "60";
       })
       batteryNames))
     // (builtins.listToAttrs (map (b: {
         name = "STOP_CHARGE_THRESH_${b}";
-        value = "95";
+        value = "80";
       })
       batteryNames));
 
