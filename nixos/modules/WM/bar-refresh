@@ -1,3 +1,9 @@
 #!/bin/sh
 
-kill -12 $(pgrep waybar)
+pid="$(pgrep -o waybar)"
+
+if [ -n "$pid" ]; then
+  kill -12 "$pid"
+else
+  waybar &
+fi
