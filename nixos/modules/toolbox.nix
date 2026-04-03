@@ -29,18 +29,12 @@
     zig
 
     # === Web Development tools ===
-    nodejs_latest # Latest Node.js runtime
     bun # All-in-one JS runtime, bundler, and package manager
     prettierd # Fast daemonized code formatter (Prettier)
     jq # Command-line JSON processor
 
-    # === Formatters ===
-    shfmt # Shell script formatter
-    alejandra # Opinionated Nix code formatter
-
     # === CyberSecurity ===
     nmap # Network scanner and port discovery tool
-    tshark # CLI network protocol analyzer (Wireshark backend)
     strace # Diagnostic tool to monitor system calls
     tcpdump # Command-line packet analyzer
 

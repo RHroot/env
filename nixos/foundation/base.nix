@@ -45,17 +45,7 @@
     enableBashIntegration = false;
     enableZshIntegration = false;
   };
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc
-      gcc
-      zlib
-      openssl
-      glib
-      libgcc
-    ];
-  };
+  programs.nix-ld.enable = true;
   xdg.mime = {
     enable = true;
   };
