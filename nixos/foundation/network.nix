@@ -90,36 +90,23 @@
 
   boot.kernelModules = ["tcp_bbr" "ipv6"];
   boot.kernel.sysctl = {
-  # Performance
-  "net.ipv4.tcp_congestion_control" = lib.mkOverride 500 "bbr";
-  "net.core.default_qdisc" = lib.mkOverride 500 "fq";
+    "net.ipv4.tcp_congestion_control" = lib.mkOverride 500 "bbr";
+    "net.core.default_qdisc" = lib.mkOverride 500 "fq";
 
-  # Security (IPv4)
-  "net.ipv4.conf.all.accept_redirects" = lib.mkOverride 500 0;
-  "net.ipv4.conf.default.accept_redirects" = lib.mkOverride 500 0;
-  "net.ipv4.conf.all.secure_redirects" = lib.mkOverride 500 0;
-  "net.ipv4.conf.default.secure_redirects" = lib.mkOverride 500 0;
-  "net.ipv4.conf.all.send_redirects" = lib.mkOverride 500 0;
-  "net.ipv4.conf.default.send_redirects" = lib.mkOverride 500 0;
+    "net.ipv4.conf.all.accept_redirects" = lib.mkOverride 500 0;
+    "net.ipv4.conf.default.accept_redirects" = lib.mkOverride 500 0;
 
-  "net.ipv4.conf.all.rp_filter" = lib.mkOverride 500 1;
-  "net.ipv4.conf.default.rp_filter" = lib.mkOverride 500 1;
+    "net.ipv4.conf.all.send_redirects" = lib.mkOverride 500 0;
+    "net.ipv4.conf.default.send_redirects" = lib.mkOverride 500 0;
 
-  "net.ipv4.tcp_syncookies" = lib.mkOverride 500 1;
-  "net.ipv4.conf.all.log_martians" = lib.mkOverride 500 1;
-  "net.ipv4.tcp_rfc1337" = lib.mkOverride 500 1;
-  "net.ipv4.icmp_ignore_bogus_error_responses" = lib.mkOverride 500 1;
+    "net.ipv4.conf.all.rp_filter" = lib.mkOverride 500 1;
+    "net.ipv4.conf.default.rp_filter" = lib.mkOverride 500 1;
 
-  # Performance tuning
-  "net.ipv4.tcp_fastopen" = lib.mkOverride 500 3;
-  "net.core.netdev_max_backlog" = lib.mkOverride 500 16384;
+    "net.ipv4.tcp_syncookies" = lib.mkOverride 500 1;
 
-  # IPv6 (ONLY override what matters)
-  "net.ipv6.conf.all.accept_redirects" = lib.mkOverride 500 0;
-  "net.ipv6.conf.default.accept_redirects" = lib.mkOverride 500 0;
+    "net.ipv4.tcp_fastopen" = lib.mkOverride 500 3;
+    "net.core.netdev_max_backlog" = lib.mkOverride 500 16384;
 
-  # Routing
-  "net.ipv4.ip_forward" = lib.mkOverride 500 0;
-  "net.ipv6.conf.all.forwarding" = lib.mkOverride 500 0;
-};
+    "net.ipv4.ip_forward" = lib.mkOverride 500 0;
+  };
 }
