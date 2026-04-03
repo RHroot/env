@@ -25,6 +25,9 @@
     # === Go Development ===
     go
 
+    # === Zig Development ===
+    zig
+
     # === Web Development tools ===
     nodejs_latest # Latest Node.js runtime
     bun # All-in-one JS runtime, bundler, and package manager
