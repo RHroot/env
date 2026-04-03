@@ -22,6 +22,9 @@
     # === Rust Development ===
     rustup # Rust toolchain installer and version manager
 
+    # === Go Development ===
+    go
+
     # === Web Development tools ===
     nodejs_latest # Latest Node.js runtime
     bun # All-in-one JS runtime, bundler, and package manager
