@@ -42,6 +42,7 @@
     # === Utility tools ===
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
+    tree-sitter # Incremental parsing system for syntax highlighting and code analysis
   ];
   # === Neovim ===
   programs.neovim = {
