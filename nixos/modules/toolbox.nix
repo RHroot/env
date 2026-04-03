@@ -29,6 +29,7 @@
     zig
 
     # === Web Development tools ===
+    nodejs
     bun # All-in-one JS runtime, bundler, and package manager
     prettierd # Fast daemonized code formatter (Prettier)
     jq # Command-line JSON processor
