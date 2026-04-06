@@ -3,7 +3,6 @@ configuration {
 }
 
 * {
-    /* Adjust these to your liking */
     img-size: 300px;
 }
 

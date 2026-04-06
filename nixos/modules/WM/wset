@@ -3,23 +3,24 @@ set -euo pipefail
 
 WALL_DIR="$HOME/Wallpapers"
 
-# 1. Generate the list for Rofi
-# Format: label\0icon\x1f/path/to/file
 SELECTED=$(find "$WALL_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
   | while read -r file; do
-    label="${file#$WALL_DIR/}"
-    label="${label%.*}"
+    rel="${file#$WALL_DIR/}"
+    label="${rel%.*}"
     printf "%s\0icon\x1f%s\n" "$label" "$file"
   done \
   | sort \
-  | rofi -dmenu -i -show-icons -p "Select Wallpaper" -theme-str 'listview { columns: 2; } element { orientation: vertical; }')
+  | rofi -dmenu -i -p "Select Wallpaper" -theme "wallpaper")
 
-# 2. Process selection
 [ -z "$SELECTED" ] && exit 0
 
-# Find the full path again based on the label
-FULL_PATH=$(find "$WALL_DIR" -type f -name "$SELECTED.*" | head -n 1)
+# Your original find-based lookup
+FILE=$(find "$WALL_DIR" -type f \
+  \( -iname "$SELECTED.jpg" \
+  -o -iname "$SELECTED.jpeg" \
+  -o -iname "$SELECTED.png" \) \
+  | head -n 1)
 
-if [ -n "$FULL_PATH" ]; then
-  bash "$HOME/env/nixos/modules/WM/wset-backend" "$FULL_PATH"
+if [ -n "$FILE" ]; then
+  bash "$HOME/env/nixos/modules/WM/wset-backend" "$FILE"
 fi
