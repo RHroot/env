@@ -2,27 +2,24 @@
 set -euo pipefail
 
 WALL_DIR="$HOME/Wallpapers"
-CWD="$(pwd)"
 
-find "$WALL_DIR" -type f \
-  \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
-  | sort \
-  | while IFS= read -r file; do
-    rel="${file#$WALL_DIR/}"
-    label="${rel%.*}"
+# 1. Generate the list for Rofi
+# Format: label\0icon\x1f/path/to/file
+SELECTED=$(find "$WALL_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
+  | while read -r file; do
+    label="${file#$WALL_DIR/}"
+    label="${label%.*}"
     printf "%s\0icon\x1f%s\n" "$label" "$file"
   done \
-  | fuzzel --dmenu --prompt="Select Wallpaper:> " \
-  | while IFS= read -r label; do
-    [ -z "$label" ] && exit 0
+  | sort \
+  | rofi -dmenu -i -show-icons -p "Select Wallpaper" -theme-str 'listview { columns: 2; } element { orientation: vertical; }')
 
-    FILE=$(find "$WALL_DIR" -type f \
-      \( -iname "$label.jpg" \
-      -o -iname "$label.jpeg" \
-      -o -iname "$label.png" \) \
-      | head -n 1)
+# 2. Process selection
+[ -z "$SELECTED" ] && exit 0
 
-    [ -n "$FILE" ] && bash "$HOME/env/nixos/modules/WM/wset-backend" "$FILE"
-  done
+# Find the full path again based on the label
+FULL_PATH=$(find "$WALL_DIR" -type f -name "$SELECTED.*" | head -n 1)
 
-cd "$CWD" || exit 1
+if [ -n "$FULL_PATH" ]; then
+  bash "$HOME/env/nixos/modules/WM/wset-backend" "$FULL_PATH"
+fi

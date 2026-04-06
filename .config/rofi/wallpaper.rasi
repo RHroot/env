@@ -1,0 +1,33 @@
+configuration {
+    show-icons: true;
+}
+
+* {
+    /* Adjust these to your liking */
+    img-size: 300px;
+}
+
+window {
+    width: 1000px;
+}
+
+listview {
+    columns: 3;
+    lines: 2;
+    spacing: 20px;
+    fixed-height: false;
+}
+
+element {
+    orientation: vertical;
+    padding: 15px;
+    spacing: 10px;
+}
+
+element-icon {
+    size: var(img-size);
+}
+
+element-text {
+    horizontal-align: 0.5;
+}
