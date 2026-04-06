@@ -94,16 +94,16 @@
     hyprland-qtutils # Qt utilities for Hyprland components
 
     # === basic ===
+    imv # Image viewer for Wayland
     swww # Wayland wallpaper daemon with transitions
+    rofi # Application launcher and dmenu replacement
+    wtype # Wayland tool to simulate keyboard input
     dunst # Lightweight notification daemon
     waybar # Status bar for Wayland compositors
-    fuzzel # Wayland-native application launcher (rofi alternative)
+    libinput # Input device management library
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
     wl-clipboard # Clipboard utilities for Wayland
-    wtype # Wayland tool to simulate keyboard input
-    imv # Image viewer for Wayland
-    libinput # Input device management library
 
     # === Theming ===
     matugen # Generate color schemes from images
