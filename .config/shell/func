@@ -45,7 +45,7 @@ if (( $+commands[bat] )); then
   alias less="bat"
 else
   export PAGER="less"
-  export LESS="-R -M -i -w -F -N --line-num-width=4 --use-color"
+  export LESS="-R -M -i -w -F --use-color"
   export MANPAGER="less"
   less() {
     command less $LESS "$@"
