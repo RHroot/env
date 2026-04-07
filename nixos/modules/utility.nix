@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     steam
     evince
+    calibre
     libreoffice-fresh
     (brave.override {
       commandLineArgs = [
