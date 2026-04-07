@@ -7,8 +7,6 @@
 }: {
   environment.systemPackages = with pkgs; [
     # === Essential CLI Tools ===
-    git # Distributed version control system
-    bat # Cat clone with syntax highlighting and Git integration
     btop # Modern resource monitor (CPU, RAM, disk, network)
     wget # Non-interactive file downloader
     curl # Data transfer tool for URLs
@@ -39,7 +37,16 @@
     # === For Fast Downloads ===
     aria2 # Multi-source, resumable download manager
   ];
-  programs.command-not-found.enable = true;
+  xdg.mime = {
+    enable = true;
+  };
+  programs.bat = {
+    enable = true;
+    package = pkgs.bat;
+    extraPackages = with pkgs.bat-extras; [
+      batman
+    ];
+  };
   programs.nix-index = {
     enable = true;
     package = pkgs.nix-index;
@@ -47,7 +54,5 @@
     enableZshIntegration = false;
   };
   programs.nix-ld.enable = true;
-  xdg.mime = {
-    enable = true;
-  };
+  programs.command-not-found.enable = true;
 }

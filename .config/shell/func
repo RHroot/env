@@ -43,6 +43,7 @@ if (( $+commands[bat] )); then
   export PAGER="bat"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   alias less="bat"
+  alias bat="bat --paging=always"
 else
   export PAGER="less"
   export LESS="-R -M -i -w -F --use-color"
