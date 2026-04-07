@@ -16,13 +16,14 @@
     stow # Symlink-based dotfile manager
     tree # Display directory structure as a tree
     gnupg # Encryption and signing tool (GPG)
+    gnumake # Build automation tool (make)
     busybox # Single binary providing common Unix utilities
     img2pdf # Convert images to PDF without re-encoding
+    tealdeer # Fast implementation of tldr (simplified
     keychain # Manage SSH and GPG agent keys
     coreutils # GNU core command-line utilities
     moreutils # Additional Unix utilities not in coreutils
     fastfetch # System information fetch tool (neofetch alternative)
-    gnumake # Build automation tool (make)
 
     # === Zip & Archive Tools ===
     zip # Create ZIP archives
