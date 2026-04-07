@@ -39,9 +39,19 @@ nix-zsh() {
   nix-shell "$@" --command zsh
 }
 
-lat() {
-  source-highlight -f esc -i "$1" 2>/dev/null | less
-}
+if (( $+commands[bat] )); then
+  export PAGER="bat"
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+  alias less="bat"
+else
+  export PAGER="less"
+  export LESS="-R -M -i -w -F -N --line-num-width=4 --use-color"
+  export MANPAGER="less"
+  less() {
+    command less $LESS "$@"
+  }
+fi
+export PAGER MANPAGER
 
 nix-clean() {
   emulate -L zsh

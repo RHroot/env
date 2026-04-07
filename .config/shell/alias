@@ -27,7 +27,6 @@ alias td="tmux detach"
 
 # System helpers
 alias psa="ps auxf"
-alias less="less -R"
 alias fdh="fd --hidden"
 alias pgrep="ps aux | rg"
 alias hg="history | rg"
