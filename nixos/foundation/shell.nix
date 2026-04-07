@@ -159,8 +159,6 @@
     LESSHISTFILE = "$HOME/.cache/less_history";
     PYTHON_HISTORY = "$HOME/.local/share/python/history";
 
-    LESS = "-R -M -i -w -F --use-color";
-    MANPAGER = "less -R -M -i -w -F --use-color";
     LESS_TERMCAP_mb = "\u001b[1;31m";
     LESS_TERMCAP_md = "\u001b[1;36m";
     LESS_TERMCAP_me = "\u001b[0m";
