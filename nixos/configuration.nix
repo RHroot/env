@@ -49,8 +49,7 @@
   nix.settings.auto-optimise-store = true;
 
   console = {
-    packages = [pkgs.terminus_font];
-    font = "ter-u24n";
+    font = "latarcyrheb-sun32";
     useXkbConfig = true;
   };
 
