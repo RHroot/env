@@ -158,15 +158,6 @@
 
     LESSHISTFILE = "$HOME/.cache/less_history";
     PYTHON_HISTORY = "$HOME/.local/share/python/history";
-
-    LESS_TERMCAP_mb = "\u001b[1;31m";
-    LESS_TERMCAP_md = "\u001b[1;36m";
-    LESS_TERMCAP_me = "\u001b[0m";
-    LESS_TERMCAP_so = "\u001b[1;44;33m";
-    LESS_TERMCAP_us = "\u001b[1;32m";
-    LESS_TERMCAP_ue = "\u001b[0m";
-    LESS_TERMCAP_mr = "\u001b[7m";
-    LESS_TERMCAP_mh = "\u001b[2m";
   };
 
   environment.localBinInPath = true;
