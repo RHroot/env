@@ -39,6 +39,8 @@ nix-zsh() {
   nix-shell "$@" --command zsh
 }
 
+(( $+commands[batman])) && alias man="batman"
+
 if (( $+commands[bat] )); then
   export PAGER="bat"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
