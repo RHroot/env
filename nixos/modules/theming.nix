@@ -8,12 +8,12 @@
   iconTheme = "Papirus-Dark";
   cursorTheme = "Vimix-cursors";
   cursorSize = 40;
-  fontFamily = "FiraCode Nerd Font";
+  fontFamily = "JetBrainsMono Nerd Font";
 in {
   programs.dconf.enable = true;
   fonts = {
     packages = with pkgs; [
-      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
     ];
     fontconfig = {
       enable = true;
