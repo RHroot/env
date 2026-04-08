@@ -69,7 +69,7 @@
   swapDevices = [
     {
       device = "/swapfile";
-      size = 16384; # Size in MB(16Gb)
+      size = 4096; # Size in MB(4Gb)
     }
   ];
   boot.kernel.sysctl."vm.swappiness" = 10;
