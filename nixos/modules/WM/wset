@@ -10,7 +10,7 @@ SELECTED=$(find "$WALL_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -ina
     printf "%s\0icon\x1f%s\n" "$label" "$file"
   done \
   | sort \
-  | rofi -dmenu -i -p "Select Wallpaper" -theme "wallpaper")
+  | rofi -dmenu -i -p "Pick:> " -theme "wallpaper")
 
 [ -z "$SELECTED" ] && exit 0
 

@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# Icons
+LOCK=" "
+SHUTDOWN=" "
+RESTART=" "
+SUSPEND=" "
+QUIT="󰗼 "
+
+# Create the list of options in order
+OPTIONS="$LOCK\n$SHUTDOWN\n$SUSPEND\n$RESTART\n$QUIT"
+
+# Pass to Rofi
+CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -p "Power" -theme powermenu)
+
+case "$CHOICE" in
+  "$LOCK")
+    hyprlock
+    ;;
+  "$SHUTDOWN")
+    systemctl poweroff
+    ;;
+  "$RESTART")
+    systemctl reboot
+    ;;
+  "$SUSPEND")
+    systemctl suspend
+    ;;
+  "$QUIT")
+    # Quits Hyprland specifically
+    hyprctl dispatch exit
+    ;;
+  *)
+    exit 0
+    ;;
+esac

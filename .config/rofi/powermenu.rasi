@@ -1,85 +1,58 @@
- /* Import main config for global settings (modi, icons, font, etc.) */
+  /* Inherits configuration and colors from main config */
 @import "config.rasi"
 
 * {
-    /* Matugen Mappings with Tokyonight-Night Fallbacks */
     background-colour:           var(surface, #1a1b26);
     foreground-colour:           var(on-surface, #cfc9c2);
     border-colour:               var(primary, #7aa2f7);
-    handle-colour:               var(primary, #7aa2f7);
 
-    /* Alternate background for input bar fallback */
-    alternate-background:        var(surface-container-high, #24283b);
-
-    /* Selection (Brightest) */
     selected-normal-background:  var(primary, #7aa2f7);
     selected-normal-foreground:  var(on-primary, #15161e);
-
-    img-size:                    300px;
 }
 
 window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    width:                       1100px;
+    fullscreen:                  false;
+    width:                       40%;
     enabled:                     true;
     border:                      2px;
     border-radius:               20px;
     border-color:                @border-colour;
     background-color:            @background-colour;
+    cursor:                      "default";
 }
 
 mainbox {
     enabled:                     true;
-    spacing:                     15px;
-    padding:                     25px;
+    spacing:                     0px;
+    padding:                     0px;
     background-color:            transparent;
-    children:                    [ "inputbar", "listview" ];
-}
-
-inputbar {
-    enabled:                     true;
-    spacing:                     10px;
-    padding:                     10px;
-    background-color:            @alternate-background;
-    border-radius:               10px;
-    text-color:                  @foreground-colour;
-    children:                    [ "prompt", "entry" ];
-}
-
-prompt {
-    enabled:                     true;
-    background-color:            transparent;
-    text-color:                  inherit;
-}
-
-entry {
-    enabled:                     true;
-    background-color:            transparent;
-    text-color:                  inherit;
-    cursor:                      text;
-    placeholder:                 "Search Wallpapers...";
+    children:                    [ "listview" ];
 }
 
 listview {
     enabled:                     true;
-    columns:                     3;
+    columns:                     5;
     lines:                       1;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
     layout:                      vertical;
+    fixed-height:                true;
     fixed-columns:               true;
     spacing:                     20px;
     background-color:            transparent;
+    /* Centering logic */
+    margin:                      0px;
+    padding:                     10px;
 }
 
 element {
     enabled:                     true;
-    padding:                     15px;
+    padding:                     40px 0px;
     border-radius:               15px;
-    orientation:                 vertical;
     background-color:            transparent;
     text-color:                  @foreground-colour;
     cursor:                      pointer;
@@ -95,15 +68,11 @@ element selected.normal {
     text-color:                  @selected-normal-foreground;
 }
 
-element-icon {
-    background-color:            transparent;
-    size:                        @img-size;
-    cursor:                      inherit;
-}
-
 element-text {
+    font:                        "JetBrainsMono Nerd Font 40";
     background-color:            transparent;
     text-color:                  inherit;
-    horizontal-align:            0.5;
     cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
 }
