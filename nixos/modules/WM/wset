@@ -3,19 +3,19 @@ set -euo pipefail
 
 WALL_DIR="$HOME/Wallpapers"
 
-SELECTED=$(find "$WALL_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
+SELECTED=$(find "$WALL_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
   | while read -r file; do
     rel="${file#$WALL_DIR/}"
     label="${rel%.*}"
     printf "%s\0icon\x1f%s\n" "$label" "$file"
   done \
   | sort \
-  | rofi -dmenu -i -p "Pick:> " -theme "wallpaper")
+  | rofi -dmenu -i -p "Pick:> " -theme "art_selector")
 
 [ -z "$SELECTED" ] && exit 0
 
 # Your original find-based lookup
-FILE=$(find "$WALL_DIR" -type f \
+FILE=$(find "$WALL_DIR" -maxdepth 1 -type f \
   \( -iname "$SELECTED.jpg" \
   -o -iname "$SELECTED.jpeg" \
   -o -iname "$SELECTED.png" \) \

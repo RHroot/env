@@ -15,14 +15,14 @@
     selected-normal-background:  var(primary, #7aa2f7);
     selected-normal-foreground:  var(on-primary, #15161e);
 
-    img-size:                    300px;
+    img-size:                    600px;
 }
 
 window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    width:                       1100px;
+    width:                       95%;
     enabled:                     true;
     border:                      2px;
     border-radius:               20px;
@@ -32,8 +32,8 @@ window {
 
 mainbox {
     enabled:                     true;
-    spacing:                     15px;
-    padding:                     25px;
+    spacing:                     5px;
+    padding:                     10px;
     background-color:            transparent;
     children:                    [ "inputbar", "listview" ];
 }
@@ -42,7 +42,7 @@ inputbar {
     enabled:                     true;
     spacing:                     10px;
     padding:                     10px;
-    background-color:            @alternate-background;
+    background-color:            transparent;
     border-radius:               10px;
     text-color:                  @foreground-colour;
     children:                    [ "prompt", "entry" ];
@@ -54,12 +54,21 @@ prompt {
     text-color:                  inherit;
 }
 
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         ":>";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+
 entry {
     enabled:                     true;
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search Wallpapers...";
+    placeholder:                 "search...";
 }
 
 listview {
@@ -71,13 +80,13 @@ listview {
     scrollbar:                   false;
     layout:                      vertical;
     fixed-columns:               true;
-    spacing:                     20px;
+    spacing:                     2px;
     background-color:            transparent;
 }
 
 element {
     enabled:                     true;
-    padding:                     15px;
+    padding:                     0px 15px;
     border-radius:               15px;
     orientation:                 vertical;
     background-color:            transparent;

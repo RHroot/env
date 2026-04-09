@@ -77,7 +77,7 @@ entry {
     enabled:                     true;
     background-color:            inherit;
     text-color:                  inherit;
-    placeholder:                 "Search...";
+    placeholder:                 "search...";
 }
 
 listview {
