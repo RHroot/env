@@ -69,7 +69,8 @@ bindkey "^[n" down-line-or-history
 bindkey "^b" backward-char
 bindkey "^f" forward-char
 bindkey "^[[Z" reverse-menu-complete  # Shift+Tab for reverse completion
-bindkey '^W' backward-kill-word
+bindkey "^[^?" backward-kill-word
+bindkey "^[^H" backward-kill-word
 
 export OLLAMA_NO_UPDATE_CHECK=true
 
