@@ -1,0 +1,248 @@
+#!/bin/sh
+
+rofi_cmd="rofi -dmenu -i -markup-rows -p"
+back="⟵ Back"
+
+# ---------- STATE ----------
+
+get_wifi_iface() {
+  nmcli -t -f DEVICE,TYPE device | awk -F: '$2=="wifi"{print $1; exit}'
+}
+
+get_connected_iface() {
+  nmcli -t -f DEVICE,TYPE,STATE device | awk -F: '$2=="wifi" && $3=="connected"{print $1}'
+}
+
+active_ssid() {
+  iface=$(get_connected_iface)
+  [ -n "$iface" ] && nmcli -t -f GENERAL.CONNECTION device show "$iface" | cut -d: -f2
+}
+
+wifi_state() {
+  nmcli -t -f WIFI g
+}
+
+ip_info() {
+  iface="$1"
+  nmcli -t -f IP4.ADDRESS,IP4.GATEWAY,IP4.DNS device show "$iface"
+}
+
+# ---------- VISUAL ----------
+
+signal_icon() {
+  s=$1
+  if [ "$s" -ge 80 ]; then
+    echo "▂▄▆█"
+  elif [ "$s" -ge 60 ]; then
+    echo "▂▄▆_"
+  elif [ "$s" -ge 40 ]; then
+    echo "▂▄__"
+  elif [ "$s" -ge 20 ]; then
+    echo "▂___"
+  else
+    echo "____"
+  fi
+}
+
+security_icon() {
+  [ "$1" = "--" ] && echo "" || echo "🔒"
+}
+
+# ---------- NETWORK DATA ----------
+
+scan_networks() {
+  nmcli -t -f IN-USE,SSID,SECURITY,SIGNAL device wifi list | sed '/^$/d'
+}
+
+saved_connections() {
+  nmcli -t -f NAME,TYPE connection show | awk -F: '$2=="wifi"{print $1}'
+}
+
+build_network_rows() {
+  active=$(active_ssid)
+
+  scan_networks | sort -t: -k4 -nr | awk -F: -v active="$active" '
+  !seen[$2]++ {
+    signal=$4+0
+
+    if (signal>=80) sig="▂▄▆█";
+    else if (signal>=60) sig="▂▄▆_";
+    else if (signal>=40) sig="▂▄__";
+    else if (signal>=20) sig="▂___";
+    else sig="____";
+
+    lock = ($3=="--") ? "" : "🔒";
+    name=$2;
+
+    if (name==active) {
+      printf "%s  %s %s  <span foreground=\"#4caf50\">●</span>\n", sig, name, lock;
+    } else {
+      printf "%s  %s %s\n", sig, name, lock;
+    }
+  }'
+}
+
+# ---------- PASSWORD ----------
+
+ask_password() {
+  rofi -dmenu -password -p "$1"
+}
+
+# ---------- CONNECTION ----------
+
+connect_network() {
+  ssid="$1"
+
+  if nmcli -t -f NAME connection show | grep -qx "$ssid"; then
+    nmcli connection up "$ssid"
+  else
+    pass=$(ask_password "Password: $ssid")
+    [ -z "$pass" ] && return
+    nmcli device wifi connect "$ssid" password "$pass"
+  fi
+}
+
+disconnect_wifi() {
+  iface=$(get_connected_iface)
+  [ -n "$iface" ] && nmcli device disconnect "$iface"
+}
+
+# ---------- NETWORK MENU ----------
+
+network_menu() {
+  ssid="$1"
+  active=$(active_ssid)
+
+  iface=$(get_connected_iface)
+  info=$([ "$ssid" = "$active" ] && ip_info "$iface")
+
+  options="SSID: $ssid
+State: $([ "$ssid" = "$active" ] && echo Connected || echo Not Connected)
+$info
+Connect
+Disconnect
+Forget
+Details
+$back"
+
+  choice=$(echo -e "$options" | $rofi_cmd "$ssid")
+
+  case "$choice" in
+    "Connect")
+      connect_network "$ssid"
+      network_menu "$ssid"
+      ;;
+    "Disconnect")
+      nmcli connection down "$ssid"
+      network_menu "$ssid"
+      ;;
+    "Forget")
+      nmcli connection delete "$ssid"
+      connections_menu
+      ;;
+    "Details") nmcli connection show "$ssid" | rofi -dmenu -p "Details" ;;
+    "$back") connections_menu ;;
+  esac
+}
+
+# ---------- CONNECTIONS ----------
+
+connections_menu() {
+  # fast refresh scan (feels async enough)
+  nmcli device wifi rescan >/dev/null 2>&1 &
+
+  rows=$(build_network_rows)
+
+  choice=$(echo -e "$rows\n$back" | $rofi_cmd "Networks")
+
+  case "$choice" in
+    "$back") show_menu ;;
+    *)
+      ssid=$(echo "$choice" | awk '{print $2}')
+      [ -n "$ssid" ] && network_menu "$ssid"
+      ;;
+  esac
+}
+
+# ---------- CONTROLS ----------
+
+controls_menu() {
+  iface=$(get_connected_iface)
+  ssid=$(active_ssid)
+  info=$([ -n "$iface" ] && ip_info "$iface")
+
+  options="SSID: ${ssid:-None}
+Interface: ${iface:-None}
+$info
+Disconnect
+Rescan
+Toggle Wi-Fi
+$back"
+
+  choice=$(echo -e "$options" | $rofi_cmd "Controls")
+
+  case "$choice" in
+    "Disconnect")
+      disconnect_wifi
+      controls_menu
+      ;;
+    "Rescan")
+      nmcli device wifi rescan
+      controls_menu
+      ;;
+    "Toggle Wi-Fi")
+      nmcli radio wifi off || nmcli radio wifi on
+      show_menu
+      ;;
+    "$back") show_menu ;;
+  esac
+}
+
+# ---------- ACTIONS ----------
+
+actions_menu() {
+  options="Restart NetworkManager
+Restart DNS
+Flush DNS
+$back"
+
+  choice=$(echo -e "$options" | $rofi_cmd "Actions")
+
+  case "$choice" in
+    "Restart NetworkManager") systemctl restart NetworkManager ;;
+    "Restart DNS") systemctl restart systemd-resolved ;;
+    "Flush DNS") resolvectl flush-caches ;;
+    "$back") show_menu ;;
+  esac
+}
+
+# ---------- MAIN ----------
+
+show_menu() {
+  wifi=$(wifi_state)
+
+  options="Controls
+Connections
+Actions
+Wi-Fi: $wifi
+Exit"
+
+  choice=$(echo -e "$options" | $rofi_cmd "Network")
+
+  case "$choice" in
+    "Controls") controls_menu ;;
+    "Connections") connections_menu ;;
+    "Actions") actions_menu ;;
+    "Wi-Fi: enabled")
+      nmcli radio wifi off
+      show_menu
+      ;;
+    "Wi-Fi: disabled")
+      nmcli radio wifi on
+      show_menu
+      ;;
+    "Exit") exit 0 ;;
+  esac
+}
+
+show_menu
