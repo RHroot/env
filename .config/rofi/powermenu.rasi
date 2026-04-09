@@ -1,6 +1,7 @@
   /* Inherits configuration and colors from main config */
 @import "config.rasi"
 
+
 * {
     background-colour:           var(surface, #1a1b26);
     foreground-colour:           var(on-surface, #cfc9c2);
@@ -69,7 +70,7 @@ element selected.normal {
 }
 
 element-text {
-    font:                        "JetBrainsMono Nerd Font 40";
+    font:                        "JetBrainsMono Nerd Font Mono 40";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
