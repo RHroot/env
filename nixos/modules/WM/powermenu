@@ -9,6 +9,7 @@ QUIT="󰗼 "
 
 # Create the list of options in order
 OPTIONS="$LOCK\n$SHUTDOWN\n$SUSPEND\n$RESTART\n$QUIT"
+OPTIONS="$LOCK\n$SUSPEND\n$RESTART\n$SHUTDOWN\n$QUIT"
 
 # Pass to Rofi
 CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -p "Power" -theme powermenu)
@@ -17,14 +18,14 @@ case "$CHOICE" in
   "$LOCK")
     hyprlock
     ;;
-  "$SHUTDOWN")
-    systemctl poweroff
+  "$SUSPEND")
+    systemctl suspend
     ;;
   "$RESTART")
     systemctl reboot
     ;;
-  "$SUSPEND")
-    systemctl suspend
+  "$SHUTDOWN")
+    systemctl poweroff
     ;;
   "$QUIT")
     # Quits Hyprland specifically
