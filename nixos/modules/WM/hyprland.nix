@@ -103,6 +103,7 @@
     libinput # Input device management library
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
+    cliphist # Clipboard manager for Wayland
     wl-clipboard # Clipboard utilities for Wayland
 
     # === Theming ===
