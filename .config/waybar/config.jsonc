@@ -104,6 +104,7 @@
     "tooltip-format-ethernet": "{ifname} 󰌘",
     "tooltip-format-disconnected": "󰌙 Disconnected",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "on-click": "bash ~/.local/bin/netrofi",
   },
   "pulseaudio": {
     "format": "{icon} {volume}% {format_source}",
