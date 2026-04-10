@@ -10,6 +10,7 @@
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
+    cudaSupport = true;
     nvidiaSettings = true;
     open = false;
 
@@ -80,6 +81,7 @@
     vulkan-tools
     clinfo
     libva-utils
+    cudatoolkit
 
     (writeShellScriptBin "nvidia-run" ''
       #!/bin/sh
