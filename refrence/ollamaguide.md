@@ -1,12 +1,12 @@
-## Ollama Local Setup Guide
+# Ollama Local Setup Guide
 
 This guide covers the essential commands to pull, customize, and run models locally using Ollama.
 
 ---
 
-### 1. Pull the Base Model
+## 1. Pull the Base Model
 
-# To get started, download the **Llama 3 8B** model from the Ollama library.
+### To get started, download the **Llama 3 8B** model from the Ollama library.
 
 ```bash
 ollama pull llama3:8b
