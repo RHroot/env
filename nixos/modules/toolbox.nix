@@ -50,4 +50,8 @@
     package = pkgs.unstable.neovim-unwrapped;
     defaultEditor = true;
   };
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
 }
