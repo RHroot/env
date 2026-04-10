@@ -10,14 +10,20 @@ This guide covers the essential commands to pull, customize, and run models loca
 
 ```bash
 ollama pull llama3:8b
-2. Create a Custom Local Instance
-Create a named variation of the model. This is useful for maintaining a specific local configuration:
+```
 
-Bash
+## 2. Create a Custom Local Instance
+
+### Create a named variation of the model. This is useful for maintaining a specific local configuration:
+
+```bash
 ollama create llama3-local -f <(echo "FROM llama3:8b")
-3. Run the Model
-Launch an interactive session with your new local model instance:
+```
 
-Bash
+## 3. Run the Model
+
+### Launch an interactive session with your new local model instance:
+
+```bash
 ollama run llama3-local
 ```
