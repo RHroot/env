@@ -42,7 +42,7 @@ alias restart-dm="sudo systemctl restart display-manager"
 
 # File operations
 alias cp="cp -iv"
-alias cpr="cp -r"
+alias cpr="cp -rv"
 alias scp="sudo cp -iv"
 alias rmd="rm -rfv"
 alias mkdir="mkdir -pv"

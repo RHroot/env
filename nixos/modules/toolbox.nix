@@ -43,6 +43,7 @@
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
     tree-sitter # Incremental parsing system for syntax highlighting and code analysis
+    jetbrains-toolbox # JetBrains Toolbox App for managing JetBrains IDEs
   ];
   # === Neovim ===
   programs.neovim = {
