@@ -10,18 +10,16 @@ IMAGE="$1"
 notify-send "Changing Theme" "Applying new wallpaper and updating colors, please wait until confirmation..."
 
 # === Set wallpaper ===
-# Random transition selection
-TRANSITION="any"
-DURATION=2
-FPS=60
-ANGLE=$(shuf -i 0-360 -n 1)
-BEZIER=$(printf "0.%d,0.%d,0.%d,1" $(shuf -i 2-8 -n 1) $(shuf -i 2-8 -n 1) $(shuf -i 2-8 -n 1))
+TYPES=("fade" "wipe" "wave" "grow" "center" "step")
+TRANSITION="${TYPES[$((RANDOM % ${#TYPES[@]}))]}"
+ANGLE=$((RANDOM % 360))
 swww img "$IMAGE" \
-  --transition-type="$TRANSITION" \
-  --transition-duration="$DURATION" \
-  --transition-fps="$FPS" \
-  --transition-angle="$ANGLE" \
-  --transition-bezier="$BEZIER"
+  --transition-type "$TRANSITION" \
+  --transition-duration 3 \
+  --transition-fps 144 \
+  --transition-angle "$ANGLE" \
+  --transition-bezier ".42,0,.58,1" \
+  --transition-step 1
 
 # Generate theme with Matugen
 matugen image "$IMAGE" -m dark -t scheme-content
