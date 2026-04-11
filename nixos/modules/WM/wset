@@ -10,7 +10,7 @@ SELECTED=$(find "$WALL_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.j
     printf "%s\0icon\x1f%s\n" "$label" "$file"
   done \
   | sort \
-  | rofi -dmenu -i -p "Pick:> " -theme "art_selector")
+  | rofi -dmenu -i -p "Pick ❯" -theme "art_selector")
 
 [ -z "$SELECTED" ] && exit 0
 
