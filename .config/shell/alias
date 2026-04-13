@@ -41,9 +41,11 @@ alias logout="loginctl kill-session $XDG_SESSION_ID"
 alias restart-dm="sudo systemctl restart display-manager"
 
 # File operations
+alias rm="rm -iv"
 alias cp="cp -iv"
-alias cpr="cp -rv"
+alias cpr="cp -riv"
 alias scp="sudo cp -iv"
+alias scpr="sudo cp -riv"
 alias rmd="rm -rfv"
 alias mkdir="mkdir -pv"
 
