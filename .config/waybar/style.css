@@ -78,6 +78,7 @@
 
 /* === Audio and Brightness === */
 #pulseaudio,
+#bluetooth,
 #backlight {
   background: @surface_container_low;
   color: @on_surface_variant;
@@ -90,6 +91,7 @@
 }
 
 #pulseaudio:hover,
+#bluetooth:hover,
 #backlight:hover {
   background: @surface_container_high;
   color: @tertiary;
@@ -220,6 +222,7 @@
 #battery,
 #backlight,
 #pulseaudio,
+#bluetooth,
 #clock,
 #tray,
 #custom-lock,

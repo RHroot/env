@@ -18,6 +18,7 @@
     "disk",
     "battery",
     "battery#bat2",
+    "bluetooth",
     "custom/power",
   ],
   "hyprland/workspaces": {
@@ -104,7 +105,15 @@
     "tooltip-format-ethernet": "{ifname} 󰌘",
     "tooltip-format-disconnected": "󰌙 Disconnected",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "on-click": "bash ~/.local/bin/netrofi",
+    "on-click": "nm-connection-editor",
+  },
+  "bluetooth": {
+    "format": "{icon}",
+    "format-connected": "{icon} {num_connections}",
+    "format-icons": ["󰂯", "󰂲"],
+    "tooltip-format": "Bluetooth {status}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "on-click": "bash ~/.local/bin/bluerofi",
   },
   "pulseaudio": {
     "format": "{icon} {volume}% {format_source}",
