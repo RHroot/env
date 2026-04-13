@@ -117,7 +117,8 @@
     },
     "tooltip-format": "Bluetooth {status}",
     "tooltip-format-connected": "{device_enumerate}",
-    "on-click": "blueman-manager",
+    "on-click": "bash ~/env/.local/bin/bluerofi",
+    "on-click-right": "blueman-manager",
   },
   "pulseaudio": {
     "format": "{icon} {volume}% {format_source}",
