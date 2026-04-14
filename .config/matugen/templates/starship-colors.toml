@@ -143,11 +143,11 @@ format = "[ $symbol$version ](bold fg:color9)"
 
 [c]
 symbol = " "
-format = "[ $symbol ](bold fg:color3)"
+format = "[ $symbol$version ](bold fg:color3)"
 
 [cpp]
 symbol = " "
-format = "[ $symbol ](bold fg:color3)"
+format = "[ $symbol$version ](bold fg:color3)"
 
 [lua]
 symbol = " "
@@ -167,10 +167,6 @@ format = "[ $symbol$version ](bold fg:color3)"
 [cmake]
 symbol = " "
 format = "[ $symbol ](bold fg:color3)"
-
-[direnv]
-symbol = " "
-format = "[ $symbol ](bold fg:color8)"
 
 [docker_context]
 symbol = " "
