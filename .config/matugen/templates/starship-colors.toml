@@ -1,10 +1,191 @@
-add_newline = false
+scan_timeout = 100
+command_timeout = 500
 
-format = '''
-$directory$git_branch$git_status$rust$python
-$character'''
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = false
+follow_symlinks = false
 
 palette = 'colors'
+
+format = """
+$os\
+$username\
+$directory\
+$line_break\
+$character\
+"""
+
+right_format = """$all"""
+
+[directory]
+style = "bold fg:color1"
+format = "[ $path ]($style)"
+truncation_length = 4
+
+[directory.substitutions]
+"Home" = "󰋜"
+"Music" = "󰝚"
+"Videos" = "󰕧"
+"Documents" = "󰈙"
+"Downloads" = "󰇚"
+"Pictures" = "󰉏"
+"Others" = "󰉋"
+
+[git_branch]
+symbol = "[](fg:color2) "
+style = "fg:color1 bg:color2 bold"
+format = "  on [$symbol$branch]($style)[](fg:color2)"
+
+[git_status]
+format = "[ $staged$modified$renamed$stashed$deleted$untracked$conflicted$ahead_behind ]($style)"
+
+staged = "[+${count} ](bold fg:color1)"
+modified = "[!${count} ](bold fg:color9)"
+renamed = "[>${count} ](bold fg:color8)"
+deleted = "[-${count} ](bold fg:red)"
+untracked = "[?${count} ](bold fg:color8)"
+stashed = "[${count} ](bold fg:color5)"
+conflicted = "[✖${count} ](bold fg:red)"
+
+ahead = "[${count} ](bold fg:color1)"
+behind = "[${count} ](bold fg:color9)"
+diverged = "[${ahead_count}${behind_count} ](bold fg:red)"
+
+[os]
+disabled = false
+
+[os.symbols]
+AIX = "󰻀 "
+AlmaLinux = " "
+Alpaquita = " "
+Alpine = " "
+ALTLinux = " "
+Amazon = " "
+Android = " "
+AOSC = " "
+Arch = " "
+Artix = " "
+Bluefin = " "
+CachyOS = " "
+CentOS = " "
+Cygwin = " "
+Debian = " "
+DragonFly = " "
+Elementary = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = " "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+InstantOS = " "
+Ios = " "
+Kali = " "
+Linux = " "
+Mabox = " "
+Manjaro = " "
+Mariner = "󰠳 "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = " "
+OpenCloudOS = " "
+openEuler = "󰏗 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+PikaOS = " "
+Pop = " "
+RaspberryPiOS = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+RockyLinux = " "
+Solus = " "
+SUSE = " "
+Ubuntu = " "
+Ultramarine = " "
+Uos = "󰘚 "
+Void = " "
+Windows = "󰍲 "
+Zorin = " "
+Unknown = " "
+Macos = "󰌍 "
+
+[python]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color1)"
+
+[nodejs]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color3)"
+
+[bun]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color3)"
+
+[golang]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color8)"
+
+[rust]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color9)"
+
+[zig]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color9)"
+
+[c]
+symbol = " "
+format = "[ $symbol ](bold fg:color3)"
+
+[cpp]
+symbol = " "
+format = "[ $symbol ](bold fg:color3)"
+
+[lua]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color1)"
+
+[nix_shell]
+symbol = " "
+format = "[ $symbol$state ](bold fg:color8)"
+
+[git_state]
+format = "[ $state( $progress_current/$progress_total) ](bold fg:color9)"
+
+[package]
+symbol = "󰏗 "
+format = "[ $symbol$version ](bold fg:color3)"
+
+[cmake]
+symbol = " "
+format = "[ $symbol ](bold fg:color3)"
+
+[direnv]
+symbol = " "
+format = "[ $symbol ](bold fg:color8)"
+
+[docker_context]
+symbol = " "
+format = "[ $symbol$context ](bold fg:color8)"
+
+[username]
+show_always = true
+
+[line_break]
+disable = true
+
+[character]
+success_symbol = "[✔](bold fg:color1)"
+error_symbol = "[✖](bold fg:red)"
+vicmd_symbol = "[](bold fg:color1)"
 
 [palettes.colors]
 color1 = '{{colors.primary_fixed_dim.default.hex}}'
@@ -16,32 +197,3 @@ color6 = '{{colors.surface_dim.default.hex}}'
 color7 = '{{colors.surface.default.hex}}'
 color8 = '{{colors.primary.default.hex}}'
 color9 = '{{colors.tertiary.default.hex}}'
-
-# Prompt symbols
-[character]
-success_symbol = "[](color1 bold)"
-error_symbol = "[](bold red)"
-vicmd_symbol = "[](color1 bold)"
-
-[directory]
-format = "[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[ ](fg:color4)"
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
-
-[git_branch]
-format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
-
-[time]
-format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
-disabled = false
-time_format = "%R" # Hour:Minute Format
-
-[python]
-format = "[](fg:color8 bg:color4)[${symbol}${version}](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5)( ${virtualenv})](fg:color3 bg:color4)[](fg:color4) "
-symbol = '🐍'
-# pyenv_version_name = true
-pyenv_prefix = 'venv'
