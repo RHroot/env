@@ -47,10 +47,6 @@
       batman
     ];
   };
-  programs.nix-index = {
-    enable = true;
-    package = pkgs.nix-index;
-  };
   programs.nix-ld.enable = true;
   programs.command-not-found.enable = true;
 }
