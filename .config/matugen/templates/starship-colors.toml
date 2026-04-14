@@ -3,7 +3,7 @@ command_timeout = 500
 
 "$schema" = "https://starship.rs/config-schema.json"
 
-add_newline = false
+add_newline = true
 follow_symlinks = false
 
 palette = 'colors'
