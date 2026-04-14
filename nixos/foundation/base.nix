@@ -37,6 +37,7 @@
     # === For Fast Downloads ===
     aria2 # Multi-source, resumable download manager
   ];
+  programs.nix-ld.enable = true;
   xdg.mime = {
     enable = true;
   };
@@ -47,6 +48,10 @@
       batman
     ];
   };
-  programs.nix-ld.enable = true;
-  programs.command-not-found.enable = true;
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
 }
