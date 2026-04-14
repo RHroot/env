@@ -62,6 +62,7 @@ abbr -a bright "brightnessctl set"
 abbr -a oc "opencode --port 3000"
 abbr -a ga "git add"
 abbr -a gp "git push"
+abbr -a gd "git diff"
 abbr -a gs "git status"
 
 # Utilities
