@@ -3,10 +3,8 @@
   pkgs,
   ...
 }: {
-  programs.zsh = {
-    enable = true;
-    syntaxHighlighting.enable = true;
-  };
+  programs.fish.enable = true;
+  programs.starship.enable = true;
 
   programs.bash = {
     enable = true;
@@ -137,12 +135,13 @@
 
   environment.systemPackages = with pkgs; [
     eza # Modern ls replacement with icons and git info
+    fish # User-friendly shell with powerful features and plugins
     tmux # Terminal multiplexer for managing multiple sessions
     bind # Command-line tools for DNS queries (dig, nslookup)
     lolcat # Colorful text output using rainbow gradients
     zoxide # Smarter cd command with directory jump history
     ripgrep # Fast recursive text search tool (rg)
-    zsh-system-clipboard # Zsh plugin to sync clipboard with the system
+    starship # Customizable prompt for various shells with git info and more
   ];
 
   environment.sessionVariables = {

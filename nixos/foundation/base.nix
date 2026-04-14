@@ -50,8 +50,6 @@
   programs.nix-index = {
     enable = true;
     package = pkgs.nix-index;
-    enableBashIntegration = false;
-    enableZshIntegration = false;
   };
   programs.nix-ld.enable = true;
   programs.command-not-found.enable = true;
