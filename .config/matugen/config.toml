@@ -25,8 +25,12 @@ input_path = '~/.config/matugen/templates/rofi-colors.rasi'
 output_path = '~/.cache/Matugen/rofi-colors.rasi'
 
 [templates.alacritty]
-input_path = '~/.config/matugen/templates/alacritty.toml'
+input_path = '~/.config/matugen/templates/alacritty-colors.toml'
 output_path = '~/.cache/Matugen/alacritty.toml'
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship-colors.toml'
+output_path = '~/.config/starship.toml'
 
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-colors.conf'
