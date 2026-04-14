@@ -4,12 +4,16 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
     self,
     nixpkgs,
     nixpkgs-unstable,
+    nix-index-database,
     ...
   }: let
     system = "x86_64-linux";
@@ -27,6 +31,7 @@
 
       modules = [
         ./nixos/configuration.nix
+        nix-index-database.nixosModules.nix-index
 
         ({pkgs, ...}: {
           nixpkgs.config.allowUnfree = true;
