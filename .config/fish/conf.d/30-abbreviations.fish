@@ -60,6 +60,9 @@ abbr -a rg "rg --color=auto"
 abbr -a myip "curl ifconfig.me"
 abbr -a bright "brightnessctl set"
 abbr -a oc "opencode --port 3000"
+abbr -a ga "git add"
+abbr -a gp "git push"
+abbr -a gs "git status"
 
 # Utilities
 abbr -a kssh "kitty +kitten ssh"

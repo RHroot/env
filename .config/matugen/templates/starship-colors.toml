@@ -1,6 +1,6 @@
- add_newline = false
-palette = 'colors'
+add_newline = false
 
+palette = 'colors'
 [palettes.colors]
 color1 = '{{colors.primary_fixed_dim.default.hex}}'
 color2 = '{{colors.on_primary.default.hex}}'
@@ -23,6 +23,8 @@ $directory\
 $vcsh\
 $fossil_branch\
 $fossil_metrics\
+$custom\
+$sudo\
 $git_branch\
 $git_commit\
 $git_state\
@@ -94,21 +96,19 @@ $direnv\
 $env_var\
 $mise\
 $crystal\
-$custom\
-$sudo\
 $cmd_duration\
-$line_break\
-$jobs\
 $battery\
 $time\
 $status\
+$jobs\
 $os\
 $container\
 $netns\
 $shell\
-$character"""
+$line_break\
+$character \
+"""
 
 [character]
-success_symbol = "[❯❯❯](color9 bold)"
-error_symbol = "[❯❯❯](@{error})"
-vicmd_symbol = "[❯❯❯](#f9e2af)"
+success_symbol = "[❯❯❯](bold green)"
+error_symbol = "[❯❯❯](bold red)"
