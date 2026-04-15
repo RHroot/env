@@ -51,4 +51,8 @@
     package = pkgs.unstable.neovim-unwrapped;
     defaultEditor = true;
   };
+  services.emacs = {
+    install = true;
+    enable = true;
+  };
 }

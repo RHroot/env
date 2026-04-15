@@ -1,6 +1,6 @@
 # Erase the default to avoid conflicts
 bind --erase \ed
-bind \ed 'zi'
+bind \ed zi
 
 # Your original Alt + key bindings
 bind \ea beginning-of-line
