@@ -6,26 +6,18 @@
   environment.systemPackages = with pkgs; [
     steam
     evince
+    librewolf
     libreoffice-fresh
-    (brave.override {
-      commandLineArgs = [
-        "--ozone-platform-hint=auto"
-        "--use-gl=angle"
-        "--use-angle=gl"
-        "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,Vulkan"
-        "--disable-features=UseChromeOSDirectVideoDecoder"
-        "--enable-gpu-rasterization"
-        "--enable-zero-copy"
-        "--ignore-gpu-blocklist"
-      ];
-    })
   ];
 
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+  };
+
   xdg.mime.defaultApplications = {
-    # Browser
-    "text/html" = ["brave-browser.desktop"];
-    "x-scheme-handler/http" = ["brave-browser.desktop"];
-    "x-scheme-handler/https" = ["brave-browser.desktop"];
+    "text/html" = ["librewolf.desktop"];
+    "x-scheme-handler/http" = ["librewolf.desktop"];
+    "x-scheme-handler/https" = ["librewolf.desktop"];
     # PDF viewer
     "application/pdf" = ["org.gnome.Evince.desktop"];
     # Video
