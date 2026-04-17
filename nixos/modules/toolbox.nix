@@ -7,8 +7,8 @@
   environment.systemPackages = with pkgs; [
     # === Python Development ===
     python313 # Python 3.13 interpreter
-    python313Packages.ruff # Fast Python linter and formatter
     python313Packages.uv # Extremely fast Python package and environment manager
+    python313Packages.ruff # Fast Python linter and formatter
 
     # === Lua Development ===
     lua # Lua programming language interpreter
@@ -22,17 +22,9 @@
     # === Rust Development ===
     rustup # Rust toolchain installer and version manager
 
-    # === Go Development ===
-    go
-
-    # === Zig Development ===
-    zig
-
     # === Web Development tools ===
-    nodejs
     bun # All-in-one JS runtime, bundler, and package manager
     prettierd # Fast daemonized code formatter (Prettier)
-    jq # Command-line JSON processor
 
     # === CyberSecurity ===
     nmap # Network scanner and port discovery tool
