@@ -49,6 +49,7 @@
 
   programs.hyprland = {
     enable = true;
+    package = pkgs.hyprland;
     xwayland.enable = true;
   };
 
@@ -83,7 +84,6 @@
 
   environment.systemPackages = with pkgs; [
     # === HYPRLAND ===
-    hyprland # Wayland compositor for dynamic tiling (Hyprland)
     hypridle # Idle management daemon for Hyprland
     hyprlock # Screen locker for Hyprland
     hyprshot # Screenshot utility for Hyprland
