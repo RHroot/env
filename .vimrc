@@ -1,6 +1,5 @@
 " === BASIC SETTINGS ===
-colorscheme blue
-colorscheme retrobox
+colorscheme unokai
 set nocompatible
 filetype plugin indent on
 syntax on
@@ -15,7 +14,7 @@ set cursorline
 set cursorcolumn
 set signcolumn=yes
 set showmode
-set clipboard=unnamedplus
+set clipboard="unnamedplus"
 
 " Tabs & indentation
 set tabstop=2
@@ -89,10 +88,6 @@ nnoremap <C-l> <C-w>l
 
 " Yank to system clipboard
 nnoremap <leader>y :"+yy
-vnoremap <leader>y :"+y
-
-" Prime-style movement
-vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
 nnoremap J mzJ`z
 nnoremap <C-d> <C-d>zz
@@ -113,18 +108,5 @@ augroup highlight_yank
     endif
 augroup END
 
-" DIAGNOSTICS / SIGNS
-if has('signs')
-    sign define ErrorSign text=✖ texthl=ErrorMsg
-    sign define WarnSign text=⚠ texthl=WarningMsg
-    sign define InfoSign text=ℹ texthl=Directory
-    sign define HintSign text=➤ texthl=Comment
-endif
-
 " Enable mouse support
 set mouse=a
-
-" Enable smooth scrolling (if Vim supports it)
-if exists('+scrolloff')
-    set scrolloff=8
-endif
