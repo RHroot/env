@@ -5,6 +5,5 @@
 }: {
   imports = [
     ./hyprland.nix
-    ./dwl.nix
   ];
 }
