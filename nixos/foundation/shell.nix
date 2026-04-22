@@ -30,10 +30,7 @@
 
       # Editors
       v = "vim";
-      n = "nvim";
-      nv = "neovide";
       sv = "sudo vim";
-      sn = "sudo nvim";
 
       # Tmux
       tns = "tmux new -s";
@@ -144,7 +141,8 @@
   ];
 
   environment.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "vim";
+    VISUAL = "vim";
     TERMINAL = "kitty";
     BROWSER = "brave";
     COLORTERM = "truecolor";
