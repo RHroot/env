@@ -43,7 +43,7 @@
           ];
 
           environment.systemPackages = with pkgs; [
-            unstable.vim
+            unstable.vim-full
           ];
         })
       ];

@@ -14,7 +14,24 @@ set cursorline
 set cursorcolumn
 set signcolumn=yes
 set showmode
-set clipboard="unnamedplus"
+set clipboard=unnamedplus
+
+"
+set hidden
+set splitbelow splitright
+set wildmenu wildmode=longest,list,full
+set completeopt=menuone,noselect
+set laststatus=2
+set formatoptions+=croq
+set undofile
+
+" VISUAL ALERT
+set list listchars=trail:·
+highlight TrailingSpace ctermbg=red guibg=red
+autocmd BufEnter * call matchadd('TrailingSpace', '\s\+$')
+
+" AUTO-REMOVE ON SAVE
+autocmd BufWritePre * %s/\s\+$//e   " //e suppresses error if none exist
 
 " Tabs & indentation
 set tabstop=2

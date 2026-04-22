@@ -32,12 +32,15 @@
     tcpdump # Command-line packet analyzer
 
     # === Utility tools ===
-    unstable.vim # Terminal editor (spoiler very good)
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
     tree-sitter # Incremental parsing system for syntax highlighting and code analysis
     jetbrains-toolbox # JetBrains Toolbox App for managing JetBrains IDEs
   ];
+  programs.vim = {
+    enable = true;
+    package = unstable.vim-full;
+  };
   services.emacs = {
     install = true;
     enable = true;
