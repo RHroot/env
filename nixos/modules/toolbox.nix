@@ -26,6 +26,11 @@
     bun # All-in-one JS runtime, bundler, and package manager
     prettierd # Fast daemonized code formatter (Prettier)
 
+    # === More LSP ===
+    bash-language-server # LSP for sh
+    marksman # LSP for Markdown
+    nil # LSP for Nix
+    
     # === CyberSecurity ===
     nmap # Network scanner and port discovery tool
     strace # Diagnostic tool to monitor system calls

@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     steam
     evince
@@ -39,20 +40,20 @@
       "signon.rememberSignons" = false;
     };
   };
-  
+
   environment.sessionVariables = {
     MOZ_USE_XINPUT2 = "1";
     MOZ_ENABLE_WAYLAND = "1";
   };
 
   xdg.mime.defaultApplications = {
-    "text/html" = ["librewolf.desktop"];
-    "x-scheme-handler/http" = ["librewolf.desktop"];
-    "x-scheme-handler/https" = ["librewolf.desktop"];
+    "text/html" = [ "librewolf.desktop" ];
+    "x-scheme-handler/http" = [ "librewolf.desktop" ];
+    "x-scheme-handler/https" = [ "librewolf.desktop" ];
     # PDF viewer
-    "application/pdf" = ["org.gnome.Evince.desktop"];
+    "application/pdf" = [ "org.gnome.Evince.desktop" ];
     # Video
-    "video/mp4" = ["vlc.desktop"];
-    "video/x-matroska" = ["vlc.desktop"];
+    "video/mp4" = [ "vlc.desktop" ];
+    "video/x-matroska" = [ "vlc.desktop" ];
   };
 }
