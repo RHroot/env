@@ -39,7 +39,7 @@
   ];
   programs.vim = {
     enable = true;
-    package = unstable.vim-full;
+    package = pkgs.unstable.vim-full;
   };
   services.emacs = {
     install = true;
