@@ -10,10 +10,7 @@ abbr -a ..... "cd ../../../.."
 
 # Editors
 abbr -a v "vim"
-abbr -a n "nvim"
-abbr -a nv "neovide"
 abbr -a sv "sudo vim"
-abbr -a sn "sudo nvim"
 
 # Tmux
 abbr -a tns "tmux new -s"
