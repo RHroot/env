@@ -131,7 +131,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    eza # Modern ls replacement with icons and git info
     fish # User-friendly shell with powerful features and plugins
     bind # Command-line tools for DNS queries (dig, nslookup)
     lolcat # Colorful text output using rainbow gradients

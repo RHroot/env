@@ -77,17 +77,8 @@ abbr -a fetch "fastfetch -c my.jsonc"
 abbr -a open "xdg-open"
 abbr -a vol "wpctl get-volume @DEFAULT_AUDIO_SINK@"
 
-# List Commands
-if command -q eza
-  abbr -a ls "eza --icons"
-  abbr -a la "eza -A --icons"
-  abbr -a lz "eza -l -A --icons --header --inode"
-  abbr -a lh "eza -d .* --icons 2>/dev/null"
-  abbr -a tree "eza -a --icons --tree"
-else
-  abbr -a ls "ls --color=auto"
-  abbr -a la "ls -A --color=auto"
-  abbr -a lz "ls -lhAi --color=auto"
-  abbr -a lh "ls -d .* 2>/dev/null"
-  abbr -a tree "tree -a 2>/dev/null || ls -R --color=auto"
-end
+# LS commands
+abbr -a la "ls -A"
+abbr -a lz "ls -lhAi"
+abbr -a lh "ls -d .* 2>/dev/null"
+abbr -a tree "tree -a 2>/dev/null || ls -R"
