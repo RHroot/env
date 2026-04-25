@@ -30,7 +30,7 @@
     bash-language-server # LSP for sh
     marksman # LSP for Markdown
     nil # LSP for Nix
-    
+
     # === CyberSecurity ===
     nmap # Network scanner and port discovery tool
     strace # Diagnostic tool to monitor system calls
@@ -46,8 +46,8 @@
     enable = true;
     package = pkgs.unstable.vim-full;
   };
-  services.emacs = {
-    install = true;
+  programs.neovim = {
     enable = true;
+    package = pkgs.unstable.neovim;
   };
 }

@@ -10,7 +10,7 @@ find "$STICKER_DIR" -type f \
     label="${file#$STICKER_DIR/}"
     printf "%s\0icon\x1f%s\n" "$label" "$file"
   done \
-  | fuzzel --dmenu --prompt="Sticker" \
+  | rofi -dmenu -i -p "Pick ❯" -theme "art_selector" \
   | while IFS= read -r file; do
     [ -z "$file" ] && exit 0
 
