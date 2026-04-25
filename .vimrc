@@ -46,7 +46,7 @@ set cursorcolumn
 set signcolumn=yes
 set showmode
 set list
-set listchars=tab:▶\ ,trail:·,nbsp:␣,extends:›,precedes:‹
+set listchars=tab:»\ ,trail:·,nbsp:␣,extends:›,precedes:‹
 set showbreak=↪\
 set scrolloff=8
 set sidescrolloff=5
@@ -112,9 +112,9 @@ set statusline+=%#SLPct#\ %p%%\
 " ─────────────────────────────────────────────────────────────────────────────
 " 6. EDITING BEHAVIOUR
 " ─────────────────────────────────────────────────────────────────────────────
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set smartindent
 set autoindent
@@ -214,10 +214,10 @@ augroup END
 augroup auto_resize
   autocmd!
   autocmd VimResized * wincmd =
-    augroup END
+augroup END
 
   " ── Per-filetype tweaks ────────────────────────────────────────────────────
-  augroup filetype_settings
+augroup filetype_settings
     autocmd!
     autocmd FileType python    setlocal tabstop=4 shiftwidth=4 softtabstop=4
     autocmd FileType go        setlocal tabstop=4 shiftwidth=4 noexpandtab
@@ -225,98 +225,98 @@ augroup auto_resize
     autocmd FileType markdown  setlocal wrap linebreak spell
     autocmd FileType gitcommit setlocal spell textwidth=72 colorcolumn=73
     autocmd FileType qf,help,man setlocal nospell nolist
-  augroup END
+augroup END
 
   " ─────────────────────────────────────────────────────────────────────────────
   " 11. KEYMAPS
   " ─────────────────────────────────────────────────────────────────────────────
   " ── Convenience ────────────────────────────────────────────────────────────
-  nnoremap ; :
-  xnoremap ; :
-  inoremap <C-c> <Esc>
-  cnoremap <C-c> <C-c>
-  vnoremap <C-c> <Esc>
+nnoremap ; :
+xnoremap ; :
+inoremap <C-c> <Esc>
+cnoremap <C-c> <C-c>
+vnoremap <C-c> <Esc>
 
-  nnoremap <Esc>   :nohlsearch<CR>
-  nnoremap <C-c>   :nohlsearch<CR>
+nnoremap <Esc>   :nohlsearch<CR>
+nnoremap <C-c>   :nohlsearch<CR>
 
-  " ── Save / quit ────────────────────────────────────────────────────────────
-  nnoremap <leader>w  :write<CR>
-  nnoremap <leader>q  :quit<CR>
-  nnoremap <leader>Q  :qall!<CR>
-  nnoremap <leader>so :update<CR>:source %<CR>
-  nnoremap <leader>si :source $MYVIMRC<CR>
+" ── Save / quit ────────────────────────────────────────────────────────────
+nnoremap <leader>w  :write<CR>
+nnoremap <leader>q  :quit<CR>
+nnoremap <leader>Q  :qall!<CR>
+nnoremap <leader>so :update<CR>:source %<CR>
+nnoremap <leader>si :source $MYVIMRC<CR>
 
-  " ── Files & buffers ────────────────────────────────────────────────────────
-  nnoremap <leader>e  :Lexplore<CR>
-  nnoremap <leader>E  :Ex<CR>
-  nnoremap <leader>bc :enew<CR>
-  nnoremap <leader>bn :bnext<CR>
-  nnoremap <leader>bp :bprevious<CR>
-  nnoremap <leader>bd :bdelete<CR>
-  nnoremap <leader>bl :ls<CR>:b<Space>
+" ── Files & buffers ────────────────────────────────────────────────────────
+nnoremap <leader>e  :Lexplore<CR>
+nnoremap <leader>E  :Ex<CR>
+nnoremap <leader>bc :enew<CR>
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprevious<CR>
+nnoremap <leader>bd :bdelete<CR>
+nnoremap <leader>bl :ls<CR>:b<Space>
 
-  " ── Window navigation ──────────────────────────────────────────────────────
-  nnoremap <C-h> <C-w>h
-  nnoremap <C-j> <C-w>j
-  nnoremap <C-k> <C-w>k
-  nnoremap <C-l> <C-w>l
+" ── Window navigation ──────────────────────────────────────────────────────
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-  " ── Window resizing ────────────────────────────────────────────────────────
-  nnoremap <C-Up>    :resize +2<CR>
-  nnoremap <C-Down>  :resize -2<CR>
-  nnoremap <C-Left>  :vertical resize -2<CR>
-  nnoremap <C-Right> :vertical resize +2<CR>
+" ── Window resizing ────────────────────────────────────────────────────────
+nnoremap <C-Up>    :resize +2<CR>
+nnoremap <C-Down>  :resize -2<CR>
+nnoremap <C-Left>  :vertical resize -2<CR>
+nnoremap <C-Right> :vertical resize +2<CR>
 
-  " ── Editing ────────────────────────────────────────────────────────────────
-  " Move selected lines up / down and re-indent
-  vnoremap J :m '>+1<CR>gv=gv
-  vnoremap K :m '<-2<CR>gv=gv
+" ── Editing ────────────────────────────────────────────────────────────────
+" Move selected lines up / down and re-indent
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
-  " Join without moving the cursor
-  nnoremap J mzJ`z
+" Join without moving the cursor
+nnoremap J mzJ`z
 
-  " Centre the screen on common jumps
-  nnoremap <C-d> <C-d>zz
-  nnoremap <C-u> <C-u>zz
-  nnoremap n     nzzzv
-  nnoremap N     Nzzzv
-  nnoremap g;    g;zz
-  nnoremap g,    g,zz
-  nnoremap %     %zz
+" Centre the screen on common jumps
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n     nzzzv
+nnoremap N     Nzzzv
+nnoremap g;    g;zz
+nnoremap g,    g,zz
+nnoremap %     %zz
 
-  " Paste over selection without clobbering the unnamed register
-  vnoremap <leader>P "_dP
+" Paste over selection without clobbering the unnamed register
+vnoremap <leader>P "_dP
 
-  " Select the text that was last pasted (mirrors gv for yanks)
-  nnoremap gp `[v`]
+" Select the text that was last pasted (mirrors gv for yanks)
+nnoremap gp `[v`]
 
-  " ── Terminal ───────────────────────────────────────────────────────────────
-  nnoremap <leader>t  :terminal<CR>
-  nnoremap <leader>tv :vertical terminal<CR>
-  tnoremap <Esc>      <C-\><C-n>
-  tnoremap <C-h>      <C-\><C-n><C-w>h
-  tnoremap <C-j>      <C-\><C-n><C-w>j
-  tnoremap <C-k>      <C-\><C-n><C-w>k
-  tnoremap <C-l>      <C-\><C-n><C-w>l
+" ── Terminal ───────────────────────────────────────────────────────────────
+nnoremap <leader>t  :terminal<CR>
+nnoremap <leader>tv :vertical terminal<CR>
+tnoremap <Esc>      <C-\><C-n>
+tnoremap <C-h>      <C-\><C-n><C-w>h
+tnoremap <C-j>      <C-\><C-n><C-w>j
+tnoremap <C-k>      <C-\><C-n><C-w>k
+tnoremap <C-l>      <C-\><C-n><C-w>l
 
-  " ── Quickfix ───────────────────────────────────────────────────────────────
-  nnoremap <leader>co :copen<CR>
-  nnoremap <leader>cc :cclose<CR>
-  nnoremap <leader>cn :cnext<CR>zz
-  nnoremap <leader>cp :cprevious<CR>zz
+" ── Quickfix ───────────────────────────────────────────────────────────────
+nnoremap <leader>co :copen<CR>
+nnoremap <leader>cc :cclose<CR>
+nnoremap <leader>cn :cnext<CR>zz
+nnoremap <leader>cp :cprevious<CR>zz
 
-  " ─────────────────────────────────────────────────────────────────────────────
-  " 12. YANK HIGHLIGHT
-  " ─────────────────────────────────────────────────────────────────────────────
-  highlight YankFlash guibg=#e5c07b guifg=#1e1e2e gui=bold ctermbg=214 ctermfg=232 cterm=bold
+" ─────────────────────────────────────────────────────────────────────────────
+" 12. YANK HIGHLIGHT
+" ─────────────────────────────────────────────────────────────────────────────
+highlight YankFlash guibg=#e5c07b guifg=#1e1e2e gui=bold ctermbg=214 ctermfg=232 cterm=bold
 
-  augroup yank_highlight
+augroup yank_highlight
     autocmd!
     autocmd TextYankPost * call s:FlashYank()
-  augroup END
+augroup END
 
-  function! s:FlashYank() abort
+function! s:FlashYank() abort
     if v:event.operator !=# 'y' | return | endif
     silent! call matchdelete(get(s:, '_ym', -1))
 
@@ -324,18 +324,18 @@ augroup auto_resize
     let start = getpos("'[")
     let end   = getpos("']")
     for lnum in range(start[1], end[1])
-      let col  = (lnum == start[1]) ? start[2] : 1
-      let cend = (lnum == end[1])   ? end[2]   : strchars(getline(lnum)) + 1
-      let len  = cend - col
-      if len > 0 | call add(positions, [lnum, col, len]) | endif
+        let col  = (lnum == start[1]) ? start[2] : 1
+        let cend = (lnum == end[1])   ? end[2]   : strchars(getline(lnum)) + 1
+        let len  = cend - col
+        if len > 0 | call add(positions, [lnum, col, len]) | endif
     endfor
 
     if empty(positions) | return | endif
     let s:_ym = matchaddpos('YankFlash', positions, 10, -1)
     call timer_start(100, {-> s:YankClear()})
-  endfunction
+endfunction
 
-  function! s:YankClear() abort
+function! s:YankClear() abort
     silent! call matchdelete(get(s:, '_ym', -1))
     silent! unlet s:_ym
-  endfunction
+endfunction
