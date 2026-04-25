@@ -8,7 +8,6 @@
     # === Python Development ===
     python313 # Python 3.13 interpreter
     python313Packages.uv # Extremely fast Python package and environment manager
-    python313Packages.ruff # Fast Python linter and formatter
 
     # === Lua Development ===
     lua # Lua programming language interpreter
@@ -23,13 +22,9 @@
     rustup # Rust toolchain installer and version manager
 
     # === Web Development tools ===
+    nodejs # JavaScript runtime environment
     bun # All-in-one JS runtime, bundler, and package manager
     prettierd # Fast daemonized code formatter (Prettier)
-
-    # === More LSP ===
-    bash-language-server # LSP for sh
-    marksman # LSP for Markdown
-    nil # LSP for Nix
 
     # === CyberSecurity ===
     nmap # Network scanner and port discovery tool
@@ -48,6 +43,6 @@
   };
   programs.neovim = {
     enable = true;
-    package = pkgs.unstable.neovim;
+    package = pkgs.unstable.neovim-unwrapped;
   };
 }
