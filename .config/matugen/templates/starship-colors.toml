@@ -21,7 +21,8 @@ right_format = """$all"""
 [directory]
 style = "bold fg:color1"
 format = "[ $path ]($style)"
-truncation_length = 4
+truncation_length = 6
+truncate_to_repo = false
 
 [directory.substitutions]
 "Home" = "󰋜"
