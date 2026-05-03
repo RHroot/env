@@ -11,11 +11,10 @@
     completion.enable = true;
 
     shellAliases = {
-      # ls (safe defaults)
-      ls = "ls --color=auto";
-      la = "ls -A --color=auto";
-      lz = "ls -lhAi --color=auto";
-      lh = "ls -d .* 2>/dev/null";
+      # ls
+      la = "ls -A --hyperlink=auto";
+      lz = "ls -lhAi --hyperlink=auto";
+      lh = "ls -d .* 2>/dev/null --hyperlink=auto";
       tree = "tree -a 2>/dev/null || ls -R --color=auto";
 
       # Navigation
