@@ -35,7 +35,6 @@
     typst # Strongly typed WYSIWYG markup language
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
-    zed-editor # Text editor with a minimal UI
     pkg-config # Package management tool for libraries
     tree-sitter # Incremental parsing system for syntax highlighting and code analysis
     jetbrains-toolbox # JetBrains Toolbox App for managing JetBrains IDEs
@@ -47,5 +46,8 @@
   programs.neovim = {
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;
+  };
+  xdg.mime.defaultApplications = {
+    "text/html" = ["gvim.desktop"];
   };
 }

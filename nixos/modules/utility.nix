@@ -47,7 +47,6 @@
   };
 
   xdg.mime.defaultApplications = {
-    "text/html" = ["dev.zed.Zed.desktop"];
     "x-scheme-handler/http" = ["firefox.desktop"];
     "x-scheme-handler/https" = ["firefox.desktop"];
     # PDF viewer

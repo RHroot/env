@@ -145,7 +145,7 @@
       "paused": "▶ ",
       "stopped": "⏹ ",
     },
-    "max-length": 20,
+    "max-length": 30,
     "ellipsis": true,
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl next",

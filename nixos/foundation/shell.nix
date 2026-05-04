@@ -141,8 +141,8 @@
   ];
 
   environment.sessionVariables = {
-    EDITOR = "zeditor";
-    VISUAL = "zeditor";
+    EDITOR = "gvim";
+    VISUAL = "gvim";
     TERMINAL = "kitty";
     BROWSER = "brave";
     COLORTERM = "truecolor";
