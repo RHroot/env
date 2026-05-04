@@ -1,9 +1,9 @@
 {
   config,
   pkgs,
+  env,
   ...
-}:
-{
+}: {
   environment.systemPackages = with pkgs; [
     steam
     evince
@@ -47,13 +47,13 @@
   };
 
   xdg.mime.defaultApplications = {
-    "text/html" = [ "dev.zed.Zed.desktop" ];
-    "x-scheme-handler/http" = [ "firefox.desktop" ];
-    "x-scheme-handler/https" = [ "firefox.desktop" ];
+    "text/html" = ["dev.zed.Zed.desktop"];
+    "x-scheme-handler/http" = ["firefox.desktop"];
+    "x-scheme-handler/https" = ["firefox.desktop"];
     # PDF viewer
-    "application/pdf" = [ "org.gnome.Evince.desktop" ];
+    "application/pdf" = ["org.gnome.Evince.desktop"];
     # Video
-    "video/mp4" = [ "vlc.desktop" ];
-    "video/x-matroska" = [ "vlc.desktop" ];
+    "video/mp4" = ["vlc.desktop"];
+    "video/x-matroska" = ["vlc.desktop"];
   };
 }
