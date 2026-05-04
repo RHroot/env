@@ -16,7 +16,7 @@
       commit.gpgsign = true;
 
       core = {
-        editor = "lapce";
+        editor = "zeditor";
         pager = "delta";
         autocrlf = "input";
       };

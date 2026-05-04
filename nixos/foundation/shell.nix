@@ -141,8 +141,8 @@
   ];
 
   environment.sessionVariables = {
-    EDITOR = "lapce";
-    VISUAL = "lapce";
+    EDITOR = "zeditor";
+    VISUAL = "zeditor";
     TERMINAL = "kitty";
     BROWSER = "brave";
     COLORTERM = "truecolor";
