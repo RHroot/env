@@ -47,9 +47,9 @@
   };
 
   xdg.mime.defaultApplications = {
-    "text/html" = [ "librewolf.desktop" ];
-    "x-scheme-handler/http" = [ "librewolf.desktop" ];
-    "x-scheme-handler/https" = [ "librewolf.desktop" ];
+    "text/html" = [ "lapce.desktop" ];
+    "x-scheme-handler/http" = [ "firefox.desktop" ];
+    "x-scheme-handler/https" = [ "firefox.desktop" ];
     # PDF viewer
     "application/pdf" = [ "org.gnome.Evince.desktop" ];
     # Video

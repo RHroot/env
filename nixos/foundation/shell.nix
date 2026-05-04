@@ -141,8 +141,8 @@
   ];
 
   environment.sessionVariables = {
-    EDITOR = "kitty -e nvim";
-    VISUAL = "kitty -e nvim";
+    EDITOR = "lapce";
+    VISUAL = "lapce";
     TERMINAL = "kitty";
     BROWSER = "brave";
     COLORTERM = "truecolor";

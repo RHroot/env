@@ -32,6 +32,7 @@
     tcpdump # Command-line packet analyzer
 
     # === Utility tools ===
+    lapce # Code editor with a focus on speed and extensibility
     typst # Strongly typed WYSIWYG markup language
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine

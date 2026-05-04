@@ -16,7 +16,7 @@
       commit.gpgsign = true;
 
       core = {
-        editor = "kitty -e nvim";
+        editor = "lapce";
         pager = "delta";
         autocrlf = "input";
       };
