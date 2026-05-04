@@ -8,7 +8,16 @@ syntax on
 let mapleader = " "
 let maplocalleader = "\\"
 
-set clipboard=unnamedplus
+" Detect best clipboard option for your system
+if has('clipboard')
+  if has('unnamedplus')
+    set clipboard=unnamedplus
+  elseif has('unnamed')
+    set clipboard=unnamed
+  elseif has('macunix')
+    set clipboard=unnamed
+  endif
+endif
 
 " ─────────────────────────────────────────────────────────────────────────────
 " 2. ENCODING
@@ -99,15 +108,15 @@ highlight SLPos     guibg=#252535 guifg=#c8c8d8 gui=none ctermbg=236 ctermfg=252
 highlight SLPct     guibg=#5f87d7 guifg=#0d0d0d gui=bold ctermbg=68  ctermfg=232 cterm=bold
 highlight SLWarn    guibg=#cc5533 guifg=#ffffff  gui=bold ctermbg=166 ctermfg=255 cterm=bold
 
-set statusline=
-set statusline+=%#SLMode#\ %{StatuslineMode()}\
-set statusline+=%#SLGit#%{StatuslineGit()}
-set statusline+=%#SLFile#\ %f%{&modified?'\ ●':''}%{&readonly?'\ ':''}\
-set statusline+=%#SLWarn#%{&paste?'\ PASTE\ ':''}
-set statusline+=%#SLMid#%=
-set statusline+=%#SLInfo#\ %{&fileformat}\ │\ %{&fenc?&fenc:&enc}\ │\ %{&ft!=''?&ft:'no\ ft'}\
-set statusline+=%#SLPos#\ %l:%c\
-set statusline+=%#SLPct#\ %p%%\
+set statusline=\ |
+set statusline+=%#SLMode#\ %{StatuslineMode()}\ |
+set statusline+=%#SLGit#%{StatuslineGit()}\ |
+set statusline+=%#SLFile#\ %f%{&modified?'\ ●':''}%{&readonly?'\ ':''}\ |
+set statusline+=%#SLWarn#%{&paste?'\ PASTE\ ':''}\ |
+set statusline+=%#SLMid#%=\ |
+set statusline+=%#SLInfo#\ %{&fileformat}\ │\ %{&fenc?&fenc:&enc}\ │\ %{&ft!=''?&ft:'no\ ft'}\ |
+set statusline+=%#SLPos#\ %l:%c\ |
+set statusline+=%#SLPct#\ %p%%\ |
 
 " ─────────────────────────────────────────────────────────────────────────────
 " 6. EDITING BEHAVIOUR
@@ -339,3 +348,18 @@ function! s:YankClear() abort
     silent! call matchdelete(get(s:, '_ym', -1))
     silent! unlet s:_ym
 endfunction
+
+" For GVim - ensure proper GUI colors
+if has("gui_running")
+  set guifont=Monospace\ 18  " Adjust to your preference
+  set guioptions-=T           " Remove toolbar
+  set guioptions-=m           " Remove menu bar
+  set guioptions-=r           " Remove right scrollbar
+  set guioptions-=L           " Remove left scrollbar
+  set guiheadroom=0
+endif
+
+" Ensure termguicolors works in terminal Vim too
+if !has("gui_running") && has("termguicolors")
+  set termguicolors
+endif
