@@ -25,7 +25,7 @@ swww img "$IMAGE" \
 matugen image "$IMAGE" -m dark -t scheme-content
 
 if command -v tmux >/dev/null 2>&1; then
-  tmux source-file ~/.config/tmux/tmux.conf 2>/dev/null
+  tmux source-file $HOME/.config/tmux/tmux.conf 2>/dev/null
   tmux list-clients -F '#{client_tty}' 2>/dev/null | while read -r tty; do
     tmux refresh-client -S -t "$tty"
   done
@@ -33,7 +33,7 @@ fi
 
 # Reload Hyprland
 hyprctl reload
-$HOME/env/nixos/modules/WM/bar-refresh
+$HOME/env/nixos/modules/WM/refreshwaybar
 kill -12 $(pgrep kitty)
 kill -10 $(pgrep kitty)
 
