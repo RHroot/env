@@ -37,6 +37,7 @@ abbr -a restart-dm "sudo systemctl restart display-manager"
 # File operations
 abbr -a rm "rm -iv"
 abbr -a cp "cp -iv"
+abbr -a mv "mv -iv"
 abbr -a cpr "cp -riv"
 abbr -a scp "sudo cp -iv"
 abbr -a scpr "sudo cp -riv"
