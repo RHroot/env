@@ -9,8 +9,6 @@
     libreoffice-fresh # Office suite
     lutris # Game (Lutris)
     protonup-qt # Proton manager
-    winetricks # Wine tools
-    wineWowPackages.stagingFull # Wine Staging
   ];
 
   # programs.steam = {
