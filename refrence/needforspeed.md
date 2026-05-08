@@ -7,6 +7,13 @@
 
 ## Setup Instructions
 
+- Graphics packages needed:
+  - vulkan-tools
+  - vulkan-loader
+  - nvidia-vaapi-driver
+  - pkgsi686Linux.libGL
+  - pkgsi686Linux.vulkan-loader
+  - pkgsi686Linux.nvidia-vaapi-driver
 - Unzip both zip files into different folders.
 - Go into Lutris and click "Add the game", then select "Install a Windows game from an executable".
 - After the installation finishes, go into the installed game path (most likely `~/Games/need-for-speed-most-wanted`).
