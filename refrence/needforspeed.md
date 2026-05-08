@@ -1,0 +1,24 @@
+# A guide to install and run Need For Speed: Most Wanted (with Redux) on Linux
+
+## Downloading files
+
+- [Need For Speed: Most Wanted](https://shorturl.at/kZ6x3)
+- [Redux](https://shorturl.at/wSlVl)
+
+## Setup Instructions
+
+- Unzip both zip files into different folders.
+- Go into Lutris and click "Add the game", then select "Install a Windows game from an executable".
+- After the installation finishes, go into the installed game path (most likely `~/Games/need-for-speed-most-wanted`).
+- Navigate to `drive_c/MagiPacks/(original_game_folder)`.
+- Delete the `scripts` folder in there completely.
+- Copy and paste the full Redux folder (that you unzipped) into this folder.
+- Overwrite any file that asks for it.
+- Before running the game, configure it first:
+  - Go to **Configure → Runner Options**.
+  - Change the version of Proton you want to use (you can use any stable version; recommended: Proton 8.0 or Proton 8.0 GE).
+  - Go to the bottom of the page and find **DLL overrides**.
+  - Put the name of the `*.dll` file you find in the Redux unzipped folder.
+  - In the **key** field, put `n,b`.
+  - Go to **System Options** and select the correct GPU so your game works smoothly.
+- The setup is now complete.
