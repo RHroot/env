@@ -76,11 +76,15 @@
 
   # Packages — tools + wrappers
   environment.systemPackages = with pkgs; [
-    mesa-demos
-    vulkan-tools
     clinfo
+    mesa-demos
     libva-utils
-    cudaPackages.cudatoolkit
+    vulkan-tools
+    vulkan-loader
+    nvidia-vaapi-driver
+    pkgsi686Linux.libGL
+    pkgsi686Linux.vulkan-loader
+    pkgsi686Linux.nvidia-vaapi-driver
 
     (writeShellScriptBin "nvidia-run" ''
       #!/bin/sh
