@@ -9,8 +9,6 @@
     libreoffice-fresh # Office suite
     steam # Gaming platform
     lutris # Game (Lutris)
-    winetricks # Wine Utilities
-    wineWowPackages.stagingFull # Wine Staging (Full)
   ];
 
   programs.firefox = {
