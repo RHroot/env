@@ -2,7 +2,6 @@
 abbr -a d "z"
 abbr -a pd "cd -"
 abbr -a c "clear"
-abbr -a home "cd ~"
 abbr -a .. "cd .."
 abbr -a ... "cd ../.."
 abbr -a .... "cd ../../.."
