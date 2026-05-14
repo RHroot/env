@@ -5,8 +5,6 @@
 }
 : {
   environment.systemPackages = with pkgs; [
-    dxvk # DirectX to Vulkan translation
-    vkd3d # DirectX 12 to Vulkan translation
     faudio # XAudio2 implementation for Wine
     lutris # A simple, efficient and really customizable game launcher
     mangohud # A FPS counter
