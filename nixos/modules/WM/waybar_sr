@@ -1,0 +1,7 @@
+#!/bin/sh
+
+pkill -f "waybar$"
+
+sleep 1
+
+waybar & disown
