@@ -9,6 +9,7 @@
     libreoffice-fresh # Office suite
     lutris # Game (Lutris)
     protonup-qt # Proton manager
+    telegram-desktop # Messenger
   ];
 
   # programs.steam = {
