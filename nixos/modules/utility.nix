@@ -7,15 +7,8 @@
   environment.systemPackages = with pkgs; [
     evince # PDF viewer
     libreoffice-fresh # Office suite
-    lutris # Game (Lutris)
-    protonup-qt # Proton manager
     telegram-desktop # Messenger
   ];
-
-  # programs.steam = {
-  #   enable = true;
-  #   package = pkgs.steam;
-  # };
 
   programs.firefox = {
     enable = true;
