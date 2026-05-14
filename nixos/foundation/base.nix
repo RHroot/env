@@ -28,7 +28,7 @@
     gzip # GNU compression utility
     p7zip # 7z archive support
     unzip # Extract ZIP archives
-    unrar-wrapped # Extract RAR archives
+    unrar-wrapper # Extract RAR archives
 
     # === System Utilities ===
     blueman # Bluetooth manager (GUI)
