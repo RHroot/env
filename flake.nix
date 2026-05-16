@@ -27,20 +27,23 @@
     in {inherit username hostname domain fqdn;};
   in {
     nixosConfigurations.${env.hostname} = nixpkgs.lib.nixosSystem {
-      inherit system;
-
       specialArgs = {inherit env;};
 
       modules = [
         ./nixos/configuration.nix
         nix-index-database.nixosModules.nix-index
 
-        ({pkgs, ...}: {
+        ({
+          pkgs,
+          lib,
+          ...
+        }: {
           nixpkgs.config.allowUnfree = true;
+          nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
           nixpkgs.overlays = [
             (final: prev: {
-              unstable = nixpkgs-unstable.legacyPackages.${system};
+              unstable = nixpkgs-unstable.legacyPackages.${prev.system};
             })
           ];
 
