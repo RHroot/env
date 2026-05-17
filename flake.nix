@@ -18,7 +18,6 @@
     nix-index-database,
     ...
   }: let
-    system = "x86_64-linux";
     env = let
       username = "sten";
       hostname = "rhroot";
@@ -39,11 +38,14 @@
           ...
         }: {
           nixpkgs.config.allowUnfree = true;
-          nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+          nixpkgs.hostPlatform = lib.mkForce "x86_64-linux";
 
           nixpkgs.overlays = [
             (final: prev: {
-              unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+              unstable = import nixpkgs-unstable {
+                localSystem = {system = prev.system;};
+                config.allowUnfree = true;
+              };
             })
           ];
 
