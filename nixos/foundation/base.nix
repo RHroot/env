@@ -22,6 +22,7 @@
     coreutils # GNU core command-line utilities
     moreutils # Additional Unix utilities not in coreutils
     fastfetch # System information fetch tool (neofetch alternative)
+    lm_sensors # Read sensors data from Linux kernel
 
     # === Zip & Archive Tools ===
     zip # Create ZIP archives
