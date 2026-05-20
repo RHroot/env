@@ -47,6 +47,9 @@
   };
 
   xdg.mime.defaultApplications = {
+    # Text
+    "text/html" = ["firefox"];
+    # Web
     "x-scheme-handler/http" = ["firefox.desktop"];
     "x-scheme-handler/https" = ["firefox.desktop"];
     # PDF viewer

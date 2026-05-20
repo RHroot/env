@@ -140,8 +140,8 @@
   ];
 
   environment.sessionVariables = {
-    EDITOR = "gvim";
-    VISUAL = "gvim";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
     TERMINAL = "kitty";
     BROWSER = "brave";
     COLORTERM = "truecolor";

@@ -41,13 +41,10 @@
   ];
   programs.vim = {
     enable = true;
-    package = pkgs.unstable.vim-full;
+    package = pkgs.unstable.vim;
   };
   programs.neovim = {
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;
-  };
-  xdg.mime.defaultApplications = {
-    "text/html" = ["gvim.desktop"];
   };
 }
