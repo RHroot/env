@@ -80,4 +80,4 @@ abbr -a vol "wpctl get-volume @DEFAULT_AUDIO_SINK@"
 abbr -a la "ls -A --hyperlink=auto"
 abbr -a lz "ls -lhAi --hyperlink=auto"
 abbr -a lh 'set m .*; and [ "$m" != ".*" ]; and ls -d $m 2>/dev/null --hyperlink=auto'
-abbr -a tree "tree -a 2>/dev/null || ls -R"
+abbr -a list "tree -a --hyperlink 2>/dev/null || ls -R"
