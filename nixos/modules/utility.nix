@@ -6,6 +6,9 @@
 }: {
   environment.systemPackages = with pkgs; [
     evince # PDF viewer
+    zotero # Reference manager
+    foliate # Book reader and downloader
+    blanket # Different Sounds in Background
     libreoffice-fresh # Office suite
     telegram-desktop # Messenger
   ];
