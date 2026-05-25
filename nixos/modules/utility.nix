@@ -5,7 +5,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    mpv # Video player
+    vlc # Video player
     evince # PDF viewer
     zotero # Reference manager
     foliate # Book reader and downloader
@@ -59,7 +59,7 @@
     # PDF viewer
     "application/pdf" = ["org.gnome.Evince.desktop"];
     # Video
-    "video/mp4" = ["mpv.desktop"];
-    "video/x-matroska" = ["mpv.desktop"];
+    "video/mp4" = ["vlc.desktop"];
+    "video/x-matroska" = ["vlc.desktop"];
   };
 }
