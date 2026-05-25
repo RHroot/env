@@ -5,6 +5,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    gimp # Advanced image editor (GNU Image Manipulation Program)
     lmms # Digital audio workstation for music production
     krita # Professional digital painting and illustration software
     inkscape # Vector graphics editor for creating and editing scalable graphics

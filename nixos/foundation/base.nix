@@ -14,6 +14,7 @@
     stow # Symlink-based dotfile manager
     tree # Display directory structure as a tree
     gnupg # Encryption and signing tool (GPG)
+    ffmpeg # Multimedia framework for encoding, decoding, and processing media
     gnumake # Build automation tool (make)
     busybox # Single binary providing common Unix utilities
     img2pdf # Convert images to PDF without re-encoding

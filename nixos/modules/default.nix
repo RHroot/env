@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./audio.nix
-    ./video.nix
     ./gaming.nix
     ./content.nix
     ./utility.nix
