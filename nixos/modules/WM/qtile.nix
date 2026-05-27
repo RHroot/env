@@ -7,18 +7,11 @@
     enable = true;
     windowManager.qtile = {
       enable = true;
-      configFile = "/home/sten/env/.config/qtile/config.py";
     };
     displayManager.lightdm.enable = true;
   };
 
-  services.picom = {
-    enable = true;
-    vSync = true;
-    backend = "glx";
-    fade = false;
-    shadow = false;
-  };
+  services.picom.enable = true;
 
   services.libinput = {
     enable = true;
@@ -59,9 +52,10 @@
     python313Packages.qtile # Qtile core
     python313Packages.qtile-extras # Qtile extras
     xorg.xorgserver # X server
-    picom # X compositor
 
     # === Basic ===
+    picom # X compositor
+    xclip # Clipboard manager
     libinput # Input device management library
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
