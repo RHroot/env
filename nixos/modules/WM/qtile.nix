@@ -68,6 +68,16 @@
     configPackages = [pkgs.xdg-desktop-portal-gtk];
   };
 
+  xdg.mime.defaultApplications = {
+    # Images
+    "image/png" = ["feh.desktop"];
+    "image/jpeg" = ["feh.desktop"];
+    "image/webp" = ["feh.desktop"];
+    "image/gif" = ["feh.desktop"];
+    # File manager
+    "inode/directory" = ["nemo.desktop"];
+  };
+
   environment.systemPackages = with pkgs; [
     # === Qtile ===
     python313Packages.qtile # Qtile core
@@ -85,6 +95,10 @@
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
     alacritty # GPU-accelerated terminal emulator
+
+    # === Input and Gestures ===
+    xdotool # X11 keyboard/mouse automation tool
+    libinput-gestures # Gesture recognition and customization framework
 
     # === Polkit ===
     polkit_gnome # GNOME's polkit agent
