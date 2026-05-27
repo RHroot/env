@@ -9,7 +9,7 @@
       enable = true;
       # configFile = "/home/sten/env/.config/qtile/config.py";
     };
-    displayManager.lightdm.enable = false;
+    displayManager.lightdm.enable = true;
   };
 
   services.picom = {
@@ -47,17 +47,6 @@
   services.displayManager.sddm.enable = false;
 
   services.getty.autologinUser = "sten";
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "qtile";
-        user = "sten";
-      };
-    };
-  };
-
   services.displayManager.defaultSession = "qtile";
 
   xdg.portal = {
@@ -69,6 +58,7 @@
     # === Qtile ===
     python313Packages.qtile # Qtile core
     python313Packages.qtile-extras # Qtile extras
+    xorg.xorgserver # X server
     picom # X compositor
 
     # === Basic ===
