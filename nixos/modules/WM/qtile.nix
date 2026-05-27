@@ -19,8 +19,6 @@
     };
   };
 
-  services.picom.enable = true;
-
   services.libinput = {
     enable = true;
 
