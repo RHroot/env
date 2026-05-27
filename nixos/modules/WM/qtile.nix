@@ -52,23 +52,24 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.qtile}/bin/qtile";
+        command = "qtile";
         user = "sten";
       };
     };
   };
 
-  services.displayManager.defaultSession = "Qtile";
+  services.displayManager.defaultSession = "qtile";
 
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    configPackages = [pkgs.xdg-desktop-portal-gtk];
   };
 
   environment.systemPackages = with pkgs; [
     # === Qtile ===
-    qtile
-    picom
+    python313Packages.qtile # Qtile core
+    python313Packages.qtile-extras # Qtile extras
+    picom # X compositor
 
     # === Basic ===
     libinput # Input device management library
