@@ -7,7 +7,7 @@
     enable = true;
     windowManager.qtile = {
       enable = true;
-      # configFile = "/home/sten/env/.config/qtile/config.py";
+      configFile = "/home/sten/env/.config/qtile/config.py";
     };
     displayManager.lightdm.enable = true;
   };
