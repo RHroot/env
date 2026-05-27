@@ -19,6 +19,21 @@
     };
   };
 
+  security.polkit.enable = true;
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = ["graphical-session.target"];
+    wants = ["graphical-session.target"];
+    after = ["graphical-session.target"];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+
   services.libinput = {
     enable = true;
 
@@ -60,18 +75,16 @@
     xorg.xorgserver # X server
 
     # === Basic ===
+    feh # Image viewer
+    nemo # File manager
+    rofi # Menu system
     picom # X compositor
     xclip # Clipboard manager
+    kitty # Feature-rich GPU-based terminal emulator
     libinput # Input device management library
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
-
-    # === Terminal emulators ===
-    kitty # Feature-rich GPU-based terminal emulator
     alacritty # GPU-accelerated terminal emulator
-
-    # === File managers ===
-    nemo # File manager
 
     # === Polkit ===
     polkit_gnome # GNOME's polkit agent

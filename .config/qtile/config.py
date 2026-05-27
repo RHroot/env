@@ -209,15 +209,5 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser("~/.config/qtile")
-    import time
-
-    time.sleep(1)
-    lazy.spawn("polkit-gnome-authentication-agent-1", "&")
-    lazy.spawn("xset -dpms")
-    lazy.spawn("xset s off")
-    lazy.spawn("xset dpms 0 0 0")
-    subprocess.Popen(
-        ["xrandr", "--output", "eDP-1", "--mode", "1920x1080", "--rate", "60.00"]
-    )
-    subprocess.Popen(["xset", "r", "rate", "200", "40"])
+    script = os.path.expanduser("~/.config/qtile/autostart")
+    subprocess.Popen([script])
