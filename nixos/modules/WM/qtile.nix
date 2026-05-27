@@ -8,7 +8,15 @@
     windowManager.qtile = {
       enable = true;
     };
-    displayManager.lightdm.enable = true;
+    displayManager.lightdm = {
+      enable = true;
+      extraSeatDefaults = ''
+        display-setup-script = ${pkgs.writeScript "lightdm-display-setup" ''
+          #!${pkgs.bash}/bin/bash
+          ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --mode 1920x1080 --rate 60
+        ''}
+      '';
+    };
   };
 
   services.picom.enable = true;

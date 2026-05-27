@@ -14,10 +14,15 @@ terminal = guess_terminal()
 keys = [
     Key([mod], "Return", lazy.spawn("kitty"), desc="Launch Terminal"),
     Key([mod, "shift"], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "b", lazy.spawn("firefox", "-P", "default"), desc="Launch Browser"),
+    Key([mod], "b", lazy.spawn("firefox -P 'default'"), desc="Launch Browser"),
     Key(
-        [mod, "shift"], "b", lazy.spawn("firefox", "-P", "work"), desc="Launch Browser"
+        [mod, "shift"],
+        "b",
+        lazy.spawn("firefox -P 'work'"),
+        desc="Launch Browser",
     ),
+    Key([mod], "j", lazy.screen.prev_group(skip_empty=True)),
+    Key([mod], "k", lazy.screen.next_group(skip_empty=True)),
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
@@ -85,7 +90,7 @@ for i in groups:
             Key(
                 [mod],
                 i.name,
-                lazy.group[i.name].toscreen(),
+                lazy.group[i.name].toscreen(toggle=True),
                 desc=f"Switch to group {i.name}",
             ),
             # mod + shift + group number = switch to & move focused window to group
@@ -209,6 +214,9 @@ def autostart():
 
     time.sleep(1)
     lazy.spawn("polkit-gnome-authentication-agent-1", "&")
+    lazy.spawn("xset -dpms")
+    lazy.spawn("xset s off")
+    lazy.spawn("xset dpms 0 0 0")
     subprocess.Popen(
         ["xrandr", "--output", "eDP-1", "--mode", "1920x1080", "--rate", "60.00"]
     )
