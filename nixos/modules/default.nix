@@ -4,7 +4,7 @@
     ./gaming.nix
     ./content.nix
     ./utility.nix
-    ./theming
+    ./theming.nix
     ./toolbox.nix
     ./graphics.nix
     ./WM
