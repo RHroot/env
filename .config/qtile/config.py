@@ -21,18 +21,32 @@ keys = [
         lazy.spawn("firefox -P 'work'"),
         desc="Launch Browser",
     ),
+    Key(
+        [mod],
+        "space",
+        lazy.spawn("rofi -show combi -modes combi -combi-modes 'window,drun,run'"),
+        desc="Launch Rofi",
+    ),
+    Key(
+        [mod, "shift"],
+        "space",
+        lazy.spawn("rofi -show run"),
+        desc="Launch Rofi",
+    ),
     Key([mod], "j", lazy.screen.prev_group(skip_empty=True)),
     Key([mod], "k", lazy.screen.next_group(skip_empty=True)),
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
-    Key([alt], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([alt], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([alt], "j", lazy.layout.down(), desc="Move focus down"),
     Key([alt], "k", lazy.layout.up(), desc="Move focus up"),
+    Key([alt], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([alt], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([alt], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
+    Key([alt, "control"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([alt, "control"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     Key(
         [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
     ),
@@ -42,14 +56,12 @@ keys = [
         lazy.layout.shuffle_right(),
         desc="Move window to the right",
     ),
-    Key([alt, "control"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([alt, "control"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([alt, "shift"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([alt, "shift"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([alt, "shift"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([alt, "shift"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([alt, "shift"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([alt, "shift"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([alt], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed

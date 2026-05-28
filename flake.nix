@@ -9,6 +9,10 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # stylix = {
+    #   url = "github:danth/stylix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
@@ -16,6 +20,7 @@
     nixpkgs,
     nixpkgs-unstable,
     nix-index-database,
+    # stylix,
     ...
   }: let
     env = let
@@ -31,6 +36,7 @@
       modules = [
         ./nixos/configuration.nix
         nix-index-database.nixosModules.nix-index
+        # stylix.nixosModules.stylix
 
         ({
           pkgs,

@@ -1,0 +1,196 @@
+scan_timeout = 100
+command_timeout = 500
+
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = true
+follow_symlinks = false
+
+palette = 'colors'
+
+format = """
+$os\
+$username\
+$directory\
+$line_break\
+$character\
+"""
+
+right_format = """$all"""
+
+[directory]
+style = "bold fg:color1"
+format = "[ $path ]($style)"
+truncation_length = 6
+truncate_to_repo = false
+
+[directory.substitutions]
+"home" = "󰋜"
+"Music" = "󰝚"
+"Videos" = "󰕧"
+"Documents" = "󰈙"
+"Downloads" = "󰇚"
+"Pictures" = "󰉏"
+"Others" = "󰉋"
+
+[git_branch]
+symbol = "[](fg:color2) "
+style = "fg:color1 bg:color2 bold"
+format = "  on [$symbol$branch]($style)[](fg:color2)"
+
+[git_status]
+format = "[ $staged$modified$renamed$stashed$deleted$untracked$conflicted$ahead_behind ]($style)"
+
+staged = "[+${count} ](bold fg:color1)"
+modified = "[!${count} ](bold fg:color9)"
+renamed = "[>${count} ](bold fg:color8)"
+deleted = "[-${count} ](bold fg:red)"
+untracked = "[?${count} ](bold fg:color8)"
+stashed = "[${count} ](bold fg:color5)"
+conflicted = "[✖${count} ](bold fg:red)"
+
+ahead = "[${count} ](bold fg:color1)"
+behind = "[${count} ](bold fg:color9)"
+diverged = "[${ahead_count}${behind_count} ](bold fg:red)"
+
+[os]
+disabled = false
+
+[os.symbols]
+AIX = "󰻀 "
+AlmaLinux = " "
+Alpaquita = " "
+Alpine = " "
+ALTLinux = " "
+Amazon = " "
+Android = " "
+AOSC = " "
+Arch = " "
+Artix = " "
+Bluefin = " "
+CachyOS = " "
+CentOS = " "
+Cygwin = " "
+Debian = " "
+DragonFly = " "
+Elementary = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = " "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+InstantOS = " "
+Ios = " "
+Kali = " "
+Linux = " "
+Mabox = " "
+Manjaro = " "
+Mariner = "󰠳 "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = " "
+OpenCloudOS = " "
+openEuler = "󰏗 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+PikaOS = " "
+Pop = " "
+RaspberryPiOS = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+RockyLinux = " "
+Solus = " "
+SUSE = " "
+Ubuntu = " "
+Ultramarine = " "
+Uos = "󰘚 "
+Void = " "
+Windows = "󰍲 "
+Zorin = " "
+Unknown = " "
+Macos = "󰌍 "
+
+[python]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color1)"
+
+[nodejs]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color3)"
+
+[bun]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color3)"
+
+[golang]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color8)"
+
+[rust]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color9)"
+
+[zig]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color9)"
+
+[c]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color3)"
+
+[cpp]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color3)"
+
+[lua]
+symbol = " "
+format = "[ $symbol$version ](bold fg:color1)"
+
+[nix_shell]
+symbol = " "
+format = "[ $symbol$state ](bold fg:color8)"
+
+[git_state]
+format = "[ $state( $progress_current/$progress_total) ](bold fg:color9)"
+
+[package]
+symbol = "󰏗 "
+format = "[ $symbol$version ](bold fg:color3)"
+
+[cmake]
+symbol = " "
+format = "[ $symbol ](bold fg:color3)"
+
+[docker_context]
+symbol = " "
+format = "[ $symbol$context ](bold fg:color8)"
+
+[username]
+show_always = true
+
+[line_break]
+disable = true
+
+[character]
+success_symbol = "[✔](bold fg:color1)"
+error_symbol = "[✖](bold fg:red)"
+vicmd_symbol = "[](bold fg:color1)"
+
+[palettes.colors]
+color1 = '#a3c9ff'
+color2 = '#00315c'
+color3 = '#c1c7d3'
+color4 = '#1d2025'
+color5 = '#00315c'
+color6 = '#111418'
+color7 = '#111418'
+color8 = '#a3c9ff'
+color9 = '#f1afff'
