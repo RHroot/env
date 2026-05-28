@@ -8,5 +8,7 @@ xset dpms 0 0 0
 xset r rate 200 40
 xrandr --output eDP-1 --mode 1920x1080 --rate 60.00
 pkill -f picom 2>/dev/null
-picom -b &
+picom &
+dunst &
 nm-applet &
+libinput-gestures &

@@ -91,6 +91,7 @@
     picom # X compositor
     xclip # Clipboard manager
     kitty # Feature-rich GPU-based terminal emulator
+    dunst # Desktop notifications
     libinput # Input device management library
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
