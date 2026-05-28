@@ -1,5 +1,3 @@
-@import "~/.cache/Matugen/rofi-colors.rasi"
-
 configuration {
     cycle: true;
     show-icons: true;
@@ -18,17 +16,17 @@ configuration {
 
 * {
     /* Tokyonight-Night Fallbacks */
-    background-colour:           var(surface, #1a1b26);
-    foreground-colour:           var(on-surface, #cfc9c2);
-    border-colour:               var(primary, #7aa2f7);
-    handle-colour:               var(primary, #7aa2f7);
+    background-colour:           #1a1b26;
+    foreground-colour:           #cfc9c2;
+    border-colour:               #7aa2f7;
+    handle-colour:               #7aa2f7;
 
     /* Selection (Brightest) */
-    selected-normal-background:  var(primary, #7aa2f7);
-    selected-normal-foreground:  var(on-primary, #15161e);
+    selected-normal-background:  #7aa2f7;
+    selected-normal-foreground:  #15161e;
 
     /* Active Window (Subtle Highlight) */
-    active-indicator:            var(tertiary, #bb9af7);
+    active-indicator:            #bb9af7;
 }
 
 window {

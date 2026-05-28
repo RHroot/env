@@ -91,6 +91,70 @@ keys = [
     Key([alt, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([alt, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # Volume
+    Key(
+        [],
+        "XF86AudioRaiseVolume",
+        lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"),
+        desc="Volume up",
+    ),
+    Key(
+        [],
+        "XF86AudioLowerVolume",
+        lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"),
+        desc="Volume down",
+    ),
+    Key(
+        [],
+        "XF86AudioMute",
+        lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+        desc="Mute/unmute",
+    ),
+    Key(
+        [],
+        "XF86AudioMicMute",
+        lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+        desc="Mute/unmute mic",
+    ),
+    # Media control
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Play/pause"),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Next track"),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Previous track"),
+    Key([], "XF86AudioStop", lazy.spawn("playerctl stop"), desc="Stop"),
+    # Screen brightness
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.spawn(
+            "sh -c 'brightnessctl set +10% >/dev/null; level=$(brightnessctl -m | cut -d, -f4 | tr -d %); notify-send \"Brightness: $level%\"'"
+        ),
+        desc="Increase brightness",
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.spawn(
+            "sh -c 'brightnessctl set 10%- >/dev/null; level=$(brightnessctl -m | cut -d, -f4 | tr -d %); notify-send \"Brightness: $level%\"'"
+        ),
+        desc="Decrease brightness",
+    ),
+    # Keyboard backlight
+    Key(
+        [],
+        "XF86KbdBrightnessUp",
+        lazy.spawn(
+            'sh -c \'brightnessctl -d "*::kbd_backlight" set +33% >/dev/null; cur=$(brightnessctl -d "*::kbd_backlight" get); max=$(brightnessctl -d "*::kbd_backlight" max); pct=$((100 * cur / max)); notify-send "Kbd: $pct%"\''
+        ),
+        desc="Keyboard backlight up",
+    ),
+    Key(
+        [],
+        "XF86KbdBrightnessDown",
+        lazy.spawn(
+            'sh -c \'brightnessctl -d "*::kbd_backlight" set 33%- >/dev/null; cur=$(brightnessctl -d "*::kbd_backlight" get); max=$(brightnessctl -d "*::kbd_backlight" max); pct=$((100 * cur / max)); notify-send "Kbd: $pct%"\''
+        ),
+        desc="Keyboard backlight down",
+    ),
 ]
 
 groups = [Group(i) for i in "1234567890"]
