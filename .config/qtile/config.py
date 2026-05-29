@@ -3,7 +3,7 @@ import subprocess
 
 import libqtile.resources
 from libqtile import bar, hook, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -14,6 +14,7 @@ terminal = guess_terminal()
 keys = [
     Key([mod], "Return", lazy.spawn("kitty"), desc="Launch Terminal"),
     Key([mod, "shift"], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "e", lazy.spawn("nautilus"), desc="Launch File Manager"),
     Key([mod], "b", lazy.spawn("firefox -P 'default'"), desc="Launch Browser"),
     Key(
         [mod, "shift"],
@@ -83,13 +84,15 @@ keys = [
         desc="Toggle fullscreen on the focused window",
     ),
     Key(
-        [mod],
-        "t",
+        [mod, "shift"],
+        "f",
         lazy.window.toggle_floating(),
         desc="Toggle floating on the focused window",
     ),
-    Key([alt, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+    Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([alt, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([alt, "control"], "s", lazy.spawn("shutdown now"), desc="Shutdown computer"),
+    Key([alt, "control"], "r", lazy.spawn("shutdown -r now"), desc="Reboot computer"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Volume
     Key(
@@ -157,7 +160,25 @@ keys = [
     ),
 ]
 
-groups = [Group(i) for i in "1234567890"]
+groups = [Group(i) for i in "1234567890"] + [
+    ScratchPad(
+        "0",
+        [
+            DropDown(
+                "term",
+                ["kitty"],
+                height=0.8,
+                width=1.0,
+                x=0.0,
+                y=0.0,
+                opacity=0.85,
+                on_focus_lost_hide=False,
+                warp_pointer=False,
+                border_width=0,
+            ),
+        ],
+    )
+]
 
 for i in groups:
     keys.extend(
@@ -182,6 +203,17 @@ for i in groups:
             #     desc="move focused window to group {}".format(i.name)),
         ]
     )
+
+keys.extend(
+    [
+        Key(
+            [mod],
+            "p",
+            lazy.group["0"].dropdown_toggle("term"),
+            desc="Toggle dropdown terminal",
+        ),
+    ]
+)
 
 layouts = [
     layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
@@ -261,6 +293,7 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
+    border_width=0,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -270,7 +303,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-    ]
+    ],
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
