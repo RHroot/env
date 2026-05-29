@@ -14,6 +14,12 @@
     telegram-desktop # Messenger
   ];
 
+  # programs.localsend = {
+  #   enable = true;
+  #   package = pkgs.localsend;
+  #   openFirewall = true;
+  # };
+
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-bin;

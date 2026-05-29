@@ -12,6 +12,7 @@
 
     shellAliases = {
       # ls
+      ls = "ls --hyperlink=auto";
       la = "ls -A --hyperlink=auto";
       lz = "ls -lhAi --hyperlink=auto";
       lh = "ls -d .* 2>/dev/null --hyperlink=auto";

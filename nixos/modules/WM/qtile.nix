@@ -75,7 +75,7 @@
     "image/webp" = ["feh.desktop"];
     "image/gif" = ["feh.desktop"];
     # File manager
-    "inode/directory" = ["nemo.desktop"];
+    "inode/directory" = ["org.gnome.Nautilus.desktop"];
   };
 
   environment.systemPackages = with pkgs; [
@@ -86,7 +86,7 @@
 
     # === Basic ===
     feh # Image viewer
-    nemo # File manager
+    nautilus # File manager
     rofi # Menu system
     picom # X compositor
     xclip # Clipboard manager
