@@ -3,7 +3,16 @@ import subprocess
 
 import libqtile.resources
 from libqtile import bar, hook, layout, widget
-from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
+from libqtile.config import (
+    Click,
+    Drag,
+    DropDown,
+    Group,
+    Key,
+    Match,
+    ScratchPad,
+    Screen,
+)
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -160,27 +169,28 @@ keys = [
     ),
 ]
 
-groups = [Group(i) for i in "1234567890"] + [
-    ScratchPad(
-        "0",
-        [
-            DropDown(
-                "term",
-                ["kitty"],
-                height=0.8,
-                width=1.0,
-                x=0.0,
-                y=0.0,
-                opacity=0.85,
-                on_focus_lost_hide=False,
-                warp_pointer=False,
-                border_width=0,
-            ),
-        ],
-    )
-]
+regular_groups = [Group(str(i)) for i in range(1, 10)] + [Group("0", label="10")]
+scratchpad_groups = ScratchPad(
+    "scratchpad",
+    [
+        DropDown(
+            "term",
+            ["kitty"],
+            height=0.8,
+            width=1.0,
+            x=0.0,
+            y=0.0,
+            opacity=0.85,
+            on_focus_lost_hide=False,
+            warp_pointer=False,
+            border_width=0,
+        ),
+    ],
+)
 
-for i in groups:
+groups = regular_groups + [scratchpad_groups]
+
+for i in regular_groups:
     keys.extend(
         [
             # mod + group number = switch to group
@@ -209,7 +219,7 @@ keys.extend(
         Key(
             [mod],
             "p",
-            lazy.group["0"].dropdown_toggle("term"),
+            lazy.group["scratchpad"].dropdown_toggle("term"),
             desc="Toggle dropdown terminal",
         ),
     ]
@@ -233,7 +243,7 @@ layouts = [
 
 widget_defaults = dict(
     font="JetBrainsMono Nerd Font",
-    fontsize=14,
+    fontsize=18,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -243,32 +253,86 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
+                # ==================== LEFT SECTION ====================
                 widget.CurrentLayout(),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
                 widget.GroupBox(),
                 widget.Prompt(),
-                widget.WindowName(),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                # widget.StatusNotifier(),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
+                widget.WindowName(),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
+                widget.TextBox(text="🎵"),
+                widget.Mpris2(width=100),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
+                widget.CPU(format="🧠{load_percent}%"),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
+                widget.Memory(
+                    format="🔥{MemUsed:.1f}/{MemTotal:.1f}GB",
+                    measure_mem="G",
+                ),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
+                widget.PulseVolume(
+                    fmt="🔊{}",
+                ),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
+                widget.Backlight(
+                    format="🔆{percent:2.0%}",
+                    backlight_name="intel_backlight",
+                    step=5,
+                ),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
+                widget.Battery(format="🔋{char} {percent:2.0%}"),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
+                widget.Clock(format="🕐%I:%M %p"),
+                widget.Sep(
+                    linewidth=2,
+                    padding=10,
+                ),
+                widget.Clock(format="📆%Y-%m-%d %a"),
             ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            20,
         ),
         background="#000000",
         wallpaper=logo,
         wallpaper_mode="center",
-        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
-        # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
     ),
 ]
 
