@@ -164,12 +164,11 @@ keys = [
 ]
 
 regular_groups = [
-    Group("1", label="🦊"),
-    Group("2", label="🦊"),
-    Group("3", label="🐚"),
+    Group("1"),
+    Group("2"),
+    Group("3"),
     Group(
         "4",
-        label="💡",
         matches=[
             Match(wm_class="jetbrains-toolbox"),
             Match(wm_class="net.lutris.Lutris"),
@@ -177,7 +176,6 @@ regular_groups = [
     ),
     Group(
         "5",
-        label="🎮",
         matches=[
             Match(wm_class="cs2"),
             Match(wm_class="steam_app_default"),
@@ -185,22 +183,20 @@ regular_groups = [
     ),
     Group(
         "6",
-        label="📼",
         matches=[
             Match(wm_class="vlc"),
         ],
     ),
-    Group("7", label="❄️"),
+    Group("7"),
     Group(
         "8",
-        label="🎮",
         matches=[
             Match(wm_class="steam"),
             Match(wm_class="libreoffice-startcenter"),
         ],
     ),
-    Group("9", label="❄️"),
-    Group("0", label="🦊"),
+    Group("9"),
+    Group("0", label="10"),
 ]
 scratchpad_groups = ScratchPad(
     "scratchpad",
