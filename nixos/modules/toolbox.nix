@@ -22,8 +22,8 @@
     rustup # Rust toolchain installer and version manager
 
     # === Web Development tools ===
-    nodejs # JavaScript runtime environment
     bun # All-in-one JS runtime, bundler, and package manager
+    nodejs # JavaScript runtime environment
     prettierd # Fast daemonized code formatter (Prettier)
 
     # === CyberSecurity ===
@@ -32,12 +32,10 @@
     tcpdump # Command-line packet analyzer
 
     # === Utility tools ===
-    typst # Strongly typed WYSIWYG markup language
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
+    zed-editor # Text editor with a minimalistic UI
     pkg-config # Package management tool for libraries
-    tree-sitter # Incremental parsing system for syntax highlighting and code analysis
-    jetbrains-toolbox # JetBrains Toolbox App for managing JetBrains IDEs
   ];
   programs.vim = {
     enable = true;
