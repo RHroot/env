@@ -3,9 +3,6 @@
   pkgs,
   ...
 }: {
-  # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
-
   # Display drivers
   services.xserver.videoDrivers = ["nvidia"];
 
