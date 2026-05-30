@@ -12,7 +12,7 @@
     cabextract # Required for winetricks to install some components
     winetricks # For installing Wine components
     protonup-qt # For installing Proton components
-    wineWowPackages.full # Full Wine package with all components
+    wineWow64Packages.full # Full Wine package with all components
   ];
 
   programs.gamemode.enable = true;

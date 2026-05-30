@@ -35,19 +35,32 @@
 
   services.resolved = {
     enable = true;
-    extraConfig = ''
-      [Resolve]
-      DNS=1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com 2606:4700:4700::1111#cloudflare-dns.com 2606:4700:4700::1001#cloudflare-dns.com 1.1.1.2#cloudflare-dns.com 1.0.0.2#cloudflare-dns.com 2606:4700:4700::1112#cloudflare-dns.com 2606:4700:4700::1002#cloudflare-dns.com
-      FallbackDNS=9.9.9.9#dns.quad9.net 149.112.112.112#dns.quad9.net 2620:fe::fe#dns.quad9.net 2620:fe::9#dns.quad9.net
-      Domains=~.
-      DNSSEC=allow-downgrade
-      DNSOverTLS=yes
-      LLMNR=no
-      MulticastDNS=no
-      ReadEtcHosts=yes
-      Cache=yes
-      DNSStubListener=yes
-    '';
+    settings.Resolve = {
+      DNS = [
+        "1.1.1.1#cloudflare-dns.com"
+        "1.0.0.1#cloudflare-dns.com"
+        "2606:4700:4700::1111#cloudflare-dns.com"
+        "2606:4700:4700::1001#cloudflare-dns.com"
+        "1.1.1.2#cloudflare-dns.com"
+        "1.0.0.2#cloudflare-dns.com"
+        "2606:4700:4700::1112#cloudflare-dns.com"
+        "2606:4700:4700::1002#cloudflare-dns.com"
+      ];
+      FallbackDNS = [
+        "9.9.9.9#dns.quad9.net"
+        "149.112.112.112#dns.quad9.net"
+        "2620:fe::fe#dns.quad9.net"
+        "2620:fe::9#dns.quad9.net"
+      ];
+      Domains = "~.";
+      DNSSEC = "allow-downgrade";
+      DNSOverTLS = "yes";
+      LLMNR = "no";
+      MulticastDNS = "no";
+      ReadEtcHosts = "yes";
+      Cache = "yes";
+      DNSStubListener = "yes";
+    };
   };
   networking.networkmanager.dispatcherScripts = [
     {
@@ -85,7 +98,7 @@
 
   environment.systemPackages = with pkgs; [
     networkmanagerapplet # System tray applet for managing NetworkManager connections
-    protonvpn-gui # Official ProtonVPN graphical client
+    proton-vpn # Official ProtonVPN graphical client
   ];
 
   boot.kernelModules = ["tcp_bbr" "ipv6"];

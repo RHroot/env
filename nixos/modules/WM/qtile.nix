@@ -13,7 +13,7 @@
       extraSeatDefaults = ''
         display-setup-script = ${pkgs.writeScript "lightdm-display-setup" ''
           #!${pkgs.bash}/bin/bash
-          ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --mode 1920x1080 --rate 60
+          ${pkgs.xrandr}/bin/xrandr --output eDP-1 --mode 1920x1080 --rate 60
         ''}
       '';
     };
@@ -80,7 +80,7 @@
 
   environment.systemPackages = with pkgs; [
     # === Qtile ===
-    xorg.xorgserver # X server
+    xorg-server # X server
     python313Packages.qtile # Qtile core
     python313Packages.qtile-extras # Qtile extras
 
