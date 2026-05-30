@@ -8,10 +8,10 @@
 
   # NVIDIA — PRIME offload, Quadro P2000 Mobile
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    modesetting.enable = true;
-    nvidiaSettings = true;
     open = false;
+    nvidiaSettings = true;
+    modesetting.enable = true;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
 
     prime = {
       offload = {
@@ -63,7 +63,7 @@
     "nvidia_drm"
   ];
 
-  boot.blacklistedKernelModules = ["nouveau" "nvidiafb"];
+  boot.blacklistedKernelModules = ["nouveau" "nvidiafb" "nova_core"];
 
   # Kernel params
   boot.kernelParams = [
@@ -71,6 +71,7 @@
     "i915.enable_guc=2"
     "i915.enable_fbc=1"
     "i915.fastboot=1"
+    "nvidia_drm.modeset=1"
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
 
