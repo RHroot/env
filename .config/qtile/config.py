@@ -44,6 +44,12 @@ keys = [
         lazy.spawn("rofi -show run"),
         desc="Launch Rofi",
     ),
+    Key(
+        [mod],
+        "v",
+        lazy.spawn("rofi-copyq"),
+        desc="CopyQ clipboard history",
+    ),
     Key([mod], "j", lazy.screen.prev_group(skip_empty=True)),
     Key([mod], "k", lazy.screen.next_group(skip_empty=True)),
     Key([alt], "j", lazy.layout.down(), desc="Move focus down"),
@@ -253,7 +259,7 @@ keys.extend(
             desc="Toggle dropdown terminal",
         ),
         Key(
-            [mod],
+            [mod, "shift"],
             "v",
             lazy.group["scratchpad"].dropdown_toggle("volumecontrol"),
             desc="Toggle dropdown volume control",
