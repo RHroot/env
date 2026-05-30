@@ -32,7 +32,7 @@ for json_obj in json_arr:
     text = " ".join(filter(None, text.replace("\n", " ").split(" ")))
     items.append(text)
 
-title = "rofi-copyq"
+title = "CH"
 rofi = f"rofi -dmenu -i -p {title} -format i".split()
 rofi_input = "\n".join(x for x in items)
 
