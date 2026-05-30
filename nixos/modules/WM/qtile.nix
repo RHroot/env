@@ -45,7 +45,7 @@
       clickMethod = "clickfinger"; # better multi-finger clicks
       scrollMethod = "twofinger"; # standard
       accelProfile = "flat"; # or "adaptive"
-      accelSpeed = "0.4"; # range: -1 to 1
+      accelSpeed = "0.6"; # range: -1 to 1
 
       middleEmulation = true; # 3-finger middle click
     };
@@ -80,18 +80,19 @@
 
   environment.systemPackages = with pkgs; [
     # === Qtile ===
+    xorg.xorgserver # X server
     python313Packages.qtile # Qtile core
     python313Packages.qtile-extras # Qtile extras
-    xorg.xorgserver # X server
 
     # === Basic ===
     feh # Image viewer
-    nautilus # File manager
     rofi # Menu system
     picom # X compositor
     xclip # Clipboard manager
+    copyq # Clipboard manager
     kitty # Feature-rich GPU-based terminal emulator
     dunst # Desktop notifications
+    nautilus # File manager
     libinput # Input device management library
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
