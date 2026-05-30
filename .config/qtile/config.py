@@ -21,6 +21,7 @@ alt = "mod1"
 terminal = guess_terminal()
 
 keys = [
+    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Return", lazy.spawn("kitty"), desc="Launch Terminal"),
     Key([mod, "shift"], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "e", lazy.spawn("nautilus"), desc="Launch File Manager"),
@@ -45,16 +46,11 @@ keys = [
     ),
     Key([mod], "j", lazy.screen.prev_group(skip_empty=True)),
     Key([mod], "k", lazy.screen.next_group(skip_empty=True)),
-    # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
-    # Switch between windows
     Key([alt], "j", lazy.layout.down(), desc="Move focus down"),
     Key([alt], "k", lazy.layout.up(), desc="Move focus up"),
     Key([alt], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([alt], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([alt], "space", lazy.layout.next(), desc="Move window focus to other window"),
-    # Move windows between left/right columns or move up/down in current stack.
-    # Moving out of range in Columns layout will create new column.
     Key([alt, "control"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([alt, "control"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     Key(
@@ -66,24 +62,17 @@ keys = [
         lazy.layout.shuffle_right(),
         desc="Move window to the right",
     ),
-    # Grow windows. If current window is on the edge of screen and direction
-    # will be to screen edge - window would shrink.
     Key([alt, "shift"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([alt, "shift"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([alt, "shift"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
     Key([alt, "shift"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([alt], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
     Key(
         [mod, "shift"],
         "t",
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key(
@@ -102,7 +91,6 @@ keys = [
     Key([alt, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([alt, "control"], "s", lazy.spawn("shutdown now"), desc="Shutdown computer"),
     Key([alt, "control"], "r", lazy.spawn("shutdown -r now"), desc="Reboot computer"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Volume
     Key(
         [],
@@ -169,7 +157,45 @@ keys = [
     ),
 ]
 
-regular_groups = [Group(str(i)) for i in range(1, 10)] + [Group("0", label="10")]
+regular_groups = [
+    Group("1", label="🦊"),
+    Group("2", label="🦊"),
+    Group("3", label="🐚"),
+    Group(
+        "4",
+        label="💡",
+        matches=[
+            Match(wm_class="jetbrains-toolbox"),
+            Match(wm_class="net.lutris.Lutris"),
+        ],
+    ),
+    Group(
+        "5",
+        label="🎮",
+        matches=[
+            Match(wm_class="cs2"),
+            Match(wm_class="steam_app_default"),
+        ],
+    ),
+    Group(
+        "6",
+        label="📼",
+        matches=[
+            Match(wm_class="vlc"),
+        ],
+    ),
+    Group("7", label="❄️"),
+    Group(
+        "8",
+        label="🎮",
+        matches=[
+            Match(wm_class="steam"),
+            Match(wm_class="libreoffice-startcenter"),
+        ],
+    ),
+    Group("9", label="❄️"),
+    Group("0", label="🦊"),
+]
 scratchpad_groups = ScratchPad(
     "scratchpad",
     [
@@ -183,7 +209,17 @@ scratchpad_groups = ScratchPad(
             opacity=0.85,
             on_focus_lost_hide=False,
             warp_pointer=False,
-            border_width=0,
+        ),
+        DropDown(
+            "volumecontrol",
+            ["pavucontrol"],
+            height=0.8,
+            width=1.0,
+            x=0.0,
+            y=0.0,
+            opacity=0.85,
+            on_focus_lost_hide=False,
+            warp_pointer=False,
         ),
     ],
 )
@@ -193,24 +229,18 @@ groups = regular_groups + [scratchpad_groups]
 for i in regular_groups:
     keys.extend(
         [
-            # mod + group number = switch to group
             Key(
                 [mod],
                 i.name,
                 lazy.group[i.name].toscreen(toggle=True),
                 desc=f"Switch to group {i.name}",
             ),
-            # mod + shift + group number = switch to & move focused window to group
             Key(
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
                 desc=f"Switch to & move focused window to group {i.name}",
             ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod + shift + group number = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
         ]
     )
 
@@ -221,6 +251,12 @@ keys.extend(
             "p",
             lazy.group["scratchpad"].dropdown_toggle("term"),
             desc="Toggle dropdown terminal",
+        ),
+        Key(
+            [mod],
+            "v",
+            lazy.group["scratchpad"].dropdown_toggle("volumecontrol"),
+            desc="Toggle dropdown volume control",
         ),
     ]
 )
@@ -326,7 +362,7 @@ screens = [
                     linewidth=2,
                     padding=10,
                 ),
-                widget.Clock(format="📆%Y-%m-%d %a"),
+                widget.Clock(format="📆%d %B %Y %a"),
             ],
             20,
         ),
@@ -351,7 +387,7 @@ mouse = [
 ]
 
 dgroups_key_binder = None
-dgroups_app_rules = []  # type: list
+dgroups_app_rules = []
 follow_mouse_focus = True
 bring_front_click = False
 floats_kept_above = True
@@ -361,19 +397,21 @@ floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class="confirmreset"),
+        Match(wm_class="makebranch"),
+        Match(wm_class="maketag"),
+        Match(wm_class="ssh-askpass"),
+        Match(wm_class="Xdg-desktop-portal-gtk"),
+        Match(wm_class=".blueman-manager-wrapped"),
+        Match(title="branchdialog"),
+        Match(title="pinentry"),
     ],
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 focus_previous_on_window_remove = False
 reconfigure_screens = True
-auto_minimize = True
+auto_minimize = False
 wl_input_rules = None
 wl_xcursor_theme = None
 wl_xcursor_size = 24
