@@ -2,17 +2,13 @@
   description = "Hybrid NixOS flake with stable base and selected unstable packages";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # stylix = {
-    #   url = "github:danth/stylix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = {
@@ -20,7 +16,6 @@
     nixpkgs,
     nixpkgs-unstable,
     nix-index-database,
-    # stylix,
     ...
   }: let
     env = let
@@ -36,7 +31,6 @@
       modules = [
         ./nixos/configuration.nix
         nix-index-database.nixosModules.nix-index
-        # stylix.nixosModules.stylix
 
         ({
           pkgs,

@@ -6,7 +6,7 @@
 }: let
   themeName = "Flat-Remix-GTK-Magenta-Darkest";
   iconTheme = "Papirus-Dark";
-  cursorTheme = "Vimix-cursors";
+  cursorTheme = "Bibata-Modern-Ice";
   cursorSize = 40;
   fontFamily = "JetBrainsMono Nerd Font";
 in {
@@ -27,7 +27,7 @@ in {
   environment.systemPackages = with pkgs; [
     flat-remix-gtk
     papirus-icon-theme
-    vimix-cursors
+    bibata-cursors
     adwaita-icon-theme
   ];
   environment.etc = {
