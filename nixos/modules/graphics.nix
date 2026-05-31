@@ -11,7 +11,7 @@
     open = false;
     nvidiaSettings = true;
     modesetting.enable = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
 
     prime = {
       offload = {
@@ -28,6 +28,7 @@
       enable = true;
       finegrained = true;
     };
+    dynamicBoost.enable = true;
   };
 
   # Graphics — Intel iGPU, VAAPI, OpenCL
@@ -45,6 +46,7 @@
       libvdpau-va-gl
       libva-vdpau-driver
       ocl-icd
+      nvidia-vaapi-driver
     ];
   };
 
@@ -63,7 +65,7 @@
     "nvidia_drm"
   ];
 
-  boot.blacklistedKernelModules = ["nouveau" "nvidiafb" "nova_core"];
+  boot.blacklistedKernelModules = ["nouveau" "nova_core"];
 
   # Kernel params
   boot.kernelParams = [
@@ -86,15 +88,6 @@
     pkgsi686Linux.libGL
     pkgsi686Linux.vulkan-loader
     pkgsi686Linux.nvidia-vaapi-driver
-
-    (writeShellScriptBin "nvidia-run" ''
-      #!/bin/sh
-      export __NV_PRIME_RENDER_OFFLOAD=1
-      export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-      export __GLX_VENDOR_LIBRARY_NAME=nvidia
-      export __VK_LAYER_NV_optimus=NVIDIA_only
-      exec "$@"
-    '')
 
     (writeShellScriptBin "gpu-check" ''
       #!/bin/sh
@@ -128,8 +121,8 @@
 
       echo ""
       echo "[ 2 ] NVIDIA offload renderer (should be Quadro)"
-      R=$(nvidia-run glxinfo -B 2>/dev/null | grep "OpenGL renderer")
-      check "NVIDIA takes over via nvidia-run" "Quadro\|NVIDIA\|P2000" "$R"
+      R=$(nvidia-offload glxinfo -B 2>/dev/null | grep "OpenGL renderer")
+      check "NVIDIA takes over via nvidia-offload" "Quadro\|NVIDIA\|P2000" "$R"
 
       echo ""
       echo "[ 3 ] VAAPI hardware decode (should be iHD / Intel)"
@@ -141,7 +134,7 @@
       STATE=$(cat /proc/driver/nvidia/gpus/*/information 2>/dev/null | grep "Bus Location\|Video Memory\|Power")
       if [ -z "$STATE" ]; then
         echo "  $WARN nvidia proc entry not found (GPU may be powered off — that is good)"
-        echo "      trigger it: nvidia-run glxgears & sleep 2 && cat /proc/driver/nvidia/gpus/*/information"
+        echo "      trigger it: nvidia-offload glxgears & sleep 2 && cat /proc/driver/nvidia/gpus/*/information"
       else
         echo "  $PASS NVIDIA driver proc entry found:"
         echo "$STATE" | sed 's/^/      /'
@@ -184,9 +177,9 @@
       check "Intel is default Vulkan device" "Intel" "$R"
 
       echo ""
-      echo "[ 9 ] Vulkan via nvidia-run (should be NVIDIA)"
-      R=$(nvidia-run vulkaninfo --summary 2>/dev/null | grep "deviceName" | head -1)
-      check "NVIDIA Vulkan via nvidia-run" "Quadro\|NVIDIA\|P2000" "$R"
+      echo "[ 9 ] Vulkan via nvidia-offload (should be NVIDIA)"
+      R=$(nvidia-offload vulkaninfo --summary 2>/dev/null | grep "deviceName" | head -1)
+      check "NVIDIA Vulkan via nvidia-offload" "Quadro\|NVIDIA\|P2000" "$R"
 
       echo ""
       echo "======================================"
