@@ -7,7 +7,7 @@
   themeName = "Flat-Remix-GTK-Magenta-Darkest";
   iconTheme = "Papirus-Dark";
   cursorTheme = "Bibata-Modern-Ice";
-  cursorSize = 40;
+  cursorSize = 30;
   fontFamily = "JetBrainsMono Nerd Font";
 in {
   programs.dconf.enable = true;
