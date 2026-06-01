@@ -27,8 +27,20 @@
   users.users.${env.username} = {
     isNormalUser = true;
     shell = pkgs.fish;
-    description = "sten";
-    extraGroups = ["networkmanager" "wheel" "input"];
+    description = "do i need to give a description to myself";
+    extraGroups = ["networkmanager" "wheel" "input" "podman"];
+    subUidRanges = [
+      {
+        startUid = 100000;
+        count = 65536;
+      }
+    ];
+    subGidRanges = [
+      {
+        startGid = 100000;
+        count = 65536;
+      }
+    ];
   };
 
   security.rtkit.enable = true;

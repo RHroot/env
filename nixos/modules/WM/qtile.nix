@@ -70,10 +70,10 @@
 
   xdg.mime.defaultApplications = {
     # Images
-    "image/png" = ["feh.desktop"];
-    "image/jpeg" = ["feh.desktop"];
-    "image/webp" = ["feh.desktop"];
-    "image/gif" = ["feh.desktop"];
+    "image/png" = ["org.xfce.ristretto.desktop"];
+    "image/jpeg" = ["org.xfce.ristretto.desktop"];
+    "image/webp" = ["org.xfce.ristretto.desktop"];
+    "image/gif" = ["org.xfce.ristretto.desktop"];
     # File manager
     "inode/directory" = ["org.gnome.Nautilus.desktop"];
   };
@@ -94,6 +94,7 @@
     dunst # Desktop notifications
     nautilus # File manager
     libinput # Input device management library
+    ristretto # Image viewer from XFCE
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
     alacritty # GPU-accelerated terminal emulator
