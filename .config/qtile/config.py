@@ -26,6 +26,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "e", lazy.spawn("nautilus"), desc="Launch File Manager"),
     Key([mod], "b", lazy.spawn("firefox -P 'default'"), desc="Launch Browser"),
+    Key([], "print", lazy.spawn("flameshot gui"), desc="Launch Flameshot"),
     Key(
         [mod, "shift"],
         "b",
