@@ -265,7 +265,7 @@ keys.extend(
 )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2),
     # layout.VerticalTile(),
     # Try more layouts by unleashing below layouts.
     # layout.Max(),
@@ -310,7 +310,7 @@ screens = [
                     linewidth=2,
                     padding=10,
                 ),
-                widget.WindowName(),
+                widget.WindowName(max_chars=20),
                 widget.Sep(
                     linewidth=2,
                     padding=10,
@@ -367,7 +367,8 @@ screens = [
                 ),
                 widget.Systray(),
             ],
-            20,
+            margin=8,
+            size=20,
         ),
         background="#000000",
         wallpaper=logo,
