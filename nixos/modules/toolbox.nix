@@ -19,7 +19,8 @@
     clang-tools # Clang-based developer tools (clangd, format, tidy)
 
     # === Rust Development ===
-    rustup # Rust toolchain installer and version manager
+    cargo # Rust package manager
+    rustc # Rust compiler
 
     # === Web Development tools ===
     bun # All-in-one JS runtime, bundler, and package manager
