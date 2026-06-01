@@ -98,6 +98,7 @@
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
     alacritty # GPU-accelerated terminal emulator
+    flameshot # Screenshot tool
 
     # === Input and Gestures ===
     xdotool # X11 keyboard/mouse automation tool

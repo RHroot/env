@@ -9,6 +9,8 @@ pkill -f picom 2>/dev/null
 picom &
 pkill -f dunst 2>/dev/null
 dunst &
+pkill -f flameshot 2>/dev/null
+flameshot &
 pkill -f nm-applet 2>/dev/null
 nm-applet &
 pkill -f libinput-gestures 2>/dev/null
