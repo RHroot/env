@@ -28,6 +28,12 @@ keys = [
     Key([mod], "b", lazy.spawn("firefox -P 'default'"), desc="Launch Browser"),
     Key([], "print", lazy.spawn("flameshot gui"), desc="Launch Flameshot"),
     Key(
+        [alt],
+        "space",
+        lazy.spawn("sh -c '$HOME/env/nixos/modules/WM/wset'"),
+        desc="Change Wallpaper",
+    ),
+    Key(
         [mod, "shift"],
         "b",
         lazy.spawn("firefox -P 'work'"),
@@ -57,7 +63,12 @@ keys = [
     Key([alt], "k", lazy.layout.up(), desc="Move focus up"),
     Key([alt], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([alt], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([alt], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    Key(
+        [alt, "shift"],
+        "space",
+        lazy.layout.next(),
+        desc="Move window focus to other window",
+    ),
     Key([alt, "control"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([alt, "control"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     Key(
@@ -94,7 +105,14 @@ keys = [
         lazy.window.toggle_floating(),
         desc="Toggle floating on the focused window",
     ),
-    Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
+    Key(
+        [mod, "shift"],
+        "r",
+        lazy.spawn(
+            "sh -c 'qtile cmd-obj -o cmd -f restart && sleep 3 && [ -f ~/.fehbg ] && sh ~/.fehbg'"
+        ),
+        desc="Restore wallpaper, update colors, and restart Qtile",
+    ),
     Key([alt, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([alt, "control"], "s", lazy.spawn("shutdown now"), desc="Shutdown computer"),
     Key([alt, "control"], "r", lazy.spawn("shutdown -r now"), desc="Reboot computer"),
@@ -293,7 +311,6 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-logo = os.path.join(os.path.dirname(libqtile.resources.__file__), "logo.png")
 screens = [
     Screen(
         bottom=bar.Bar(
@@ -377,8 +394,6 @@ screens = [
             size=20,
         ),
         background="#000000",
-        wallpaper=logo,
-        wallpaper_mode="center",
     ),
 ]
 
