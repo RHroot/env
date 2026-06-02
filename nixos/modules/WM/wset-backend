@@ -10,17 +10,11 @@ IMAGE="$1"
 notify-send "Changing Theme" "Applying new wallpaper and updating colors, please wait until confirmation..."
 
 # Take colors from Image
-wallust run "$IMAGE"
+matugen image "$IMAGE" -m dark -t scheme-content --source-color-index 0
 qtile cmd-obj -o cmd -f restart 2>/dev/null
 sleep 2
 
-# Apply new wallpaper
-feh --bg-fill "$IMAGE"
-
-mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"
-[ -f "$HOME/.cache/wallust/gtk3.css" ] && cp "$HOME/.cache/wallust/gtk3.css" "$HOME/.config/gtk-3.0/gtk.css"
-[ -f "$HOME/.cache/wallust/gtk4.css" ] && cp "$HOME/.cache/wallust/gtk4.css" "$HOME/.config/gtk-4.0/gtk.css"
-
+sh $HOME/.fehbg
 # Reload
 kill -10 $(pgrep kitty) 2>/dev/null
 
