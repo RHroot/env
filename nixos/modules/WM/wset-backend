@@ -15,6 +15,10 @@ feh --bg-fill "$IMAGE"
 # Take colors from Image
 wallust run "$IMAGE"
 
+mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"
+[ -f "$HOME/.cache/wallust/gtk3.css" ] && cp "$HOME/.cache/wallust/gtk3.css" "$HOME/.config/gtk-3.0/gtk.css"
+[ -f "$HOME/.cache/wallust/gtk4.css" ] && cp "$HOME/.cache/wallust/gtk4.css" "$HOME/.config/gtk-4.0/gtk.css"
+
 # Reload
 kill -10 $(pgrep kitty) 2>/dev/null
 qtile cmd-obj -o cmd -f reload_config 2>/dev/null

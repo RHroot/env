@@ -92,6 +92,7 @@
     copyq # Clipboard manager
     kitty # Feature-rich GPU-based terminal emulator
     dunst # Desktop notifications
+    wallust # Color Pallete maker from Wallpapers
     nautilus # File manager
     libinput # Input device management library
     ristretto # Image viewer from XFCE
