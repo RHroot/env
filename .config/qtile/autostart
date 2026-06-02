@@ -1,19 +1,38 @@
 #!/bin/sh
 
 export DISPLAY=:0
-systemctl --user start polkit-gnome-authentication-agent-1
-xset -dpms s off
-xset r rate 200 40
-xrandr --output eDP-1 --mode "1920x1080" --rate 60.00 2>/dev/null
-pkill -f picom 2>/dev/null
-picom &
-pkill -f dunst 2>/dev/null
-dunst &
-pkill -f flameshot 2>/dev/null
-flameshot &
-pkill -f nm-applet 2>/dev/null
-nm-applet &
-pkill -f libinput-gestures 2>/dev/null
-libinput-gestures &
-pkill -f copyq 2>/dev/null
-copyq --start-server &
+
+# Only run these once, not on every reload
+if [ -z "$QTILE_AUTOSTART_ALREADY_RAN" ]; then
+  export QTILE_AUTOSTART_ALREADY_RAN=1
+
+  # X11 settings (only on first run)
+  xset -dpms s off
+  xset r rate 200 40
+
+  # Only run xrandr if display config changed
+  if ! xrandr --query | grep -q "1920x1080.*\*"; then
+    xrandr --output eDP-1 --mode "1920x1080" --rate 60.00 2>/dev/null
+  fi
+fi
+
+# Start/restart services safely
+for service in picom dunst flameshot nm-applet libinput-gestures; do
+  if ! pgrep -f "$service" >/dev/null; then
+    $service &
+  fi
+done
+
+# Handle copyq specially
+if ! pgrep -f copyq >/dev/null; then
+  copyq --start-server &
+fi
+
+# Start polkit if not running
+if ! pgrep -f polkit-gnome-authentication-agent-1 >/dev/null; then
+  systemctl --user start polkit-gnome-authentication-agent-1
+fi
+
+if [ -f "$HOME/.fehbg" ]; then
+  sh -c "$HOME/.fehbg"
+fi

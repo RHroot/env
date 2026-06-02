@@ -264,20 +264,26 @@ keys.extend(
     ]
 )
 
+layout_theme = {
+    "border_width": 2,
+    "margin": [4, 4, 2, 4],  # top, right, bottom, left
+    "border_focus": "#ffffff",
+    "border_normal": "#000000",
+}
+
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2),
-    # layout.VerticalTile(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Max(),
-    # layout.Bsp(),
-    # layout.Stack(num_stacks=2),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.Zoomy(),
+    layout.Columns(**layout_theme),
+    # layout.Max(**layout_theme),
+    # layout.Bsp(**layout_theme),
+    # layout.Tile(**layout_theme),
+    # layout.Zoomy(**layout_theme),
+    # layout.Matrix(**layout_theme),
+    # layout.TreeTab(**layout_theme),
+    # layout.MonadTall(**layout_theme),
+    # layout.MonadWide(**layout_theme),
+    # layout.RatioTile(**layout_theme),
+    # layout.VerticalTile(**layout_theme),
+    # layout.Stack(**layout_theme, num_stacks=2),
 ]
 
 widget_defaults = dict(
@@ -293,7 +299,7 @@ screens = [
         bottom=bar.Bar(
             [
                 # ==================== LEFT SECTION ====================
-                widget.CurrentLayout(),
+                widget.CurrentLayout(padding_x=20),
                 widget.Sep(
                     linewidth=2,
                     padding=10,
@@ -365,9 +371,9 @@ screens = [
                     linewidth=2,
                     padding=10,
                 ),
-                widget.Systray(),
+                widget.Systray(padding_x=20),
             ],
-            margin=8,
+            margin=[2, 4, 4, 4],
             size=20,
         ),
         background="#000000",

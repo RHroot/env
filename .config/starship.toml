@@ -6,8 +6,6 @@ command_timeout = 500
 add_newline = true
 follow_symlinks = false
 
-palette = 'colors'
-
 format = """
 $os\
 $username\
@@ -19,7 +17,6 @@ $character\
 right_format = """$all"""
 
 [directory]
-style = "bold fg:color1"
 format = "[ $path ]($style)"
 truncation_length = 6
 truncate_to_repo = false
@@ -34,23 +31,22 @@ truncate_to_repo = false
 "Others" = "󰉋"
 
 [git_branch]
-symbol = "[](fg:color2) "
-style = "fg:color1 bg:color2 bold"
-format = "  on [$symbol$branch]($style)[](fg:color2)"
+symbol = " (bold fg:red)"
+format = "  on [$symbol$branch](bold fg:red)"
 
 [git_status]
 format = "[ $staged$modified$renamed$stashed$deleted$untracked$conflicted$ahead_behind ]($style)"
 
-staged = "[+${count} ](bold fg:color1)"
-modified = "[!${count} ](bold fg:color9)"
-renamed = "[>${count} ](bold fg:color8)"
+staged = "[+${count} ](bold fg:green)"
+modified = "[!${count} ](bold fg:yellow)"
+renamed = "[>${count} ](bold fg:yellow)"
 deleted = "[-${count} ](bold fg:red)"
-untracked = "[?${count} ](bold fg:color8)"
-stashed = "[${count} ](bold fg:color5)"
+untracked = "[?${count} ](bold fg:yellow)"
+stashed = "[${count} ](bold fg:yellow)"
 conflicted = "[✖${count} ](bold fg:red)"
 
-ahead = "[${count} ](bold fg:color1)"
-behind = "[${count} ](bold fg:color9)"
+ahead = "[${count} ](bold fg:red)"
+behind = "[${count} ](bold fg:red)"
 diverged = "[${ahead_count}${behind_count} ](bold fg:red)"
 
 [os]
@@ -120,58 +116,58 @@ Macos = "󰌍 "
 
 [python]
 symbol = " "
-format = "[ $symbol$version ](bold fg:color1)"
+format = "[ $symbol$version ](bold)"
 
 [nodejs]
 symbol = " "
-format = "[ $symbol$version ](bold fg:color3)"
+format = "[ $symbol$version ](bold)"
 
 [bun]
 symbol = " "
-format = "[ $symbol$version ](bold fg:color3)"
+format = "[ $symbol$version ](bold)"
 
 [golang]
 symbol = " "
-format = "[ $symbol$version ](bold fg:color8)"
+format = "[ $symbol$version ](bold)"
 
 [rust]
 symbol = " "
-format = "[ $symbol$version ](bold fg:color9)"
+format = "[ $symbol$version ](bold)"
 
 [zig]
 symbol = " "
-format = "[ $symbol$version ](bold fg:color9)"
+format = "[ $symbol$version ](bold)"
 
 [c]
 symbol = " "
-format = "[ $symbol$version ](bold fg:color3)"
+format = "[ $symbol$version ](bold)"
 
 [cpp]
 symbol = " "
-format = "[ $symbol$version ](bold fg:color3)"
+format = "[ $symbol$version ](bold)"
 
 [lua]
 symbol = " "
-format = "[ $symbol$version ](bold fg:color1)"
+format = "[ $symbol$version ](bold)"
 
 [nix_shell]
 symbol = " "
-format = "[ $symbol$state ](bold fg:color8)"
+format = "[ $symbol$state ](bold)"
 
 [git_state]
-format = "[ $state( $progress_current/$progress_total) ](bold fg:color9)"
+format = "[ $state( $progress_current/$progress_total) ](bold)"
 
 [package]
 symbol = "󰏗 "
-format = "[ $symbol$version ](bold fg:color3)"
+format = "[ $symbol$version ](bold)"
 
 [cmake]
 symbol = " "
-format = "[ $symbol ](bold fg:color3)"
+format = "[ $symbol ](bold)"
 
 [docker_context]
 symbol = " "
-format = "[ $symbol$context ](bold fg:color8)"
+format = "[ $symbol$context ](bold)"
 
 [username]
 show_always = true
@@ -180,17 +176,6 @@ show_always = true
 disable = true
 
 [character]
-success_symbol = "[✔](bold fg:color1)"
+success_symbol = "[✔](bold fg:green)"
 error_symbol = "[✖](bold fg:red)"
-vicmd_symbol = "[](bold fg:color1)"
-
-[palettes.colors]
-color1 = '#a3c9ff'
-color2 = '#00315c'
-color3 = '#c1c7d3'
-color4 = '#1d2025'
-color5 = '#00315c'
-color6 = '#111418'
-color7 = '#111418'
-color8 = '#a3c9ff'
-color9 = '#f1afff'
+vicmd_symbol = "[](bold fg:yellow)"

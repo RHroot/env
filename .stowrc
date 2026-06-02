@@ -6,6 +6,7 @@
 --ignore=\.stowrc
 --ignore=\nixos
 --ignore=\Stickers
+--ignore=\Wall
 --ignore=\nixos-switch.log
 --ignore=\flake.nix
 --ignore=\flake.lock
