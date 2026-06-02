@@ -1,18 +1,19 @@
+/* Import main config for global settings (modi, icons, font, etc.) */
 @import "config.rasi"
 
 * {
     /* Matugen Mappings with Tokyonight-Night Fallbacks */
-    background-colour:           #1a1b26;
-    foreground-colour:           #cfc9c2;
-    border-colour:               #7aa2f7;
-    handle-colour:               #7aa2f7;
+    background-colour:           var(surface, #1a1b26);
+    foreground-colour:           var(on-surface, #cfc9c2);
+    border-colour:               var(primary, #7aa2f7);
+    handle-colour:               var(primary, #7aa2f7);
 
     /* Alternate background for input bar fallback */
-    alternate-background:        #24283b;
+    alternate-background:        var(surface-container-high, #24283b);
 
     /* Selection (Brightest) */
-    selected-normal-background:  #7aa2f7;
-    selected-normal-foreground:  #15161e;
+    selected-normal-background:  var(primary, #7aa2f7);
+    selected-normal-foreground:  var(on-primary, #15161e);
 
     img-size:                    600px;
 }

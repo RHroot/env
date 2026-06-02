@@ -1,0 +1,31 @@
+[config]
+contrast = 1.0
+
+[config.wallpaper]
+command = 'feh --bg-fill {{ image }}'
+set = true
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi.rasi'
+output_path = '~/.cache/Matugen/rofi-colors.rasi'
+
+[templates.alacritty]
+input_path = '~/.config/matugen/templates/alacritty.toml'
+output_path = '~/.cache/Matugen/alacritty.toml'
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship.toml'
+output_path = '~/.config/starship.toml'
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty.conf'
+output_path = '~/.cache/Matugen/kitty-colors.conf'
+post_hook = 'sh -c "kill -10 $(pgrep kitty) 2>/dev/null"'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-4.0/gtk.css'

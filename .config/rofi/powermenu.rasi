@@ -1,12 +1,14 @@
+/* Inherits configuration and colors from main config */
 @import "config.rasi"
 
-* {
-    background-colour:           #1a1b26;
-    foreground-colour:           #cfc9c2;
-    border-colour:               #7aa2f7;
 
-    selected-normal-background:  #7aa2f7;
-    selected-normal-foreground:  #15161e;
+* {
+    background-colour:           var(surface, #1a1b26);
+    foreground-colour:           var(on-surface, #cfc9c2);
+    border-colour:               var(primary, #7aa2f7);
+
+    selected-normal-background:  var(primary, #7aa2f7);
+    selected-normal-foreground:  var(on-primary, #15161e);
 }
 
 window {
