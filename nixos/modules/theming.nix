@@ -8,26 +8,31 @@
   iconTheme = "Papirus-Dark";
   cursorTheme = "Bibata-Modern-Ice";
   cursorSize = 30;
-  fontFamily = "JetBrainsMono Nerd Font";
+  monospacefont = "JetBrainsMono Nerd Font";
+  seriffont = "Merriweather";
+  sansseriffont = "Inter";
 in {
   programs.dconf.enable = true;
   fonts = {
     packages = with pkgs; [
+      inter
+      merriweather
       nerd-fonts.jetbrains-mono
     ];
     fontconfig = {
       enable = true;
       defaultFonts = {
-        serif = [fontFamily];
-        sansSerif = [fontFamily];
-        monospace = [fontFamily];
+        serif = [seriffont];
+        sansSerif = [sansseriffont];
+        monospace = [monospacefont];
       };
     };
   };
   environment.systemPackages = with pkgs; [
+    adwaita-qt
+    bibata-cursors
     flat-remix-gtk
     papirus-icon-theme
-    bibata-cursors
     adwaita-icon-theme
   ];
   environment.etc = {
@@ -35,7 +40,7 @@ in {
       [Settings]
       gtk-theme-name=${themeName}
       gtk-icon-theme-name=${iconTheme}
-      gtk-font-name=${fontFamily} 14
+      gtk-font-name=${sansseriffont} 14
       gtk-cursor-theme-name=${cursorTheme}
       gtk-cursor-theme-size=${toString cursorSize}
       gtk-application-prefer-dark-theme=1
@@ -45,7 +50,7 @@ in {
       [Settings]
       gtk-theme-name=${themeName}
       gtk-icon-theme-name=${iconTheme}
-      gtk-font-name=${fontFamily} 14
+      gtk-font-name=${sansseriffont} 14
       gtk-cursor-theme-name=${cursorTheme}
       gtk-cursor-theme-size=${toString cursorSize}
       gtk-application-prefer-dark-theme=1
