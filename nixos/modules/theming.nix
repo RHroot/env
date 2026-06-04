@@ -69,8 +69,6 @@ in {
     enable = true;
     platformTheme = "gnome";
     style = "adwaita-dark";
-    font.name = "Noto Sans";
-    font.size = 12;
   };
   environment.pathsToLink = [
     "/share/icons"
