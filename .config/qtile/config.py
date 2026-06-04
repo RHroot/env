@@ -305,7 +305,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="JetBrainsMono NF ExtraBold",
+    font="FiraCode Nerd Font",
     fontsize=18,
     padding=3,
 )

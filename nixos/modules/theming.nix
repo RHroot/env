@@ -8,21 +8,21 @@
   iconTheme = "Papirus-Dark";
   cursorTheme = "Bibata-Modern-Ice";
   cursorSize = 30;
-  monospacefont = "JetBrainsMono Nerd Font";
   seriffont = "Merriweather";
-  sansseriffont = "Inter";
+  sansseriffont = "Google Sans Flex";
+  monospacefont = "FiraCode Nerd Font";
 in {
   programs.dconf.enable = true;
   fonts = {
     packages = with pkgs; [
-      inter
       merriweather
-      nerd-fonts.jetbrains-mono
+      google-sans-flex
+      nerd-fonts.fira-code
     ];
     fontconfig = {
       enable = true;
       hinting.enable = true;
-      antialias.enable = true;
+      antialias = true;
       hinting.style = "full";
       subpixel.rgba = "rgb";
       defaultFonts = {

@@ -43,16 +43,6 @@
       # Force serif as default font
       "font.default.x-western" = "serif";
       "font.default" = "serif";
-      # Specify exact font names
-      "font.name.serif.x-western" = "Merriweather";
-      "font.name.sans-serif.x-western" = "Inter";
-      "font.name.monospace.x-western" = "JetBrainsMono Nerd Font";
-      # Font sizes
-      "font.minimum-size.x-western" = 0;
-      "font.size.variable.x-western" = 16;
-      "font.size.monospace.x-western" = 13;
-      # Don't let websites override your font choices too aggressively
-      "browser.display.use_document_fonts" = 1;
       # === Native Vertical Tabs (Firefox 130+) ===
       "browser.tabs.verticalTabs.enabled" = true;
       # === Force Dark Theme ===

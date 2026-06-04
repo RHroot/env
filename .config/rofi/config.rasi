@@ -12,7 +12,7 @@ configuration {
     drun-url-launcher: "xdg-open";
     disable-history: false;
     max-history-size: 3;
-    font: "JetBrainsMono NF 15";
+    font: "FiraCode Nerd Font 15";
     modi: "window,run,drun,combi,filebrowser";
 }
 
