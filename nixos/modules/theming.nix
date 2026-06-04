@@ -21,11 +21,15 @@ in {
     ];
     fontconfig = {
       enable = true;
-      defaultFonts = {
-        serif = [seriffont];
-        sansSerif = [sansseriffont];
-        monospace = [monospacefont];
-      };
+      hinting.enable = true;
+      antialias.enable = true;
+      hinting.style = "full";
+      subpixel.rgba = "rgb";
+    };
+    defaultFonts = {
+      serif = [seriffont];
+      sansSerif = [sansseriffont];
+      monospace = [monospacefont];
     };
   };
   environment.systemPackages = with pkgs; [
@@ -40,7 +44,7 @@ in {
       [Settings]
       gtk-theme-name=${themeName}
       gtk-icon-theme-name=${iconTheme}
-      gtk-font-name=${sansseriffont}
+      gtk-font-name=${sansseriffont} 11
       gtk-cursor-theme-name=${cursorTheme}
       gtk-cursor-theme-size=${toString cursorSize}
       gtk-application-prefer-dark-theme=1
@@ -50,7 +54,7 @@ in {
       [Settings]
       gtk-theme-name=${themeName}
       gtk-icon-theme-name=${iconTheme}
-      gtk-font-name=${sansseriffont}
+      gtk-font-name=${sansseriffont} 11
       gtk-cursor-theme-name=${cursorTheme}
       gtk-cursor-theme-size=${toString cursorSize}
       gtk-application-prefer-dark-theme=1
