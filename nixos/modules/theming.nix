@@ -40,7 +40,7 @@ in {
       [Settings]
       gtk-theme-name=${themeName}
       gtk-icon-theme-name=${iconTheme}
-      gtk-font-name=${sansseriffont} 14
+      gtk-font-name=${sansseriffont}
       gtk-cursor-theme-name=${cursorTheme}
       gtk-cursor-theme-size=${toString cursorSize}
       gtk-application-prefer-dark-theme=1
@@ -50,7 +50,7 @@ in {
       [Settings]
       gtk-theme-name=${themeName}
       gtk-icon-theme-name=${iconTheme}
-      gtk-font-name=${sansseriffont} 14
+      gtk-font-name=${sansseriffont}
       gtk-cursor-theme-name=${cursorTheme}
       gtk-cursor-theme-size=${toString cursorSize}
       gtk-application-prefer-dark-theme=1
