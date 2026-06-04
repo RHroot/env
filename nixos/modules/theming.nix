@@ -25,11 +25,11 @@ in {
       antialias.enable = true;
       hinting.style = "full";
       subpixel.rgba = "rgb";
-    };
-    defaultFonts = {
-      serif = [seriffont];
-      sansSerif = [sansseriffont];
-      monospace = [monospacefont];
+      defaultFonts = {
+        serif = [seriffont];
+        sansSerif = [sansseriffont];
+        monospace = [monospacefont];
+      };
     };
   };
   environment.systemPackages = with pkgs; [
