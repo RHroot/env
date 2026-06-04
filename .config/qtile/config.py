@@ -373,7 +373,10 @@ screens = [
                     linewidth=2,
                     padding=10,
                 ),
-                widget.Battery(format="🔋{char} {percent:2.0%}"),
+                widget.Battery(
+                    battery="BAT0",
+                    format="🔋{char} {percent:2.0%}",
+                ),
                 widget.Sep(
                     linewidth=2,
                     padding=10,
