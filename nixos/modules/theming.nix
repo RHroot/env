@@ -9,14 +9,14 @@
   cursorTheme = "Bibata-Modern-Ice";
   cursorSize = 30;
   seriffont = "Merriweather";
-  sansseriffont = "Google Sans Flex";
+  sansseriffont = "Noto Sans";
   monospacefont = "FiraCode Nerd Font";
 in {
   programs.dconf.enable = true;
   fonts = {
     packages = with pkgs; [
+      noto-fonts
       merriweather
-      google-sans-flex
       nerd-fonts.fira-code
     ];
     fontconfig = {
