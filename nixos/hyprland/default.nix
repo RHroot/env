@@ -54,6 +54,7 @@
     hypridle # Idle management daemon for Hyprland
     hyprlock # Screen locker for Hyprland
     hyprshot # Screenshot utility for Hyprland
+    hyprpaper # Wallpaper manager for Hyprland
     hyprpicker # Color picker for Wayland/Hyprland
     hyprcursor # Cursor theme support for Hyprland
     hyprland-qtutils # Qt utilities for Hyprland components
@@ -62,9 +63,7 @@
 
     # === basic ===
     imv # Image viewer for Wayland
-    awww # Wayland wallpaper daemon with transitions
     rofi # Application launcher and dmenu replacement
-    wtype # Wayland tool to simulate keyboard input
     dunst # Lightweight notification daemon
     waybar # Status bar for Wayland compositors
     cliphist # Clipboard manager for Wayland
