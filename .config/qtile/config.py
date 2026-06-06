@@ -30,7 +30,7 @@ keys = [
     Key(
         [alt],
         "space",
-        lazy.spawn("sh -c '$HOME/env/nixos/modules/WM/wset'"),
+        lazy.spawn("sh -c '$HOME/env/nixos/modules/qtile/wset'"),
         desc="Change Wallpaper",
     ),
     Key(

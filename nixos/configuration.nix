@@ -10,8 +10,10 @@
     /etc/nixos/hardware-configuration.nix
     # === Core ===
     ./foundation
-    #== Modules ===
+    # === Modules ===
     ./modules
+    # === Window Manager ===
+    ./hyprland
   ];
 
   power.enable = true;
@@ -71,7 +73,29 @@
   };
   hardware.enableRedistributableFirmware = true;
 
-  services.libinput.enable = true;
+  services.libinput = {
+    enable = true;
+
+    touchpad = {
+      disableWhileTyping = true;
+      tapping = true;
+      naturalScrolling = false;
+
+      clickMethod = "clickfinger"; # better multi-finger clicks
+      scrollMethod = "twofinger"; # standard
+      accelProfile = "flat"; # or "adaptive"
+      accelSpeed = "0.4"; # range: -1 to 1
+
+      middleEmulation = true; # 3-finger middle click
+    };
+
+    mouse = {
+      accelProfile = "flat";
+      accelSpeed = "0.0";
+      middleEmulation = true;
+    };
+  };
+
   services.udisks2.enable = true;
   services.gvfs.enable = true;
 

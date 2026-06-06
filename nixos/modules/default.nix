@@ -7,6 +7,5 @@
     ./theming.nix
     ./toolbox.nix
     ./graphics.nix
-    ./WM
   ];
 }

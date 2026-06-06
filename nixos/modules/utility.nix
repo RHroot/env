@@ -10,8 +10,8 @@
     zotero # Reference manager
     foliate # Book reader and downloader
     blanket # Different Sounds in Background
-    libreoffice-fresh # Office suite
     telegram-desktop # Messenger
+    libreoffice-fresh # Office suite
   ];
 
   # programs.localsend = {

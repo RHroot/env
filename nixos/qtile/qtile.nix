@@ -19,6 +19,12 @@
     };
   };
 
+  services.displayManager.gdm.enable = false;
+  services.displayManager.sddm.enable = false;
+
+  services.getty.autologinUser = "sten";
+  services.displayManager.defaultSession = "qtile";
+
   security.polkit.enable = true;
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     description = "polkit-gnome-authentication-agent-1";
@@ -33,35 +39,6 @@
       TimeoutStopSec = 10;
     };
   };
-
-  services.libinput = {
-    enable = true;
-
-    touchpad = {
-      disableWhileTyping = true;
-      tapping = true;
-      naturalScrolling = false;
-
-      clickMethod = "clickfinger"; # better multi-finger clicks
-      scrollMethod = "twofinger"; # standard
-      accelProfile = "flat"; # or "adaptive"
-      accelSpeed = "0.6"; # range: -1 to 1
-
-      middleEmulation = true; # 3-finger middle click
-    };
-
-    mouse = {
-      accelProfile = "flat";
-      accelSpeed = "0.0";
-      middleEmulation = true;
-    };
-  };
-
-  services.displayManager.gdm.enable = false;
-  services.displayManager.sddm.enable = false;
-
-  services.getty.autologinUser = "sten";
-  services.displayManager.defaultSession = "qtile";
 
   xdg.portal = {
     enable = true;

@@ -7,6 +7,6 @@ Xft.hinting: 1
 Xft.rgba: rgb
 ! GTK Cusomization
 gtk.theme_name: Flat-Remix-GTK-Magenta-Darkest
-gtk.font_name: JetBrainsMono Nerd Font 14
-gtk.monospace_font_name: JetBrainsMono Nerd Font 14
+gtk.font_name: FiraCode Nerd Font 14
+gtk.monospace_font_name: FiraCode Nerd Font 14
 gtk.icon_theme_name: Papirus-Dark
