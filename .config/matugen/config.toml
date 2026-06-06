@@ -9,6 +9,11 @@ source_color_index = 0
 command = 'feh --bg-fill {{ image }}'
 set = true
 
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland.conf'
+output_path = '~/.cache/Matugen/hyprland-colors.conf'
+post_hook = 'hyprctl reload'
+
 [templates.rofi]
 input_path = '~/.config/matugen/templates/rofi.rasi'
 output_path = '~/.cache/Matugen/rofi-colors.rasi'
