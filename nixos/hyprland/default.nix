@@ -10,17 +10,6 @@
   services.displayManager.sddm.enable = false;
 
   services.getty.autologinUser = "sten";
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "Hyprland";
-        user = "sten";
-      };
-    };
-  };
-
   services.displayManager.defaultSession = "Hyprland";
 
   programs.hyprland = {
