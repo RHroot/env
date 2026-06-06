@@ -34,7 +34,7 @@ hl.bind("CTRL + ALT + Q", hl.dsp.exec_cmd("hyprctl dispatch exit 0"))
 
 ---           WINDOW MANAGEMENT
 --- Window control and manipulation
-hl.bind("SUPER + Q", hl.dsp.window.kill({ active = true }))
+hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + F", hl.dsp.window.fullscreen())
 hl.bind("SUPER + SHIFT + F", hl.dsp.window.float())
 
@@ -88,6 +88,7 @@ hl.bind("SUPER + SHIFT + code:17", hl.dsp.window.move({ workspace = 8 }))
 hl.bind("SUPER + SHIFT + code:18", hl.dsp.window.move({ workspace = 9 }))
 hl.bind("SUPER + SHIFT + code:19", hl.dsp.window.move({ workspace = 10 }))
 
+---                    WINDOW MANAGEMENT
 hl.bind("ALT + SHIFT + J", hl.dsp.window.resize({ x = 0, y = 50, relative = true, repeating = true }))
 hl.bind("ALT + SHIFT + K", hl.dsp.window.resize({ x = 0, y = -50, relative = true, repeating = true }))
 hl.bind("ALT + SHIFT + H", hl.dsp.window.resize({ x = -50, y = 0, relative = true, repeating = true }))
@@ -96,6 +97,10 @@ hl.bind("ALT + SHIFT + right", hl.dsp.window.resize({ x = 50, y = 0, relative = 
 hl.bind("ALT + SHIFT + left", hl.dsp.window.resize({ x = -50, y = 0, relative = true, repeating = true }))
 hl.bind("ALT + SHIFT + up", hl.dsp.window.resize({ x = 0, y = -50, relative = true, repeating = true }))
 hl.bind("ALT + SHIFT + down", hl.dsp.window.resize({ x = 0, y = 50, relative = true, repeating = true }))
+hl.bind("ALT + Tab", function()
+	hl.dispatch(hl.dsp.window.cycle_next())
+	hl.dispatch(hl.dsp.window.bring_to_top())
+end)
 
 ---           MOUSE BINDINGS
 --- Mouse window management
