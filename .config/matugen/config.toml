@@ -10,8 +10,8 @@ command = 'waypaper --wallpaper {{ image }}'
 set = true
 
 [templates.hyprland]
-input_path = '~/.config/matugen/templates/hyprland.conf'
-output_path = '~/.cache/Matugen/hyprland-colors.conf'
+input_path = '~/.config/matugen/templates/hyprland.lua'
+output_path = '~/.config/hypr/modules/hyprland-colors.lua'
 post_hook = 'hyprctl reload'
 
 [templates.rofi]

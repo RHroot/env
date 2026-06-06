@@ -1,0 +1,8 @@
+require("modules.res")
+require("modules.keys")
+require("modules.setts")
+require("modules.start")
+require("modules.anime")
+require("modules.decor")
+require("modules.evars")
+require("modules.wrules")
