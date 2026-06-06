@@ -10,7 +10,7 @@ IMAGE="$1"
 notify-send "Changing Theme" "Applying new wallpaper and updating colors, please wait until confirmation..."
 
 # Set wallpaper
-waypaper --wallpaper $IMAGE --backend swaybg
+waypaper --wallpaper $IMAGE
 
 # Take colors from Image
 matugen image "$IMAGE" -m dark -t scheme-content --source-color-index 0
