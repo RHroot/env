@@ -9,8 +9,8 @@
   services.displayManager.gdm.enable = false;
   services.displayManager.sddm.enable = false;
 
-  services.getty.autologinUser = "sten";
-  services.displayManager.defaultSession = "Hyprland";
+  # services.getty.autologinUser = "sten";
+  # services.displayManager.defaultSession = "Hyprland";
 
   programs.hyprland = {
     enable = true;
