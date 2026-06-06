@@ -6,7 +6,7 @@ mode = 'dark'
 source_color_index = 0
 
 [config.wallpaper]
-command = 'feh --bg-fill {{ image }}'
+command = 'waypaper --wallpaper {{ image }}'
 set = true
 
 [templates.hyprland]
