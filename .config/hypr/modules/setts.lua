@@ -53,7 +53,7 @@ hl.gesture({
 	fingers = 3, --- Number of fingers
 	direction = "horizontal", --- Direction
 	action = "workspace", --- Action
-	workspace_swipe_distance = 600, --- Swipe distance
+	workspace_swipe_distance = 300, --- Swipe distance
 	workspace_swipe_invert = true, --- Invert swipe direction
 	workspace_swipe_min_speed_to_force = 30, --- Minimum speed to force
 	workspace_swipe_cancel_ratio = 0.5, --- Cancel ratio
