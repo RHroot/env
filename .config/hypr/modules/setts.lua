@@ -44,13 +44,15 @@ hl.config({
 		new_on_top = 1, --- New windows appear on top
 		mfact = 0.51, --- Master area factor (51%)
 	},
+	scrolling = {
+		fullscreen_on_one_column = true,
+	},
 })
 
 hl.gesture({
-	-- gesture = "3, horizontal, workspace",
-	fingers = 3,
-	direction = "horizontal",
-	action = "workspace",
+	fingers = 3, --- Number of fingers
+	direction = "horizontal", --- Direction
+	action = "workspace", --- Action
 	workspace_swipe_distance = 600, --- Swipe distance
 	workspace_swipe_invert = true, --- Invert swipe direction
 	workspace_swipe_min_speed_to_force = 30, --- Minimum speed to force

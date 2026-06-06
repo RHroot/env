@@ -1,8 +1,5 @@
-hl.animation({ leaf = "fade", enabled = false })
-hl.animation({ leaf = "border", enabled = false })
-hl.animation({ leaf = "windows", enabled = false })
-hl.animation({ leaf = "windowsIn", enabled = false })
-hl.animation({ leaf = "workspaces", enabled = false })
-hl.animation({ leaf = "windowsOut", enabled = false })
-hl.animation({ leaf = "windowsMove", enabled = false })
-hl.animation({ leaf = "specialWorkspace", enabled = false })
+hl.config({
+	animations = {
+		enabled = false,
+	},
+})

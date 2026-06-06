@@ -1,0 +1,30 @@
+--  --- General
+-- windowrulev2 = float, title:^(Open|Save|Select|Choose|Upload)(.*)$
+-- windowrulev2 = center, title:^(Open|Save|Select|Choose|Upload)(.*)$
+-- windowrulev2 = size 80% 70%, title:^(Open|Save|Select|Choose|Upload)(.*)$
+--
+-- windowrulev2 = float, class:^(nm-connection-editor|\.blueman-manager-wrapped|org\.pulseaudio\.pavucontrol|xdg-desktop-portal-gtk)$
+-- windowrulev2 = center, class:^(nm-connection-editor|\.blueman-manager-wrapped|org\.pulseaudio\.pavucontrol|xdg-desktop-portal-gtk)$
+-- windowrulev2 = size 80% 70%, class:^(nm-connection-editor|\.blueman-manager-wrapped|org\.pulseaudio\.pavucontrol|xdg-desktop-portal-gtk)$
+--
+-- --- Authentication
+-- windowrulev2 = float, title:^(Authentication Required|Unlock|Polkit|Authorize)(.*)$
+-- windowrulev2 = center, title:^(Authentication Required|Unlock|Polkit|Authorize)(.*)$
+-- windowrulev2 = size 80% 70%, title:^(Authentication Required|Unlock|Polkit|Authorize)(.*)$
+--
+-- --- Settings/Preferences
+-- windowrulev2 = float, title:^(Preferences|Settings|Properties|Configure)(.*)$
+-- windowrulev2 = center, title:^(Preferences|Settings|Properties|Configure)(.*)$
+-- windowrulev2 = size 80% 70%, title:^(Preferences|Settings|Properties|Configure)(.*)$
+--
+-- --- Bound Window Rules
+-- windowrulev2 = workspace 4, class:^(jetbrains-toolbox)$
+-- windowrulev2 = workspace 4, class:^(net.lutris.Lutris)$
+-- windowrulev2 = workspace 5, class:^(cs2)$
+-- windowrulev2 = workspace 5, class:^(steam_app_default)$
+-- windowrulev2 = workspace 6, class:^(vlc)$
+-- windowrulev2 = workspace 8, class:^(steam)$
+-- windowrulev2 = workspace 8, class:^(libreoffice-startcenter)$
+--
+-- --- Tearing Allowind Rules
+-- windowrulev2 = immediate, class:^(cs2)$
