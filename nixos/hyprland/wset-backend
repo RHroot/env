@@ -13,7 +13,7 @@ notify-send "Changing Theme" "Applying new wallpaper and updating colors, please
 TYPES=("fade" "wipe" "wave" "grow" "center" "step")
 TRANSITION="${TYPES[$((RANDOM % ${#TYPES[@]}))]}"
 ANGLE=$((RANDOM % 360))
-swww img "$IMAGE" \
+awww img "$IMAGE" \
   --transition-type "$TRANSITION" \
   --transition-duration 3 \
   --transition-fps 144 \
