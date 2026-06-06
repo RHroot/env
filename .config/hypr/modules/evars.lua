@@ -19,10 +19,10 @@ hl.env("LIBVA_DRIVER_NAME", "iHD")
 hl.env("WLR_DRM_NO_ATOMIC", ",0")
 
 --- Cursor
-hl.env("HYPRCURSOR_THEME", "Vimix-cursors")
-hl.env("HYPRCURSOR_SIZE", "40")
-hl.env("XCURSOR_THEME", "Vimix-cursors")
-hl.env("XCURSOR_SIZE", "40")
+hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("HYPRCURSOR_SIZE", "30")
+hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("XCURSOR_SIZE", "30")
 
 --- NVIDIA offloading (pick only if you want NVIDIA to render)
 -- hl.env("__NV_PRIME_RENDER_OFFLOAD", "1")
