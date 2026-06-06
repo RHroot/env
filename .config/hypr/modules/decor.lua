@@ -1,4 +1,4 @@
-local colors = require("modules.colors")
+local colors = require("modules.hyprland-colors")
 
 hl.config({
 	group = {
