@@ -6,18 +6,11 @@ if [ "$#" -ne 1 ]; then
 fi
 
 IMAGE="$1"
-CACHE_FILE="$HOME/.cache/hyprpaper/last_wallpaper.txt"
 
 notify-send "Changing Theme" "Applying new wallpaper and updating colors, please wait until confirmation..."
 
-# === Save the wallpaper path for restoration ===
-echo "$IMAGE" >"$CACHE_FILE"
-# Get monitor name (primary or first monitor)
-MONITOR=$(hyprctl monitors -j | jq -r '.[0].name')
-# First, preload the image
-hyprctl hyprpaper preload "$IMAGE"
-# Then set it on your monitor
-hyprctl hyprpaper wallpaper "$MONITOR, $IMAGE"
+# Set wallpaper
+waypaper --wallpaper $IMAGE --backend swaybg
 
 # Take colors from Image
 matugen image "$IMAGE" -m dark -t scheme-content --source-color-index 0

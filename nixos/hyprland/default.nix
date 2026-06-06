@@ -53,7 +53,6 @@
     hypridle # Idle management daemon for Hyprland
     hyprlock # Screen locker for Hyprland
     hyprshot # Screenshot utility for Hyprland
-    hyprpaper # Wallpaper manager for Hyprland
     hyprpicker # Color picker for Wayland/Hyprland
     hyprcursor # Cursor theme support for Hyprland
     hyprland-qtutils # Qt utilities for Hyprland components
@@ -70,6 +69,9 @@
     libnotify # Desktop notification library
     wl-clipboard # Clipboard utilities for Wayland
 
+    # === Wallpaper ===
+    swaybg # Wallpaper manager for Wayland compositors
+    waypaper # Wallpaper manager for Wayland compositors
     # === Theming ===
     matugen # Generate color schemes from images
 
