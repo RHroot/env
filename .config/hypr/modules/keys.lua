@@ -11,25 +11,25 @@ local clipboardmanager = "$HOME/env/nixos/hyprland/clipman"
 local menu = "rofi -show combi -modes combi -combi-modes 'window,drun,run'"
 
 ---           APPLICATION LAUNCHERS
-hl.bind("SUPER + Return", hl.dsp.exec_cmd(terminal))
-hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("emacsclient -c"))
-hl.bind("SUPER + P ", hl.dsp.exec_cmd(vanishing_terminal))
-hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd(alt_terminal))
-hl.bind("SUPER + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind("SUPER + R", hl.dsp.exec_cmd(runmenu))
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd(theme))
 hl.bind("SUPER + B", hl.dsp.exec_cmd(browser))
-hl.bind("SUPER + SHIFT + B", hl.dsp.exec_cmd(alt_browser))
+hl.bind("SUPER + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(filemanager))
-hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd("pavucontrol"))
+hl.bind("SUPER + Return", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER  + V", hl.dsp.exec_cmd(clipboardmanager))
+hl.bind("SUPER + P ", hl.dsp.exec_cmd(vanishing_terminal))
+hl.bind("SUPER + SHIFT + B", hl.dsp.exec_cmd(alt_browser))
+hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd("pavucontrol"))
+hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("emacsclient -c"))
+hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd(alt_terminal))
 
 ---           SYSTEM CONTROLS
 -- --- System power and session management
 hl.bind("SUPER + Escape", hl.dsp.exec_cmd("powermenu"))
 hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("systemctl poweroff"))
 hl.bind("CTRL + ALT + R", hl.dsp.exec_cmd("systemctl reboot"))
+hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("systemctl poweroff"))
 hl.bind("CTRL + ALT + Q", hl.dsp.exec_cmd("hyprctl dispatch exit 0"))
 
 ---           WINDOW MANAGEMENT
@@ -56,15 +56,18 @@ hl.bind("SUPER + right", hl.dsp.focus({ workspace = "+1" }))
 hl.bind("SUPER + SHIFT + bracketleft", hl.dsp.focus({ workspace = "m-1" }))
 hl.bind("SUPER + SHIFT + bracketright", hl.dsp.focus({ workspace = "m+1" }))
 
---- Focus movement
-hl.bind("ALT + j", hl.dsp.focus({ direction = "d" }))
-hl.bind("ALT + k", hl.dsp.focus({ direction = "u" }))
-hl.bind("ALT + h", hl.dsp.focus({ direction = "l" }))
-hl.bind("ALT + l", hl.dsp.focus({ direction = "r" }))
-hl.bind("SUPER + ALT + j", hl.dsp.window.swap({ direction = "d" }))
-hl.bind("SUPER + ALT + k", hl.dsp.window.swap({ direction = "u" }))
-hl.bind("SUPER + ALT + h", hl.dsp.window.swap({ direction = "l" }))
-hl.bind("SUPER + ALT + l", hl.dsp.window.swap({ direction = "r" }))
+local directions = {
+	{ key = "j", dir = "d" },
+	{ key = "k", dir = "u" },
+	{ key = "h", dir = "l" },
+	{ key = "l", dir = "r" },
+}
+
+-- Focus movement
+for _, d in ipairs(directions) do
+	hl.bind("ALT + " .. d.key, hl.dsp.focus({ direction = d.dir }))
+	hl.bind("SUPER + ALT + " .. d.key, hl.dsp.window.swap({ direction = d.dir }))
+end
 
 ---           WORKSPACE NUMBERS
 -- Key codes for 1-0 keys (assuming standard keyboard layout)
@@ -81,14 +84,29 @@ for i, code in ipairs(key_codes) do
 end
 
 ---                    WINDOW MANAGEMENT
-hl.bind("ALT + SHIFT + J", hl.dsp.window.resize({ x = 0, y = 50, relative = true, repeating = true }))
-hl.bind("ALT + SHIFT + K", hl.dsp.window.resize({ x = 0, y = -50, relative = true, repeating = true }))
-hl.bind("ALT + SHIFT + H", hl.dsp.window.resize({ x = -50, y = 0, relative = true, repeating = true }))
-hl.bind("ALT + SHIFT + L", hl.dsp.window.resize({ x = 50, y = 0, relative = true, repeating = true }))
-hl.bind("ALT + SHIFT + right", hl.dsp.window.resize({ x = 50, y = 0, relative = true, repeating = true }))
-hl.bind("ALT + SHIFT + left", hl.dsp.window.resize({ x = -50, y = 0, relative = true, repeating = true }))
-hl.bind("ALT + SHIFT + up", hl.dsp.window.resize({ x = 0, y = -50, relative = true, repeating = true }))
-hl.bind("ALT + SHIFT + down", hl.dsp.window.resize({ x = 0, y = 50, relative = true, repeating = true }))
+local resize_actions = {
+	{ key = "J", mod = "ALT + SHIFT + ", x = 0, y = 50 },
+	{ key = "K", mod = "ALT + SHIFT + ", x = 0, y = -50 },
+	{ key = "H", mod = "ALT + SHIFT + ", x = -50, y = 0 },
+	{ key = "L", mod = "ALT + SHIFT + ", x = 50, y = 0 },
+	{ key = "down", mod = "ALT + SHIFT + ", x = 0, y = 50 },
+	{ key = "up", mod = "ALT + SHIFT + ", x = 0, y = -50 },
+	{ key = "left", mod = "ALT + SHIFT + ", x = -50, y = 0 },
+	{ key = "right", mod = "ALT + SHIFT + ", x = 50, y = 0 },
+}
+
+for _, r in ipairs(resize_actions) do
+	hl.bind(
+		r.mod .. r.key,
+		hl.dsp.window.resize({
+			x = r.x,
+			y = r.y,
+			relative = true,
+			repeating = true,
+		})
+	)
+end
+
 hl.bind("ALT + Tab", function()
 	hl.dispatch(hl.dsp.window.cycle_next())
 	hl.dispatch(hl.dsp.window.bring_to_top())
