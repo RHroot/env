@@ -19,7 +19,6 @@
   };
 
   programs.hyprlock.enable = true;
-  services.hypridle.enable = true;
 
   # Enable polkit for GUI privilege prompts
   security.polkit.enable = true;
@@ -50,7 +49,6 @@
 
   environment.systemPackages = with pkgs; [
     # === HYPRLAND ===
-    hypridle # Idle management daemon for Hyprland
     hyprlock # Screen locker for Hyprland
     hyprshot # Screenshot utility for Hyprland
     hyprpicker # Color picker for Wayland/Hyprland
