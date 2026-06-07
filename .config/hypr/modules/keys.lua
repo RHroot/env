@@ -67,26 +67,18 @@ hl.bind("SUPER + ALT + h", hl.dsp.window.swap({ direction = "l" }))
 hl.bind("SUPER + ALT + l", hl.dsp.window.swap({ direction = "r" }))
 
 ---           WORKSPACE NUMBERS
-hl.bind("SUPER + code:10", hl.dsp.focus({ workspace = 1 }))
-hl.bind("SUPER + code:11", hl.dsp.focus({ workspace = 2 }))
-hl.bind("SUPER + code:12", hl.dsp.focus({ workspace = 3 }))
-hl.bind("SUPER + code:13", hl.dsp.focus({ workspace = 4 }))
-hl.bind("SUPER + code:14", hl.dsp.focus({ workspace = 5 }))
-hl.bind("SUPER + code:15", hl.dsp.focus({ workspace = 6 }))
-hl.bind("SUPER + code:16", hl.dsp.focus({ workspace = 7 }))
-hl.bind("SUPER + code:17", hl.dsp.focus({ workspace = 8 }))
-hl.bind("SUPER + code:18", hl.dsp.focus({ workspace = 9 }))
-hl.bind("SUPER + code:19", hl.dsp.focus({ workspace = 10 }))
-hl.bind("SUPER + SHIFT + code:10", hl.dsp.window.move({ workspace = 1 }))
-hl.bind("SUPER + SHIFT + code:11", hl.dsp.window.move({ workspace = 2 }))
-hl.bind("SUPER + SHIFT + code:12", hl.dsp.window.move({ workspace = 3 }))
-hl.bind("SUPER + SHIFT + code:13", hl.dsp.window.move({ workspace = 4 }))
-hl.bind("SUPER + SHIFT + code:14", hl.dsp.window.move({ workspace = 5 }))
-hl.bind("SUPER + SHIFT + code:15", hl.dsp.window.move({ workspace = 6 }))
-hl.bind("SUPER + SHIFT + code:16", hl.dsp.window.move({ workspace = 7 }))
-hl.bind("SUPER + SHIFT + code:17", hl.dsp.window.move({ workspace = 8 }))
-hl.bind("SUPER + SHIFT + code:18", hl.dsp.window.move({ workspace = 9 }))
-hl.bind("SUPER + SHIFT + code:19", hl.dsp.window.move({ workspace = 10 }))
+-- Key codes for 1-0 keys (assuming standard keyboard layout)
+local key_codes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }
+
+-- Focus workspaces
+for i, code in ipairs(key_codes) do
+	hl.bind("SUPER + code:" .. code, hl.dsp.focus({ workspace = i }))
+end
+
+-- Move windows to workspaces
+for i, code in ipairs(key_codes) do
+	hl.bind("SUPER + SHIFT + code:" .. code, hl.dsp.window.move({ workspace = i }))
+end
 
 ---                    WINDOW MANAGEMENT
 hl.bind("ALT + SHIFT + J", hl.dsp.window.resize({ x = 0, y = 50, relative = true, repeating = true }))
@@ -114,6 +106,22 @@ hl.bind("switch:[switch name]", hl.dsp.exec_cmd("hyprlock"), { locked = true })
 hl.bind("switch:on:[switch name]", hl.dsp.exec_cmd("notify-send 'yooo'"), { locked = true })
 --- Trigger when the switch is turning off.
 hl.bind("switch:off:[switch name]", hl.dsp.exec_cmd("notify-send 'among us'"), { locked = true })
+
+---           BRIGHTNESS CONTROLS
+hl.bind(
+	"XF86MonBrightnessUp",
+	hl.dsp.exec_cmd(
+		"sh -c 'brightnessctl set +10% >/dev/null; level=$(brightnessctl -m | cut -d, -f4 | tr -d %); notify-send \"Brightness: $level%\"'"
+	),
+	{ locked = true }
+)
+hl.bind(
+	"XF86MonBrightnessDown",
+	hl.dsp.exec_cmd(
+		"sh -c 'brightnessctl set 10%- >/dev/null; level=$(brightnessctl -m | cut -d, -f4 | tr -d %); notify-send \"Brightness: $level%\"'"
+	),
+	{ locked = true }
+)
 
 ---           AUDIO CONTROLS
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
@@ -145,18 +153,4 @@ hl.bind(
 	hl.dsp.exec_cmd(
 		'sh -c \'current_mute=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -o "MUTED"); if [ -n "$current_mute" ]; then wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && notify-send "Volume" "🔊 Unmuted"; else wpctl set-mute @DEFAULT_AUDIO_SINK@ 1 && notify-send "Volume" "🔇 Muted"; fi\''
 	)
-)
-hl.bind(
-	"XF86MonBrightnessUp",
-	hl.dsp.exec_cmd(
-		"sh -c 'brightnessctl set +10% >/dev/null; level=$(brightnessctl -m | cut -d, -f4 | tr -d %); notify-send \"Brightness: $level%\"'"
-	),
-	{ locked = true }
-)
-hl.bind(
-	"XF86MonBrightnessDown",
-	hl.dsp.exec_cmd(
-		"sh -c 'brightnessctl set 10%- >/dev/null; level=$(brightnessctl -m | cut -d, -f4 | tr -d %); notify-send \"Brightness: $level%\"'"
-	),
-	{ locked = true }
 )
