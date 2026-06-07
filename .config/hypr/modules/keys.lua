@@ -1,4 +1,5 @@
 ---            VARIABLE DEFINITIONS
+local opts = { repeating = true }
 local terminal = "kitty"
 local filemanager = "nautilus"
 local alt_terminal = "alacritty"
@@ -30,7 +31,7 @@ hl.bind("SUPER + Escape", hl.dsp.exec_cmd("powermenu"))
 hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind("CTRL + ALT + R", hl.dsp.exec_cmd("systemctl reboot"))
 hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("systemctl poweroff"))
-hl.bind("CTRL + ALT + Q", hl.dsp.exec_cmd("hyprctl dispatch exit 0"))
+hl.bind("CTRL + ALT + Q", hl.dsp.exit())
 
 ---           WINDOW MANAGEMENT
 --- Window control and manipulation
@@ -49,12 +50,12 @@ hl.bind("SUPER" .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 
 ---           WORKSPACE NAVIGATION
 --- Workspace switching
-hl.bind("SUPER + J", hl.dsp.focus({ workspace = "-1" }))
-hl.bind("SUPER + K", hl.dsp.focus({ workspace = "+1" }))
-hl.bind("SUPER + left", hl.dsp.focus({ workspace = "-1" }))
-hl.bind("SUPER + right", hl.dsp.focus({ workspace = "+1" }))
-hl.bind("SUPER + SHIFT + bracketleft", hl.dsp.focus({ workspace = "m-1" }))
-hl.bind("SUPER + SHIFT + bracketright", hl.dsp.focus({ workspace = "m+1" }))
+hl.bind("SUPER + J", hl.dsp.focus({ workspace = "-1" }), opts)
+hl.bind("SUPER + K", hl.dsp.focus({ workspace = "+1" }), opts)
+hl.bind("SUPER + left", hl.dsp.focus({ workspace = "-1" }), opts)
+hl.bind("SUPER + right", hl.dsp.focus({ workspace = "+1" }), opts)
+hl.bind("SUPER + SHIFT + bracketleft", hl.dsp.focus({ workspace = "m-1" }), opts)
+hl.bind("SUPER + SHIFT + bracketright", hl.dsp.focus({ workspace = "m+1" }), opts)
 
 local directions = {
 	{ key = "j", dir = "d" },
@@ -65,8 +66,8 @@ local directions = {
 
 -- Focus movement
 for _, d in ipairs(directions) do
-	hl.bind("ALT + " .. d.key, hl.dsp.focus({ direction = d.dir }))
-	hl.bind("SUPER + ALT + " .. d.key, hl.dsp.window.swap({ direction = d.dir }))
+	hl.bind("ALT + " .. d.key, hl.dsp.focus({ direction = d.dir }), opts)
+	hl.bind("SUPER + ALT + " .. d.key, hl.dsp.window.swap({ direction = d.dir }), opts)
 end
 
 ---           WORKSPACE NUMBERS
@@ -75,12 +76,12 @@ local key_codes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }
 
 -- Focus workspaces
 for i, code in ipairs(key_codes) do
-	hl.bind("SUPER + code:" .. code, hl.dsp.focus({ workspace = i }))
+	hl.bind("SUPER + code:" .. code, hl.dsp.focus({ workspace = i }), opts)
 end
 
 -- Move windows to workspaces
 for i, code in ipairs(key_codes) do
-	hl.bind("SUPER + SHIFT + code:" .. code, hl.dsp.window.move({ workspace = i }))
+	hl.bind("SUPER + SHIFT + code:" .. code, hl.dsp.window.move({ workspace = i }), opts)
 end
 
 ---                    WINDOW MANAGEMENT
@@ -96,15 +97,7 @@ local resize_actions = {
 }
 
 for _, r in ipairs(resize_actions) do
-	hl.bind(
-		r.mod .. r.key,
-		hl.dsp.window.resize({
-			x = r.x,
-			y = r.y,
-			relative = true,
-			repeating = true,
-		})
-	)
+	hl.bind(r.mod .. r.key, hl.dsp.window.resize({ x = r.x, y = r.y, relative = true, repeating = true }), opts)
 end
 
 hl.bind("ALT + Tab", function()
@@ -131,14 +124,14 @@ hl.bind(
 	hl.dsp.exec_cmd(
 		"sh -c 'brightnessctl set +10% >/dev/null; level=$(brightnessctl -m | cut -d, -f4 | tr -d %); notify-send \"Brightness: $level%\"'"
 	),
-	{ locked = true }
+	{ locked = true, repeating = true }
 )
 hl.bind(
 	"XF86MonBrightnessDown",
 	hl.dsp.exec_cmd(
 		"sh -c 'brightnessctl set 10%- >/dev/null; level=$(brightnessctl -m | cut -d, -f4 | tr -d %); notify-send \"Brightness: $level%\"'"
 	),
-	{ locked = true }
+	{ locked = true, repeating = true }
 )
 
 ---           AUDIO CONTROLS
