@@ -1,8 +1,8 @@
 hl.config({
 	general = {
 		border_size = 0,
-		gaps_in = 4,
-		gaps_out = 8,
+		gaps_in = 3,
+		gaps_out = 6,
 	},
 })
 
@@ -18,7 +18,7 @@ hl.config({
 
 		shadow = {
 			enabled = true,
-			range = 10,
+			range = 16,
 			render_power = 10,
 			color = "#000000",
 			color_inactive = "#000000",
