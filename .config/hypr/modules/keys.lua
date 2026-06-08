@@ -13,11 +13,11 @@ local menu = "rofi -show combi -modes combi -combi-modes 'window,drun,run'"
 
 ---           APPLICATION LAUNCHERS
 hl.bind("SUPER + R", hl.dsp.exec_cmd(runmenu))
-hl.bind("ALT + SPACE", hl.dsp.exec_cmd(theme))
 hl.bind("SUPER + B", hl.dsp.exec_cmd(browser))
 hl.bind("SUPER + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(filemanager))
 hl.bind("SUPER + Return", hl.dsp.exec_cmd(terminal))
+hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd(theme))
 hl.bind("SUPER  + V", hl.dsp.exec_cmd(clipboardmanager))
 hl.bind("SUPER + P ", hl.dsp.exec_cmd(vanishing_terminal))
 hl.bind("SUPER + SHIFT + B", hl.dsp.exec_cmd(alt_browser))
