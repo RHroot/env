@@ -11,7 +11,7 @@ notify-send "Changing Theme" "Applying new wallpaper and updating colors, please
 
 # Take colors from Image
 matugen image "$IMAGE" -m dark -t scheme-content --source-color-index 0
-qtile cmd-obj -o cmd -f restart 2>/dev/null
+# qtile cmd-obj -o cmd -f restart 2>/dev/null
 sleep 2
 
 sh $HOME/.fehbg

@@ -1,22 +1,8 @@
-local colors = require("modules.hyprland-colors")
-
-hl.config({
-	group = {
-		["col.border_active"] = colors.tertiary_container,
-		groupbar = {
-			["col.active"] = colors.tertiary,
-		},
-	},
-})
-
 hl.config({
 	general = {
-		border_size = 2,
-		gaps_in = 2,
-		gaps_out = 2,
-
-		["col.active_border"] = colors.primary,
-		["col.inactive_border"] = colors.surface_variant,
+		border_size = 0,
+		gaps_in = 4,
+		gaps_out = 8,
 	},
 })
 
@@ -26,23 +12,23 @@ hl.config({
 		rounding = 9,
 
 		active_opacity = 0.9,
-		inactive_opacity = 0.7,
+		inactive_opacity = 0.5,
 		fullscreen_opacity = 1.0,
 		dim_inactive = false,
 
 		shadow = {
 			enabled = true,
-			range = 5,
-			render_power = 4,
-			color = colors.primary,
-			color_inactive = "rgba(00000000)",
+			range = 10,
+			render_power = 10,
+			color = "#000000",
+			color_inactive = "#000000",
 		},
 
 		blur = {
 			enabled = true,
-			size = 1,
+			size = 4,
 			ignore_opacity = true,
-			passes = 2,
+			passes = 4,
 		},
 	},
 })

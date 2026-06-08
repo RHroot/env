@@ -13,7 +13,6 @@ notify-send "Changing Theme" "Applying new wallpaper and updating colors, please
 matugen image "$IMAGE" -m dark -t scheme-content --source-color-index 0
 
 # Reload
-hyprctl reload
 kill -10 $(pgrep kitty) 2>/dev/null
 
 notify-send "Theme Applied" "Wallpaper and Theme updated successfully"
