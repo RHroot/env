@@ -19,7 +19,6 @@
   };
 
   programs.hyprlock.enable = true;
-  programs.waybar.enable = true;
 
   # Enable polkit for GUI privilege prompts
   security.polkit.enable = true;
@@ -62,7 +61,6 @@
     imv # Image viewer for Wayland
     rofi # Application launcher and dmenu replacement
     dunst # Lightweight notification daemon
-    waybar # Wayland status bar
     cliphist # Clipboard manager for Wayland
     libinput # Input device management library
     playerctl # Media player control via MPRIS
