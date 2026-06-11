@@ -58,23 +58,6 @@
     };
   };
   xdg.mime.defaultApplications = {
-    "text/plain" = ["neovide-opener.desktop"];
-    "text/markdown" = ["neovide-opener.desktop"];
-    "text/x-c" = ["neovide-opener.desktop"];
-    "text/x-c++" = ["neovide-opener.desktop"];
-    "text/x-python" = ["neovide-opener.desktop"];
-    "text/x-script" = ["neovide-opener.desktop"];
-    "text/x-shellscript" = ["neovide-opener.desktop"];
-    "text/x-nix" = ["neovide-opener.desktop"];
-    "text/x-rust" = ["neovide-opener.desktop"];
-    "text/x-go" = ["neovide-opener.desktop"];
-    "text/x-java" = ["neovide-opener.desktop"];
-    "text/x-javascript" = ["neovide-opener.desktop"];
-    "text/x-typescript" = ["neovide-opener.desktop"];
-    "text/x-json" = ["neovide-opener.desktop"];
-    "text/x-yaml" = ["neovide-opener.desktop"];
-    "text/x-toml" = ["neovide-opener.desktop"];
-    "text/x-tex" = ["neovide-opener.desktop"];
-    "text/html" = ["firefox"];
+    "text/*" = ["neovide-opener.desktop"];
   };
 }
