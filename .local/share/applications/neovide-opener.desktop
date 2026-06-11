@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Neovide Opener
+Exec=$HOME/.local/bin/neovide-opener %F
+MimeType=text/plain;
+DefaultApp=yes
+Terminal=false
+Categories=TextEditor;Development;

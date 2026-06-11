@@ -141,8 +141,8 @@
   ];
 
   environment.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
+    EDITOR = "neovide-opener";
+    VISUAL = "neovide-opener";
     TERMINAL = "kitty";
     BROWSER = "brave";
     COLORTERM = "truecolor";
