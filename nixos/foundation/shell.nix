@@ -141,8 +141,8 @@
   ];
 
   environment.sessionVariables = {
-    EDITOR = "neovide-opener";
-    VISUAL = "neovide-opener";
+    EDITOR = "neovide";
+    VISUAL = "neovide";
     TERMINAL = "kitty";
     BROWSER = "brave";
     COLORTERM = "truecolor";

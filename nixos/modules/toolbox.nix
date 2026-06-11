@@ -57,7 +57,4 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-  xdg.mime.defaultApplications = {
-    "text/*" = ["neovide-opener.desktop"];
-  };
 }

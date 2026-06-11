@@ -16,7 +16,7 @@
       commit.gpgsign = true;
 
       core = {
-        editor = "neovide-opener";
+        editor = "neovide";
         pager = "delta";
         autocrlf = "input";
       };
