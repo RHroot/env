@@ -37,7 +37,6 @@
     neovide # GUI for neovim
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
-    zed-editor # Text editor with a minimalistic UI
     pkg-config # Package management tool for libraries
     podman-compose # Compose multiple containers with a single command
   ];
