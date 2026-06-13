@@ -5,10 +5,10 @@ local filemanager = "nautilus"
 local alt_terminal = "alacritty"
 local runmenu = "rofi -show run"
 local theme = "$HOME/env/nixos/hyprland/wset"
+local browser = "helium --profile-directory='Default'"
+local alt_browser = "helium --profile-directory='Work'"
 local vanishing_terminal = "kitten quick-access-terminal"
 local clipboardmanager = "$HOME/env/nixos/hyprland/clipman"
-local browser = "Helium.AppImage --profile-directory='Default'"
-local alt_browser = "Helium.AppImage --profile-directory='Work'"
 local menu = "rofi -show combi -modes combi -combi-modes 'window,drun,run'"
 
 ---           APPLICATION LAUNCHERS
