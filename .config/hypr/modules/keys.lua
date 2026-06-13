@@ -4,11 +4,11 @@ local terminal = "kitty"
 local filemanager = "nautilus"
 local alt_terminal = "alacritty"
 local runmenu = "rofi -show run"
-local browser = "firefox -p default"
-local alt_browser = "firefox -p Work"
 local theme = "$HOME/env/nixos/hyprland/wset"
 local vanishing_terminal = "kitten quick-access-terminal"
 local clipboardmanager = "$HOME/env/nixos/hyprland/clipman"
+local browser = "Helium.AppImage --profile-directory='Default'"
+local alt_browser = "Helium.AppImage --profile-directory='Work'"
 local menu = "rofi -show combi -modes combi -combi-modes 'window,drun,run'"
 
 ---           APPLICATION LAUNCHERS

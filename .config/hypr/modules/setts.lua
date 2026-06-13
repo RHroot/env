@@ -60,6 +60,7 @@ hl.gesture({
 	direction = "pinch",
 	action = "cursor_zoom",
 	zoom_level = 1,
+	mods = "SUPER",
 	mode = "live", -- Zooms continuously as you pinch
 })
 
@@ -112,3 +113,6 @@ hl.config({
 		},
 	},
 })
+
+hl.bind(" + switch:off:Lid Switch", hl.dsp.dpms("on"))
+hl.bind(" + switch:on:Lid Switch", hl.dsp.exec_cmd("loginctl lock-session"))
