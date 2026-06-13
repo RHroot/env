@@ -34,7 +34,7 @@ sudo nix flake update
 printf "%b\n" "${YELLOW}󰊢 Syncing lockfile${RESET}"
 if ! git diff --quiet; then
   git add .
-  git commit -m 'changed flake.lock file according to flake.nix'
+  git commit -m 'Upgrading flake to update the system further'
   printf "%b\n" "  ${CYAN}→ committed changes${RESET}"
 else
   printf "%b\n" "  ${DIM}→ no changes${RESET}"
