@@ -1,13 +1,8 @@
 {
   config,
   pkgs,
-  env,
   ...
 }: {
-  imports = [
-    (import (fetchTarball "https://github.com/oxcl/nix-flake-helium-browser/archive/main.tar.gz")).nixosModules.default
-  ];
-
   environment.systemPackages = with pkgs; [
     vlc # Video player
     evince # PDF viewer
@@ -23,19 +18,6 @@
   #   package = pkgs.localsend;
   #   openFirewall = true;
   # };
-
-  programs.helium = {
-    enable = true;
-    flags = [
-      "--ozone-platform-hint=auto"
-    ];
-    policies = {
-      "BrowserSignin" = 0;
-      "PasswordManagerEnabled" = false;
-      "SyncDisabled" = true;
-      "SpellcheckEnabled" = true;
-    };
-  };
 
   # programs.firefox = {
   #   enable = true;
