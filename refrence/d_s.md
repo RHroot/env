@@ -9,7 +9,7 @@ nix shell nixpkgs#python313Packages.huggingface-hub
 ### Download model
 
 ```bash
-huggingface-cli download Qwen/Qwen2.5-3B-Instruct-GGUF qwen2.5-3b-instruct-q4_k_m.gguf --local-dir ./models/qwen
+mkdir -pv ./models && hf download Qwen/Qwen2.5-3B-Instruct-GGUF qwen2.5-3b-instruct-q4_k_m.gguf --local-dir ./models/qwen
 ```
 
 ### Try to run llama.cpp
