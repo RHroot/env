@@ -15,7 +15,7 @@ mkdir -pv ./models && hf download Qwen/Qwen2.5-3B-Instruct-GGUF qwen2.5-3b-instr
 ### Try to run llama.cpp
 
 ```bash
-nix run github:ggml-org/llama.cpp#cuda -- --help
+nix run --no-write-lock-file github:ggml-org/llama.cpp#cuda -- --help
 ```
 
 ### Verify if the gpu is working
