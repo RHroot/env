@@ -61,10 +61,10 @@
 
   xdg.mime.defaultApplications = {
     # # Text
-    # "text/html" = ["firefox.desktop"];
-    # # Web
-    # "x-scheme-handler/http" = ["firefox.desktop"];
-    # "x-scheme-handler/https" = ["firefox.desktop"];
+    "text/html" = ["helium.desktop"];
+    # Web
+    "x-scheme-handler/http" = ["helium.desktop"];
+    "x-scheme-handler/https" = ["helium.desktop"];
     # PDF viewer
     "application/pdf" = ["org.gnome.Evince.desktop"];
     # Video
