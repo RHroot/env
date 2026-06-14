@@ -3,7 +3,7 @@
 ### Shell with Huggingface
 
 ```bash
-nix-shell -p python313Packages.huggingface-hub
+nix shell nixpkgs#python313Packages.huggingface-hub
 ```
 
 ### Download model
