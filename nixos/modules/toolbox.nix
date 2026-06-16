@@ -46,7 +46,6 @@
   };
   programs.neovim = {
     enable = true;
-    package = pkgs.unstable.neovim-unwrapped;
   };
   virtualisation = {
     containers.enable = true;
