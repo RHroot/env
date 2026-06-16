@@ -5,23 +5,13 @@
 }: {
   environment.systemPackages = with pkgs; [
     vlc # Video player
+    brave # Web browser
     evince # PDF viewer
     zotero # Reference manager
     foliate # Book reader and downloader
     blanket # Different Sounds in Background
     telegram-desktop # Messenger
     libreoffice-fresh # Office suite
-    (writeShellScriptBin "brave" ''
-      exec ${pkgs.brave}/bin/brave \
-        --disable-features=PrivacySandboxSettings4 \
-        --disable-sync \
-        --disable-background-networking \
-        --disable-component-update \
-        --disable-default-apps \
-        --no-first-run \
-        --force-dark-mode \
-        "$@"
-    '')
   ];
 
   # programs.localsend = {
@@ -32,56 +22,47 @@
 
   environment.etc."brave/policies/managed/policies.json" = {
     text = builtins.toJSON {
-      # PRIVACY & TELEMETRY
+      # Disable ALL bloat features
+      BraveRewards = false; # No BAT/rewards
+      BraveWallet = false; # No crypto wallet
+      BraveVPNDisabled = true; # No VPN
+      BraveAIChat = false; # No AI (Leo)
+      BraveNews = false; # No news feed
+      BraveShields = true; # Keep privacy shields
+
+      # Disable telemetry and tracking
       MetricsReportingEnabled = false;
       SafeBrowsingExtendedReportingEnabled = false;
       UrlKeyedAnonymizedDataCollectionEnabled = false;
       CloudReportingEnabled = false;
-      BackgroundNetworkingEnabled = false;
 
-      # DISABLE ALL BLOAT FEATURES
-      BraveRewards = false;
-      BraveWallet = false;
-      BraveVPNDisabled = true;
-      BraveAIChat = false;
-      BraveNews = false;
-      BraveShields = true; # Keep this! It's actually useful
-
-      # DISABLE BUILT-IN SERVICES
+      # Disable built-in features you don't need
       PasswordManager = false;
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
       TranslateEnabled = false;
       SpellCheckServiceEnabled = false;
-      AlternateErrorPagesEnabled = false;
-      SearchSuggestEnabled = false;
 
-      # PERFORMANCE & RESOURCES
+      # Disable promotional content
+      PromotionalTabsEnabled = false;
+      ShowHomeButton = false; # Clean new tab page
+
+      # Disable background processes
       BackgroundModeEnabled = false;
       ContinueRunningBackgroundAppsEnabled = false;
-      NetworkPredictionOptions = 2; # Never preload
-      HardwareAccelerationModeEnabled = false; # Test this
-      Disable3DAPIs = true;
 
-      # UI CLEANUP
-      PromotionalTabsEnabled = false;
-      ShowHomeButton = false;
-      BookmarkBarEnabled = true;
+      # Reduce resource usage
+      NetworkPredictionOptions = 2; # 0=Always, 1=Wifi only, 2=Never
       DefaultBrowserSettingEnabled = false;
+      SearchSuggestEnabled = false;
+
+      # Disable GPU acceleration (can cause issues, but helps performance on some systems)
+      Disable3DAPIs = true;
+      HardwareAccelerationModeEnabled = true; # Try this if you have GPU issues
+
+      # Prevent automatic updates and background checking
       AutoUpdateEnabled = false;
-
-      # NEW TAB PAGE
-      NewTabPageHideDefaultTopSites = true;
-      NewTabPageAllowedBackgroundTypes = 1;
-
-      # PROTOCOL HANDLING
-      RegisteredProtocolHandlers = [];
-      ExternalProtocolDialogShowAlwaysOpenCheckbox = false;
-
-      # MISC
-      DownloadRestrictions = 0; # 0=No restrictions, 1=Malicious, 2=Potentially dangerous, 3=All
-      UnsafelyTreatInsecureOriginAsSecure = false;
-      CommandLineFlagSecurityWarningsEnabled = false;
+      BackgroundNetworkingEnabled = false;
     };
     mode = "0644";
   };
