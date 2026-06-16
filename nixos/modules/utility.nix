@@ -5,13 +5,23 @@
 }: {
   environment.systemPackages = with pkgs; [
     vlc # Video player
-    brave # Web browser
     evince # PDF viewer
     zotero # Reference manager
     foliate # Book reader and downloader
     blanket # Different Sounds in Background
     telegram-desktop # Messenger
     libreoffice-fresh # Office suite
+    (writeShellScriptBin "brave" ''
+      exec ${pkgs.brave}/bin/brave \
+        --disable-features=PrivacySandboxSettings4 \
+        --disable-sync \
+        --disable-background-networking \
+        --disable-component-update \
+        --disable-default-apps \
+        --no-first-run \
+        --force-dark-mode \
+        "$@"
+    '')
   ];
 
   # programs.localsend = {
@@ -22,30 +32,56 @@
 
   environment.etc."brave/policies/managed/policies.json" = {
     text = builtins.toJSON {
-      # Disable ALL bloat features
-      BraveRewards = false; # No BAT/rewards
-      BraveWallet = false; # No crypto wallet
-      BraveVPNDisabled = true; # No VPN
-      BraveAIChat = false; # No AI (Leo)
-      BraveNews = false; # No news feed
-      BraveShields = true; # Keep privacy shields
-
-      # Disable telemetry and tracking
+      # PRIVACY & TELEMETRY
       MetricsReportingEnabled = false;
       SafeBrowsingExtendedReportingEnabled = false;
       UrlKeyedAnonymizedDataCollectionEnabled = false;
       CloudReportingEnabled = false;
+      BackgroundNetworkingEnabled = false;
 
-      # Disable built-in features you don't need
+      # DISABLE ALL BLOAT FEATURES
+      BraveRewards = false;
+      BraveWallet = false;
+      BraveVPNDisabled = true;
+      BraveAIChat = false;
+      BraveNews = false;
+      BraveShields = true; # Keep this! It's actually useful
+
+      # DISABLE BUILT-IN SERVICES
       PasswordManager = false;
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
       TranslateEnabled = false;
       SpellCheckServiceEnabled = false;
+      AlternateErrorPagesEnabled = false;
+      SearchSuggestEnabled = false;
 
-      # Disable promotional content
+      # PERFORMANCE & RESOURCES
+      BackgroundModeEnabled = false;
+      ContinueRunningBackgroundAppsEnabled = false;
+      NetworkPredictionOptions = 2; # Never preload
+      HardwareAccelerationModeEnabled = false; # Test this
+      Disable3DAPIs = true;
+
+      # UI CLEANUP
       PromotionalTabsEnabled = false;
-      ShowHomeButton = false; # Clean new tab page
+      ShowHomeButton = false;
+      BookmarkBarEnabled = true;
+      DefaultBrowserSettingEnabled = false;
+      AutoUpdateEnabled = false;
+
+      # NEW TAB PAGE
+      NewTabPageHideDefaultTopSites = true;
+      NewTabPageAllowedBackgroundTypes = 1;
+
+      # PROTOCOL HANDLING
+      RegisteredProtocolHandlers = [];
+      ExternalProtocolDialogShowAlwaysOpenCheckbox = false;
+
+      # MISC
+      DownloadRestrictions = 0; # 0=No restrictions, 1=Malicious, 2=Potentially dangerous, 3=All
+      UnsafelyTreatInsecureOriginAsSecure = false;
+      CommandLineFlagSecurityWarningsEnabled = false;
     };
     mode = "0644";
   };
