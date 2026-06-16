@@ -5,6 +5,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     vlc # Video player
+    brave # Web browser
     evince # PDF viewer
     zotero # Reference manager
     foliate # Book reader and downloader
@@ -18,6 +19,36 @@
   #   package = pkgs.localsend;
   #   openFirewall = true;
   # };
+
+  environment.etc."brave/policies/managed/policies.json" = {
+    text = builtins.toJSON {
+      # Disable ALL bloat features
+      BraveRewards = false; # No BAT/rewards
+      BraveWallet = false; # No crypto wallet
+      BraveVPNDisabled = true; # No VPN
+      BraveAIChat = false; # No AI (Leo)
+      BraveNews = false; # No news feed
+      BraveShields = true; # Keep privacy shields
+
+      # Disable telemetry and tracking
+      MetricsReportingEnabled = false;
+      SafeBrowsingExtendedReportingEnabled = false;
+      UrlKeyedAnonymizedDataCollectionEnabled = false;
+      CloudReportingEnabled = false;
+
+      # Disable built-in features you don't need
+      PasswordManager = false;
+      AutofillAddressEnabled = false;
+      AutofillCreditCardEnabled = false;
+      TranslateEnabled = false;
+      SpellCheckServiceEnabled = false;
+
+      # Disable promotional content
+      PromotionalTabsEnabled = false;
+      ShowHomeButton = false; # Clean new tab page
+    };
+    mode = "0644";
+  };
 
   # programs.firefox = {
   #   enable = true;
@@ -60,10 +91,10 @@
 
   xdg.mime.defaultApplications = {
     # # Text
-    "text/html" = ["helium.desktop"];
+    "text/html" = ["brave-browser.desktop"];
     # Web
-    "x-scheme-handler/http" = ["helium.desktop"];
-    "x-scheme-handler/https" = ["helium.desktop"];
+    "x-scheme-handler/http" = ["brave-browser.desktop"];
+    "x-scheme-handler/https" = ["brave-browser.desktop"];
     # PDF viewer
     "application/pdf" = ["org.gnome.Evince.desktop"];
     # Video
