@@ -34,6 +34,7 @@
     tcpdump # Command-line packet analyzer
 
     # === Utility tools ===
+    eww # ElKovar's Wacky Widget
     neovide # GUI for neovim
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
