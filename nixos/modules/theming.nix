@@ -33,6 +33,9 @@ in {
     };
   };
   environment.systemPackages = with pkgs; [
+    gtk2
+    gtk3
+    gtk4
     adwaita-qt
     bibata-cursors
     flat-remix-gtk
