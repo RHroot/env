@@ -61,6 +61,7 @@
     hyprland-qt-support # Qt integration support for Hyprland
 
     # === basic ===
+    ags # A widget maker
     imv # Image viewer for Wayland
     rofi # Application launcher and dmenu replacement
     dunst # Lightweight notification daemon
