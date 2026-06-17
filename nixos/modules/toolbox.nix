@@ -25,7 +25,7 @@
     # === Web Development tools ===
     jq # Command-line JSON processor
     bun # All-in-one JS runtime, bundler, and package manager
-    nodejs # JavaScript runtime environment
+    nodejs_latest # JavaScript runtime environment
     prettierd # Fast daemonized code formatter (Prettier)
 
     # === CyberSecurity ===
