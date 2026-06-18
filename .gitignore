@@ -8,3 +8,4 @@ generated.conf
 gtk.css
 fish_variables
 hyprland-colors.lua
+completions/
