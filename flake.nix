@@ -5,8 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    helium-flake.url = "github:oxcl/nix-flake-helium-browser";
-    helium-flake.inputs.nixpkgs.follows = "nixpkgs";
+    helium-flake = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
