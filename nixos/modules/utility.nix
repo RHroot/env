@@ -66,36 +66,36 @@
   #   mode = "0644";
   # };
 
-  programs.firefox = {
-    enable = true;
-    package = pkgs.librewolf;
-
-    autoConfig = ''
-      defaultPref("privacy.resistFingerprinting", false);
-      defaultPref("network.http.pipelining", true);
-      defaultPref("network.http.max-connections", 256);
-      defaultPref("browser.sessionstore.interval", 30000);
-      defaultPref("network.http.pipelining.maxrequests", 8);
-      defaultPref("devtools.theme", "dark");
-      defaultPref("ui.systemUsesDarkTheme", 1);
-      defaultPref("signon.rememberSignons", false);
-      defaultPref("browser.tabs.verticalTabs.enabled", true);
-      defaultPref("sidebar.verticalTabs", true);
-      defaultPref("browser.theme.dark-private-windows", true);
-      defaultPref("layout.css.prefers-color-scheme.content-override", 2);
-      defaultPref("browser.cache.disk.capacity", 512000);
-      defaultPref("browser.cache.memory.capacity", 51200);
-      defaultPref("browser.tabs.remote.autostart.2", true);
-      defaultPref("browser.sessionhistory.max_entries", 10);
-    '';
-  };
+  # programs.firefox = {
+  #   enable = true;
+  #   package = pkgs.librewolf;
+  #
+  #   autoConfig = ''
+  #     defaultPref("privacy.resistFingerprinting", false);
+  #     defaultPref("network.http.pipelining", true);
+  #     defaultPref("network.http.max-connections", 256);
+  #     defaultPref("browser.sessionstore.interval", 30000);
+  #     defaultPref("network.http.pipelining.maxrequests", 8);
+  #     defaultPref("devtools.theme", "dark");
+  #     defaultPref("ui.systemUsesDarkTheme", 1);
+  #     defaultPref("signon.rememberSignons", false);
+  #     defaultPref("browser.tabs.verticalTabs.enabled", true);
+  #     defaultPref("sidebar.verticalTabs", true);
+  #     defaultPref("browser.theme.dark-private-windows", true);
+  #     defaultPref("layout.css.prefers-color-scheme.content-override", 2);
+  #     defaultPref("browser.cache.disk.capacity", 512000);
+  #     defaultPref("browser.cache.memory.capacity", 51200);
+  #     defaultPref("browser.tabs.remote.autostart.2", true);
+  #     defaultPref("browser.sessionhistory.max_entries", 10);
+  #   '';
+  # };
 
   xdg.mime.defaultApplications = {
     # # Text
-    "text/html" = ["librewolf.desktop"];
+    "text/html" = ["helium.desktop"];
     # Web
-    "x-scheme-handler/http" = ["librewolf.desktop"];
-    "x-scheme-handler/https" = ["librewolf.desktop"];
+    "x-scheme-handler/http" = ["helium.desktop"];
+    "x-scheme-handler/https" = ["helium.desktop"];
     # PDF viewer
     "application/pdf" = ["org.gnome.Evince.desktop"];
     # Video

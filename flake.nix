@@ -5,6 +5,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    helium-flake.url = "github:oxcl/nix-flake-helium-browser";
+    helium-flake.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +19,7 @@
     nixpkgs,
     nixpkgs-unstable,
     nix-index-database,
+    helium-flake,
     ...
   }: let
     env = let
@@ -26,7 +30,7 @@
     in {inherit username hostname domain fqdn;};
   in {
     nixosConfigurations.${env.hostname} = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit env;};
+      specialArgs = {inherit env helium-flake;};
 
       modules = [
         ./nixos/configuration.nix
@@ -35,6 +39,7 @@
         ({
           pkgs,
           lib,
+          helium-flake,
           ...
         }: {
           nixpkgs.config.allowUnfree = true;
@@ -47,10 +52,12 @@
                 config.allowUnfree = true;
               };
             })
+            helium-flake.overlays.default
           ];
 
           environment.systemPackages = with pkgs; [
             unstable.vim
+            helium
           ];
         })
       ];
