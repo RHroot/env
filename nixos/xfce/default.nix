@@ -13,8 +13,6 @@
       lightdm = {
         enable = lib.mkForce true;
       };
-      # Set Xfce as the default session
-      defaultSession = lib.mkForce "xfce";
     };
 
     # === XFCE DESKTOP ENVIRONMENT ===
@@ -29,16 +27,16 @@
     };
   };
 
+  # Set Xfce as the default session
+  services.displayManager.defaultSession = lib.mkForce "xfce";
+
   # === EXTRA XFCE APPLICATIONS ===
   environment.systemPackages = with pkgs; [
     # Core Xfce utilities that aren't installed by default
-    xfce.ristretto # Image viewer
-    xfce.parole # Media player
-    xfce.orage # Calendar
-    xfce.mousepad # Text editor
-
-    # Thunar plugins for better file management
-    xfce.thunar-archive-plugin # Archive extraction in Thunar
-    xfce.thunar-volman # Volume management for Thunar
+    ristretto # Image viewer
+    parole # Media player
+    orage # Calendar
+    mousepad # Text editor
+    google-chrome # Web browser
   ];
 }
