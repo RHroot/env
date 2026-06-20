@@ -15,7 +15,7 @@
     # === Window Manager ===
     ./hyprland
     # === Desktop Manager ===
-    ./xfce
+    # ./xfce
   ];
 
   power.enable = true;
