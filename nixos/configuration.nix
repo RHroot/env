@@ -16,6 +16,7 @@
     ./hyprland
     # === Desktop Manager ===
     # ./xfce
+    ./helium.nix
   ];
 
   power.enable = true;
