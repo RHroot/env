@@ -9,6 +9,7 @@
     zotero # Reference manager
     foliate # Book reader and downloader
     blanket # Different Sounds in Background
+    qbittorrent # Torrent client
     telegram-desktop # Messenger
     libreoffice-fresh # Office suite
   ];
