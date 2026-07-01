@@ -1,0 +1,72 @@
+;; ============================================
+;; EWW Top Bar Configuration
+;; ============================================
+
+;; --- TIME AND DATE ---
+;; This polls the system every second for the current time
+(defpoll current-time :interval "1s"
+    "date '+%I:%M %p - %a %b %d, %Y'"
+)
+
+;; --- WIDGET: TIME/DATE DISPLAY ---
+(defwidget time-widget []
+  (label :class "time"
+         :text "${current-time}")
+)
+
+;; --- WIDGET: SYSTEM TRAY ---
+;; Shows your system tray icons (network, volume, etc)
+(defwidget tray-widget []
+  (systray :class "tray"
+           :icon-size 20
+           :spacing 8)
+)
+
+;; --- WIDGET: WORKSPACE INDICATOR ---
+;; Shows your Hyprland workspaces as dots
+(defpoll workspaces :interval "0.5s"
+    "hyprctl workspaces -j | jq -r 'map(select(.id >= 1 and .id <= 9)) | sort_by(.id) | map(if .focused then \"\" else \"\" end) | join(\" \")'"
+)
+
+(defwidget workspace-widget []
+  (label :class "workspaces"
+         :text "${workspaces}")
+)
+
+;; --- MAIN BAR WIDGET ---
+;; Combines everything into one horizontal bar
+(defwidget my-bar []
+  (centerbox :orientation "horizontal"
+    ;; LEFT SIDE - Workspaces
+    (box :halign "start"
+         :space-evenly false
+         :spacing 10
+         (workspace-widget))
+
+    ;; CENTER - Time and Date
+    (box :halign "center"
+         (time-widget))
+
+    ;; RIGHT SIDE - System Tray
+    (box :halign "end"
+         :space-evenly false
+         (tray-widget))
+  )
+)
+
+;; --- BAR WINDOW ---
+;; This is the actual window that appears on screen
+(defwindow main-bar
+    :monitor 0
+    :geometry (geometry
+        :x "0%"
+        :y "0%"
+        :width "99%"
+        :height "10px"
+        :anchor "top center"
+    )
+    :exclusive true
+    :stacking "fg"
+    :window-type "dock"
+    (my-bar)
+)

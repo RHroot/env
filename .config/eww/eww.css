@@ -1,0 +1,46 @@
+* {
+  all: unset;
+}
+
+window#main-bar {
+  background-color: rgba(10, 10, 20, 0.85);
+  border-bottom: 2px solid rgba(100, 150, 255, 0.3);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 0 15px;
+}
+
+.workspaces {
+  font-size: 16px;
+  color: #8a8fa8;
+  letter-spacing: 4px;
+  padding: 0 8px;
+}
+
+.time {
+  font-weight: bold;
+  font-size: 16px;
+  color: #c8d0e0;
+  background: rgba(30, 40, 60, 0.4);
+  padding: 4px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(100, 150, 255, 0.15);
+}
+
+.tray {
+  padding: 0 8px;
+}
+
+.tray > * {
+  margin: 0 4px;
+  background: rgba(30, 40, 60, 0.3);
+  padding: 4px;
+  border-radius: 6px;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.tray > *:hover {
+  background: rgba(60, 80, 120, 0.4);
+}
