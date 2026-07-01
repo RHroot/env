@@ -56,7 +56,7 @@
 
 ;; --- BAR WINDOW ---
 ;; This is the actual window that appears on screen
-(defwindow main-bar
+(defwindow status-bar
     :monitor 0
     :geometry (geometry
         :x "0%"

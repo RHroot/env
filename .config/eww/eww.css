@@ -2,7 +2,7 @@
   all: unset;
 }
 
-window#main-bar {
+window#status-bar {
   background-color: rgba(10, 10, 20, 0.85);
   border-bottom: 2px solid rgba(100, 150, 255, 0.3);
   font-family: "JetBrains Mono", monospace;
