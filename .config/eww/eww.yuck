@@ -62,8 +62,8 @@
         :x "0%"
         :y "0%"
         :width "99%"
-        :height "10px"
-        :anchor "top center"
+        :height "20px"
+        :anchor "bottom center"
     )
     :exclusive true
     :stacking "fg"
