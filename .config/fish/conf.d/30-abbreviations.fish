@@ -72,7 +72,7 @@ abbr -a ai 'ollama run llama3-local'
 abbr -a aria2-down 'aria2c --conf-path=$HOME/.config/aria2/aria2.conf'
 
 # System Information
-abbr -a fetch "fastfetch -c my.jsonc"
+abbr -a ff "fastfetch -c my.jsonc"
 abbr -a open "xdg-open"
 abbr -a vol "wpctl get-volume @DEFAULT_AUDIO_SINK@"
 
