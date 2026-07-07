@@ -38,7 +38,6 @@
     extraPackages = with pkgs; [
       intel-media-driver
       intel-compute-runtime
-      intel-ocl
       vulkan-loader
       vulkan-validation-layers
       libva
