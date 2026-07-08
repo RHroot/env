@@ -42,7 +42,7 @@ hl.bind("SUPER + F", hl.dsp.window.fullscreen())
 hl.bind("SUPER + SHIFT + F", hl.dsp.window.float())
 
 ---           Hyprshot keybinds
-hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))
+hl.bind("SUPER + PRINT", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"))
 hl.bind("CTRL + PRINT", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m output -o $HOME/Screenshots"))
 hl.bind("CTRL + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region -o $HOME/Screenshots"))
