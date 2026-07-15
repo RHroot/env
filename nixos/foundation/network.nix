@@ -89,7 +89,7 @@
   networking.firewall = {
     enable = true;
     allowPing = false;
-    allowedTCPPorts = [];
+    allowedTCPPorts = [8000];
     allowedUDPPorts = [];
     checkReversePath = "loose";
     rejectPackets = true;
