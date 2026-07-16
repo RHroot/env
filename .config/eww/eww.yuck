@@ -5,7 +5,7 @@
 ;; --- TIME AND DATE ---
 ;; This polls the system every second for the current time
 (defpoll current-time :interval "1s"
-    "date '+%I:%M %p - %a %b %d, %Y'"
+    "date '+%I:%M %p - %a %d %b, %Y'"
 )
 
 ;; --- WIDGET: TIME/DATE DISPLAY ---
