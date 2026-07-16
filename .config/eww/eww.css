@@ -3,44 +3,125 @@
 }
 
 window#status-bar {
-  background-color: rgba(10, 10, 20, 0.85);
-  border-bottom: 2px solid rgba(100, 150, 255, 0.3);
-  font-family: "JetBrains Mono", monospace;
-  font-size: 14px;
-  color: #ffffff;
-  padding: 0 15px;
+  background-color: rgba(12, 12, 28, 0.82);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: "FiraCode Nerd Font", "Noto Sans", "Merriweather", sans-serif;
+  font-size: 16px;
+  color: #e0e4f0;
+  padding: 0 20px;
+  /* GTK supports alpha in background, no need for backdrop-filter */
+}
+
+/* ─── Left section ───────────────────────────────────────── */
+.left-section {
+  padding: 0 6px;
+}
+
+.username {
+  font-weight: 600;
+  color: #b6c8ff;
+  background: rgba(40, 50, 80, 0.5);
+  padding: 4px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 13px;
+  letter-spacing: 0.3px;
 }
 
 .workspaces {
-  font-size: 16px;
-  color: #8a8fa8;
-  letter-spacing: 4px;
-  padding: 0 8px;
+  font-size: 17px;
+  color: #6a6f8a;
+  letter-spacing: 6px;
+  padding: 0 6px;
+  font-weight: 400;
 }
 
+/* ─── Center ──────────────────────────────────────────────── */
 .time {
-  font-weight: bold;
-  font-size: 16px;
-  color: #c8d0e0;
-  background: rgba(30, 40, 60, 0.4);
-  padding: 4px 16px;
-  border-radius: 8px;
-  border: 1px solid rgba(100, 150, 255, 0.15);
+  font-weight: 500;
+  font-size: 15px;
+  color: #d0d8ec;
+  background: rgba(30, 40, 70, 0.4);
+  padding: 4px 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  letter-spacing: 0.5px;
+}
+
+/* ─── Right section ───────────────────────────────────────── */
+.right-section {
+  padding: 0 6px;
+}
+
+.status-icon {
+  font-size: 15px;
+  background: rgba(30, 40, 70, 0.35);
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  min-width: 30px;
+  transition: all 0.2s ease;
+}
+
+.status-icon:hover {
+  background: rgba(60, 80, 140, 0.4);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.status-icon .icon {
+  margin-right: 5px;
+  font-size: 14px;
+}
+.status-icon .value {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.battery {
+  color: #9bde7a;
+}
+.battery .charging {
+  color: #f5c76b;
+  margin-left: 2px;
+}
+
+.audio {
+  color: #7fc7ff;
+}
+
+.mic {
+  color: #bca3f0;
+}
+.mic.muted {
+  color: #f78b8b;
+}
+.mic.muted .icon,
+.mic.muted .value {
+  color: #f78b8b;
+}
+
+.brightness {
+  color: #f5c76b;
 }
 
 .tray {
-  padding: 0 8px;
+  padding: 0 4px;
 }
-
 .tray > * {
   margin: 0 4px;
-  background: rgba(30, 40, 60, 0.3);
-  padding: 4px;
-  border-radius: 6px;
-  min-width: 20px;
-  min-height: 20px;
+  background: rgba(30, 40, 70, 0.3);
+  padding: 4px 6px;
+  border-radius: 10px;
+  min-width: 22px;
+  min-height: 22px;
+}
+.tray > *:hover {
+  background: rgba(60, 80, 140, 0.35);
 }
 
-.tray > *:hover {
-  background: rgba(60, 80, 120, 0.4);
+.separator {
+  color: rgba(255, 255, 255, 0.08);
+  font-size: 16px;
+  padding: 0 2px;
+  font-weight: 100;
 }

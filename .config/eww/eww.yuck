@@ -1,72 +1,83 @@
-;; ============================================
-;; EWW Top Bar Configuration
-;; ============================================
-
-;; --- TIME AND DATE ---
-;; This polls the system every second for the current time
 (defpoll current-time :interval "1s"
-    "date '+%I:%M %p - %a %d %b, %Y'"
+    "date '+%I:%M %p  •  %a %b %d, %Y'"
 )
 
-;; --- WIDGET: TIME/DATE DISPLAY ---
-(defwidget time-widget []
-  (label :class "time"
-         :text "${current-time}")
-)
-
-;; --- WIDGET: SYSTEM TRAY ---
-;; Shows your system tray icons (network, volume, etc)
-(defwidget tray-widget []
-  (systray :class "tray"
-           :icon-size 20
-           :spacing 8)
-)
-
-;; --- WIDGET: WORKSPACE INDICATOR ---
-;; Shows your Hyprland workspaces as dots
 (defpoll workspaces :interval "0.5s"
     "hyprctl workspaces -j | jq -r 'map(select(.id >= 1 and .id <= 9)) | sort_by(.id) | map(if .focused then \"\" else \"\" end) | join(\" \")'"
 )
 
-(defwidget workspace-widget []
-  (label :class "workspaces"
-         :text "${workspaces}")
+(defpoll battery :interval "5s"
+    "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '0'"
 )
 
-;; --- MAIN BAR WIDGET ---
-;; Combines everything into one horizontal bar
+;; --- Fixed: BAT0 ---
+(defpoll battery-status :interval "5s"
+    "cat /sys/class/power_supply/BAT0/status | cut -c1 | tr -d '\n' || echo 'N/A'"
+)
+
+(defpoll audio-volume :interval "1s"
+    "pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]*%' | head -1 | tr -d '%' || echo '0'"
+)
+(defpoll audio-muted :interval "1s"
+    "pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}' | tr -d '\n' | grep -q yes && echo muted || echo unmuted"
+)
+
+(defpoll brightness :interval "2s"
+    "brightnessctl g | xargs -I{} sh -c 'max=$(brightnessctl m); echo $(( {} * 100 / max ))' || echo '0'"
+)
+
+(defpoll username :interval "1h"
+    "whoami"
+)
+
+;; ─── Widgets (unchanged) ──────────────────────────────────
+(defwidget username-widget [] (label :class "username" :text "${username}"))
+(defwidget workspace-widget [] (label :class "workspaces" :text "${workspaces}"))
+(defwidget time-widget [] (label :class "time" :text "${current-time}"))
+
+(defwidget battery-widget []
+  (box :class "status-icon battery"
+       :space-evenly false :spacing 4
+    (label :class "icon" :text "")
+    (label :class "value" :text "${battery}%")
+    (label :class "icon charging" :text ""
+           :visible (equal? "${battery-status}" "C"))))
+
+(defwidget audio-widget []
+  (box :class "status-icon audio"
+       :space-evenly false :spacing 4
+    (label :class "icon" :text (if (equal? "${audio-muted}" "muted") "婢" ""))
+    (label :class "value" :text "${audio-volume}%")))
+
+(defwidget brightness-widget []
+  (box :class "status-icon brightness"
+       :space-evenly false :spacing 4
+    (label :class "icon" :text "")
+    (label :class "value" :text "${brightness}%")))
+
+(defwidget tray-widget []
+  (systray :class "tray" :icon-size 20 :spacing 8))
+
+(defwidget separator-widget []
+  (label :class "separator" :text "│"))
+
+;; ─── Main Bar ──────────────────────────────────────────────
 (defwidget my-bar []
-  (centerbox :orientation "horizontal"
-    ;; LEFT SIDE - Workspaces
-    (box :halign "start"
-         :space-evenly false
-         :spacing 10
-         (workspace-widget))
+  (centerbox
+    (box :class "left-section" :halign "start" :space-evenly false :spacing 10
+         (username-widget) (separator-widget) (workspace-widget))
+    (box :halign "center" (time-widget))
+    (box :class "right-section" :halign "end" :space-evenly false :spacing 8
+         (audio-widget) (separator-widget)
+         (brightness-widget) (separator-widget)
+         (battery-widget) (separator-widget)
+         (tray-widget))))
 
-    ;; CENTER - Time and Date
-    (box :halign "center"
-         (time-widget))
-
-    ;; RIGHT SIDE - System Tray
-    (box :halign "end"
-         :space-evenly false
-         (tray-widget))
-  )
-)
-
-;; --- BAR WINDOW ---
-;; This is the actual window that appears on screen
+;; ─── Window ─────────────────────────────────────────────────
 (defwindow status-bar
     :monitor 0
-    :geometry (geometry
-        :x "0%"
-        :y "0%"
-        :width "99%"
-        :height "20px"
-        :anchor "bottom center"
-    )
+    :geometry (geometry :x "0%" :y "0%" :width "99%" :height "20px" :anchor "bottom center")
     :exclusive true
     :stacking "fg"
-    :window-type "dock"
-    (my-bar)
-)
+    :windowtype "dock"
+    (my-bar))
