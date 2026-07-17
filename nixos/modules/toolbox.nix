@@ -18,10 +18,6 @@
     ninja # Fast build system used with CMake
     clang-tools # Clang-based developer tools (clangd, format, tidy)
 
-    # === Rust Development ===
-    cargo # Rust package manager
-    rustc # Rust compiler
-
     # === Web Development tools ===
     jq # Command-line JSON processor
     bun # All-in-one JS runtime, bundler, and package manager
@@ -39,7 +35,7 @@
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
     pkg-config # Package management tool for libraries
-    podman-compose # Compose multiple containers with a single command
+    # podman-compose # Compose multiple containers with a single command
   ];
   programs.vim = {
     enable = true;
@@ -48,12 +44,12 @@
   programs.neovim = {
     enable = true;
   };
-  virtualisation = {
-    containers.enable = true;
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
+  # virtualisation = {
+  #   containers.enable = true;
+  #   podman = {
+  #     enable = true;
+  #     dockerCompat = true;
+  #     defaultNetwork.settings.dns_enabled = true;
+  #   };
+  # };
 }
