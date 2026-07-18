@@ -4,7 +4,8 @@
   env,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     # === Hardware-Configuration ===
     /etc/nixos/hardware-configuration.nix
@@ -15,7 +16,7 @@
     # === Window Manager ===
     ./hyprland
     # === Desktop Manager ===
-    # ./xfce
+    ./cosmic
   ];
 
   power.enable = true;
@@ -32,7 +33,12 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "do i need to give a description to myself";
-    extraGroups = ["networkmanager" "wheel" "input" "podman"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "input"
+      "podman"
+    ];
     subUidRanges = [
       {
         startUid = 100000;
@@ -60,7 +66,7 @@
   };
   nix.optimise = {
     automatic = true;
-    dates = ["weekly"];
+    dates = [ "weekly" ];
   };
   nix.settings.auto-optimise-store = true;
 
@@ -122,5 +128,8 @@
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.11";
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }

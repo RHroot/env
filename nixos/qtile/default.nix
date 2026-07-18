@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services.xserver = {
     enable = true;
     windowManager.qtile = {
@@ -28,9 +29,9 @@
   security.polkit.enable = true;
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     description = "polkit-gnome-authentication-agent-1";
-    wantedBy = ["graphical-session.target"];
-    wants = ["graphical-session.target"];
-    after = ["graphical-session.target"];
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "simple";
       ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
@@ -42,17 +43,17 @@
 
   xdg.portal = {
     enable = true;
-    configPackages = [pkgs.xdg-desktop-portal-gtk];
+    configPackages = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   xdg.mime.defaultApplications = {
     # Images
-    "image/png" = ["org.xfce.ristretto.desktop"];
-    "image/jpeg" = ["org.xfce.ristretto.desktop"];
-    "image/webp" = ["org.xfce.ristretto.desktop"];
-    "image/gif" = ["org.xfce.ristretto.desktop"];
+    "image/png" = [ "org.xfce.ristretto.desktop" ];
+    "image/jpeg" = [ "org.xfce.ristretto.desktop" ];
+    "image/webp" = [ "org.xfce.ristretto.desktop" ];
+    "image/gif" = [ "org.xfce.ristretto.desktop" ];
     # File manager
-    "inode/directory" = ["org.gnome.Nautilus.desktop"];
+    "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
   };
 
   environment.systemPackages = with pkgs; [

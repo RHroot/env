@@ -4,7 +4,8 @@
   lib,
   env,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     # === Essential CLI Tools ===
     btop # Modern resource monitor (CPU, RAM, disk, network)

@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     vlc # Video player
     evince # PDF viewer
@@ -93,14 +94,14 @@
 
   xdg.mime.defaultApplications = {
     # # Text
-    "text/html" = ["helium.desktop"];
+    "text/html" = [ "helium.desktop" ];
     # Web
-    "x-scheme-handler/http" = ["helium.desktop"];
-    "x-scheme-handler/https" = ["helium.desktop"];
+    "x-scheme-handler/http" = [ "helium.desktop" ];
+    "x-scheme-handler/https" = [ "helium.desktop" ];
     # PDF viewer
-    "application/pdf" = ["org.gnome.Evince.desktop"];
+    "application/pdf" = [ "org.gnome.Evince.desktop" ];
     # Video
-    "video/mp4" = ["vlc.desktop"];
-    "video/x-matroska" = ["vlc.desktop"];
+    "video/mp4" = [ "vlc.desktop" ];
+    "video/x-matroska" = [ "vlc.desktop" ];
   };
 }

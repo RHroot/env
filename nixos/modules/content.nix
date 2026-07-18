@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     gimp # Advanced image editor (GNU Image Manipulation Program)
     audacity # Free, open-source audio editor and recorder

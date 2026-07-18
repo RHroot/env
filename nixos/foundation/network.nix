@@ -4,14 +4,15 @@
   lib,
   env,
   ...
-}: {
+}:
+{
   networking = {
     domain = env.domain;
-    nameservers = [];
+    nameservers = [ ];
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
-      insertNameservers = [];
+      insertNameservers = [ ];
       settings = {
         main = {
           dns = "systemd-resolved";
@@ -89,8 +90,8 @@
   networking.firewall = {
     enable = true;
     allowPing = false;
-    allowedTCPPorts = [8000];
-    allowedUDPPorts = [];
+    allowedTCPPorts = [ 8000 ];
+    allowedUDPPorts = [ ];
     checkReversePath = "loose";
     rejectPackets = true;
     logRefusedConnections = true;
@@ -101,7 +102,10 @@
     proton-vpn # Official ProtonVPN graphical client
   ];
 
-  boot.kernelModules = ["tcp_bbr" "ipv6"];
+  boot.kernelModules = [
+    "tcp_bbr"
+    "ipv6"
+  ];
   boot.kernel.sysctl = {
     "net.ipv4.tcp_congestion_control" = lib.mkOverride 500 "bbr";
     "net.core.default_qdisc" = lib.mkOverride 500 "fq";

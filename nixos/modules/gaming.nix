@@ -2,8 +2,8 @@
   config,
   pkgs,
   ...
-}
-: {
+}:
+{
   environment.systemPackages = with pkgs; [
     faudio # XAudio2 implementation for Wine
     lutris # A simple, efficient and really customizable game launcher

@@ -3,7 +3,8 @@
   pkgs,
   env,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     # === Python Development ===
     python313 # Python 3.13 interpreter

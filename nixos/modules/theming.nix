@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   themeName = "Flat-Remix-GTK-Magenta-Darkest";
   iconTheme = "Papirus-Dark";
   cursorTheme = "Bibata-Modern-Ice";
@@ -11,7 +12,8 @@
   seriffont = "Merriweather";
   sansseriffont = "Noto Sans";
   monospacefont = "FiraCode Nerd Font";
-in {
+in
+{
   programs.dconf.enable = true;
   fonts = {
     packages = with pkgs; [
@@ -26,9 +28,9 @@ in {
       hinting.style = "full";
       subpixel.rgba = "rgb";
       defaultFonts = {
-        serif = [seriffont];
-        sansSerif = [sansseriffont];
-        monospace = [monospacefont];
+        serif = [ seriffont ];
+        sansSerif = [ sansseriffont ];
+        monospace = [ monospacefont ];
       };
     };
   };

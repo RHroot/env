@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services.xserver = {
     displayManager.lightdm.enable = false;
   };
@@ -37,17 +38,17 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   xdg.mime.defaultApplications = {
     # Images
-    "image/png" = ["imv.desktop"];
-    "image/jpeg" = ["imv.desktop"];
-    "image/webp" = ["imv.desktop"];
-    "image/gif" = ["imv.desktop"];
+    "image/png" = [ "imv.desktop" ];
+    "image/jpeg" = [ "imv.desktop" ];
+    "image/webp" = [ "imv.desktop" ];
+    "image/gif" = [ "imv.desktop" ];
     # File manager
-    "inode/directory" = ["org.gnome.Nautilus.desktop"];
+    "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
   };
 
   environment.systemPackages = with pkgs; [

@@ -2,9 +2,10 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # Display drivers
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # NVIDIA — PRIME offload, Quadro P2000 Mobile
   hardware.nvidia = {
@@ -64,7 +65,10 @@
     "nvidia_drm"
   ];
 
-  boot.blacklistedKernelModules = ["nouveau" "nova_core"];
+  boot.blacklistedKernelModules = [
+    "nouveau"
+    "nova_core"
+  ];
 
   # Kernel params
   boot.kernelParams = [
