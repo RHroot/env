@@ -10,8 +10,8 @@ local theme = "$HOME/env/nixos/hyprland/wset"
 local browser = "helium --profile-directory='Default'"
 local alt_browser = "helium --profile-directory='Work'"
 local vanishing_terminal = "kitten quick-access-terminal"
-local clipboardmanager = "$HOME/env/nixos/hyprland/clipman"
 local menu = "rofi -show combi -modes combi -combi-modes 'window,drun,run'"
+local clipboardmanager = "cliphist list | rofi -dmenu -p 'Clipboard' -theme config | cliphist decode | wl-copy"
 
 ---           APPLICATION LAUNCHERS
 hl.bind("SUPER + R", hl.dsp.exec_cmd(runmenu))
