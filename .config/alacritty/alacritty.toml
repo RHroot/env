@@ -56,4 +56,4 @@ hide_when_typing = true
 
 [general]
 live_config_reload = true
-import = ["~/.cache/Matugen/alacritty-colors.toml"]
+import = ["~/.cache/Matugen/colors.toml"]

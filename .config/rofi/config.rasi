@@ -1,4 +1,4 @@
-@import "~/.cache/Matugen/rofi-colors.rasi"
+@import "~/.cache/Matugen/colors.rasi"
 
 configuration {
     cycle: true;
