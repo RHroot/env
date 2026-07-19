@@ -7,19 +7,27 @@
 {
   services.xserver = {
     enable = true;
+    wacom.enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 40;
     desktopManager = {
+      xfce = {
+        enable = true;
+        enableXfwm = true;
+      };
       xterm.enable = false;
-      xfce.enable = true;
     };
+
     resolutions = [
       {
         x = 1920;
         y = 1080;
+        rate = 60;
       }
     ];
+
     displayManager.lightdm = {
       enable = true;
-      greeter.setupScript = "${pkgs.xorg.xrandr}/bin/xrandr --output $( ${pkgs.xorg.xrandr}/bin/xrandr | awk '/ connected/ {print $1; exit}' ) --mode 1920x1080 --rate 60.00";
     };
   };
 
@@ -28,5 +36,7 @@
 
   environment.systemPackages = with pkgs; [
     google-chrome
+    xrandr
+    xset
   ];
 }
