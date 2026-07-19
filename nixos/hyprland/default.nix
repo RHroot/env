@@ -4,16 +4,6 @@
   ...
 }:
 {
-  services.xserver = {
-    displayManager.lightdm.enable = false;
-  };
-
-  services.getty.autologinUser = "sten";
-
-  services.displayManager.gdm.enable = false;
-  services.displayManager.sddm.enable = false;
-  services.displayManager.defaultSession = "Hyprland";
-
   programs.hyprland = {
     enable = true;
     package = pkgs.hyprland;
