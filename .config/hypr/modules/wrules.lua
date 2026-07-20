@@ -36,6 +36,10 @@ hl.window_rule({
 	workspace = 5,
 })
 hl.window_rule({
+	match = { class = "^(mpv)$" },
+	workspace = 5,
+})
+hl.window_rule({
 	match = { class = "^(libreoffice-startcenter)$" },
 	workspace = 8,
 })
