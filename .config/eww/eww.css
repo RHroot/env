@@ -44,20 +44,18 @@ window#status-bar {
 }
 
 .workspace-btn.active {
-  font-size: 16px;
-  color: @accent_fg_color;
+  font-size: 20px;
+  color: @accent_color;
   opacity: 1;
   font-weight: 700;
-  background: @accent_color;
-  padding: 2px 10px;
-  border-radius: 6px;
-  box-shadow: 0 0 10px @accent_color;
+  text-shadow: 0 0 8px @accent_color, 0 0 12px @accent_color;
+  padding: 2px 6px;
 }
 
 .module-clock {
   font-size: 16px;
   font-weight: 500;
-  background: rgba(30, 40, 70, 0.4);
+  background: rgba(30, 40, 70, 0.35);
   padding: 4px 22px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
