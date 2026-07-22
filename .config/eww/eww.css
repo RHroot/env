@@ -1,3 +1,5 @@
+@import "./../../../.cache/Matugen/colors.css";
+
 * {
   all: unset;
 }
@@ -7,9 +9,8 @@ window#status-bar {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   font-family: "FiraCode Nerd Font", "Noto Sans", "Merriweather", sans-serif;
   font-size: 16px;
-  color: #e0e4f0;
+  color: @window_fg_color;
   padding: 0 20px;
-  /* GTK supports alpha in background, no need for backdrop-filter */
 }
 
 /* ─── Left section ───────────────────────────────────────── */
@@ -19,7 +20,7 @@ window#status-bar {
 
 .username {
   font-weight: 600;
-  color: #b6c8ff;
+  color: @accent_color;
   background: rgba(40, 50, 80, 0.5);
   padding: 4px 14px;
   border-radius: 12px;
@@ -30,17 +31,18 @@ window#status-bar {
 
 .workspaces {
   font-size: 17px;
-  color: #6a6f8a;
+  color: @view_fg_color;
   letter-spacing: 6px;
   padding: 0 6px;
   font-weight: 400;
+  opacity: 0.6;
 }
 
 /* ─── Center ──────────────────────────────────────────────── */
 .time {
   font-weight: 500;
   font-size: 15px;
-  color: #d0d8ec;
+  color: @window_fg_color;
   background: rgba(30, 40, 70, 0.4);
   padding: 4px 22px;
   border-radius: 14px;
@@ -78,7 +80,7 @@ window#status-bar {
 }
 
 .battery {
-  color: #9bde7a;
+  color: #9bde7a;  /* Keep specific colors for status indicators */
 }
 .battery .charging {
   color: #f5c76b;
@@ -86,11 +88,11 @@ window#status-bar {
 }
 
 .audio {
-  color: #7fc7ff;
+  color: #7fc7ff;  /* Keep specific colors for status indicators */
 }
 
 .mic {
-  color: #bca3f0;
+  color: #bca3f0;  /* Keep specific colors for status indicators */
 }
 .mic.muted {
   color: #f78b8b;
@@ -101,7 +103,7 @@ window#status-bar {
 }
 
 .brightness {
-  color: #f5c76b;
+  color: #f5c76b;  /* Keep specific colors for status indicators */
 }
 
 .tray {

@@ -31,14 +31,14 @@ input_path = '~/.config/matugen/templates/colors.conf'
 output_path = '~/.cache/Matugen/colors.conf'
 post_hook = 'sh -c "kill -10 $(pgrep kitty) 2>/dev/null"'
 
-[templates.eww]
+[templates.css]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.cache/Matugen/colors.css'
 
 [templates.gtk3]
-input_path = '~/.config/matugen/templates/colors.css'
+input_path = '~/.config/matugen/templates/gtk.css'
 output_path = '~/.config/gtk-3.0/gtk.css'
 
 [templates.gtk4]
-input_path = '~/.config/matugen/templates/colors.css'
+input_path = '~/.config/matugen/templates/gtk.css'
 output_path = '~/.config/gtk-4.0/gtk.css'
