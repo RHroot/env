@@ -1,88 +1,67 @@
-(defpoll current-time :interval "1s"
-    "date '+%I:%M %p  •  %a %b %d, %Y'"
-)
+;; ─── Variables & Polls ─────────────────────────────────────
+(defpoll poll-clock :interval "1s" "date '+%I:%M %p  •  %a %b %d, %Y'")
+(defpoll poll-workspaces :interval "0.2s" "bash ~/.config/eww/get-workspaces.sh")
+(defpoll poll-battery-cap :interval "5s" "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '0'")
+(defpoll poll-battery-stat :interval "5s" "cat /sys/class/power_supply/BAT0/status 2>/dev/null || echo 'Unknown'")
+(defpoll poll-audio-vol :interval "1s" "pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]*%' | head -1 | tr -d '%' || echo '0'")
+(defpoll poll-audio-mute :interval "1s" "pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}' | tr -d '\n' | grep -q yes && echo muted || echo unmuted")
+(defpoll poll-brightness :interval "2s" "brightnessctl g | xargs -I{} sh -c 'max=$(brightnessctl m); echo $(( {} * 100 / max ))' || echo '0'")
+(defpoll poll-user :interval "1h" "whoami")
 
-(defpoll workspaces :interval "0.2s"
-  "bash ~/.config/eww/get-workspaces.sh")
+;; ─── Widgets ───────────────────────────────────────────────
+(defwidget user-module []
+  (label :class "module-user" :text "${poll-user}"))
 
-(defpoll battery :interval "5s"
-    "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '0'"
-)
+(defwidget workspaces-module []
+  (box :class "module-workspaces" :space-evenly false :spacing 6
+    (for ws in poll-workspaces
+      (button :class {ws.is_active ? "workspace-btn active" : "workspace-btn"}
+              :onclick "hyprctl dispatch workspace ${ws.id}"
+              "${ws.id}"))))
 
-;; --- Fixed: BAT0 ---
-(defpoll battery-status :interval "5s"
-    "cat /sys/class/power_supply/BAT0/status | cut -c1 | tr -d '\n' || echo 'N/A'"
-)
+(defwidget clock-module []
+  (label :class "module-clock" :text "${poll-clock}"))
 
-(defpoll audio-volume :interval "1s"
-    "pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]*%' | head -1 | tr -d '%' || echo '0'"
-)
-(defpoll audio-muted :interval "1s"
-    "pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}' | tr -d '\n' | grep -q yes && echo muted || echo unmuted"
-)
-
-(defpoll brightness :interval "2s"
-    "brightnessctl g | xargs -I{} sh -c 'max=$(brightnessctl m); echo $(( {} * 100 / max ))' || echo '0'"
-)
-
-(defpoll username :interval "1h"
-    "whoami"
-)
-
-;; ─── Widgets (unchanged) ──────────────────────────────────
-(defwidget username-widget [] (label :class "username" :text "${username}"))
-(defwidget workspace-widget []
-  (box :class "workspaces-container" :space-evenly false :spacing 6
-    (for ws in workspaces
-      (button
-        :class {ws.is_active ? "ws-button active" : "ws-button"}
-        :onclick "hyprctl dispatch workspace ${ws.id}"
-        "${ws.id}"))))
-(defwidget time-widget [] (label :class "time" :text "${current-time}"))
-
-(defwidget battery-widget []
-  (box :class "status-icon battery"
-       :space-evenly false :spacing 4
+(defwidget battery-module []
+  (box :class "module-metric metric-battery" :space-evenly false :spacing 4
     (label :class "icon" :text "")
-    (label :class "value" :text "${battery}%")
-    (label :class "icon charging" :text ""
-           :visible (equal? "${battery-status}" "C"))))
+    (label :class "label" :text "${poll-battery-cap}%")
+    (label :class "icon charging-icon" :text ""
+           :visible {poll-battery-stat == "Charging"})))
 
-(defwidget audio-widget []
-  (box :class "status-icon audio"
-       :space-evenly false :spacing 4
-    (label :class "icon" :text (if (equal? "${audio-muted}" "muted") "婢" ""))
-    (label :class "value" :text "${audio-volume}%")))
+(defwidget audio-module []
+  (box :class "module-metric metric-audio" :space-evenly false :spacing 4
+    (label :class "icon" :text {poll-audio-mute == "muted" ? "󰝟 " : " "})
+    (label :class "label" :text "${poll-audio-vol}%")))
 
-(defwidget brightness-widget []
-  (box :class "status-icon brightness"
-       :space-evenly false :spacing 4
+(defwidget brightness-module []
+  (box :class "module-metric metric-brightness" :space-evenly false :spacing 4
     (label :class "icon" :text "")
-    (label :class "value" :text "${brightness}%")))
+    (label :class "label" :text "${poll-brightness}%")))
 
-(defwidget tray-widget []
-  (systray :class "tray" :icon-size 20 :spacing 8))
+(defwidget tray-module []
+  (systray :class "module-tray" :icon-size 20 :spacing 8))
 
-(defwidget separator-widget []
-  (label :class "separator" :text "│"))
+(defwidget separator []
+  (label :class "module-separator" :text "│"))
 
 ;; ─── Main Bar ──────────────────────────────────────────────
-(defwidget my-bar []
+(defwidget main-bar []
   (centerbox
-    (box :class "left-section" :halign "start" :space-evenly false :spacing 10
-         (username-widget) (separator-widget) (workspace-widget))
-    (box :halign "center" (time-widget))
-    (box :class "right-section" :halign "end" :space-evenly false :spacing 8
-         (audio-widget) (separator-widget)
-         (brightness-widget) (separator-widget)
-         (battery-widget) (separator-widget)
-         (tray-widget))))
+    (box :class "bar-left" :halign "start" :space-evenly false :spacing 10
+         (user-module) (separator) (workspaces-module))
+    (box :halign "center" (clock-module))
+    (box :class "bar-right" :halign "end" :space-evenly false :spacing 8
+         (audio-module) (separator)
+         (brightness-module) (separator)
+         (battery-module) (separator)
+         (tray-module))))
 
 ;; ─── Window ─────────────────────────────────────────────────
 (defwindow status-bar
-    :monitor 0
-    :geometry (geometry :x "0%" :y "0%" :width "99%" :height "20px" :anchor "bottom center")
-    :exclusive true
-    :stacking "fg"
-    :windowtype "dock"
-    (my-bar))
+  :monitor 0
+  :geometry (geometry :x "0%" :y "0%" :width "99%" :height "20px" :anchor "bottom center")
+  :exclusive true
+  :stacking "fg"
+  :windowtype "dock"
+  (main-bar))

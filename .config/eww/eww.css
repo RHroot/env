@@ -13,35 +13,38 @@ window#status-bar {
   padding: 0 20px;
 }
 
-/* ─── Left section ───────────────────────────────────────── */
-.left-section {
+/* ─── Layout ──────────────────────────────────────────────── */
+.bar-left,
+.bar-right {
   padding: 0 6px;
 }
 
-.username {
+/* ─── Modules ─────────────────────────────────────────────── */
+.module-user {
+  font-size: 16px;
   font-weight: 600;
   color: @accent_color;
   background: rgba(40, 50, 80, 0.5);
   padding: 4px 14px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 16px;
   letter-spacing: 0.3px;
 }
 
-.workspaces-container {
+.module-workspaces {
+  font-size: 16px;
   padding: 0 4px;
 }
 
-.ws-button {
+.workspace-btn {
+  font-size: 16px;
   color: @window_fg_color;
   opacity: 0.4;
-  font-size: 16px;
-  font-weight: 400;
   padding: 2px 6px;
 }
 
-.ws-button.active {
+.workspace-btn.active {
+  font-size: 16px;
   color: @primary;
   opacity: 1;
   font-weight: 700;
@@ -51,11 +54,9 @@ window#status-bar {
   box-shadow: 0 0 10px @primary;
 }
 
-/* ─── Center ──────────────────────────────────────────────── */
-.time {
-  font-weight: 500;
+.module-clock {
   font-size: 16px;
-  color: @window_fg_color;
+  font-weight: 500;
   background: rgba(30, 40, 70, 0.4);
   padding: 4px 22px;
   border-radius: 14px;
@@ -63,12 +64,8 @@ window#status-bar {
   letter-spacing: 0.5px;
 }
 
-/* ─── Right section ───────────────────────────────────────── */
-.right-section {
-  padding: 0 6px;
-}
-
-.status-icon {
+/* ─── Hardware Metrics ────────────────────────────────────── */
+.module-metric {
   font-size: 16px;
   background: rgba(30, 40, 70, 0.35);
   padding: 4px 12px;
@@ -78,44 +75,38 @@ window#status-bar {
   transition: all 0.2s ease;
 }
 
-.status-icon:hover {
+.module-metric:hover {
+  font-size: 16px;
   background: rgba(60, 80, 140, 0.4);
   border-color: rgba(255, 255, 255, 0.12);
 }
 
-.status-icon .icon {
+.module-metric .icon {
   margin-right: 5px;
-  font-size: 16px;
 }
-.status-icon .value {
-  font-size: 16px;
+.module-metric .label {
   opacity: 0.9;
 }
 
-.battery {
-  font-size: 16px;
-  color: #9bde7a; /* Keep specific colors for status indicators */
+.metric-battery {
+  color: #9bde7a;
 }
-.battery .charging {
-  font-size: 16px;
+.metric-battery .charging-icon {
   color: #f5c76b;
   margin-left: 2px;
 }
-
-.audio {
-  font-size: 16px;
-  color: #7fc7ff; /* Keep specific colors for status indicators */
+.metric-audio {
+  color: #7fc7ff;
+}
+.metric-brightness {
+  color: #f5c76b;
 }
 
-.brightness {
-  font-size: 16px;
-  color: #f5c76b; /* Keep specific colors for status indicators */
-}
-
-.tray {
+/* ─── Utilities ───────────────────────────────────────────── */
+.module-tray {
   padding: 0 4px;
 }
-.tray > * {
+.module-tray > * {
   margin: 0 4px;
   background: rgba(30, 40, 70, 0.3);
   padding: 4px 6px;
@@ -123,13 +114,12 @@ window#status-bar {
   min-width: 22px;
   min-height: 22px;
 }
-.tray > *:hover {
+.module-tray > *:hover {
   background: rgba(60, 80, 140, 0.35);
 }
 
-.separator {
+.module-separator {
   color: rgba(255, 255, 255, 0.08);
-  font-size: 16px;
   padding: 0 2px;
   font-weight: 100;
 }
