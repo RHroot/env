@@ -91,17 +91,6 @@ window#status-bar {
   color: #7fc7ff;  /* Keep specific colors for status indicators */
 }
 
-.mic {
-  color: #bca3f0;  /* Keep specific colors for status indicators */
-}
-.mic.muted {
-  color: #f78b8b;
-}
-.mic.muted .icon,
-.mic.muted .value {
-  color: #f78b8b;
-}
-
 .brightness {
   color: #f5c76b;  /* Keep specific colors for status indicators */
 }
