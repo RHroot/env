@@ -1,4 +1,4 @@
-@import "./../../.cache/Matugen/colors.css";
+@import "./../../../.cache/Matugen/colors.css";
 
 * {
   all: unset;
@@ -45,13 +45,13 @@ window#status-bar {
 
 .workspace-btn.active {
   font-size: 16px;
-  color: @primary;
+  color: @accent_fg_color;
   opacity: 1;
   font-weight: 700;
-  background: @primary_container;
+  background: @accent_color;
   padding: 2px 10px;
   border-radius: 6px;
-  box-shadow: 0 0 10px @primary;
+  box-shadow: 0 0 10px @accent_color;
 }
 
 .module-clock {
@@ -88,6 +88,15 @@ window#status-bar {
   opacity: 0.9;
 }
 
+.metric-cpu {
+  color: #ff7b72;
+}
+.metric-ram {
+  color: #d2a8ff;
+}
+.metric-disk {
+  color: #79c0ff;
+}
 .metric-battery {
   color: #9bde7a;
 }

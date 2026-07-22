@@ -8,6 +8,12 @@
 (defpoll poll-brightness :interval "2s" "brightnessctl g | xargs -I{} sh -c 'max=$(brightnessctl m); echo $(( {} * 100 / max ))' || echo '0'")
 (defpoll poll-user :interval "1h" "whoami")
 
+;; Hardware Polls
+(defpoll poll-cpu-usage :interval "2s" "top -bn1 | grep 'Cpu(s)' | awk '{print $2}' | cut -d'.' -f1 || echo '0'")
+(defpoll poll-cpu-freq :interval "2s" "awk '{sum += $1} END {if (NR > 0) printf \"%.1fGHz\", sum / NR / 1000000}' /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq 2>/dev/null || echo '0GHz'")
+(defpoll poll-ram :interval "3s" "free -h | awk '/Mem:/ {print $3 \"/\" $2}' | tr -d 'i' || echo '0G'")
+(defpoll poll-disk :interval "10s" "df -h / | awk 'NR==2 {print $4}' || echo '0G'")
+
 ;; ─── Widgets ───────────────────────────────────────────────
 (defwidget user-module []
   (label :class "module-user" :text "${poll-user}"))
@@ -21,6 +27,21 @@
 
 (defwidget clock-module []
   (label :class "module-clock" :text "${poll-clock}"))
+
+(defwidget cpu-module []
+  (box :class "module-metric metric-cpu" :space-evenly false :spacing 4
+    (label :class "icon" :text "")
+    (label :class "label" :text "${poll-cpu-usage}% (${poll-cpu-freq})")))
+
+(defwidget ram-module []
+  (box :class "module-metric metric-ram" :space-evenly false :spacing 4
+    (label :class "icon" :text "")
+    (label :class "label" :text "${poll-ram}")))
+
+(defwidget disk-module []
+  (box :class "module-metric metric-disk" :space-evenly false :spacing 4
+    (label :class "icon" :text "󰋊")
+    (label :class "label" :text "${poll-disk} free")))
 
 (defwidget battery-module []
   (box :class "module-metric metric-battery" :space-evenly false :spacing 4
@@ -52,6 +73,9 @@
          (user-module) (separator) (workspaces-module))
     (box :halign "center" (clock-module))
     (box :class "bar-right" :halign "end" :space-evenly false :spacing 8
+         (cpu-module) (separator)
+         (ram-module) (separator)
+         (disk-module) (separator)
          (audio-module) (separator)
          (brightness-module) (separator)
          (battery-module) (separator)
