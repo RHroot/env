@@ -2,9 +2,8 @@
     "date '+%I:%M %p  •  %a %b %d, %Y'"
 )
 
-(defpoll workspaces :interval "0.5s"
-    "hyprctl workspaces -j | jq -r 'map(select(.id >= 1 and .id <= 9)) | sort_by(.id) | map(if .focused then \"\" else \"\" end) | join(\" \")'"
-)
+(defpoll workspaces :interval "0.2s"
+  "bash ~/.config/eww/get-workspaces.sh")
 
 (defpoll battery :interval "5s"
     "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '0'"
@@ -32,7 +31,13 @@
 
 ;; ─── Widgets (unchanged) ──────────────────────────────────
 (defwidget username-widget [] (label :class "username" :text "${username}"))
-(defwidget workspace-widget [] (label :class "workspaces" :text "${workspaces}"))
+(defwidget workspace-widget []
+  (box :class "workspaces-container" :space-evenly false :spacing 6
+    (for ws in workspaces
+      (button
+        :class {ws.is_active ? "ws-button active" : "ws-button"}
+        :onclick "hyprctl dispatch workspace ${ws.id}"
+        "${ws.id}"))))
 (defwidget time-widget [] (label :class "time" :text "${current-time}"))
 
 (defwidget battery-widget []
