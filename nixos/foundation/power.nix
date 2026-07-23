@@ -46,8 +46,8 @@ in
           ExecStart = pkgs.writeShellScript "set-thresholds" ''
             for bat in /sys/class/power_supply/BAT*; do
               if [ -d "$bat" ]; then
-                echo 80 > "$bat/charge_control_start_threshold" 2>/dev/null || echo 80 > "$bat/charge_start_threshold" 2>/dev/null || true
-                echo 90 > "$bat/charge_control_end_threshold" 2>/dev/null || echo 90 > "$bat/charge_stop_threshold" 2>/dev/null || true
+                echo 79 > "$bat/charge_control_start_threshold" 2>/dev/null || echo 80 > "$bat/charge_start_threshold" 2>/dev/null || true
+                echo 80 > "$bat/charge_control_end_threshold" 2>/dev/null || echo 90 > "$bat/charge_stop_threshold" 2>/dev/null || true
               fi
             done
           '';
