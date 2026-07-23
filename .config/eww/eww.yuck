@@ -71,7 +71,7 @@
   (centerbox
     (box :class "bar-left" :halign "start" :space-evenly false :spacing 10
          (user-module) (separator) (workspaces-module))
-    (box :halign "center" (clock-module))
+    (box :halign "center" (separator) (clock-module) (separator))
     (box :class "bar-right" :halign "end" :space-evenly false :spacing 8
          (cpu-module) (separator)
          (ram-module) (separator)
