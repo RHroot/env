@@ -6,25 +6,22 @@
 {
   services.xserver = {
     enable = true;
-    windowManager.qtile = {
-      enable = true;
-    };
-    displayManager.lightdm = {
-      enable = true;
-      extraSeatDefaults = ''
-        display-setup-script = ${pkgs.writeScript "lightdm-display-setup" ''
-          #!${pkgs.bash}/bin/bash
-          ${pkgs.xrandr}/bin/xrandr --output eDP-1 --mode 1920x1080 --rate 60
-        ''}
-      '';
-    };
+    wacom.enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 40;
+    windowManager.qtile.enable = true;
+
+    displayManager.lightdm.enable = true;
+
+    resolutions = [
+      {
+        x = 1920;
+        y = 1080;
+        rate = 60;
+      }
+    ];
+
   };
-
-  services.displayManager.gdm.enable = false;
-  services.displayManager.sddm.enable = false;
-
-  services.getty.autologinUser = "sten";
-  services.displayManager.defaultSession = "qtile";
 
   security.polkit.enable = true;
   systemd.user.services.polkit-gnome-authentication-agent-1 = {

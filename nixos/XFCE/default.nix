@@ -18,6 +18,8 @@
       xterm.enable = false;
     };
 
+    displayManager.lightdm.enable = true;
+
     resolutions = [
       {
         x = 1920;
@@ -25,10 +27,6 @@
         rate = 60;
       }
     ];
-
-    displayManager.lightdm = {
-      enable = true;
-    };
   };
 
   services.displayManager.gdm.enable = false;
