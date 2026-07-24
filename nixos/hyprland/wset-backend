@@ -11,9 +11,10 @@ notify-send "Changing Theme" "Applying new wallpaper and updating colors, please
 
 # Take colors from Image
 matugen image "$IMAGE" -m dark -t scheme-content --source-color-index 0
+sleep 2
 
 # Reload
-pkill -f eww && eww daemon && eww open status-bar
+pkill -f eww && sleep 1 && eww daemon && eww open status-bar
 kill -10 $(pgrep kitty) 2>/dev/null
 
 notify-send "Theme Applied" "Wallpaper and Theme updated successfully"

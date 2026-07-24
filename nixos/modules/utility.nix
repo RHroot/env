@@ -68,29 +68,38 @@
   #   mode = "0644";
   # };
 
-  # programs.firefox = {
-  #   enable = true;
-  #   package = pkgs.librewolf;
-  #
-  #   autoConfig = ''
-  #     defaultPref("privacy.resistFingerprinting", false);
-  #     defaultPref("network.http.pipelining", true);
-  #     defaultPref("network.http.max-connections", 256);
-  #     defaultPref("browser.sessionstore.interval", 30000);
-  #     defaultPref("network.http.pipelining.maxrequests", 8);
-  #     defaultPref("devtools.theme", "dark");
-  #     defaultPref("ui.systemUsesDarkTheme", 1);
-  #     defaultPref("signon.rememberSignons", false);
-  #     defaultPref("browser.tabs.verticalTabs.enabled", true);
-  #     defaultPref("sidebar.verticalTabs", true);
-  #     defaultPref("browser.theme.dark-private-windows", true);
-  #     defaultPref("layout.css.prefers-color-scheme.content-override", 2);
-  #     defaultPref("browser.cache.disk.capacity", 512000);
-  #     defaultPref("browser.cache.memory.capacity", 51200);
-  #     defaultPref("browser.tabs.remote.autostart.2", true);
-  #     defaultPref("browser.sessionhistory.max_entries", 10);
-  #   '';
-  # };
+  programs.firefox = {
+    enable = true;
+    # package = pkgs.librewolf;
+
+    autoConfig = ''
+      // --- Privacy Overrides ---
+      defaultPref("privacy.resistFingerprinting", false);
+      defaultPref("signon.rememberSignons", false);
+
+      // --- UI & Dark Theme ---
+      defaultPref("devtools.theme", "dark");
+      defaultPref("ui.systemUsesDarkTheme", 1);
+      defaultPref("browser.theme.dark-private-windows", true);
+      defaultPref("layout.css.prefers-color-scheme.content-override", 0);
+
+      // --- Native Vertical Tabs ---
+      defaultPref("sidebar.revamp", true);
+      defaultPref("sidebar.verticalTabs", true);
+      defaultPref("browser.tabs.verticalTabs.enabled", true);
+
+      // --- Cache & Memory Tuning ---
+      defaultPref("browser.cache.disk.capacity", 512000);
+      defaultPref("browser.cache.memory.capacity", 51200);
+      defaultPref("browser.sessionstore.interval", 30000);
+      defaultPref("browser.sessionhistory.max_entries", 10);
+
+      // --- Hardware Acceleration ---
+      defaultPref("media.ffmpeg.vaapi.enabled", true);
+      defaultPref("gfx.webrender.all", true);
+      defaultPref("widget.use-aspect-ratio", true);
+    '';
+  };
 
   xdg.mime.defaultApplications = {
     # # Text
