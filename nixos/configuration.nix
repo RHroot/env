@@ -72,8 +72,10 @@
   nix.settings.auto-optimise-store = true;
 
   console = {
-    font = "latarcyrheb-sun32";
+    enable = true;
     useXkbConfig = true;
+    packages = with pkgs; [ terminus_font ];
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-u32b.psf.gz";
   };
 
   hardware.bluetooth = {

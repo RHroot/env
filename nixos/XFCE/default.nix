@@ -18,8 +18,6 @@
       xterm.enable = false;
     };
 
-    displayManager.lightdm.enable = true;
-
     resolutions = [
       {
         x = 1920;
@@ -29,8 +27,7 @@
     ];
   };
 
-  services.displayManager.gdm.enable = false;
-  services.displayManager.sddm.enable = false;
+  services.displayManager.ly.enable = true;
 
   environment.systemPackages = with pkgs; [
     google-chrome

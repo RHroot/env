@@ -11,8 +11,6 @@
     autoRepeatInterval = 40;
     windowManager.qtile.enable = true;
 
-    displayManager.lightdm.enable = true;
-
     resolutions = [
       {
         x = 1920;
@@ -22,6 +20,8 @@
     ];
 
   };
+
+  services.displayManager.ly.enable = true;
 
   security.polkit.enable = true;
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
