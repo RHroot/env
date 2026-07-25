@@ -29,7 +29,7 @@
       enable = true;
       finegrained = true;
     };
-    dynamicBoost.enable = true;
+    dynamicBoost.enable = false;
   };
 
   # Graphics — Intel iGPU, VAAPI, OpenCL
@@ -50,27 +50,9 @@
     ];
   };
 
-  # Kernel modules
-  boot.kernelModules = [
-    "nvidia"
-    "nvidia_modeset"
-    "nvidia_uvm"
-    "nvidia_drm"
-  ];
-
   boot.blacklistedKernelModules = [
     "nouveau"
     "nova_core"
-  ];
-
-  # Kernel params
-  boot.kernelParams = [
-    "i915.enable_psr=1"
-    "i915.enable_guc=2"
-    "i915.enable_fbc=1"
-    "i915.fastboot=1"
-    "nvidia_drm.modeset=1"
-    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
 
   # Packages — tools + wrappers
