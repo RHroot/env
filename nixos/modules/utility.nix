@@ -64,9 +64,7 @@
 
       # Some More
       SyncDisabled = true;
-      BlockThirdPartyCookies = true;
       ClearBrowsingDataOnExitList = [
-        "browsing_history"
         "download_history"
         "cached_images_and_files"
       ];
