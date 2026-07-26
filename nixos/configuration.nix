@@ -20,7 +20,7 @@
   ];
 
   power.enable = true;
-  services.getty.autologinUser = "sten";
+  services.getty.autologinUser = env.username;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -33,7 +33,7 @@
   users.users.${env.username} = {
     isNormalUser = true;
     shell = pkgs.fish;
-    description = "do i need to give a description to myself";
+    description = env.description;
     extraGroups = [
       "networkmanager"
       "wheel"

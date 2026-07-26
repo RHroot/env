@@ -22,9 +22,10 @@
     let
       env =
         let
+          domain = "local";
           username = "sten";
           hostname = "rhroot";
-          domain = "local";
+          description = "me myself";
           fqdn = "${hostname}.${domain}";
         in
         {
@@ -32,6 +33,7 @@
             username
             hostname
             domain
+            description
             fqdn
             ;
         };
