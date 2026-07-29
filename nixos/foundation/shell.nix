@@ -142,12 +142,8 @@
   ];
 
   environment.sessionVariables = {
-    EDITOR = "neovide";
-    VISUAL = "neovide";
-    TERMINAL = "kitty";
-    BROWSER = "brave";
-    COLORTERM = "truecolor";
     PAGER = "less";
+    COLORTERM = "truecolor";
 
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
