@@ -4,7 +4,7 @@
   all: unset;
 }
 
-window#status-bar {
+window#hyprbar {
   background-color: rgba(12, 12, 28, 0.82);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   font-family: "FiraCode Nerd Font", "Noto Sans", "Merriweather", sans-serif;

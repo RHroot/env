@@ -82,7 +82,7 @@
          (tray-module))))
 
 ;; ─── Window ─────────────────────────────────────────────────
-(defwindow status-bar
+(defwindow hyprbar
   :monitor 0
   :geometry (geometry :x "0%" :y "0%" :width "99%" :height "20px" :anchor "bottom center")
   :exclusive true

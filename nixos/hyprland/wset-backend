@@ -7,14 +7,17 @@ fi
 
 IMAGE="$1"
 
-notify-send "Changing Theme" "Applying new wallpaper and updating colors, please wait until confirmation..."
+notify-send "Changing Theme" ""
 
 # Take colors from Image
 matugen image "$IMAGE" -m dark -t scheme-content --source-color-index 0
 sleep 2
 
 # Reload
-eww kill; eww daemon & sleep 0.5; eww open status-bar
+eww kill
+eww daemon &
+sleep 0.5
+eww open hyprbar
 kill -10 $(pgrep kitty) 2>/dev/null
 
-notify-send "Theme Applied" "Wallpaper and Theme updated successfully"
+notify-send "Theme Applied" ""
