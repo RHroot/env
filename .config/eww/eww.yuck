@@ -3,8 +3,8 @@
 (defpoll poll-workspaces :interval "0.2s" "bash ~/.config/eww/get-workspaces.sh")
 (defpoll poll-battery-cap :interval "5s" "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '0'")
 (defpoll poll-battery-stat :interval "5s" "cat /sys/class/power_supply/BAT0/status 2>/dev/null || echo 'Unknown'")
-(defpoll poll-audio-vol :interval "1s" "pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]*%' | head -1 | tr -d '%' || echo '0'")
-(defpoll poll-audio-mute :interval "1s" "pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}' | tr -d '\n' | grep -q yes && echo muted || echo unmuted")
+(defpoll poll-audio-vol :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}' || echo '0'")
+(defpoll poll-audio-mute :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo muted || echo unmuted")
 (defpoll poll-brightness :interval "2s" "brightnessctl g | xargs -I{} sh -c 'max=$(brightnessctl m); echo $(( {} * 100 / max ))' || echo '0'")
 (defpoll poll-user :interval "1h" "whoami")
 
