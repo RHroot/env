@@ -35,6 +35,10 @@
 
   environment.systemPackages = with pkgs; [
     pavucontrol
-    pulseaudio
+    alsa-utils
   ];
+
+  boot.extraModprobeConfig = ''
+    options snd_hda_intel index=0 vid=8086
+  '';
 }
