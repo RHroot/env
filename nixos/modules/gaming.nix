@@ -26,7 +26,6 @@
     package = pkgs.steam.override {
       extraEnv = {
         OBS_VKCAPTURE = "1";
-        RADV_TEX_ANISO = "16";
       };
     };
     extraCompatPackages = with pkgs; [
