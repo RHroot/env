@@ -7,7 +7,7 @@
 (defpoll poll-audio-mute :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo muted || echo unmuted")
 (defpoll poll-brightness :interval "2s" "brightnessctl g | xargs -I{} sh -c 'max=$(brightnessctl m); echo $(( {} * 100 / max ))' || echo '0'")
 (defpoll poll-user :interval "1h" "whoami")
-(defpoll poll-nightlight :interval "1s" "sh ~/.config/eww/nightlight.sh status")
+(defpoll poll-hyprnight :interval "1s" "sh ~/.config/eww/hyprnight.sh status")
 
 ;; Hardware Polls
 (defpoll poll-cpu-usage :interval "2s" "top -bn1 | grep 'Cpu(s)' | awk '{print $2}' | cut -d'.' -f1 || echo '0'")
@@ -67,16 +67,16 @@
 (defwidget separator []
   (label :class "module-separator" :text "│"))
 
-(defwidget nightlight-module []
-  (button :class "module-nightlight"
-          :onclick "bash ~/.config/eww/nightlight.sh toggle"
-    (label :text "${poll-nightlight}")))
+(defwidget hyprnight-module []
+  (button :class "module-hyprnight"
+          :onclick "bash ~/.config/eww/hyprnight.sh toggle"
+    (label :text "${poll-hyprnight}")))
 
 ;; ─── Main Bar ──────────────────────────────────────────────
 (defwidget main-bar []
   (centerbox
     (box :class "bar-left" :halign "start" :space-evenly false :spacing 10
-         (nightlight-module) (separator) (user-module) (separator) (workspaces-module))
+         (hyprnight-module) (separator) (user-module) (separator) (workspaces-module))
     (box :halign "center" (separator) (clock-module) (separator))
     (box :class "bar-right" :halign "end" :space-evenly false :spacing 8
          (cpu-module) (separator)

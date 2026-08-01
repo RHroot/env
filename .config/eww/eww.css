@@ -20,7 +20,7 @@ window#hyprbar {
 }
 
 /* ─── Modules ─────────────────────────────────────────────── */
-.module-nightlight {
+.module-hyprnight {
   color: @accent_color;
   background: rgba(40, 50, 80, 0.5);
   padding: 2px 18px;
@@ -29,7 +29,7 @@ window#hyprbar {
   border-radius: 8px;
 }
 
-.module-nightlight:hover {
+.module-hyprnight:hover {
   background: rgba(60, 80, 140, 0.4);
 }
 
