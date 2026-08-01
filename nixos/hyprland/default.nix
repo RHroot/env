@@ -35,6 +35,7 @@
     # === HYPRLAND ===
     hyprlock # Screen locker for Hyprland
     hyprshot # Screenshot utility for Hyprland
+    hyprsunset # Nightlight manager for Hyprland
     hyprpicker # Color picker for Wayland/Hyprland
     hyprcursor # Cursor theme support for Hyprland
     hyprland-qtutils # Qt utilities for Hyprland components

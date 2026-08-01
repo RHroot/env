@@ -1,12 +1,13 @@
 ;; ─── Variables & Polls ─────────────────────────────────────
 (defpoll poll-clock :interval "1s" "date '+%I:%M %p  •  %a %b %d, %Y'")
-(defpoll poll-workspaces :interval "0.2s" "bash ~/.config/eww/get-workspaces.sh")
+(defpoll poll-workspaces :interval "0.2s" "sh ~/.config/eww/get-workspaces.sh")
 (defpoll poll-battery-cap :interval "5s" "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '0'")
 (defpoll poll-battery-stat :interval "5s" "cat /sys/class/power_supply/BAT0/status 2>/dev/null || echo 'Unknown'")
 (defpoll poll-audio-vol :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}' || echo '0'")
 (defpoll poll-audio-mute :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo muted || echo unmuted")
 (defpoll poll-brightness :interval "2s" "brightnessctl g | xargs -I{} sh -c 'max=$(brightnessctl m); echo $(( {} * 100 / max ))' || echo '0'")
 (defpoll poll-user :interval "1h" "whoami")
+(defpoll poll-nightlight :interval "1s" "sh ~/.config/eww/nightlight.sh status")
 
 ;; Hardware Polls
 (defpoll poll-cpu-usage :interval "2s" "top -bn1 | grep 'Cpu(s)' | awk '{print $2}' | cut -d'.' -f1 || echo '0'")
@@ -66,11 +67,16 @@
 (defwidget separator []
   (label :class "module-separator" :text "│"))
 
+(defwidget nightlight-module []
+  (button :class "module-nightlight"
+          :onclick "bash ~/.config/eww/nightlight.sh toggle"
+    (label :text "${poll-nightlight}")))
+
 ;; ─── Main Bar ──────────────────────────────────────────────
 (defwidget main-bar []
   (centerbox
     (box :class "bar-left" :halign "start" :space-evenly false :spacing 10
-         (user-module) (separator) (workspaces-module))
+         (nightlight-module) (separator) (user-module) (separator) (workspaces-module))
     (box :halign "center" (separator) (clock-module) (separator))
     (box :class "bar-right" :halign "end" :space-evenly false :spacing 8
          (cpu-module) (separator)
