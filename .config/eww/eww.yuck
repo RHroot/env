@@ -75,7 +75,7 @@
 ;; ─── Main Bar ──────────────────────────────────────────────
 (defwidget main-bar []
   (centerbox
-    (box :class "bar-left" :halign "start" :space-evenly false :spacing 10
+    (box :class "bar-left" :halign "start" :space-evenly false :spacing 8
          (hyprnight-module) (separator) (user-module) (separator) (workspaces-module))
     (box :halign "center" (separator) (clock-module) (separator))
     (box :class "bar-right" :halign "end" :space-evenly false :spacing 8
