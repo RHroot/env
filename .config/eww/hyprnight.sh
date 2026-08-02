@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-TEMP=4000
+TEMP=5000
 GAMMA=80
 
 case "$1" in
