@@ -33,17 +33,6 @@ window#hyprbar {
   background: rgba(60, 80, 140, 0.4);
 }
 
-.module-user {
-  font-size: 16px;
-  font-weight: 600;
-  color: @accent_color;
-  background: rgba(40, 50, 80, 0.5);
-  padding: 4px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  letter-spacing: 0.3px;
-}
-
 .module-workspaces {
   font-size: 16px;
   padding: 0 4px;

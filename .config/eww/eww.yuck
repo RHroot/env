@@ -8,7 +8,6 @@
 (defpoll poll-audio-vol :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}' || echo '0'")
 (defpoll poll-audio-mute :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo muted || echo unmuted")
 (defpoll poll-brightness :interval "2s" "brightnessctl g | xargs -I{} sh -c 'max=$(brightnessctl m); echo $(( {} * 100 / max ))' || echo '0'")
-(defpoll poll-user :interval "1h" "whoami")
 (defpoll poll-hyprnight :interval "1s" "sh ~/.config/eww/hyprnight.sh status")
 
 ;; Hardware Polls
@@ -18,9 +17,6 @@
 (defpoll poll-disk :interval "10s" "df -h / | awk 'NR==2 {print $4}' || echo '0G'")
 
 ;; ─── Widgets ───────────────────────────────────────────────
-(defwidget user-module []
-  (label :class "module-user" :text "${poll-user}"))
-
 (defwidget workspaces-module []
   (box :class "module-workspaces" :space-evenly false :spacing 6
     (for ws in poll-workspaces
@@ -80,7 +76,7 @@
 (defwidget main-bar []
   (centerbox
     (box :class "bar-left" :halign "start" :space-evenly false :spacing 2
-         (hyprnight-module) (separator) (time-date-module) (separator) (user-module) (separator) (workspaces-module))
+         (hyprnight-module) (separator) (time-date-module) (separator) (workspaces-module))
     (box :halign "center")
     (box :class "bar-right" :halign "end" :space-evenly false :spacing 6
          (cpu-module) (separator)
