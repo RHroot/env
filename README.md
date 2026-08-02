@@ -1,216 +1,199 @@
 # <img src="refrence/logo.png" alt="Logo" width="80" align="center"> My NixOS Dotfiles
 
-This repository contains my personal dotfiles for my NixOS setup. It's a comprehensive configuration that includes everything from the operating system itself to my terminal, editor, and theming.
+This repository contains my personal dotfiles and system configurations for my NixOS setup. It provides a modular, multi-desktop environment (Hyprland, Qtile, XFCE) powered by Nix Flakes, custom utility scripts, dynamic color theming, and system-level performance optimizations.
 
 ## ⚙️ System Overview
 
-| Component                   | Details                                                                                                                                                    |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **❄️ Operating System**     | [NixOS](https://nixos.org/) 26.05 with Flakes                                                                                                            |
-| **🪟 Window Manager**       | [Hyprland](https://hyprland.org/) with [Hypridle](https://github.com/hyprwm/hypridle), [Hyprlock](https://github.com/hyprwm/hyprlock), and [Hyprshot](https://github.com/Gustash/Hyprshot) |
-| **💻 Terminal**             | [Alacritty](https://alacritty.org/) & [Kitty](https://sw.kovidgoyal.net/kitty/)                                                                        |
-| **🐚 Shell**                | [Fish](https://fishshell.com/) with [Starship](https://starship.rs/) prompt                                                                             |
-| **✏️ Editor**               | [Neovim](https://neovim.io/) with LSP support                                                                                                           |
-| **🎨 Theming**              | [Matugen](https://github.com/InioX/matugen) for dynamic color generation from wallpapers                                                                |
-| **🚀 Application Launcher** | [Rofi](https://github.com/davatorium/rofi)                                                                                                              |
-| **🔔 Notifications**        | [Dunst](https://dunst-project.org/)                                                                                                                    |
-| **📋 Clipboard Manager**    | wl-clipboard & cliphist                                                                                                                                |
-| **🔊 Audio Server**         | [PipeWire](https://pipewire.org/)                                                                                                                      |
-| **🏞️ Wallpaper Setter**     | Custom scripts at [`nixos/hyprland/wset`](./nixos/hyprland/wset) and [`nixos/hyprland/wset-backend`](./nixos/hyprland/wset-backend)                   |
-| **📦 Dotfile Manager**      | [GNU Stow](https://www.gnu.org/software/stow/)                                                                                                         |
+| Component                        | Details                                                                                                                                                            |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **❄️ Operating System**          | [NixOS](https://nixos.org/) 26.05 with Flakes (Hybrid Stable Base + Unstable Overlays)                                                                             |
+| **🪟 Window & Desktop Managers** | [Hyprland](https://hyprland.org/) (Wayland), [Qtile](https://qtile.org/) (X11), and [XFCE](https://xfce.org/) (Desktop Environment)                                |
+| **📊 Status Bar & Widgets**      | [Eww](https://github.com/elkowar/eww) custom `hyprbar` widget with system metrics, workspace indicator & [Hyprsunset](https://github.com/hyprwm/hyprsunset) toggle |
+| **🔒 Idle & Lock Screen**        | [Hypridle](https://github.com/hyprwm/hypridle) and [Hyprlock](https://github.com/hyprwm/hyprlock)                                                                  |
+| **💻 Terminals**                 | [Alacritty](https://alacritty.org/) & [Kitty](https://sw.kovidgoyal.net/kitty/)                                                                                    |
+| **🐚 Shell Environment**         | [Fish](https://fishshell.com/) with [Starship](https://starship.rs/) prompt, [Zoxide](https://github.com/ajeetdsouza/zoxide) navigation & custom functions         |
+| **✏️ Text Editors**              | [Neovim](https://neovim.io/), [Zed Editor](https://zed.dev/), [Neovide](https://neovide.dev/), and Vim (Unstable)                                                  |
+| **🎨 Dynamic Theming**           | [Matugen](https://github.com/InioX/matugen) wallpaper palette generator, GTK (Flat-Remix-GTK-Magenta-Darkest), Papirus-Dark icons, Bibata cursors                  |
+| **🚀 App Launcher & Menus**      | [Rofi](https://github.com/davatorium/rofi) with custom powermenu, bluetooth (`bluerofi`), clipboard (`rofi-copyq`), and icon picker                                |
+| **🔔 Notifications**             | [Dunst](https://dunst-project.org/)                                                                                                                                |
+| **📋 Clipboard Management**      | `wl-clipboard`, `cliphist` & `copyq`                                                                                                                               |
+| **🔊 Audio Architecture**        | [PipeWire](https://pipewire.org/) with WirePlumber (quantum-locked to 512, Intel PCH priority tuning)                                                              |
+| **🎮 Gaming Support**            | Steam (Proton-GE), Lutris, GameMode, Gamescope, MangoHud & Wine WOW64                                                                                              |
+| **🖥️ GPU & Graphics**            | NVIDIA PRIME Offload (Quadro P2000 Mobile + Intel iGPU UHD 630), VAAPI hardware acceleration & custom `gpu-check` tool                                             |
+| **🔋 Battery & Power**           | Dynamic charge start/stop thresholds (80% battery threshold), `batsignal` battery warnings & `power-profiles-daemon`                                               |
+| **🛡️ Network & Privacy**         | DNS-over-TLS (Cloudflare & Quad9), Fail2ban, Brave Browser with enterprise debloating policies & ProtonVPN                                                         |
+| **📦 Dotfile Manager**           | [GNU Stow](https://www.gnu.org/software/stow/)                                                                                                                     |
 
-## 📂 Structure
+---
+
+## 📂 Repository Structure
 
 The repository is organized as follows:
 
-### Core Configuration
+### ⚙️ Core NixOS System (`nixos/`)
 
-- **`nixos/`**: Complete NixOS system configuration
-  - `configuration.nix`: Main system entry point
-  - `foundation/`: Core system layer (6 modules)
-    - `base.nix`: System base and core packages
-    - `git.nix`: Git and version control setup
-    - `network.nix`: Network and connectivity configuration
-    - `power.nix`: Power management and battery settings
-    - `shell.nix`: Shell environment (Fish, Starship) and aliases
-    - `default.nix`: Foundation module aggregation
-  - `modules/`: Feature-specific modules (8 modules)
-    - `audio.nix`: PipeWire audio system configuration
-    - `content.nix`: Content and media applications
-    - `gaming.nix`: Gaming-related packages and configuration
-    - `graphics.nix`: GPU drivers (NVIDIA with PRIME, Intel iGPU) and graphics settings
-    - `theming.nix`: Matugen and system-wide theming
-    - `toolbox.nix`: Development tools and languages (Python, Rust, C/C++, Node.js, Java, etc.)
-    - `utility.nix`: System utilities and general tools
-    - `default.nix`: Module aggregation and imports
-  - `hyprland/`: Window manager configuration
-    - `default.nix`: Hyprland setup and environment packages
-    - `hypridle.conf`: Idle management configuration
-    - `hyprlock.conf`: Lock screen configuration
-    - `modules/`: Lua-based modular Hyprland configuration
-      - `keys.lua`: Keybinds
-      - `setts.lua`: Settings
-      - `decor.lua`: Decorations
-      - `evars.lua`: Environment variables
-      - `wrules.lua`: Window rules
-      - `start.lua`: Startup commands
-      - `hyprland-colors.lua`: Dynamic color theming
-    - `clipman`, `wset`, `wset-backend`: Utility scripts
-  - `qtile/`: Qtile window manager configuration (alternative setup)
-- **`flake.nix`**: Nix Flake configuration with stable (nixos-26.05) and unstable channels
-- **`flake.lock`**: Locked dependency versions
+- **`nixos/configuration.nix`**: Main system configuration entry point (hostname `rhroot`, user `sten`).
+- **`nixos/foundation/`**: Essential infrastructure layer:
+  - `base.nix`: Core CLI packages (`btop`, `stow`, `dust`, `fastfetch`, `tealdeer`, `aria2`, `bat`), `nix-ld`, and `nix-index`.
+  - `git.nix`: Git setup, Delta diff pager integration, and SSH commit signing.
+  - `network.nix`: DNS-over-TLS (`systemd-resolved` with Cloudflare & Quad9), Fail2ban, Firewall rules, and ProtonVPN.
+  - `power.nix`: Battery charge threshold management (80% charge limit), `batsignal` daemon, and `power-profiles-daemon`.
+  - `shell.nix`: Fish & Starship system configuration, global Bash aliases, Kali-like prompt fallback, and environment variables.
+  - `default.nix`: Foundation module aggregator.
+- **`nixos/modules/`**: Modular feature layers:
+  - `audio.nix`: PipeWire audio engine, forced 512 quantum latency, and ALSA node priority (Intel PCH over NVIDIA).
+  - `content.nix`: Media production software (`GIMP`, `Audacity`, `OBS Studio`, `Kdenlive`).
+  - `gaming.nix`: Steam with Proton-GE, Lutris, GameMode, Gamescope, MangoHud, and Wine.
+  - `graphics.nix`: NVIDIA PRIME offload (Quadro P2000 + Intel iGPU UHD 630), VAAPI acceleration, OpenCL, Vulkan, and custom `gpu-check` diagnostic script.
+  - `theming.nix`: GTK 2/3/4 themes, Papirus-Dark icons, Bibata-Modern-Ice cursors, and custom font definitions (FiraCode Nerd Font, Noto Sans, Merriweather).
+  - `toolbox.nix`: Developer tools and runtimes (Python 3.13 + `uv`, Node.js + `bun`, C/C++ GCC/Clang/CMake, Rust, Lua, Neovim, Zed Editor, Eww, Nmap, TCPDump, Strace).
+  - `utility.nix`: Desktop productivity applications (Brave Browser with debloating policies, MPV, Evince, Zotero, Foliate, Blanket, qBittorrent, Telegram).
+  - `default.nix`: Feature module aggregator.
+- **`nixos/hyprland/`**: Hyprland window manager system integration (`default.nix`, `wset`, `wset-backend`).
+- **`nixos/qtile/`**: Qtile window manager system integration (`default.nix`, `wset`, `wset-backend`).
+- **`nixos/XFCE/`**: XFCE desktop environment configuration (`default.nix` with LightDM/Ly, xrandr, Wacom driver).
+- **`flake.nix` & `flake.lock`**: Nix Flake declaration using NixOS 26.05 stable base with `nixos-unstable` overlays.
 
-### Application Configurations
+---
 
-- **`.config/`**: Application-specific configurations
-  - `hypr/`: Hyprland window manager configuration
-    - `modules/`: Lua-based modular configuration (keybinds, settings, decorations, environment variables, window rules, startup, colors, anime mode)
-    - `hypridle.conf`: Idle management
-    - `hyprlock.conf`: Lock screen appearance
-    - `hyprland.lua`: Main Hyprland entry point in Lua
-  - `alacritty/`: Alacritty terminal emulator configuration
-  - `kitty/`: Kitty terminal emulator configuration
-  - `fish/`: Fish shell configuration
-  - `rofi/`: Rofi application launcher configuration
-  - `picom/`: Picom compositor configuration
-  - `aria2/`: Aria2 download manager configuration
-  - `matugen/`: Dynamic color generation configuration
-    - `templates/`: Color templates for various applications
-  - `tealdeer/`: Tealdeer (tldr) configuration
-  - `qtile/`: Qtile window manager configuration (alternative)
+### 🎨 Application Configurations (`.config/`)
 
-### Scripts & Utilities
+- **`hypr/`**: Modular Lua-based Hyprland window manager configuration:
+  - `hyprland.lua`: Main Lua entry point.
+  - `modules/`: Feature-specific modules (`keys.lua`, `setts.lua`, `decor.lua`, `evars.lua`, `wrules.lua`, `start.lua`, `res.lua`, `anime.lua`, `hyprland-colors.lua`).
+  - `hyprlock.conf` & `hypridle.conf`: Lock screen and idle management.
+- **`eww/`**: ElKowar's Wacky Widgets status bar configuration:
+  - `eww.yuck` & `eww.css`: Custom `hyprbar` widget displaying CPU, RAM, Disk, Audio, Brightness, Battery, Workspaces, and Systray.
+  - `hyprnight.sh`: Toggle script for Hyprsunset blue-light reduction.
+  - `get-workspaces.sh`: Dynamic Hyprland workspace fetcher.
+- **`fish/`**: Custom Fish shell configuration:
+  - `config.fish`, `conf.d/` (`05-zoxide`, `10-starship`, `20-env`, `30-abbreviations`, `40-keybinds`, `fish_frozen_key_bindings`).
+  - `functions/`: Custom helper functions (`gc`, `gac`, `gacp`, `nix-clean`, `git-clean`, `nix-fish`, `hyprctl`, `view`).
+  - `completions/`: GitHub Copilot CLI completion script.
+- **`alacritty/`**: Alacritty GPU terminal configuration (`alacritty.toml`).
+- **`kitty/`**: Kitty terminal configuration (`kitty.conf`).
+- **`rofi/`**: Rofi menu launcher, power menu (`powermenu.rasi`), art selector (`art_selector.rasi`), and icon picker database (`icons.csv`).
+- **`mpv/`**: MPV video player configuration (`mpv.conf` with Vulkan GPU-next renderer, debanding filters, and high-contrast yellow subtitles).
+- **`zed/`**: Zed editor settings (`settings.json` with Catppuccin Espresso theme and FiraCode Nerd Font).
+- **`matugen/`**: Material You color theme generator config and templates (`starship`, `gtk.css`, `colors.rasi`, `colors.conf`, `colors.css`, `dunstrc`).
+- **`picom/`**: Picom compositor configuration for X11 sessions (`picom.conf`).
+- **`qtile/`**: Qtile python configuration (`config.py`, `autostart`).
+- **`tealdeer/`**: Tealdeer (tldr) configuration (`config.toml`).
+- **`aria2/`**: Aria2 download manager settings (`aria2.conf`).
+- **`libinput-gestures.conf`**: Custom 3-finger and 4-finger touchpad gesture mappings linked to `xdotool`.
 
-- **`.local/bin/`**: Custom utility scripts
-  - `rebuild`: NixOS system rebuild helper
-  - `uprebuild`: NixOS system rebuild with updates
-  - `cwifi`: WiFi connection management utility
-  - `setup-git`: Git configuration setup
-  - `stickers`: Sticker asset management
-  - `age`: Age encryption utility
-  - `multi_git_setup`: Multi-account Git setup helper
-  - `bluerofi`: Bluetooth management via Rofi
-  - `rofi-copyq`: Clipboard management via Rofi
-  - `icon_picker`: Icon picker utility
-  - `powermenu`: Power menu utility
-- **`nixos/hyprland/`**: Wallpaper and display utilities
-  - `wset`, `wset-backend`: Wallpaper management and backend color generation
-  - `clipman`: Clipboard management utility
+---
 
+### 🛠️ Helper Scripts & Custom Executables (`.local/`)
 
-### Documentation & Miscellaneous
+- **`.local/bin/`**:
+  - `rebuild`: Custom NixOS system rebuild helper with colored stage output and log parsing.
+  - `uprebuild`: Automatic flake input updater, git commit sync, system rebuild, and store optimizer.
+  - `cwifi`: Interactive CLI tool for WiFi network management.
+  - `gpu-check`: Comprehensive diagnostic script for verifying NVIDIA PRIME offload, Vulkan adapters, and VAAPI hardware decoding.
+  - `bluerofi`: Rofi-based Bluetooth management menu.
+  - `rofi-copyq`: Rofi clipboard history search menu.
+  - `powermenu`: Rofi system power options menu.
+  - `icon_picker`: Rofi icon search and copy tool.
+  - `setup-git` & `multi_git_setup`: Single and multi-account Git workspace setup tools.
+  - `stickers`: Asset management script.
+  - `age`: Encryption helper script.
+- **`.local/share/fastfetch/presets/my.jsonc`**: Custom system summary layout for `fastfetch`.
 
-- **`refrence/`**: Technical guides and documentation
-  - `git_guide.md`: Git workflow notes and best practices
-  - `git_multi_account_setup.txt`: Multi-account Git setup reference
-  - `substitution-regex-guide.md`: Regular expression patterns and substitution techniques
-  - `systemd_guide.md`: Systemd service management and configuration
-  - `xargs-guide.md`: Advanced xargs usage and patterns
-  - `TIGER_STYLE.md`: Programming style guide and best practices
-  - `d_s.md`: Additional technical documentation
-  - `bookmarks.html`: Curated collection of useful web resources
-  - `useful_commands.md`: Collection of useful system commands and patterns
-  - `animestowatch.txt`: Anime watchlist notes
-  - `logo.png`: Repository logo image
-- **`.local/share/`**: Shared application data and assets
-- **`.vimrc`**: Vim configuration (for compatibility)
-- **`.gitignore`**: Git ignore patterns
-- **`.stowrc`**: GNU Stow configuration for dotfile management
-- **`LICENSE`**: MIT License for the project
-- **`README.md`**: This file
+---
 
-## 🚀 Usage
+### 📚 Technical Reference Library (`refrence/`)
 
-To use these dotfiles, you can follow these steps:
+- **`d_s.md`**: Step-by-step guide for fetching and serving local GGUF LLMs (`Qwen2.5`) via `huggingface-hub` and `llama.cpp` CUDA backend.
+- **`git_guide.md`**: Detailed Git command notes, subtrees, and workflow patterns.
+- **`git_multi_account_setup.txt`**: Guide for managing multiple SSH keys and Git user configurations.
+- **`substitution-regex-guide.md`**: Guide to regular expressions, capture groups, and substitution patterns.
+- **`systemd_guide.md`**: Reference guide for managing Systemd services, units, and timers.
+- **`xargs-guide.md`**: Guide for parallel processing and command chaining using `xargs`.
+- **`TIGER_STYLE.md`**: Software development philosophy focusing on safety, assertion density, and performance.
+- **`useful_commands.md`**: Quick reference cheat sheet for Linux hardware, kernel, network, and storage diagnostics.
+- **`animestowatch.txt`**: Anime watchlist notes.
+- **`bookmarks.html`**: Curated web bookmarks collection.
+- **`logo.png`**: Repository header logo image.
 
-1.  **Clone the repository:**
-    ```bash
-    git clone -b Hyprland https://github.com/RHroot/env.git
-    ```
-2.  **Install NixOS:**
-    Follow the official NixOS installation guide to install NixOS on your system.
-3.  **Symlink the configuration:**
-    This repository uses `stow` to manage dotfiles. From the root of the repository, run:
-    ```bash
-    stow .
-    ```
-4.  **Rebuild the system:**
-    Navigate to the `nixos/` directory and run:
-    ```bash
-    nixos-rebuild switch --flake .#<your-hostname>
-    ```
-    Replace `<your-hostname>` with the hostname of your machine, which you can find in the `flake.nix` file.
+---
 
-## 🎨 Customization
+## 🚀 Usage & Maintenance
 
-### System Configuration
+### 1. Installation & Dotfiles Symlinking
 
-- **NixOS modules**: Edit files in `nixos/foundation/` and `nixos/modules/` for system-level changes
-- **Flake channels**: Modify `flake.nix` to adjust package sources (stable/unstable)
-- **User settings**: Update hostname, username, and domain in `flake.nix` under the `env` variable
+This repository uses [GNU Stow](https://www.gnu.org/software/stow/) to symlink application configurations into `$HOME`.
 
-### Application Configuration
+```bash
+# Clone the repository
+git clone https://github.com/RHroot/env.git ~/env
+cd ~/env
 
-- **Hyprland**: Edit Lua modules in `.config/hypr/modules/` for specific aspects (keybinds, settings, decorations, etc.)
-- **Theming**: Modify `.config/matugen/config.toml` and templates for color scheme generation
-- **Shell**: Customize Fish configuration in `.config/fish/` and bash aliases in `nixos/foundation/shell.nix`
-- **Neovim**: Available system-wide with LSP support
+# Symlink all dotfiles to home directory
+stow .
+```
 
-### Applying Changes
+### 2. Rebuilding the System
 
-- **System changes**: Use `rebuild` or `uprebuild` scripts in `.local/bin/`, or run:
-  ```bash
-  cd ~/env && nixos-rebuild switch --flake .#rhroot
-  ```
-- **Dotfile changes**: Most application configs are symlinked via Stow and take effect immediately or after reloading the application
-- **Theme changes**: Run `wset` or `wset-backend` to regenerate colors from a new wallpaper
+Use the custom rebuild helper script to apply configuration changes with formatted output:
+
+```bash
+# Standard system rebuild
+rebuild
+```
+
+_(Equivalent to `sudo nixos-rebuild switch --impure --flake .#rhroot`)_
+
+### 3. Upgrading System & Dependencies
+
+To update flake lockfiles, rebuild the system, and optimize the Nix store in one step:
+
+```bash
+# Upgrade system inputs, commit changes, rebuild & optimize store
+uprebuild
+```
+
+### 4. GPU Diagnostics
+
+To verify NVIDIA PRIME offload, Vulkan rendering, and VAAPI hardware acceleration:
+
+```bash
+gpu-check
+```
+
+---
 
 ## ✨ Key Features
 
-- **🔄 Hybrid NixOS Flakes Setup**: Uses both stable (nixos-26.05) and unstable channels via overlays for maximum stability and cutting-edge packages
-- **📦 Modular System Architecture**:
-  - Foundation layer: Core system functionality (base, git, network, power, shell with Fish & Starship)
-  - Module layer: Feature-specific configurations (audio, content, gaming, graphics, theming, toolbox, utility)
-- **🎯 Highly Customized Hyprland Environment**:
-  - Modular Lua configuration split into dedicated modules (keybinds, settings, decorations, environment variables, window rules, startup, colors)
-  - Integrated idle management (Hypridle), lock screen (Hyprlock), and screenshot tool (Hyprshot)
-- **🎨 Dynamic System-Wide Theming**:
-  - [Matugen](https://github.com/InioX/matugen) generates color schemes from wallpapers
-  - Custom templates for Alacritty, Kitty, Rofi, and Hyprland
-  - Consistent theming across all applications
-- **💻 Comprehensive Development Environment**:
-  - **Python**: Python 3.13, LSP, uv package manager
-  - **Web**: Node.js, bun, TypeScript
-  - **Systems**: C/C++ (gcc, clang), Rust, Zig, Java (JDK 21)
-  - **Scripting**: Lua
-  - **Tools**: Neovim, Lazygit, jq, nmap, strace, pkg-config
-  - **Containerization**: Podman with Compose support
-- **⚡ Performance Optimizations**:
-  - Custom PipeWire configuration for audio
-  - Automatic Nix garbage collection and store optimization
-  - NVIDIA GPU with PRIME offload for hybrid graphics
-  - Intel media driver with VAAPI support
-  - Swap file with configured swappiness
-- **🛠️ Custom Utility Scripts**: Collection of helper scripts for system rebuilds, wallpaper management, WiFi control, Bluetooth management, and more
-- **📚 Extensive Documentation**: Guides on git-subtree, regex substitution, systemd, xargs, and Tiger Style programming in `refrence/` directory
-- **🔒 Security Features**: Hyprland login, rtkit enabled, passwordless sudo for wheel group
-- **🐟 Modern Shell Environment**: Fish shell with Starship prompt for a modern terminal experience
-- **🎮 Gaming Support**: Configured gaming packages and utilities for enhanced gaming experience
+- **🔄 Hybrid Flakes Architecture**: Combines NixOS 26.05 stable system packages with cutting-edge unstable package overlays.
+- **🖥️ Multi-Desktop Environment**: Supports Hyprland (Wayland), Qtile (X11), and XFCE desktop sessions.
+- **🎯 Custom Hyprland Architecture**: Modular Lua configuration split into clean, single-responsibility files (`keys`, `setts`, `decor`, `evars`, `wrules`, `start`, `res`, `anime`, `hyprland-colors`).
+- **📊 Integrated Eww Status Bar**: Feature-rich status bar showing CPU, RAM, Disk usage, PipeWire Audio level, Display Brightness, Battery status, Workspaces, Systray, and Hyprnight blue-light toggle.
+- **🎨 Wallpaper-Driven Theme Engine**: Matugen dynamically extracts color schemes from wallpapers and applies them across Alacritty, Kitty, Rofi, Dunst, and Hyprland.
+- **⚡ Hardened Graphics & Audio Performance**:
+  - NVIDIA Quadro P2000 PRIME offload with automatic D3cold idle power-saving.
+  - PipeWire audio engine locked to 512 quantum size with ALSA node priority favoring Intel PCH audio.
+  - Custom MPV profile utilizing Vulkan API, `gpu-next` video output, debanding filters, and crisp yellow subtitles.
+- **🔋 Battery Preservation**: Automated dynamic threshold service capping battery charge at 80% to maximize long-term battery lifespan.
+- **🛡️ Enterprise Privacy Settings**: Custom Brave browser policy enforcing zero telemetry, disabling AI chat, rewards, wallet, and background analytics, paired with system-wide DNS-over-TLS (Cloudflare & Quad9).
+- **🤖 Local LLM Support**: Built-in instructions and scripts for running GGUF LLMs via CUDA acceleration with `llama.cpp`.
 
-## 📚 Guides
+---
 
-This repository includes a collection of technical guides and resources in the `refrence/` directory:
+## 📚 Technical Guides
 
-- **`git_guide.md`**: Git workflow notes and best practices
-- **`git_multi_account_setup.txt`**: Multi-account Git setup reference
-- **`substitution-regex-guide.md`**: Regular expression patterns and substitution techniques
-- **`systemd_guide.md`**: Systemd service management and configuration
-- **`xargs-guide.md`**: Advanced xargs usage and patterns
-- **`TIGER_STYLE.md`**: Programming style guide and best practices
-- **`useful_commands.md`**: Collection of useful system commands and patterns
-- **`d_s.md`**: Additional technical documentation
-- **`bookmarks.html`**: Curated collection of useful web resources
-- **`animestowatch.txt`**: Anime watchlist notes
+You can view detailed documentation in the `refrence/` directory:
+
+- [Local LLM Guide (`refrence/d_s.md`)](./refrence/d_s.md)
+- [Linux Diagnostic Commands (`refrence/useful_commands.md`)](./refrence/useful_commands.md)
+- [Git Guide (`refrence/git_guide.md`)](./refrence/git_guide.md)
+- [Multi-Account Git Setup (`refrence/git_multi_account_setup.txt`)](./refrence/git_multi_account_setup.txt)
+- [Systemd Reference (`refrence/systemd_guide.md`)](./refrence/systemd_guide.md)
+- [Regex & Substitution Guide (`refrence/substitution-regex-guide.md`)](./refrence/substitution-regex-guide.md)
+- [xargs Mastery Guide (`refrence/xargs-guide.md`)](./refrence/xargs-guide.md)
+- [Tiger Style Engineering (`refrence/TIGER_STYLE.md`)](./refrence/TIGER_STYLE.md)
+
+---
 
 ## 📜 License
 
