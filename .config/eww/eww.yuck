@@ -1,5 +1,7 @@
 ;; ─── Variables & Polls ─────────────────────────────────────
-(defpoll poll-clock :interval "1s" "date '+%I:%M %p  •  %a %b %d, %Y'")
+(defvar show-date false)
+(defpoll poll-time :interval "1s" "date '+%I:%M %p'")
+(defpoll poll-date :interval "10s" "date '+%a %b %d, %Y'")
 (defpoll poll-workspaces :interval "0.2s" "sh ~/.config/eww/get-workspaces.sh")
 (defpoll poll-battery-cap :interval "5s" "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '0'")
 (defpoll poll-battery-stat :interval "5s" "cat /sys/class/power_supply/BAT0/status 2>/dev/null || echo 'Unknown'")
@@ -26,8 +28,10 @@
               :onclick "hyprctl dispatch workspace ${ws.id}"
               "${ws.id}"))))
 
-(defwidget clock-module []
-  (label :class "module-clock" :text "${poll-clock}"))
+(defwidget time-date-module []
+  (button :class "module-clock"
+          :onclick "eww update show-date=${!show-date}"
+    (label :text {show-date ? poll-date : poll-time})))
 
 (defwidget cpu-module []
   (box :class "module-metric metric-cpu" :space-evenly false :spacing 4
@@ -75,10 +79,10 @@
 ;; ─── Main Bar ──────────────────────────────────────────────
 (defwidget main-bar []
   (centerbox
-    (box :class "bar-left" :halign "start" :space-evenly false :spacing 8
-         (hyprnight-module) (separator) (user-module) (separator) (workspaces-module))
-    (box :halign "center" (separator) (clock-module) (separator))
-    (box :class "bar-right" :halign "end" :space-evenly false :spacing 8
+    (box :class "bar-left" :halign "start" :space-evenly false :spacing 2
+         (hyprnight-module) (separator) (time-date-module) (separator) (user-module) (separator) (workspaces-module))
+    (box :halign "center")
+    (box :class "bar-right" :halign "end" :space-evenly false :spacing 6
          (cpu-module) (separator)
          (ram-module) (separator)
          (disk-module) (separator)

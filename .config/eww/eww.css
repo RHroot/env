@@ -70,11 +70,18 @@ window#hyprbar {
 .module-clock {
   font-size: 16px;
   font-weight: 500;
+  color: @accent_color;
   background: rgba(30, 40, 70, 0.35);
   padding: 4px 22px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   letter-spacing: 0.5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.module-clock:hover {
+  background: rgba(30, 40, 70, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* ─── Hardware Metrics ────────────────────────────────────── */
