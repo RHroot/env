@@ -38,6 +38,7 @@
     hyprsunset # Nightlight manager for Hyprland
     hyprpicker # Color picker for Wayland/Hyprland
     hyprcursor # Cursor theme support for Hyprland
+    hyprpolkitagent # PolicyKit authentication agent for Hyprland
     hyprland-qtutils # Qt utilities for Hyprland components
     hyprland-protocols # Wayland protocol extensions used by Hyprland
     hyprland-qt-support # Qt integration support for Hyprland
@@ -65,9 +66,6 @@
 
     # === File managers ===
     nautilus # GNOME file manager
-
-    # === Polkit ===
-    kdePackages.polkit-kde-agent-1 # PolicyKit authentication agent for Wayland
 
     # === XDG ===
     xdg-utils # Desktop integration helpers (xdg-open, etc.)
