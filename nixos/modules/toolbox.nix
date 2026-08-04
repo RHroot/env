@@ -7,8 +7,8 @@
 {
   environment.systemPackages = with pkgs; [
     # === Python Development ===
-    python313 # Python 3.13 interpreter
-    python313Packages.uv # Extremely fast Python package and environment manager
+    python314 # Python 3.13 interpreter
+    python314Packages.uv # Extremely fast Python package and environment manager
 
     # === Lua Development ===
     lua # Lua programming language interpreter
@@ -36,7 +36,11 @@
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
     pkg-config # Package management tool for libraries
-    zed-editor # A GUI Text Editor for Normies
+    (vscode-with-extensions.override {
+      vscode = vscodium;
+      vscodeExtensions = with vscode-extensions; [
+      ];
+    })
     # podman-compose # Compose multiple containers with a single command
   ];
   programs.vim = {
