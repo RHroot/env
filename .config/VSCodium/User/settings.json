@@ -1,9 +1,0 @@
-{
-    "security.workspace.trust.untrustedFiles": "open",
-    "workbench.colorTheme": "Dark+",
-    "editor.fontSize": 20,
-    "editor.formatOnSave": true,
-    "editor.fontFamily": "'FiraCode Nerd Font', monospace",
-    "editor.cursorBlinking": "solid",
-    "editor.cursorStyle": "block"
-}

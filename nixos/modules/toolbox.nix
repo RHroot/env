@@ -36,12 +36,6 @@
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
     pkg-config # Package management tool for libraries
-    (vscode-with-extensions.override {
-      vscode = vscodium;
-      vscodeExtensions = with vscode-extensions; [
-        ms-python.python # Python language support
-      ];
-    })
     # podman-compose # Compose multiple containers with a single command
   ];
   programs.vim = {
