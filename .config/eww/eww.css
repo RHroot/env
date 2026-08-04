@@ -13,6 +13,34 @@ window#hyprbar {
   padding: 0 20px;
 }
 
+/* ─── Shared Styles ───────────────────────────────────────── */
+.module-hyprnight,
+.module-clock,
+.module-metric,
+.module-tray,
+.metric-cpu,
+.metric-ram,
+.metric-disk,
+.metric-battery,
+.metric-battery .charging-icon,
+.metric-audio,
+.metric-brightness {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.module-hyprnight,
+.module-metric,
+.module-tray {
+  transition: all 0.2s ease;
+}
+
+.module-hyprnight:hover,
+.module-clock:hover,
+.module-metric:hover,
+.module-tray > *:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
 /* ─── Layout ──────────────────────────────────────────────── */
 .bar-left,
 .bar-right {
@@ -22,15 +50,10 @@ window#hyprbar {
 /* ─── Modules ─────────────────────────────────────────────── */
 .module-hyprnight {
   color: @accent_color;
-  background: rgba(40, 50, 80, 0.5);
   padding: 2px 18px;
   font-size: 20px;
   font-weight: 700;
   border-radius: 8px;
-}
-
-.module-hyprnight:hover {
-  background: rgba(60, 80, 140, 0.4);
 }
 
 .module-workspaces {
@@ -53,14 +76,12 @@ window#hyprbar {
   text-shadow:
     0 0 8px @accent_color,
     0 0 12px @accent_color;
-  padding: 2px 6px;
 }
 
 .module-clock {
   font-size: 16px;
   font-weight: 500;
   color: @accent_color;
-  background: rgba(30, 40, 70, 0.35);
   padding: 4px 22px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -69,24 +90,19 @@ window#hyprbar {
 }
 
 .module-clock:hover {
-  background: rgba(30, 40, 70, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* ─── Hardware Metrics ────────────────────────────────────── */
 .module-metric {
   font-size: 16px;
-  background: rgba(30, 40, 70, 0.35);
   padding: 4px 12px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.04);
   min-width: 30px;
-  transition: all 0.2s ease;
 }
 
 .module-metric:hover {
-  font-size: 16px;
-  background: rgba(60, 80, 140, 0.4);
   border-color: rgba(255, 255, 255, 0.12);
 }
 
@@ -122,18 +138,11 @@ window#hyprbar {
 
 /* ─── Utilities ───────────────────────────────────────────── */
 .module-tray {
-  padding: 0 4px;
-}
-.module-tray > * {
   margin: 0 4px;
-  background: rgba(30, 40, 70, 0.3);
   padding: 4px 6px;
   border-radius: 10px;
   min-width: 22px;
   min-height: 22px;
-}
-.module-tray > *:hover {
-  background: rgba(60, 80, 140, 0.35);
 }
 
 .module-separator {
