@@ -126,7 +126,7 @@ This repository uses [GNU Stow](https://www.gnu.org/software/stow/) to symlink a
 
 ```bash
 # Clone the repository
-git clone https://github.com/RHroot/env.git ~/env
+git clone --depth 1 https://github.com/RHroot/env.git ~/env
 cd ~/env
 
 # Symlink all dotfiles to home directory
