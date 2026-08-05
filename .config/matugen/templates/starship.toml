@@ -14,6 +14,7 @@ format = """
 $os\
 $username\
 $directory\
+$nix_shell\
 $line_break\
 $character\
 """
