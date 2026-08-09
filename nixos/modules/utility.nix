@@ -9,7 +9,7 @@
     brave # Web browser
     evince # PDF viewer
     zotero # Reference manager
-    foliate # Book reader and downloader
+    calibre # Book reader and downloader
     blanket # Different Sounds in Background
     megatools # MEGA tools to do big tasks faster through terminal
     qbittorrent # Torrent client
