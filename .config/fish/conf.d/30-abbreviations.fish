@@ -63,6 +63,7 @@ abbr -a ga "git add"
 abbr -a gp "git push"
 abbr -a gd "git diff"
 abbr -a gs "git status"
+abbr -a nettest "nix shell nixpkgs#speedtest-go --command speedtest-go"
 abbr -a antigravity "nix run github:jacopone/antigravity-nix#google-antigravity-cli"
 
 # Utilities
