@@ -1,3 +1,0 @@
-export LIBVA_DRIVER_NAME="iHD"
-export VDPAU_DRIVER="va_gl"
-export __GLX_VENDOR_LIBRARY_NAME="mesa"
