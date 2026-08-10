@@ -115,10 +115,6 @@ hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 ---          LID SWITCH
 --- Trigger when the switch is toggled.
 hl.bind("switch:[switch name]", hl.dsp.exec_cmd("hyprlock"), { locked = true })
---- Trigger when the switch is turning on.
-hl.bind("switch:on:[switch name]", hl.dsp.exec_cmd("notify-send 'yooo'"), { locked = true })
---- Trigger when the switch is turning off.
-hl.bind("switch:off:[switch name]", hl.dsp.exec_cmd("notify-send 'among us'"), { locked = true })
 
 ---           BRIGHTNESS CONTROLS
 hl.bind(
