@@ -11,6 +11,7 @@
     nameservers = [ ];
     networkmanager = {
       enable = true;
+      wifi.powersave = false;
       dns = "systemd-resolved";
       insertNameservers = [ ];
       settings = {
@@ -38,20 +39,16 @@
     enable = true;
     settings.Resolve = {
       DNS = [
+        "8.8.8.8#dns.google"
+        "8.8.4.4#dns.google"
+        "2001:4860:4860::8888#dns.google"
+        "2001:4860:4860::8844#dns.google"
+      ];
+      FallbackDNS = [
         "1.1.1.1#cloudflare-dns.com"
         "1.0.0.1#cloudflare-dns.com"
         "2606:4700:4700::1111#cloudflare-dns.com"
         "2606:4700:4700::1001#cloudflare-dns.com"
-        "1.1.1.2#cloudflare-dns.com"
-        "1.0.0.2#cloudflare-dns.com"
-        "2606:4700:4700::1112#cloudflare-dns.com"
-        "2606:4700:4700::1002#cloudflare-dns.com"
-      ];
-      FallbackDNS = [
-        "9.9.9.9#dns.quad9.net"
-        "149.112.112.112#dns.quad9.net"
-        "2620:fe::fe#dns.quad9.net"
-        "2620:fe::9#dns.quad9.net"
       ];
       Domains = "~.";
       DNSSEC = "allow-downgrade";
@@ -101,4 +98,8 @@
     networkmanagerapplet # System tray applet for managing NetworkManager connections
     proton-vpn # Official ProtonVPN graphical client
   ];
+
+  boot.extraModprobeConfig = ''
+    options iwlwifi power_save=0
+  '';
 }
