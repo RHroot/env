@@ -41,21 +41,21 @@ hl.window_rule({
 })
 hl.window_rule({
 	match = { class = "^cs2$" },
-	workspace = 5,
+	workspace = 7,
 })
 hl.window_rule({
-	match = { class = "^(libreoffice-startcenter)$" },
-	workspace = 8,
+	match = { class = "^steam_app.*" },
+	workspace = 7,
 })
 hl.window_rule({
 	match = { class = "^(steam)$" },
 	workspace = 8,
 })
 hl.window_rule({
-	match = { "class:^(steam_app_default)$" },
-	workspace = 8,
-})
-hl.window_rule({
 	match = { class = "^(org.telegram.desktop)$" },
 	workspace = 9,
+})
+hl.window_rule({
+	match = { class = "^(libreoffice-startcenter)$" },
+	workspace = 8,
 })
