@@ -28,7 +28,7 @@ printf "%b\n\n" "${DIM}log     ${RESET}${LOG_FILE}"
 
 # ── Step 1: Update Flake ───────────────────────────────
 printf "%b\n" "${YELLOW}󰚰 Updating flake inputs${RESET}"
-sudo nix flake update
+nix flake update
 
 # ── Step 2: Git Sync ───────────────────────────────────
 printf "%b\n" "${YELLOW}󰊢 Syncing lockfile${RESET}"
@@ -46,7 +46,6 @@ printf "\n%b\n" "${YELLOW}󰐍 Rebuilding system${RESET}"
 run_upgrade() {
   sudo nixos-rebuild switch \
     --impure \
-    --upgrade \
     --flake "$FLAKE" \
     > \
     "$LOG_FILE" 2>&1 # --show-trace \
