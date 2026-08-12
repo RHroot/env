@@ -71,7 +71,6 @@ abbr -a kssh "kitty +kitten ssh"
 abbr -a web "cd /var/www/html"
 abbr -a da 'date "+%Y-%m-%d %A %T %Z"'
 abbr -a ai 'ollama run llama3-local'
-abbr -a aria2-down 'aria2c --conf-path=$HOME/.config/aria2/aria2.conf'
 
 # System Information
 abbr -a ff "fastfetch -c my.jsonc"

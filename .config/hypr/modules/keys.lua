@@ -48,7 +48,7 @@ hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m output -o $HOME/Screenshot
 hl.bind("CTRL + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region -o $HOME/Screenshots"))
 
 --- Utility scripts
-hl.bind("SUPER" .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 
 ---           WORKSPACE NAVIGATION
 --- Workspace switching
