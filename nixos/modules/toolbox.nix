@@ -6,33 +6,29 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    # === Python Development ===
-    python314 # Python 3.13 interpreter
-    python314Packages.uv # Extremely fast Python package and environment manager
+    # === Nix Formatter ===
+    nixfmt
+
+    # === Rust Development ===
+    rustup # Rust toolchain installer
 
     # === Lua Development ===
     lua # Lua programming language interpreter
+    luarocks # Lua package manager
+
+    # === Python Development ===
+    python314 # Python interpreter
+    python314Packages.uv # Extremely fast Python package and environment manager
 
     # === C/C++ Development ===
-    gcc # GNU C/C++ compiler toolchain
-    cmake # Cross-platform build system generator
-    ninja # Fast build system used with CMake
-    clang-tools # Clang-based developer tools (clangd, format, tidy)
-
-    # === Web Development tools ===
-    jq # Command-line JSON processor
-    bun # All-in-one JS runtime, bundler, and package manager
-    nodejs_latest # JavaScript runtime environment
-    prettierd # Fast daemonized code formatter (Prettier)
-
-    # === CyberSecurity ===
-    nmap # Network scanner and port discovery tool
-    strace # Diagnostic tool to monitor system calls
-    tcpdump # Command-line packet analyzer
+    lldb # Next generation, high-performance debugger
+    clang # C/C++/Objective-C compiler
+    cmake # Build, test, and package software
+    gnumake # GNU Make
+    clang-tools # Clang static analyzer
 
     # === Utility tools ===
     eww # ElKovar's Wacky Widget
-    neovide # GUI for neovim
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine
     pkg-config # Package management tool for libraries
@@ -40,10 +36,10 @@
   ];
   programs.vim = {
     enable = true;
-    package = pkgs.unstable.vim;
   };
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
   };
   # virtualisation = {
   #   containers.enable = true;

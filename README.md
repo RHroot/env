@@ -4,27 +4,27 @@ This repository contains my personal dotfiles and system configurations for my N
 
 ## ⚙️ System Overview
 
-| Component                        | Details                                                                                                                                                            |
+| Component | Details |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **❄️ Operating System**          | [NixOS](https://nixos.org/) 26.05 with Flakes (Hybrid Stable Base + Unstable Overlays)                                                                             |
-| **🪟 Window & Desktop Managers** | [Hyprland](https://hyprland.org/) (Wayland), [Qtile](https://qtile.org/) (X11), and [XFCE](https://xfce.org/) (Desktop Environment)                                |
-| **📊 Status Bar & Widgets**      | [Eww](https://github.com/elkowar/eww) custom `hyprbar` widget with system metrics, workspace indicator & [Hyprsunset](https://github.com/hyprwm/hyprsunset) toggle |
-| **🔒 Idle & Lock Screen**        | [Hypridle](https://github.com/hyprwm/hypridle) and [Hyprlock](https://github.com/hyprwm/hyprlock)                                                                  |
-| **💻 Terminals**                 | [Alacritty](https://alacritty.org/) & [Kitty](https://sw.kovidgoyal.net/kitty/)                                                                                    |
-| **🐚 Shell Environment**         | [Fish](https://fishshell.com/) with [Starship](https://starship.rs/) prompt, [Zoxide](https://github.com/ajeetdsouza/zoxide) navigation & custom functions         |
-| **✏️ Text Editors**              | [Neovim](https://neovim.io/), [Zed Editor](https://zed.dev/), [Neovide](https://neovide.dev/), and Vim (Unstable)                                                  |
-| **🎨 Dynamic Theming**           | [Matugen](https://github.com/InioX/matugen) wallpaper palette generator, GTK (Flat-Remix-GTK-Magenta-Darkest), Papirus-Dark icons, Bibata cursors                  |
-| **🚀 App Launcher & Menus**      | [Rofi](https://github.com/davatorium/rofi) with custom powermenu, bluetooth (`bluerofi`), clipboard (`rofi-copyq`), and icon picker                                |
-| **🔔 Notifications**             | [Dunst](https://dunst-project.org/)                                                                                                                                |
-| **📋 Clipboard Management**      | `wl-clipboard`, `cliphist` & `copyq`                                                                                                                               |
-| **🔊 Audio Architecture**        | [PipeWire](https://pipewire.org/) with WirePlumber (quantum-locked to 512, Intel PCH priority tuning)                                                              |
-| **🎮 Gaming Support**            | Steam (Proton-GE), Lutris, GameMode, Gamescope, MangoHud & Wine WOW64                                                                                              |
-| **🖥️ GPU & Graphics**            | NVIDIA PRIME Offload (Quadro P2000 Mobile + Intel iGPU UHD 630), VAAPI hardware acceleration & custom `gpu-check` tool                                             |
-| **🔋 Battery & Power**           | Dynamic charge start/stop thresholds (80% battery threshold), `batsignal` battery warnings & `power-profiles-daemon`                                               |
-| **🛡️ Network & Privacy**         | DNS-over-TLS (Cloudflare & Quad9), Fail2ban, Brave Browser with enterprise debloating policies & ProtonVPN                                                         |
-| **📦 Dotfile Manager**           | [GNU Stow](https://www.gnu.org/software/stow/)                                                                                                                     |
+| **❄️ Operating System** | [NixOS](https://nixos.org/) 26.05 with Flakes (Hybrid Stable Base + Unstable Overlays) |
+| **🪟 Window & Desktop Managers** | [Hyprland](https://hyprland.org/) (Wayland), [Qtile](https://qtile.org/) (X11), and [XFCE](https://xfce.org/) (Desktop Environment) |
+| **📊 Status Bar & Widgets** | [Eww](https://github.com/elkowar/eww) custom `hyprbar` widget with system metrics, workspace indicator & [Hyprsunset](https://github.com/hyprwm/hyprsunset) toggle |
+| **🔒 Idle & Lock Screen** | [Hypridle](https://github.com/hyprwm/hypridle) and [Hyprlock](https://github.com/hyprwm/hyprlock) |
+| **💻 Terminals** | [Alacritty](https://alacritty.org/) & [Kitty](https://sw.kovidgoyal.net/kitty/) |
+| **🐚 Shell Environment** | [Fish](https://fishshell.com/) with [Starship](https://starship.rs/) prompt, [Zoxide](https://github.com/ajeetdsouza/zoxide) navigation & custom functions |
+| **✏️ Text Editors** | [Neovim](https://neovim.io/), [Zed Editor](https://zed.dev/), [Neovide](https://neovide.dev/), and Vim (Unstable) |
+| **🎨 Dynamic Theming** | [Matugen](https://github.com/InioX/matugen) wallpaper palette generator, GTK (Flat-Remix-GTK-Magenta-Darkest), Papirus-Dark icons, Bibata cursors |
+| **🚀 App Launcher & Menus** | [Rofi](https://github.com/davatorium/rofi) with custom powermenu, bluetooth (`bluerofi`), clipboard (`rofi-copyq`), and icon picker |
+| **🔔 Notifications** | [Dunst](https://dunst-project.org/) |
+| **📋 Clipboard Management** | `wl-clipboard`, `cliphist` & `copyq` |
+| **🔊 Audio Architecture** | [PipeWire](https://pipewire.org/) with WirePlumber (quantum-locked to 512, Intel PCH priority tuning) |
+| **🎮 Gaming Support** | Steam (Proton-GE), Lutris, GameMode, Gamescope, MangoHud & Wine WOW64 |
+| **🖥️ GPU & Graphics** | NVIDIA PRIME Offload (Quadro P2000 Mobile + Intel iGPU UHD 630), VAAPI hardware acceleration & custom `gpu-check` tool |
+| **🔋 Battery & Power** | Dynamic charge start/stop thresholds (80% battery threshold), `batsignal` battery warnings & `power-profiles-daemon` |
+| **🛡️ Network & Privacy** | DNS-over-TLS (Cloudflare & Quad9), Fail2ban, Brave Browser with enterprise debloating policies & ProtonVPN |
+| **📦 Dotfile Manager** | [GNU Stow](https://www.gnu.org/software/stow/) |
 
----
+______________________________________________________________________
 
 ## 📂 Repository Structure
 
@@ -54,7 +54,7 @@ The repository is organized as follows:
 - **`nixos/XFCE/`**: XFCE desktop environment configuration (`default.nix` with LightDM/Ly, xrandr, Wacom driver).
 - **`flake.nix` & `flake.lock`**: Nix Flake declaration using NixOS 26.05 stable base with `nixos-unstable` overlays.
 
----
+______________________________________________________________________
 
 ### 🎨 Application Configurations (`.config/`)
 
@@ -82,7 +82,7 @@ The repository is organized as follows:
 - **`aria2/`**: Aria2 download manager settings (`aria2.conf`).
 - **`libinput-gestures.conf`**: Custom 3-finger and 4-finger touchpad gesture mappings linked to `xdotool`.
 
----
+______________________________________________________________________
 
 ### 🛠️ Helper Scripts & Custom Executables (`.local/`)
 
@@ -100,7 +100,7 @@ The repository is organized as follows:
   - `age`: Encryption helper script.
 - **`.local/share/fastfetch/presets/my.jsonc`**: Custom system summary layout for `fastfetch`.
 
----
+______________________________________________________________________
 
 ### 📚 Technical Reference Library (`refrence/`)
 
@@ -116,7 +116,7 @@ The repository is organized as follows:
 - **`bookmarks.html`**: Curated web bookmarks collection.
 - **`logo.png`**: Repository header logo image.
 
----
+______________________________________________________________________
 
 ## 🚀 Usage & Maintenance
 
@@ -161,7 +161,7 @@ To verify NVIDIA PRIME offload, Vulkan rendering, and VAAPI hardware acceleratio
 gpu-check
 ```
 
----
+______________________________________________________________________
 
 ## ✨ Key Features
 
@@ -178,22 +178,22 @@ gpu-check
 - **🛡️ Enterprise Privacy Settings**: Custom Brave browser policy enforcing zero telemetry, disabling AI chat, rewards, wallet, and background analytics, paired with system-wide DNS-over-TLS (Cloudflare & Quad9).
 - **🤖 Local LLM Support**: Built-in instructions and scripts for running GGUF LLMs via CUDA acceleration with `llama.cpp`.
 
----
+______________________________________________________________________
 
 ## 📚 Technical Guides
 
 You can view detailed documentation in the `refrence/` directory:
 
-- [Local LLM Guide (`refrence/d_s.md`)](./refrence/d_s.md)
-- [Linux Diagnostic Commands (`refrence/useful_commands.md`)](./refrence/useful_commands.md)
-- [Git Guide (`refrence/git_guide.md`)](./refrence/git_guide.md)
-- [Multi-Account Git Setup (`refrence/git_multi_account_setup.txt`)](./refrence/git_multi_account_setup.txt)
-- [Systemd Reference (`refrence/systemd_guide.md`)](./refrence/systemd_guide.md)
-- [Regex & Substitution Guide (`refrence/substitution-regex-guide.md`)](./refrence/substitution-regex-guide.md)
-- [xargs Mastery Guide (`refrence/xargs-guide.md`)](./refrence/xargs-guide.md)
-- [Tiger Style Engineering (`refrence/TIGER_STYLE.md`)](./refrence/TIGER_STYLE.md)
+- [Local LLM Guide (`cheatsheets/d_s.md`)](./cheatsheets/d_s.md)
+- [Linux Diagnostic Commands (`cheatsheets/useful_commands.md`)](./cheatsheets/useful_commands.md)
+- [Git Guide (`cheatsheets/git_guide.md`)](./cheatsheets/git_guide.md)
+- [Multi-Account Git Setup (`cheatsheets/git_multi_account_setup.txt`)](./cheatsheets/git_multi_account_setup.txt)
+- [Systemd Reference (`cheatsheets/systemd_guide.md`)](./cheatsheets/systemd_guide.md)
+- [Regex & Substitution Guide (`cheatsheets/substitution-regex-guide.md`)](./cheatsheets/substitution-regex-guide.md)
+- [xargs Mastery Guide (`cheatsheets/xargs-guide.md`)](./cheatsheets/xargs-guide.md)
+- [Tiger Style Engineering (`cheatsheets/TIGER_STYLE.md`)](./cheatsheets/TIGER_STYLE.md)
 
----
+______________________________________________________________________
 
 ## 📜 License
 

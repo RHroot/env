@@ -8,6 +8,7 @@
 {
   environment.systemPackages = with pkgs; [
     # === Essential CLI Tools ===
+    jq # JSON processor
     btop # Modern resource monitor (CPU, RAM, disk, network)
     wget # Non-interactive file downloader
     curl # Data transfer tool for URLs
