@@ -1,4 +1,4 @@
-@import "./../../../.cache/Matugen/colors.css";
+@import "./../../.cache/Matugen/colors.css";
 
 * {
   all: unset;
@@ -20,11 +20,9 @@ window#hyprbar {
 .module-tray,
 .metric-cpu,
 .metric-ram,
-.metric-disk,
 .metric-battery,
 .metric-battery .charging-icon,
-.metric-audio,
-.metric-brightness {
+.metric-disk {
   background: rgba(0, 0, 0, 0.45);
 }
 
@@ -129,12 +127,6 @@ window#hyprbar {
   color: #f5c76b;
   margin-left: 2px;
 }
-.metric-audio {
-  color: #7fc7ff;
-}
-.metric-brightness {
-  color: #f5c76b;
-}
 
 /* ─── Utilities ───────────────────────────────────────────── */
 .module-tray {
@@ -151,6 +143,7 @@ window#hyprbar {
   font-weight: 100;
 }
 
+/* Locks */
 .warning-badge {
   color: #ff5555;
   font-weight: bold;
@@ -159,4 +152,55 @@ window#hyprbar {
   padding: 5px 10px;
   border-radius: 16px;
   border: 2px solid #ff5555;
+}
+
+/* OSD */
+.osd-box {
+  background-color: #282a36;
+  border-radius: 10px;
+  border: 2px solid #bd93f9;
+  padding: 10px 20px;
+}
+.osd-icon {
+  color: #f8f8f2;
+  font-size: 24px;
+}
+.osd-scale trough {
+  background-color: #44475a;
+  border-radius: 5px;
+  min-height: 10px;
+  min-width: 200px;
+}
+.osd-scale highlight {
+  background-color: #bd93f9;
+  border-radius: 5px;
+}
+
+.osd-text {
+  color: #f8f8f2;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Power Menu */
+.powermenu-box {
+  background-color: #282a36;
+  border-radius: 10px;
+  border: 2px solid #bd93f9;
+  padding: 20px;
+}
+.pwr-btn {
+  color: #f8f8f2;
+  font-size: 30px;
+  background-color: #44475a;
+  padding: 15px 25px;
+  border-radius: 8px;
+}
+.pwr-btn:hover {
+  background-color: #bd93f9;
+  color: #282a36;
+}
+.pwr-btn.cancel:hover {
+  background-color: #ff5555;
+  color: #f8f8f2;
 }

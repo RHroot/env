@@ -5,12 +5,7 @@
 (defpoll poll-workspaces :interval "0.2s" "sh ~/.config/eww/get-workspaces.sh")
 (defpoll poll-battery-cap :interval "5s" "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '0'")
 (defpoll poll-battery-stat :interval "5s" "cat /sys/class/power_supply/BAT0/status 2>/dev/null || echo 'Unknown'")
-(defpoll poll-audio-vol :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}' || echo '0'")
-(defpoll poll-audio-mute :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo muted || echo unmuted")
-(defpoll poll-brightness :interval "2s" "brightnessctl g | xargs -I{} sh -c 'max=$(brightnessctl m); echo $(( {} * 100 / max ))' || echo '0'")
 (defpoll poll-hyprnight :interval "1s" "sh ~/.config/eww/hyprnight.sh status")
-(defpoll caps_state :interval "500ms" "cat /sys/class/leds/*capslock/brightness")
-(defpoll num_state :interval "500ms" "cat /sys/class/leds/*numlock/brightness")
 
 ;; Hardware Polls
 (defpoll poll-cpu-usage :interval "2s" "top -bn1 | grep 'Cpu(s)' | awk '{print $2}' | cut -d'.' -f1 || echo '0'")
@@ -53,16 +48,6 @@
     (label :class "icon charging-icon" :text ""
            :visible {poll-battery-stat == "Charging"})))
 
-(defwidget audio-module []
-  (box :class "module-metric metric-audio" :space-evenly false :spacing 4
-    (label :class "icon" :text {poll-audio-mute == "muted" ? "󰝟 " : " "})
-    (label :class "label" :text "${poll-audio-vol}%")))
-
-(defwidget brightness-module []
-  (box :class "module-metric metric-brightness" :space-evenly false :spacing 4
-    (label :class "icon" :text "")
-    (label :class "label" :text "${poll-brightness}%")))
-
 (defwidget tray-module []
   (systray :class "module-tray" :icon-size 20 :spacing 8))
 
@@ -74,7 +59,6 @@
           :onclick "bash ~/.config/eww/hyprnight.sh toggle"
     (label :text "${poll-hyprnight}")))
 
-;; ─── Main Bar ──────────────────────────────────────────────
 (defwidget main-bar []
   (centerbox
     (box :class "bar-left" :halign "start" :space-evenly false :spacing 2
@@ -84,12 +68,9 @@
          (cpu-module) (separator)
          (ram-module) (separator)
          (disk-module) (separator)
-         (audio-module) (separator)
-         (brightness-module) (separator)
          (battery-module) (separator)
          (tray-module))))
 
-;; ─── Window ─────────────────────────────────────────────────
 (defwindow hyprbar
   :monitor 0
   :geometry (geometry :x "0%" :y "0%" :width "99%" :height "20px" :anchor "bottom center")
@@ -99,6 +80,8 @@
   (main-bar))
 
 ;; --- For Capslock and Numlock -------------------------------
+(defpoll caps_state :interval "500ms" "cat /sys/class/leds/*capslock/brightness")
+(defpoll num_state :interval "500ms" "cat /sys/class/leds/*numlock/brightness")
 (defwindow locks
   :monitor 0
   :geometry (geometry :x "1%"
@@ -112,3 +95,31 @@
     (label :class "warning-badge"
            :visible {num_state == "1" ? true : false}
            :text "⚠️ NUM OFF")))
+
+;; --- For Brightness and Volume ------------------------------
+(defvar osd_value 50)
+(defvar osd_icon "🔊")
+(defwindow vbosd
+  :monitor 0
+  :geometry (geometry :x "0%"
+                     :y "10%"
+                     :width "300px"
+                     :height "50px"
+                     :anchor "bottom center")
+  :stacking "overlay"
+  (box :class "osd-box" :orientation "h" :space-evenly false :spacing 15
+    (label :class "osd-icon" :text osd_icon)
+    (scale :class "osd-scale" :value osd_value :min 0 :max 101 :active false)
+    (label :class "osd-text" :text "${osd_value}%")))
+
+;; --- Powermenu ---------------------------------------------
+(defwindow powermenu
+  :monitor 0
+  :geometry (geometry :x "0%" :y "0%" :anchor "center")
+  :stacking "overlay"
+  (box :class "powermenu-box" :orientation "h" :spacing 20
+    (button :class "pwr-btn" :onclick "eww close powermenu && systemctl poweroff" "⏻")
+    (button :class "pwr-btn" :onclick "eww close powermenu && systemctl reboot" "🔄")
+    (button :class "pwr-btn" :onclick "eww close powermenu && systemctl suspend" "💤")
+    (button :class "pwr-btn" :onclick "eww close powermenu && loginctl terminate-user $USER" "🚪")
+    (button :class "pwr-btn cancel" :onclick "eww close powermenu" "❌")))
