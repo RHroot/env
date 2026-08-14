@@ -143,7 +143,7 @@ window#hyprbar {
   font-weight: 100;
 }
 
-/* Locks */
+/* --- Locks ------------------------------------------------- */
 .warning-badge {
   color: #ff5555;
   font-weight: bold;
@@ -154,53 +154,59 @@ window#hyprbar {
   border: 2px solid #ff5555;
 }
 
-/* OSD */
+/* --- OSD --------------------------------------------------- */
 .osd-box {
-  background-color: #282a36;
+  background-color: @window_bg_color;
   border-radius: 10px;
-  border: 2px solid #bd93f9;
+  border: 2px solid @accent_color;
   padding: 10px 20px;
 }
+
 .osd-icon {
-  color: #f8f8f2;
+  color: @window_fg_color;
   font-size: 24px;
 }
+
 .osd-scale trough {
-  background-color: #44475a;
+  background-color: @window_bg_color;
   border-radius: 5px;
   min-height: 10px;
   min-width: 200px;
 }
+
 .osd-scale highlight {
-  background-color: #bd93f9;
+  background-color: @accent_color;
   border-radius: 5px;
 }
 
 .osd-text {
-  color: #f8f8f2;
+  color: @window_fg_color;
   font-size: 16px;
   font-weight: bold;
 }
 
-/* Power Menu */
+/* --- Power Menu --------------------------------------------- */
 .powermenu-box {
-  background-color: #282a36;
+  background-color: @window_bg_color;
   border-radius: 10px;
-  border: 2px solid #bd93f9;
+  border: 2px solid @accent_color;
   padding: 20px;
 }
+
 .pwr-btn {
-  color: #f8f8f2;
-  font-size: 30px;
+  color: @window_fg_color;
+  font-size: 50px;
   background-color: #44475a;
   padding: 15px 25px;
   border-radius: 8px;
 }
+
 .pwr-btn:hover {
-  background-color: #bd93f9;
+  background-color: @accent_color;
   color: #282a36;
 }
+
 .pwr-btn.cancel:hover {
   background-color: #ff5555;
-  color: #f8f8f2;
+  color: @window_fg_color;
 }
