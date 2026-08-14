@@ -6,15 +6,19 @@
 {
   environment.systemPackages = with pkgs; [
     mpv # Video player
+    gimp # Advanced image editor (GNU Image Manipulation Program)
     brave # Web browser
     evince # PDF viewer
     zotero # Reference manager
     calibre # Book reader and downloader
     blanket # Different Sounds in Background
+    audacity # Free, open-source audio editor and recorder
+    obs-studio # Open Broadcaster Software for video recording and live streaming
     megatools # MEGA tools to do big tasks faster through terminal
     qbittorrent # Torrent client
     telegram-desktop # Messenger
     libreoffice-fresh # Office suite
+    kdePackages.kdenlive # Non-linear video editor for creating and editing videos
   ];
 
   # programs.localsend = {
