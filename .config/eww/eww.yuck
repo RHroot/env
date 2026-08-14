@@ -9,6 +9,8 @@
 (defpoll poll-audio-mute :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo muted || echo unmuted")
 (defpoll poll-brightness :interval "2s" "brightnessctl g | xargs -I{} sh -c 'max=$(brightnessctl m); echo $(( {} * 100 / max ))' || echo '0'")
 (defpoll poll-hyprnight :interval "1s" "sh ~/.config/eww/hyprnight.sh status")
+(defpoll caps_state :interval "500ms" "cat /sys/class/leds/*capslock/brightness")
+(defpoll num_state :interval "500ms" "cat /sys/class/leds/*numlock/brightness")
 
 ;; Hardware Polls
 (defpoll poll-cpu-usage :interval "2s" "top -bn1 | grep 'Cpu(s)' | awk '{print $2}' | cut -d'.' -f1 || echo '0'")
@@ -95,3 +97,18 @@
   :stacking "fg"
   :windowtype "dock"
   (main-bar))
+
+;; --- For Capslock and Numlock -------------------------------
+(defwindow locks
+  :monitor 0
+  :geometry (geometry :x "1%"
+                     :y "10px"
+                     :anchor "top right")
+  :stacking "overlay"
+  (box :orientation "h" :spacing 10
+    (label :class "warning-badge"
+           :visible {caps_state == "1" ? true : false}
+           :text "⚠️ CAPS ON")
+    (label :class "warning-badge"
+           :visible {num_state == "1" ? true : false}
+           :text "⚠️ NUM OFF")))

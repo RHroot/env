@@ -150,3 +150,13 @@ window#hyprbar {
   padding: 0 2px;
   font-weight: 100;
 }
+
+.warning-badge {
+  color: #ff5555;
+  font-weight: bold;
+  font-size: 12px;
+  background-color: #282a36;
+  padding: 5px 10px;
+  border-radius: 16px;
+  border: 2px solid #ff5555;
+}
