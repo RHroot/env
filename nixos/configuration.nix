@@ -86,10 +86,6 @@
 
   hardware.enableAllFirmware = true;
 
-  hardware.firmware = with pkgs; [
-    linux-firmware
-  ];
-
   services.fwupd.enable = true;
 
   services.libinput = {

@@ -42,7 +42,6 @@
       vulkan-loader
       vulkan-validation-layers
       libva
-      libva-utils
       libvdpau-va-gl
       libva-vdpau-driver
       ocl-icd
@@ -63,9 +62,7 @@
     vulkan-tools
     vulkan-loader
     nvidia-vaapi-driver
-    pkgsi686Linux.libGL
     pkgsi686Linux.vulkan-loader
-    pkgsi686Linux.nvidia-vaapi-driver
 
     (writeShellScriptBin "gpu-check" ''
       #!/bin/sh

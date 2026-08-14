@@ -12,14 +12,7 @@
 
   programs.hyprlock.enable = true;
 
-  # Enable polkit for GUI privilege prompts
   security.polkit.enable = true;
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
 
   xdg.mime.defaultApplications = {
     # Images
@@ -39,9 +32,7 @@
     hyprpicker # Color picker for Wayland/Hyprland
     hyprcursor # Cursor theme support for Hyprland
     hyprpolkitagent # PolicyKit authentication agent for Hyprland
-    hyprland-qtutils # Qt utilities for Hyprland components
     hyprland-protocols # Wayland protocol extensions used by Hyprland
-    hyprland-qt-support # Qt integration support for Hyprland
 
     # === basic ===
     imv # Image viewer for Wayland
@@ -66,10 +57,5 @@
 
     # === File managers ===
     nautilus # GNOME file manager
-
-    # === XDG ===
-    xdg-utils # Desktop integration helpers (xdg-open, etc.)
-    xdg-desktop-portal # XDG desktop portal service
-    xdg-desktop-portal-hyprland # XDG portal backend for Hyprland
   ];
 }
