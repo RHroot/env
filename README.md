@@ -1,4 +1,4 @@
-# <img src="refrence/logo.png" alt="Logo" width="80" align="center"> My NixOS Dotfiles
+# <img src="cheatsheets/logo.png" alt="Logo" width="80" align="center"> My NixOS Dotfiles
 
 This repository contains my personal dotfiles and system configurations for my NixOS setup. It provides a modular, multi-desktop environment (Hyprland, Qtile, XFCE) powered by Nix Flakes, custom utility scripts, dynamic color theming, and system-level performance optimizations.
 
@@ -102,7 +102,7 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
-### 📚 Technical Reference Library (`refrence/`)
+### 📚 Technical Reference Library (`cheatsheets/`)
 
 - **`d_s.md`**: Step-by-step guide for fetching and serving local GGUF LLMs (`Qwen2.5`) via `huggingface-hub` and `llama.cpp` CUDA backend.
 - **`git_guide.md`**: Detailed Git command notes, subtrees, and workflow patterns.
@@ -182,7 +182,7 @@ ______________________________________________________________________
 
 ## 📚 Technical Guides
 
-You can view detailed documentation in the `refrence/` directory:
+You can view detailed documentation in the `cheatsheets/` directory:
 
 - [Local LLM Guide (`cheatsheets/d_s.md`)](./cheatsheets/d_s.md)
 - [Linux Diagnostic Commands (`cheatsheets/useful_commands.md`)](./cheatsheets/useful_commands.md)
