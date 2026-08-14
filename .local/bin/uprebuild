@@ -60,12 +60,6 @@ else
   exit 1
 fi
 
-# ── Step 4: Optimize Store ─────────────────────────────
-printf "\n%b\n" "${YELLOW}󰆼 Optimizing store${RESET}"
-if nix store optimise >/dev/null 2>&1; then
-  printf "%b\n" "${GREEN}  ✔ optimization complete${RESET}"
-fi
-
 # ── Done ───────────────────────────────────────────────
 printf "\n%b\n" "${DIM}──────────────────────────────${RESET}"
 printf "%b\n" "${GREEN}Upgrade complete${RESET}"
