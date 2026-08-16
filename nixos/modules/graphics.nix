@@ -49,6 +49,7 @@
     ];
   };
 
+  boot.initrd.kernelModules = [ "i915" ];
   boot.blacklistedKernelModules = [
     "nouveau"
     "nova_core"

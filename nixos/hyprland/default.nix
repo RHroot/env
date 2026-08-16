@@ -24,6 +24,11 @@
     "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
+
   environment.systemPackages = with pkgs; [
     # === HYPRLAND ===
     hyprlock # Screen locker for Hyprland
