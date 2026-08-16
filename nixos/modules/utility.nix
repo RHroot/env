@@ -13,6 +13,7 @@
     calibre # Book reader and downloader
     blanket # Different Sounds in Background
     audacity # Free, open-source audio editor and recorder
+    mkvtoolnix # MKV tool to create and edit Matroska files
     obs-studio # Open Broadcaster Software for video recording and live streaming
     megatools # MEGA tools to do big tasks faster through terminal
     qbittorrent # Torrent client

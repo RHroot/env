@@ -50,6 +50,7 @@ hl.window_rule({
 hl.window_rule({
 	match = { class = "^(steam)$" },
 	workspace = 8,
+	center = true,
 })
 hl.window_rule({
 	match = { class = "^(org.telegram.desktop)$" },
