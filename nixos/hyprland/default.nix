@@ -29,6 +29,12 @@
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
+  systemd.user.services.hyprpolkitagent = {
+    after = [ "xdg-desktop-portal.service" ];
+    wants = [ "xdg-desktop-portal.service" ];
+    serviceConfig.ExecStartPre = "${pkgs.coreutils}/bin/sleep 1";
+  };
+
   environment.systemPackages = with pkgs; [
     # === HYPRLAND ===
     hyprlock # Screen locker for Hyprland
