@@ -27,7 +27,7 @@
 
     powerManagement = {
       enable = true;
-      finegrained = true;
+      finegrained = false;
     };
     dynamicBoost.enable = false;
   };
@@ -49,7 +49,6 @@
     ];
   };
 
-  boot.initrd.kernelModules = [ "i915" ];
   boot.blacklistedKernelModules = [
     "nouveau"
     "nova_core"

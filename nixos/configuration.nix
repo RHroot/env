@@ -21,10 +21,14 @@
 
   power.enable = true;
   services.getty.autologinUser = env.username;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 5;
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.configurationLimit = 5;
+  boot.loader.grub.gfxmodeEfi = "1600x1200,auto";
+
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.consoleMode = "1";
 
   networking = {
     hostName = env.hostname;
@@ -63,11 +67,10 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 4d";
   };
   nix.optimise = {
     automatic = true;
-    dates = [ "weekly" ];
+    dates = [ "daily" ];
   };
   nix.settings.auto-optimise-store = true;
 
