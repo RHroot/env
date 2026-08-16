@@ -12,8 +12,6 @@
 
   programs.hyprlock.enable = true;
 
-  security.polkit.enable = true;
-
   xdg.mime.defaultApplications = {
     # Images
     "image/png" = [ "imv.desktop" ];
@@ -29,12 +27,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
-  systemd.user.services.hyprpolkitagent = {
-    after = [ "xdg-desktop-portal.service" ];
-    wants = [ "xdg-desktop-portal.service" ];
-    serviceConfig.ExecStartPre = "${pkgs.coreutils}/bin/sleep 1";
-  };
-
   environment.systemPackages = with pkgs; [
     # === HYPRLAND ===
     hyprlock # Screen locker for Hyprland
@@ -42,7 +34,6 @@
     hyprsunset # Nightlight manager for Hyprland
     hyprpicker # Color picker for Wayland/Hyprland
     hyprcursor # Cursor theme support for Hyprland
-    hyprpolkitagent # PolicyKit authentication agent for Hyprland
     hyprland-protocols # Wayland protocol extensions used by Hyprland
 
     # === basic ===

@@ -13,10 +13,11 @@
     calibre # Book reader and downloader
     blanket # Different Sounds in Background
     audacity # Free, open-source audio editor and recorder
+    megatools # MEGA tools to do big tasks faster through terminal
     mkvtoolnix # MKV tool to create and edit Matroska files
     obs-studio # Open Broadcaster Software for video recording and live streaming
-    megatools # MEGA tools to do big tasks faster through terminal
     qbittorrent # Torrent client
+    polkit_gnome # GUI Polkit agent
     telegram-desktop # Messenger
     libreoffice-fresh # Office suite
     kdePackages.kdenlive # Non-linear video editor for creating and editing videos
