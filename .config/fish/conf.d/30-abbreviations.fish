@@ -9,28 +9,21 @@ abbr -a ..... "cd ../../../.."
 
 # Editors
 abbr -a v "vim"
-abbr -a sv "sudo vim"
 abbr -a n "nvim"
-abbr -a sn "sudo nvim"
 
 # Tmux
-abbr -a tns "tmux new -s"
 abbr -a ta "tmux attach"
 abbr -a td "tmux detach"
+abbr -a tns "tmux new -s"
 
 # System helpers
 abbr -a psa "ps auxf"
-abbr -a fdh "fd --hidden"
-abbr -a pgrep "ps aux | rg"
-abbr -a hg "history | rg"
+abbr -a psg "ps aux | rg"
 abbr -a openports "netstat -tulanp"
-abbr -a fda "fd --absolute-path"
-abbr -a fdah "fd --absolute-path --hidden"
 
 # System control
-abbr -a reboot "systemctl reboot"
 abbr -a shutnow "shutdown now"
-abbr -a logout "loginctl kill-session $XDG_SESSION_ID"
+abbr -a reboot "systemctl reboot"
 abbr -a restart-dm "sudo systemctl restart display-manager"
 
 # File operations
@@ -38,43 +31,37 @@ abbr -a rm "rm -iv"
 abbr -a cp "cp -iv"
 abbr -a mv "mv -iv"
 abbr -a cpr "cp -riv"
-abbr -a scp "sudo cp -iv"
-abbr -a scpr "sudo cp -riv"
 abbr -a rmd "rm -rfv"
 abbr -a mkdir "mkdir -pv"
 
 # Disk usage
-abbr -a diskspace "du -S | sort -n -r | less"
-abbr -a folders "du -h --max-depth=1"
 abbr -a mountedinfo "df -hT"
 abbr -a duf "duf -hide special"
+abbr -a folders "du -h --max-depth=1"
+abbr -a diskspace "du -S | sort -n -r | less"
 
 # Permissions & security
 abbr -a sha1 "openssl sha1"
 abbr -a own "sudo chown -R $USER"
 
 # Dev & tools
-abbr -a grep "grep --color=auto"
-abbr -a rg "rg --color=auto"
-abbr -a myip "curl ifconfig.me"
-abbr -a bright "brightnessctl set"
-abbr -a oc "opencode --port 3000"
 abbr -a ga "git add"
 abbr -a gp "git push"
 abbr -a gd "git diff"
 abbr -a gs "git status"
+abbr -a rg "rg --color=auto"
+abbr -a myip "curl ifconfig.me"
+abbr -a grep "grep --color=auto"
+abbr -a oc "opencode --port 3000"
+abbr -a bright "brightnessctl set"
 abbr -a nettest "nix shell nixpkgs#speedtest-go --command speedtest-go"
 abbr -a antigravity "nix run github:jacopone/antigravity-nix#google-antigravity-cli"
 
 # Utilities
-abbr -a kssh "kitty +kitten ssh"
-abbr -a web "cd /var/www/html"
-abbr -a da 'date "+%Y-%m-%d %A %T %Z"'
-abbr -a ai 'ollama run llama3-local'
-abbr -a wget "wget -c --limit-rate=15m -O"
+abbr -a ff "fastfetch -c my.jsonc"
+abbr -a wget "wget -c --limit-rate=15m"
 
 # System Information
-abbr -a ff "fastfetch -c my.jsonc"
 abbr -a open "xdg-open"
 abbr -a vol "wpctl get-volume @DEFAULT_AUDIO_SINK@"
 

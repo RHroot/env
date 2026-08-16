@@ -12,15 +12,8 @@
     completion.enable = true;
 
     shellAliases = {
-      # ls
-      ls = "ls --hyperlink=auto";
-      la = "ls -A --hyperlink=auto";
-      lz = "ls -lhAi --hyperlink=auto";
-      lh = "ls -d .* 2>/dev/null --hyperlink=auto";
-      tree = "tree -a 2>/dev/null || ls -R --color=auto";
-
       # Navigation
-      d = "cd";
+      d = "z";
       pd = "cd -";
       c = "clear";
       ".." = "cd ..";
@@ -31,66 +24,67 @@
       # Editors
       v = "vim";
       n = "nvim";
-      sv = "sudo vim";
-      sn = "sudo nvim";
 
       # Tmux
-      tns = "tmux new -s";
       ta = "tmux attach";
       td = "tmux detach";
+      tns = "tmux new -s";
 
       # System helpers
       psa = "ps auxf";
-      less = "less -R";
-      fdh = "fd --hidden";
-      pgrep = "ps aux | rg";
-      hg = "history | rg";
+      psg = "ps aux | rg";
       openports = "netstat -tulanp";
-      fda = "fd --absolute-path";
-      fdah = "fd --absolute-path --hidden";
 
       # System control
-      reboot = "systemctl reboot";
       shutnow = "shutdown now";
-      logout = "loginctl kill-session $XDG_SESSION_ID";
+      reboot = "systemctl reboot";
       restart-dm = "sudo systemctl restart display-manager";
 
       # File operations
+      rm = "rm -iv";
       cp = "cp -iv";
-      cpr = "cp -r";
-      scp = "sudo cp -iv";
+      mv = "mv -iv";
+      cpr = "cp -riv";
       rmd = "rm -rfv";
       mkdir = "mkdir -pv";
 
       # Disk usage
-      diskspace = "du -S | sort -n -r | less";
-      folders = "du -h --max-depth=1";
       mountedinfo = "df -hT";
       duf = "duf -hide special";
+      folders = "du -h --max-depth=1";
+      diskspace = "du -S | sort -n -r | less";
 
       # Permissions & security
-      chmodx = "chmod a+x";
-      chmod644 = "chmod -R 644";
-      chmod755 = "chmod -R 755";
       sha1 = "openssl sha1";
       own = "sudo chown -R $USER";
 
       # Dev & tools
-      grep = "grep --color=auto";
+      ga = "git add";
+      gp = "git push";
+      gd = "git diff";
+      gs = "git status";
       rg = "rg --color=auto";
       myip = "curl ifconfig.me";
-      bright = "brightnessctl set";
+      grep = "grep --color=auto";
       oc = "opencode --port 3000";
+      bright = "brightnessctl set";
+      nettest = "nix shell nixpkgs#speedtest-go --command speedtest-go";
+      antigravity = "nix run github:jacopone/antigravity-nix#google-antigravity-cli";
 
       # Utilities
-      kssh = "kitty +kitten ssh";
-      web = "cd /var/www/html";
-      da = "date '+%Y-%m-%d %A %T %Z'";
-      aria2-down = "aria2c --conf-path=$HOME/.config/aria2/aria2.conf";
+      ff = "fastfetch -c my.jsonc";
+      wget = "wget -c --limit-rate=15m";
 
       # System Information
-      fetch = "fastfetch -c my.jsonc";
       open = "xdg-open";
+      vol = "wpctl get-volume @DEFAULT_AUDIO_SINK@";
+
+      # LS commands
+      ls = "ls --hyperlink=auto";
+      la = "ls -A --hyperlink=auto";
+      lz = "ls -lhAi --hyperlink=auto";
+      lh = "ls -d .* 2>/dev/null --hyperlink=auto";
+      tree = "tree -a 2>/dev/null || ls -R --color=auto";
     };
 
     promptInit = ''

@@ -76,6 +76,7 @@ in
     style = "adwaita-dark";
   };
   environment.pathsToLink = [
+    "/libexec"
     "/share/icons"
     "/share/themes"
   ];
