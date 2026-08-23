@@ -19,6 +19,7 @@ window#hyprbar {
 .module-metric,
 .module-tray,
 .metric-cpu,
+.metric-net,
 .metric-ram,
 .metric-battery,
 .metric-battery .charging-icon,
@@ -109,6 +110,10 @@ window#hyprbar {
 }
 .module-metric .label {
   opacity: 0.9;
+}
+
+.metric-net {
+  color: #f5c76b;
 }
 
 .metric-cpu {
