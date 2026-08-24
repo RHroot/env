@@ -2,7 +2,7 @@
 
 This guide is written in **simple language**, works with **default Git behavior**, and covers **real-world setups** you will actually use. It is suitable for beginners and still useful for advanced users.
 
----
+______________________________________________________________________
 
 ## 1. What Is Git?
 
@@ -14,7 +14,7 @@ This guide is written in **simple language**, works with **default Git behavior*
 
 Git works **locally first**. The internet is optional.
 
----
+______________________________________________________________________
 
 ## 2. Installing Git
 
@@ -32,7 +32,7 @@ sudo dnf install git        # Fedora
 git --version
 ```
 
----
+______________________________________________________________________
 
 ## 3. One-Time Setup (Mandatory)
 
@@ -51,7 +51,7 @@ git config --global pull.rebase false
 git config --global color.ui auto
 ```
 
----
+______________________________________________________________________
 
 ## 4. Creating a Repository
 
@@ -67,7 +67,7 @@ git init
 git clone git@github:USER/REPO.git
 ```
 
----
+______________________________________________________________________
 
 ## 5. Basic Daily Workflow
 
@@ -96,7 +96,7 @@ git commit -m "Clear message explaining why"
 git log --oneline --graph --decorate
 ```
 
----
+______________________________________________________________________
 
 ## 6. Undoing Mistakes (Safe Methods)
 
@@ -120,7 +120,7 @@ git commit --amend
 
 ⚠️ Do not amend commits that are already pushed.
 
----
+______________________________________________________________________
 
 ## 7. Branches (Core Concept)
 
@@ -149,7 +149,7 @@ git switch main
 git merge new-feature
 ```
 
----
+______________________________________________________________________
 
 ## 8. Remote Repositories (GitHub / GitLab)
 
@@ -172,7 +172,7 @@ git push
 git pull
 ```
 
----
+______________________________________________________________________
 
 ## 9. Pushing to GitHub **and** GitLab (Mirroring)
 
@@ -197,7 +197,7 @@ git push all --all
 git push all --tags
 ```
 
----
+______________________________________________________________________
 
 ## 10. SSH Setup (Required for Smooth Work)
 
@@ -221,23 +221,23 @@ ssh -T git@github
 ssh -T git@gitlab.com
 ```
 
----
+______________________________________________________________________
 
 ## 11. Handling Conflicts
 
 When Git cannot merge automatically:
 
 1. Open the file
-2. Fix the marked sections
-3. Stage the file
-4. Commit
+1. Fix the marked sections
+1. Stage the file
+1. Commit
 
 ```bash
 git add conflicted_file.txt
 git commit
 ```
 
----
+______________________________________________________________________
 
 ## 12. Stashing (Temporary Save)
 
@@ -248,7 +248,7 @@ git stash pop        # restore
 
 Useful when switching branches quickly.
 
----
+______________________________________________________________________
 
 ## 13. Tags (Releases)
 
@@ -263,7 +263,7 @@ Annotated tag (recommended):
 git tag -a v1.0.0 -m "First release"
 ```
 
----
+______________________________________________________________________
 
 ## 14. Cleaning and Maintenance
 
@@ -281,7 +281,7 @@ git clean -fd
 git gc
 ```
 
----
+______________________________________________________________________
 
 ## 15. Useful Aliases (Optional)
 
@@ -290,7 +290,7 @@ git config --global alias.s status
 git config --global alias.l "log --oneline --graph --decorate"
 ```
 
----
+______________________________________________________________________
 
 ## 16. Golden Rules
 
@@ -300,7 +300,7 @@ git config --global alias.l "log --oneline --graph --decorate"
 - Always `git status` before pushing
 - If confused: **stop and inspect**
 
----
+______________________________________________________________________
 
 ## 17. If Something Breaks
 
@@ -312,7 +312,7 @@ git log --oneline
 
 Git almost never loses data.
 
----
+______________________________________________________________________
 
 ## 18. Mental Model: How Git Thinks
 
@@ -328,7 +328,7 @@ Think of Git as:
 
 > A graph of snapshots, not a list of changes
 
----
+______________________________________________________________________
 
 ## 19. One-Page Quick Reference
 
@@ -355,7 +355,7 @@ git restore --staged file
 git log --oneline --graph
 ```
 
----
+______________________________________________________________________
 
 ## 20. What NOT To Do (Hard Rules)
 
@@ -377,7 +377,7 @@ git push --force    # dangerous
 git commit --amend
 ```
 
----
+______________________________________________________________________
 
 ## 21. Solo Developer vs Team Workflow
 
@@ -397,15 +397,15 @@ Golden rule:
 
 > Rewriting history is fine **only if no one else has it**.
 
----
+______________________________________________________________________
 
 ## 22. CI/CD-Aware Workflow
 
 Typical pipeline:
 
 1. Push code
-2. CI runs tests
-3. Merge only if green
+1. CI runs tests
+1. Merge only if green
 
 Good practices:
 
@@ -413,7 +413,7 @@ Good practices:
 - Use tags for releases
 - Keep commits small
 
----
+______________________________________________________________________
 
 ## 23. Safe Hard Reset Recovery
 
@@ -431,7 +431,7 @@ git reset --hard <hash>
 
 Git rarely loses data.
 
----
+______________________________________________________________________
 
 ## 24. NixOS + SSH Notes
 
@@ -444,7 +444,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 
----
+______________________________________________________________________
 
 ## 25. Git for Backup (Mirroring)
 
@@ -464,7 +464,7 @@ git push all main
 
 This gives redundancy with zero extra effort.
 
----
+______________________________________________________________________
 
 ## 26. Git for Open-Source Contribution
 
@@ -479,7 +479,7 @@ You now have:
 - Original repo (upstream)
 - Your fork (origin)
 
----
+______________________________________________________________________
 
 ### 2. Clone Your Fork
 
@@ -488,7 +488,7 @@ git clone git@github:YOUR_USERNAME/REPO.git
 cd REPO
 ```
 
----
+______________________________________________________________________
 
 ### 3. Add Upstream Remote
 
@@ -502,7 +502,7 @@ Verify:
 git remote -v
 ```
 
----
+______________________________________________________________________
 
 ### 4. Create a Feature Branch
 
@@ -514,7 +514,7 @@ git switch -c fix-bug-description
 
 Branch names should be short and meaningful.
 
----
+______________________________________________________________________
 
 ### 5. Make Changes and Commit
 
@@ -529,7 +529,7 @@ Good open-source commits:
 - Focused
 - Explain **why**, not just what
 
----
+______________________________________________________________________
 
 ### 6. Keep Your Fork Updated
 
@@ -549,7 +549,7 @@ git switch fix-bug-description
 git rebase main
 ```
 
----
+______________________________________________________________________
 
 ### 7. Push Your Branch
 
@@ -557,7 +557,7 @@ git rebase main
 git push origin fix-bug-description
 ```
 
----
+______________________________________________________________________
 
 ### 8. Open a Pull Request (PR)
 
@@ -570,7 +570,7 @@ Write a good PR description:
 - How was it tested?
 - Screenshots if UI-related
 
----
+______________________________________________________________________
 
 ### 9. Handle Review Feedback
 
@@ -585,7 +585,7 @@ git push origin fix-bug-description
 
 Do **not** open a new PR.
 
----
+______________________________________________________________________
 
 ### 10. After Merge (Cleanup)
 
@@ -596,7 +596,7 @@ git branch -d fix-bug-description
 git push origin --delete fix-bug-description
 ```
 
----
+______________________________________________________________________
 
 ### Open-Source Etiquette (Important)
 
@@ -607,7 +607,7 @@ git push origin --delete fix-bug-description
 
 Good contributors are remembered.
 
----
+______________________________________________________________________
 
 ## 27. Final Note
 

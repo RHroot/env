@@ -2,7 +2,7 @@
 
 Welcome, fellow Vim explorer! 🚀 This is your **one-stop, complete guide** to mastering substitution (`:s`) in Neovim **with regex**. By the end, you won’t need any other guide. Let’s dive in!
 
----
+______________________________________________________________________
 
 ## 🔑 Basics of Substitution
 
@@ -12,10 +12,10 @@ The general form is:
 :[range]s/{pattern}/{replacement}/[flags]
 ```
 
-* **`[range]`** → Which lines to affect
-* **`{pattern}`** → What you’re searching for (regex supported ✅)
-* **`{replacement}`** → What to replace it with
-* **`[flags]`** → Extra options (like replace all, confirm, etc.)
+- **`[range]`** → Which lines to affect
+- **`{pattern}`** → What you’re searching for (regex supported ✅)
+- **`{replacement}`** → What to replace it with
+- **`[flags]`** → Extra options (like replace all, confirm, etc.)
 
 ✨ Example:
 
@@ -25,14 +25,14 @@ The general form is:
 
 ➡️ Replace all `cat` with `dog` in the entire file.
 
----
+______________________________________________________________________
 
 ## 🎯 Ranges in Substitution
 
-* `:%` → Whole file 📜
-* `:1,10` → Lines 1 to 10 🔢
-* `:.,$` → From current line (`.`) to end (`$`) 🏁
-* `:'<,'>` → Selected lines in Visual mode ✂️
+- `:%` → Whole file 📜
+- `:1,10` → Lines 1 to 10 🔢
+- `:.,$` → From current line (`.`) to end (`$`) 🏁
+- `:'<,'>` → Selected lines in Visual mode ✂️
 
 👉 You can even use search patterns in ranges:
 
@@ -42,16 +42,16 @@ The general form is:
 
 ➡️ Replace only between lines containing `start` and `end`.
 
----
+______________________________________________________________________
 
 ## ⚡ Flags Cheat Sheet
 
-* `g` → Replace **all** matches on a line (not just the first)
-* `c` → Confirm each replacement 🤔
-* `i` → Ignore case 🔠
-* `I` → Case-sensitive match 🔡
-* `n` → Show number of matches (no change) 🔍
-* `p` → Print each line after substitution 📢
+- `g` → Replace **all** matches on a line (not just the first)
+- `c` → Confirm each replacement 🤔
+- `i` → Ignore case 🔠
+- `I` → Case-sensitive match 🔡
+- `n` → Show number of matches (no change) 🔍
+- `p` → Print each line after substitution 📢
 
 Example with confirmation:
 
@@ -61,7 +61,7 @@ Example with confirmation:
 
 ➡️ Go through every `todo` and decide whether to replace.
 
----
+______________________________________________________________________
 
 ## 🔮 Regex in Neovim
 
@@ -69,31 +69,31 @@ Regex = **power tool** 🛠️ for text matching.
 
 ### 🧩 Basic Patterns
 
-* `.` → Any character (except newline)
-* `\d` → Digit (0–9)
-* `\w` → Word character (letters, digits, underscore)
-* `\s` → Whitespace
-* `\t` → Tab character
-* `^` → Start of line ⬆️
-* `$` → End of line ⬇️
-* `\b` → Word boundary 📍
+- `.` → Any character (except newline)
+- `\d` → Digit (0–9)
+- `\w` → Word character (letters, digits, underscore)
+- `\s` → Whitespace
+- `\t` → Tab character
+- `^` → Start of line ⬆️
+- `$` → End of line ⬇️
+- `\b` → Word boundary 📍
 
 ### 📦 Quantifiers
 
-* `*` → 0 or more
-* `+` → 1 or more
-* `?` → 0 or 1 (optional)
-* `{n}` → Exactly n times
-* `{n,m}` → Between n and m times
-* `{,m}` → Up to m times
+- `*` → 0 or more
+- `+` → 1 or more
+- `?` → 0 or 1 (optional)
+- `{n}` → Exactly n times
+- `{n,m}` → Between n and m times
+- `{,m}` → Up to m times
 
 ### 🎭 Groups & Alternation
 
-* `(abc)` → Grouping
-* `\1`, `\2`... → Backreferences to groups
-* `a|b` → Either `a` or `b`
+- `(abc)` → Grouping
+- `\1`, `\2`... → Backreferences to groups
+- `a|b` → Either `a` or `b`
 
----
+______________________________________________________________________
 
 ## 🛠️ Practical Regex + Sub Examples
 
@@ -153,22 +153,22 @@ Regex = **power tool** 🛠️ for text matching.
 
 ➡️ 2025-09-14 → 14/09/2025.
 
----
+______________________________________________________________________
 
 ## 💡 Advanced Tips
 
-* `&` → Reuse last replacement pattern
-* `:s//new/` → Reuse last search, change replacement only
-* `:&&` → Repeat last substitution with same settings
-* `:noh` → Clear highlights after searching 🔦
-* `:%s///gn` → Count matches without changing text 🔢
-* `:%s///~` → Repeat last replacement string
-* Use `:vimgrep` with regex to preview matches before replacing
-* `:%s/foo/bar/ge` → Replace `foo` with `bar`, **ignore errors** if no match
-* Use `:%!command` to pipe buffer through external tools (like `sed`, `awk`, `jq`) 🌐
-* `:%s/\vpattern/replacement/` → Use **very magic mode** (`\v`) for cleaner regex syntax (less escaping)
+- `&` → Reuse last replacement pattern
+- `:s//new/` → Reuse last search, change replacement only
+- `:&&` → Repeat last substitution with same settings
+- `:noh` → Clear highlights after searching 🔦
+- `:%s///gn` → Count matches without changing text 🔢
+- `:%s///~` → Repeat last replacement string
+- Use `:vimgrep` with regex to preview matches before replacing
+- `:%s/foo/bar/ge` → Replace `foo` with `bar`, **ignore errors** if no match
+- Use `:%!command` to pipe buffer through external tools (like `sed`, `awk`, `jq`) 🌐
+- `:%s/\vpattern/replacement/` → Use **very magic mode** (`\v`) for cleaner regex syntax (less escaping)
 
----
+______________________________________________________________________
 
 ## 🎓 Extra Beginner-Friendly Tricks
 
@@ -198,7 +198,7 @@ Regex = **power tool** 🛠️ for text matching.
 
 ✅ **Limit to a block of code**
 
-* Select lines in **Visual Mode** → `:'<,'>s/foo/bar/g`
+- Select lines in **Visual Mode** → `:'<,'>s/foo/bar/g`
 
 ✅ **Change only whole words**
 
@@ -210,21 +210,21 @@ Regex = **power tool** 🛠️ for text matching.
 
 ✅ **Dry-run complex patterns**
 
-* Test first with `/pattern` before `:s`.
+- Test first with `/pattern` before `:s`.
 
 ✅ **Save time with macros**
 
-* Record (`q`), run substitution, replay (`@`).
+- Record (`q`), run substitution, replay (`@`).
 
 ✅ **Undo mistakes instantly**
 
-* Just press `u` after substitution. (Phew 😅)
+- Just press `u` after substitution. (Phew 😅)
 
 ✅ **Keep your hands on home row**
 
-* Use `:noh` after searches to remove distracting highlights.
+- Use `:noh` after searches to remove distracting highlights.
 
----
+______________________________________________________________________
 
 ## 🏆 Exercises with Solutions
 
@@ -264,7 +264,7 @@ Regex = **power tool** 🛠️ for text matching.
 :%s/^\w\+/NEWWORD/
 ```
 
-7. Convert snake\_case to camelCase.
+7. Convert snake_case to camelCase.
 
 ```vim
 :%s/_\(\w\)/\u\1/g
@@ -272,7 +272,7 @@ Regex = **power tool** 🛠️ for text matching.
 
 ➡️ `hello_world` → `helloWorld`.
 
----
+______________________________________________________________________
 
 ## 📚 Quick Reference Cheatsheet
 
@@ -284,32 +284,32 @@ Regex = **power tool** 🛠️ for text matching.
 
 **Ranges:**
 
-* `%` → whole file
-* `1,10` → lines 1–10
-* `.,$` → current → end
-* `'<,'>` → visual selection
-* `/pat1/,/pat2/` → between patterns
+- `%` → whole file
+- `1,10` → lines 1–10
+- `.,$` → current → end
+- `'<,'>` → visual selection
+- `/pat1/,/pat2/` → between patterns
 
 **Flags:**
 
-* `g` → global on line
-* `c` → confirm
-* `i` → ignore case
-* `I` → match case
-* `n` → count only
-* `p` → print result line
-* `e` → no error if no match
+- `g` → global on line
+- `c` → confirm
+- `i` → ignore case
+- `I` → match case
+- `n` → count only
+- `p` → print result line
+- `e` → no error if no match
 
 **Regex Essentials:**
 
-* `.` any char | `\d` digit | `\w` word | `\s` space
-* `^` start | `$` end | `\b` boundary
-* `*` 0+ | `+` 1+ | `?` 0/1 | `{n,m}` repeat
-* `( )` group | `\1` backref | `a|b` alt
-* `\<` start of word | `\>` end of word
-* `\v` very magic regex mode (less escaping!)
+- `.` any char | `\d` digit | `\w` word | `\s` space
+- `^` start | `$` end | `\b` boundary
+- `*` 0+ | `+` 1+ | `?` 0/1 | `{n,m}` repeat
+- `( )` group | `\1` backref | `a|b` alt
+- `\<` start of word | `\>` end of word
+- `\v` very magic regex mode (less escaping!)
 
----
+______________________________________________________________________
 
 ## 🎉 Final Words
 

@@ -142,6 +142,7 @@ Code](https://spinroot.com/gerard/pdf/P10.pdf) will change the way you code fore
   - Assertions are a safety net, not a substitute for human understanding. With simulation testing,
     there is the temptation to trust the fuzzer. But a fuzzer can prove only the presence of bugs,
     not their absence. Therefore:
+
     - Build a precise mental model of the code first,
     - encode your understanding in the form of assertions,
     - write the code and comments to explain and justify the mental model to your reviewer,
@@ -164,14 +165,14 @@ Code](https://spinroot.com/gerard/pdf/P10.pdf) will change the way you code fore
   Splitting code into functions requires taste. There are many ways to cut a wall of code into
   chunks of 70 lines, but only a few splits will feel right. Some rules of thumb:
 
-  * Good function shape is often the inverse of an hourglass: a few parameters, a simple return
+  - Good function shape is often the inverse of an hourglass: a few parameters, a simple return
     type, and a lot of meaty logic between the braces.
-  * Centralize control flow. When splitting a large function, try to keep all switch/if
+  - Centralize control flow. When splitting a large function, try to keep all switch/if
     statements in the "parent" function, and move non-branchy logic fragments to helper
     functions. Divide responsibility. All control flow should be handled by _one_ function, the rest shouldn't
     care about control flow at all. In other words,
     ["push `if`s up and `for`s down"](https://matklad.github.io/2023/11/15/push-ifs-up-and-fors-down.html).
-  * Similarly, centralize state manipulation. Let the parent function keep all relevant state in
+  - Similarly, centralize state manipulation. Let the parent function keep all relevant state in
     local variables, and use helpers to compute what needs to change, rather than applying the
     change directly. Keep leaf functions pure.
 
@@ -387,6 +388,7 @@ Beyond these rules:
   in-place, the entire container struct should be initialized in-place as well.
 
   **Prefer:**
+
   ```zig
   fn init(target: *LargeStruct) !void {
     target.* = .{
@@ -401,6 +403,7 @@ Beyond these rules:
   ```
 
   **Over:**
+
   ```zig
   fn init() !LargeStruct {
     return LargeStruct {

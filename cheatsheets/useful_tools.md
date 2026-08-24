@@ -2,7 +2,7 @@
 
 > 💡 **Note:** This living document is updated periodically with powerful, widely available utilities. New tools will be appended below.
 
----
+______________________________________________________________________
 
 ## 🌐 1. [cURL](https://curl.se/)
 
@@ -21,7 +21,7 @@ curl -O https://example.com/file.zip
 - ✅ **Best Practice:** Use `-s` (silent) in scripts to suppress progress bars. Use `-I` to fetch only HTTP headers.
 - ⚠️ **Avoid:** Hardcoding sensitive API keys directly in the command, as they get saved in your plaintext shell history.
 
----
+______________________________________________________________________
 
 ## ⬇️ 2. [Wget](https://www.gnu.org/software/wget/)
 
@@ -40,7 +40,7 @@ wget --mirror https://example.com
 - ✅ **Best Practice:** Always use the `-c` flag to resume large, interrupted downloads rather than starting over.
 - ⚠️ **Avoid:** Mirroring sites without rate limits. Use `--wait=1` to pause between requests and prevent overloading the target server.
 
----
+______________________________________________________________________
 
 ## 💿 3. [dd (Dataset Definition)](https://www.gnu.org/software/coreutils/manual/html_node/dd-invocation.html)
 
@@ -56,7 +56,7 @@ sudo dd if=os-image.iso of=/dev/sdX bs=4M status=progress
 - ✅ **Best Practice:** Double-check your target drive (`of=`) using `lsblk` before execution. Append `status=progress` to monitor speed.
 - ⚠️ **Avoid:** Reversing `if` (input file) and `of` (output file). Doing this can permanently overwrite and destroy your primary drive.
 
----
+______________________________________________________________________
 
 ## 🔄 4. [rsync](https://rsync.samba.org/)
 
@@ -75,7 +75,7 @@ rsync -avz /local/ user@remote:/remote/
 - ✅ **Best Practice:** Always run with `--dry-run` (or `-n`) first when using the `--delete` flag to preview what will be removed.
 - ⚠️ **Avoid:** Ignoring the trailing slash on the source directory. `/source` copies the folder itself; `/source/` copies the _contents_ of the folder.
 
----
+______________________________________________________________________
 
 ## 🔧 5. [jq](https://jqlang.github.io/jq/)
 

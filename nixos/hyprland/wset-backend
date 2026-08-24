@@ -15,6 +15,7 @@ sleep 2
 
 # Reload
 eww kill
+pkill -f eww
 eww daemon &
 sleep 0.5
 eww open hyprbar

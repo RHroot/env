@@ -2,7 +2,7 @@
 
 A concise reference of useful commands to inspect system, hardware, and OS details.
 
----
+______________________________________________________________________
 
 ## 🧠 Core System Overview
 
@@ -14,7 +14,7 @@ Provides a structured summary of system identity, OS, kernel, and firmware.
 hostnamectl
 ```
 
----
+______________________________________________________________________
 
 ### `uname`
 
@@ -26,7 +26,7 @@ uname -r    # kernel version
 uname -m    # architecture
 ```
 
----
+______________________________________________________________________
 
 ## ⚙️ CPU Information
 
@@ -38,7 +38,7 @@ Detailed CPU architecture and features.
 lscpu
 ```
 
----
+______________________________________________________________________
 
 ### `/proc/cpuinfo`
 
@@ -48,7 +48,7 @@ Raw CPU details from kernel.
 cat /proc/cpuinfo
 ```
 
----
+______________________________________________________________________
 
 ## 💾 Memory
 
@@ -60,7 +60,7 @@ Shows RAM and swap usage.
 free -h
 ```
 
----
+______________________________________________________________________
 
 ## 💽 Disk & Storage
 
@@ -72,7 +72,7 @@ Lists block devices (disks, partitions).
 lsblk
 ```
 
----
+______________________________________________________________________
 
 ### `df`
 
@@ -82,7 +82,7 @@ Filesystem disk usage.
 df -h
 ```
 
----
+______________________________________________________________________
 
 ## 🧱 Hardware Information
 
@@ -94,7 +94,7 @@ Detailed hardware inventory.
 sudo lshw -short
 ```
 
----
+______________________________________________________________________
 
 ### `inxi` (optional tool)
 
@@ -104,7 +104,7 @@ Clean, human-readable system summary.
 inxi -Fx
 ```
 
----
+______________________________________________________________________
 
 ## 🔌 Firmware / BIOS
 
@@ -112,7 +112,7 @@ inxi -Fx
 
 Already includes firmware version and age.
 
----
+______________________________________________________________________
 
 ### `fwupdmgr`
 
@@ -123,7 +123,7 @@ fwupdmgr get-devices
 fwupdmgr get-updates
 ```
 
----
+______________________________________________________________________
 
 ## 🌐 Network
 
@@ -135,7 +135,7 @@ Modern network interface tool.
 ip a
 ```
 
----
+______________________________________________________________________
 
 ### `ss`
 
@@ -145,7 +145,7 @@ Socket statistics (replacement for netstat).
 ss -tuln
 ```
 
----
+______________________________________________________________________
 
 ## 🔍 Logs & Boot Info
 
@@ -157,7 +157,7 @@ System logs.
 journalctl -b
 ```
 
----
+______________________________________________________________________
 
 ### `uptime`
 
@@ -167,7 +167,7 @@ System running time and load.
 uptime
 ```
 
----
+______________________________________________________________________
 
 ## 🧪 Quick Combined View (Alias)
 
@@ -177,7 +177,7 @@ Add this to your shell config (`.zshrc` / `.bashrc`):
 alias sysinfo="hostnamectl && echo && lscpu | head -15 && echo && free -h"
 ```
 
----
+______________________________________________________________________
 
 ## ✅ Notes
 
@@ -185,7 +185,7 @@ alias sysinfo="hostnamectl && echo && lscpu | head -15 && echo && free -h"
 - `hostnamectl` is best for quick overview
 - Combine commands depending on use case (debugging vs monitoring)
 
----
+______________________________________________________________________
 
 ## 📌 Minimal Daily Set
 
@@ -199,6 +199,6 @@ lsblk
 df -h
 ```
 
----
+______________________________________________________________________
 
 End of file.
