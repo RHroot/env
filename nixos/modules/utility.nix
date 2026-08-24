@@ -24,6 +24,10 @@
     kdePackages.kdenlive # Non-linear video editor for creating and editing videos
   ];
 
+  environment.sessionVariables = {
+    BROWSER = "brave";
+  };
+
   # programs.localsend = {
   #   enable = true;
   #   package = pkgs.localsend;

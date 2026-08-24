@@ -50,4 +50,8 @@
   #     defaultNetwork.settings.dns_enabled = true;
   #   };
   # };
+  environment.variables = {
+    EDITOR = "vi";
+    VISUAL = "vi";
+  };
 }
