@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Get the creation time of the root filesystem (approximates OS installation)
 ROOT_BIRTH_TIME=$(stat -c %W / 2>/dev/null)
 
