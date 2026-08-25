@@ -12,13 +12,34 @@
     # === Rust Development ===
     rustup # Rust toolchain installer
 
+    # === Web Development ===
+    bun # Fast, modern, all-in-one CLI for web dev
+    prettierd # Formatter for JavaScript, HTML, CSS, JSON, GraphQL, Markdown, YAML, and more
+
+    # === Markdown ===
+    marksman # Markdown lsp server
+    mdformat # Markdown formatter
+
+    # === bash/sh ===
+    shfmt # Shell script formatter
+    bash-language-server # Bash language server
+
+    # === sql ===
+    sqls # SQL language server protocol
+    postgresql # SQL
+    sql-formatter # SQL formatter
+
     # === Lua Development ===
     lua # Lua programming language interpreter
+    stylua # Lua code formatter
     luarocks # Lua package manager
+    lua-language-server # Lua language server
 
     # === Python Development ===
     python314 # Python interpreter
     python314Packages.uv # Extremely fast Python package and environment manager
+    python314Packages.ruff # Python linter/formatter
+    python314Packages.python-lsp-server # Python language server
 
     # === C/C++ Development ===
     lldb # Next generation, high-performance debugger
@@ -40,7 +61,6 @@
   };
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
   };
   # virtualisation = {
   #   containers.enable = true;

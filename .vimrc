@@ -192,7 +192,7 @@ let s:undodir = expand('~/.vim/undodir')
 if !isdirectory(s:undodir) | call mkdir(s:undodir, 'p', 0700) | endif
 let &undodir = s:undodir
 
-set updatetime=250
+set updatetime=1000
 set timeout timeoutlen=500
 set ttimeout ttimeoutlen=10
 

@@ -8,7 +8,7 @@ confirm() {
   [[ "${default,,}" == "y" ]] && display="[Y/n]" || display="[y/N]"
 
   while true; do
-    read -p "$prompt $display: " resp
+    read -rp "$prompt $display: " resp
     resp=${resp:-$default} # Use default if empty
     resp=${resp,,}         # Lowercase for checking
     [[ "$resp" =~ ^y ]] && return 0
@@ -49,11 +49,11 @@ else
 fi
 
 # Get the email for Git Config
-read -p "Enter your email for Git config for the personal accounts: " GIT_PERSONAL_MAIL
-read -p "Enter your email for Git config for the work accounts: " GIT_WORK_MAIL
+read -pr "Enter your email for Git config for the personal accounts: " GIT_PERSONAL_MAIL
+read -pr "Enter your email for Git config for the work accounts: " GIT_WORK_MAIL
 # Get the name for Git Config
-read -p "Enter your name for Git config for the personal accounts: " GIT_PERSONAL_NAME
-read -p "Enter your name for Git config for the work accounts: " GIT_WORK_NAME
+read -pr "Enter your name for Git config for the personal accounts: " GIT_PERSONAL_NAME
+read -pr "Enter your name for Git config for the work accounts: " GIT_WORK_NAME
 
 # Making Git config for personal and work accounts
 if [[ -f "$HOME/.gitconfig" || -f "$HOME/.gitconfig-work" ]]; then

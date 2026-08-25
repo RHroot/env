@@ -63,11 +63,11 @@
       gp = "git push";
       gd = "git diff";
       gs = "git status";
-      rg = "rg --color=auto";
       myip = "curl ifconfig.me";
-      grep = "grep --color=auto";
       oc = "opencode --port 3000";
       bright = "brightnessctl set";
+      grep = "grep --color=always";
+      rg = "rg --color=always --hidden --no-ignore";
       nettest = "nix shell nixpkgs#speedtest-go --command speedtest-go";
       antigravity = "nix run github:jacopone/antigravity-nix#google-antigravity-cli";
 
