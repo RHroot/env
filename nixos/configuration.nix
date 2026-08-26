@@ -19,8 +19,6 @@
     ./XFCE
   ];
 
-  power.enable = true;
-
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   boot.loader.grub.enable = true;
