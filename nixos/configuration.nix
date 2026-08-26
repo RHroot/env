@@ -20,17 +20,19 @@
   ];
 
   power.enable = true;
-  services.getty.autologinUser = env.username;
+
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.configurationLimit = 5;
-
-  # NOTE: When on Grub press 'c' and enter the console and then type 'videoinfo' to get all the modes available for your display and use whatever you like
   boot.loader.grub.gfxmodeEfi = "1600x1200,auto";
+  # NOTE: When on Grub press 'c' and enter the console and then type 'videoinfo' to get all the modes available for your display and use whatever you like
 
   boot.loader.efi.canTouchEfiVariables = true;
+
+  services.getty.autologinUser = env.username;
 
   networking = {
     hostName = env.hostname;

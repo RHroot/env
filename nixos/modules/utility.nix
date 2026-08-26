@@ -34,6 +34,18 @@
   #   openFirewall = true;
   # };
 
+  systemd.user.services.polkit-gnome = {
+    description = "Polkit GNOME Authentication Agent";
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+    };
+  };
+
   environment.etc."brave/policies/managed/policies.json" = {
     text = builtins.toJSON {
       # Corrected Brave-specific debloat features

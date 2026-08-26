@@ -29,6 +29,7 @@
 
   environment.systemPackages = with pkgs; [
     # === HYPRLAND ===
+    uwsm # Universal Wayland Session Manager
     hyprlock # Screen locker for Hyprland
     hyprshot # Screenshot utility for Hyprland
     hyprsunset # Nightlight manager for Hyprland
