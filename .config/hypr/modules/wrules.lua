@@ -53,6 +53,11 @@ hl.window_rule({
 	center = true,
 })
 hl.window_rule({
+	match = { title = "^(Steam)(.*)$" },
+	workspace = 8,
+	center = true,
+})
+hl.window_rule({
 	match = { class = "^(org.telegram.desktop)$" },
 	workspace = 9,
 })

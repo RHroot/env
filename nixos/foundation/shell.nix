@@ -15,7 +15,7 @@
       # Navigation
       d = "z";
       pd = "cd -";
-      c = "clear";
+      cl = "clear";
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";

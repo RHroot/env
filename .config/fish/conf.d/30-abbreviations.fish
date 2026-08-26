@@ -1,7 +1,7 @@
 # Navigation
 abbr -a d "z"
 abbr -a pd "cd -"
-abbr -a c "clear"
+abbr -a cl "clear"
 abbr -a .. "cd .."
 abbr -a ... "cd ../.."
 abbr -a .... "cd ../../.."
