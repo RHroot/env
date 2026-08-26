@@ -10,7 +10,8 @@
     description = "Battery monitor";
     wantedBy = [ "default.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.batsignal}/bin/batsignal -w 30 -c 20 -d 10 -D 5 -b 'systemctl hibernate'"; # Warn at 30/20/10%, hibernate at 5%
+      Type = "forking";
+      ExecStart = "${pkgs.batsignal}/bin/batsignal -w 30 -c 20 -d 10 -D 5 -b 'systemctl hibernate'";
       Restart = "on-failure";
     };
   };
