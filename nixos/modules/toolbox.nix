@@ -32,7 +32,6 @@
     # === Lua Development ===
     lua # Lua programming language interpreter
     stylua # Lua code formatter
-    luarocks # Lua package manager
     lua-language-server # Lua language server
 
     # === Python Development ===
