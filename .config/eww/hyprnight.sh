@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
 TEMP=4000
 GAMMA=80
@@ -8,8 +8,7 @@ case "$1" in
     if pgrep -x hyprsunset >/dev/null; then
       pkill -x hyprsunset
     else
-      hyprsunset -t $TEMP -g $GAMMA >/dev/null 2>&1 &
-      disown
+      hyprsunset -t $TEMP -g $GAMMA >/dev/null 2>&1 & disown
     fi
     ;;
   status)
