@@ -12,7 +12,7 @@ set = true
 [templates.dunst]
 input_path = '~/.config/matugen/templates/dunstrc'
 output_path = '~/.config/dunst/dunstrc'
-post_hook = 'pkill -f dunst && dunst & disown'
+post_hook = 'pkill -9 -f dunst && dunst & disown'
 
 [templates.rofi]
 input_path = '~/.config/matugen/templates/colors.rasi'
