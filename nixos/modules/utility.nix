@@ -101,7 +101,7 @@
 
   # programs.firefox = {
   #   enable = true;
-  #   # package = pkgs.librewolf;
+  #   # package = pkgs.firefox;
   #
   #   autoConfig = ''
   #     // --- Privacy Overrides ---
