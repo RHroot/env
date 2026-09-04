@@ -2,7 +2,7 @@
 (defvar show-date false)
 (defpoll poll-time :interval "1s" "date '+%I:%M %p'")
 (defpoll poll-date :interval "10s" "date '+%a %b %d, %Y'")
-(defpoll poll-workspaces :interval "0.2s" "sh ~/.config/eww/hyprworkspaces.sh")
+(deflisten poll-workspaces :initial "[]" "sh ~/.config/eww/hyprworkspaces.sh")
 (defpoll poll-battery-cap :interval "5s" "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '0'")
 (defpoll poll-battery-stat :interval "5s" "cat /sys/class/power_supply/BAT0/status 2>/dev/null || echo 'Unknown'")
 (defpoll poll-hyprnight :interval "1s" "sh ~/.config/eww/hyprnight.sh status")

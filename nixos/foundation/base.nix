@@ -17,6 +17,7 @@
     tree # Display directory structure as a tree
     file # Determine file type
     gnupg # Encryption and signing tool (GPG)
+    socat # Swiss army knife for data relay between anything
     ffmpeg # Multimedia framework for encoding, decoding, and processing media
     img2pdf # Convert images to PDF without re-encoding
     tealdeer # Fast implementation of tldr (simplified
