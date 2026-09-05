@@ -5,7 +5,6 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    mpv # Video player
     gimp # Advanced image editor (GNU Image Manipulation Program)
     brave # Web browser
     evince # PDF viewer
@@ -22,6 +21,16 @@
     telegram-desktop # Messenger
     libreoffice-fresh # Office suite
     kdePackages.kdenlive # Non-linear video editor for creating and editing videos
+    (symlinkJoin {
+      name = "mpv-nvidia";
+      paths = [ mpv ];
+      buildInputs = [ makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/mpv \
+          --set __NV_PRIME_RENDER_OFFLOAD 1 \
+          --set __VK_LAYER_NV_optimus NVIDIA_only
+      '';
+    })
   ];
 
   environment.sessionVariables = {
