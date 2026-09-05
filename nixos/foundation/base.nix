@@ -16,21 +16,17 @@
     stow # Symlink-based dotfile manager
     tree # Display directory structure as a tree
     file # Determine file type
-    gnupg # Encryption and signing tool (GPG)
+    gnupg # Encryption and signing tool
     socat # Swiss army knife for data relay between anything
     ffmpeg # Multimedia framework for encoding, decoding, and processing media
     img2pdf # Convert images to PDF without re-encoding
-    tealdeer # Fast implementation of tldr (simplified
-    keychain # Manage SSH and GPG agent keys
-    coreutils # GNU core command-line utilities
     moreutils # Additional Unix utilities not in coreutils
-    fastfetch # System information fetch tool (neofetch alternative)
+    fastfetch # System information fetch tool
     lm_sensors # Read sensors data from Linux kernel
 
     # === Zip & Archive Tools ===
-    zip # Create ZIP archives
     gzip # GNU compression utility
-    p7zip # 7z archive support
+    _7zz # 7z archive support
     unzip # Extract ZIP archives
 
     # === System Utilities ===

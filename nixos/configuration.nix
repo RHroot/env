@@ -88,11 +88,9 @@
     enable = true;
     powerOnBoot = false;
   };
-  hardware.enableRedistributableFirmware = true;
 
   hardware.enableAllFirmware = true;
-
-  services.fwupd.enable = true;
+  hardware.enableRedistributableFirmware = true;
 
   services.libinput = {
     enable = true;
@@ -117,8 +115,9 @@
     };
   };
 
-  services.udisks2.enable = true;
   services.gvfs.enable = true;
+  services.fwupd.enable = true;
+  services.udisks2.enable = true;
 
   time.timeZone = "Asia/Kolkata";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -129,7 +128,7 @@
       size = 4096; # Size in MB(4Gb)
     }
   ];
-  boot.kernel.sysctl."vm.swappiness" = 10;
+  boot.kernel.sysctl."vm.swappiness" = 10; # It tells the Linux kernel how aggressively to use your disk's swap space instead of physical RAM from 0 to 100
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.11";

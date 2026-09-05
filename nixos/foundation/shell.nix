@@ -127,11 +127,11 @@
 
   environment.systemPackages = with pkgs; [
     fish # User-friendly shell with powerful features and plugins
-    bind # Command-line tools for DNS queries (dig, nslookup)
     lolcat # Colorful text output using rainbow gradients
     zoxide # Smarter cd command with directory jump history
     ripgrep # Fast recursive text search tool (rg)
     starship # Customizable prompt for various shells with git info and more
+    dnsutils # To get cli tools like dig
   ];
 
   environment.sessionVariables = {

@@ -9,6 +9,8 @@
     delta
   ];
 
+  programs.ssh.startAgent = true;
+
   programs.git = {
     enable = true;
 
@@ -17,7 +19,7 @@
       commit.gpgsign = true;
 
       core = {
-        editor = "neovide";
+        editor = "nvim";
         pager = "delta";
         autocrlf = "input";
       };
