@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -10,6 +11,7 @@
   ];
 
   programs.ssh.startAgent = true;
+  services.gnome.gcr-ssh-agent.enable = lib.mkForce false;
 
   programs.git = {
     enable = true;

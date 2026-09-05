@@ -2,7 +2,6 @@
   config,
   pkgs,
   env,
-  lib,
   ...
 }:
 {
@@ -29,8 +28,6 @@
   # NOTE: When on Grub press 'c' and enter the console and then type 'videoinfo' to get all the modes available for your display and use whatever you like
 
   boot.loader.efi.canTouchEfiVariables = true;
-
-  services.getty.autologinUser = env.username;
 
   networking = {
     hostName = env.hostname;
@@ -59,6 +56,12 @@
       }
     ];
   };
+
+  services.gvfs.enable = true;
+  services.fwupd.enable = true;
+  services.udisks2.enable = true;
+  services.openssh.enable = false;
+  services.getty.autologinUser = env.username;
 
   security.rtkit.enable = true;
   security.polkit.enable = true;
@@ -114,10 +117,6 @@
       middleEmulation = true;
     };
   };
-
-  services.gvfs.enable = true;
-  services.fwupd.enable = true;
-  services.udisks2.enable = true;
 
   time.timeZone = "Asia/Kolkata";
   i18n.defaultLocale = "en_US.UTF-8";
