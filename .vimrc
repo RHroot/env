@@ -168,23 +168,12 @@ set path+=**
 set completeopt=menuone,noselect,noinsert
 
 " ─────────────────────────────────────────────────────────────────────────────
-" 8. FOLDS
-" ─────────────────────────────────────────────────────────────────────────────
-set foldmethod=indent
-set foldlevelstart=99
-set foldnestmax=6
-set foldminlines=2
-
-nnoremap <leader>z za
-nnoremap <leader>Z zM
-
-" ─────────────────────────────────────────────────────────────────────────────
 " 9. UNDO / SWAP / BACKUP
 " ─────────────────────────────────────────────────────────────────────────────
-set noswapfile
 set nobackup
-set nowritebackup
 set undofile
+set noswapfile
+set nowritebackup
 set undolevels=1000
 set undoreload=10000
 

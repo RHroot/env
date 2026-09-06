@@ -37,7 +37,7 @@ abbr -a mkdir "mkdir -pv"
 abbr -a mountedinfo "df -hT"
 abbr -a duf "duf -hide special"
 abbr -a folders "du -h --max-depth=1"
-abbr -a diskspace "du -S | sort -n -r | less"
+abbr -a diskspace "du -S | sort -n -r | vi -"
 
 # Permissions & security
 abbr -a sha1 "openssl sha1"
@@ -52,7 +52,7 @@ abbr -a myip "curl ifconfig.me"
 abbr -a oc "opencode --port 3000"
 abbr -a bright "brightnessctl set"
 abbr -a grep "grep --color=always"
-abbr -a rg "rg --color=always --hidden --no-ignore"
+abbr -a rg "rg -uui --color=always"
 abbr -a nettest "nix shell nixpkgs#speedtest-go --command speedtest-go"
 abbr -a antigravity "nix run github:jacopone/antigravity-nix#google-antigravity-cli"
 

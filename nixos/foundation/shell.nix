@@ -51,7 +51,7 @@
       mountedinfo = "df -hT";
       duf = "duf -hide special";
       folders = "du -h --max-depth=1";
-      diskspace = "du -S | sort -n -r | less";
+      diskspace = "du -S | sort -n -r | vi -";
 
       # Permissions & security
       sha1 = "openssl sha1";
@@ -115,8 +115,6 @@
       HISTFILESIZE=2000
       shopt -s histappend
       shopt -s checkwinsize
-
-      export LESS="-R"
     '';
   };
 
@@ -135,7 +133,7 @@
   ];
 
   environment.sessionVariables = {
-    PAGER = "less";
+    PAGER = "vi -";
     COLORTERM = "truecolor";
 
     XDG_CONFIG_HOME = "$HOME/.config";
