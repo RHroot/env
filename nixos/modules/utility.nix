@@ -8,9 +8,8 @@
     gimp # Advanced image editor (GNU Image Manipulation Program)
     brave # Web browser
     evince # PDF viewer
-    zotero # Reference manager
     calibre # Book reader and downloader
-    blanket # Different Sounds in Background
+    obsidian # Knowledge Manager/Notes
     inkscape # Vector graphics editor
     audacity # Free, open-source audio editor and recorder
     megatools # MEGA tools to do big tasks faster through terminal
