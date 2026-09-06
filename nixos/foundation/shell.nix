@@ -51,7 +51,7 @@
       mountedinfo = "df -hT";
       duf = "duf -hide special";
       folders = "du -h --max-depth=1";
-      diskspace = "du -S | sort -n -r | vi -";
+      diskspace = "du -S | sort -n -r | nvim -";
 
       # Permissions & security
       sha1 = "openssl sha1";
@@ -133,7 +133,7 @@
   ];
 
   environment.sessionVariables = {
-    PAGER = "vi -";
+    PAGER = "nvim -";
     COLORTERM = "truecolor";
 
     XDG_CONFIG_HOME = "$HOME/.config";

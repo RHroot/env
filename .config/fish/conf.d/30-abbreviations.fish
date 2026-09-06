@@ -37,7 +37,7 @@ abbr -a mkdir "mkdir -pv"
 abbr -a mountedinfo "df -hT"
 abbr -a duf "duf -hide special"
 abbr -a folders "du -h --max-depth=1"
-abbr -a diskspace "du -S | sort -n -r | vi -"
+abbr -a diskspace "du -S | sort -n -r | nvim -"
 
 # Permissions & security
 abbr -a sha1 "openssl sha1"
