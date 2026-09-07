@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   env,
   ...
 }:
@@ -18,7 +19,24 @@
     ./XFCE
   ];
 
+  # === Hardware ===
   boot.kernelPackages = pkgs.linuxPackages_zen;
+  fileSystems."/".options = lib.mkIf (config.fileSystems."/".fsType == "btrfs") [
+    "compress=zstd:1"
+    "noatime"
+    "discard=async"
+  ];
+  services.btrfs.autoScrub = lib.mkIf (config.fileSystems."/".fsType == "btrfs") {
+    enable = true;
+    interval = "monthly";
+  };
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 4096; # Size in MB(4Gb)
+    }
+  ];
+  boot.kernel.sysctl."vm.swappiness" = 10; # It tells the Linux kernel how aggressively to use your disk's swap space instead of physical RAM from 0 to 100
 
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
@@ -73,6 +91,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
+    options = "--delete-older-than 14d";
   };
   nix.optimise = {
     automatic = true;
@@ -120,14 +139,6 @@
 
   time.timeZone = "Asia/Kolkata";
   i18n.defaultLocale = "en_US.UTF-8";
-
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 4096; # Size in MB(4Gb)
-    }
-  ];
-  boot.kernel.sysctl."vm.swappiness" = 10; # It tells the Linux kernel how aggressively to use your disk's swap space instead of physical RAM from 0 to 100
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.11";
