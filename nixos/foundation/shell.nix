@@ -79,10 +79,9 @@
       vol = "wpctl get-volume @DEFAULT_AUDIO_SINK@";
 
       # LS commands
-      ls = "ls --hyperlink=auto";
-      la = "ls -A --hyperlink=auto";
-      lz = "ls -lhAi --hyperlink=auto";
-      lh = "ls -d .* 2>/dev/null --hyperlink=auto";
+      la = "ls -A";
+      lz = "ls -lhAi";
+      lh = "ls -d .* 2>/dev/null";
       tree = "tree -a 2>/dev/null || ls -R --color=auto";
     };
 

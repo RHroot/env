@@ -65,8 +65,7 @@ abbr -a open "xdg-open"
 abbr -a vol "wpctl get-volume @DEFAULT_AUDIO_SINK@"
 
 # LS commands
-abbr -a ls "ls --hyperlink=auto"
-abbr -a la "ls -A --hyperlink=auto"
-abbr -a lz "ls -lhAi --hyperlink=auto"
-abbr -a lh 'set m .*; and [ "$m" != ".*" ]; and ls -d $m 2>/dev/null --hyperlink=auto'
-abbr -a list "tree -a --hyperlink 2>/dev/null || ls -R"
+abbr -a la "ls -A"
+abbr -a lz "ls -lhAi"
+abbr -a lh 'set m .*; and [ "$m" != ".*" ]; and ls -d $m 2>/dev/null'
+abbr -a list "tree -a 2>/dev/null || ls -R"

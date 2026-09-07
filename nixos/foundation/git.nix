@@ -21,7 +21,7 @@
       commit.gpgsign = true;
 
       core = {
-        editor = "vi";
+        editor = "nvim";
         pager = "delta";
         autocrlf = "input";
       };
@@ -34,6 +34,7 @@
         side-by-side = true;
         syntax-theme = "Dracula";
         hyperlinks = true;
+        pager = "less";
       };
 
       diff.colorMoved = "default";
