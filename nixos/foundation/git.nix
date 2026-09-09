@@ -15,6 +15,7 @@
 
   programs.git = {
     enable = true;
+    prompt.enable = true;
 
     config = {
       gpg.format = "ssh";

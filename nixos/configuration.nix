@@ -53,7 +53,6 @@
 
   users.users.${env.username} = {
     isNormalUser = true;
-    shell = pkgs.fish;
     description = env.description;
     extraGroups = [
       "networkmanager"

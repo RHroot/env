@@ -18,6 +18,7 @@
     socat # Swiss army knife for data relay between anything
     ffmpeg # Multimedia framework for encoding, decoding, and processing media
     img2pdf # Convert images to PDF without re-encoding
+    dnsutils # To get cli tools like dig
     moreutils # Additional Unix utilities not in coreutils
     fastfetch # System information fetch tool
     lm_sensors # Read sensors data from Linux kernel
