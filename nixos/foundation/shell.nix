@@ -135,7 +135,7 @@
         # Define custom colors
         declare -g color_primary="#f5992e"
         declare -g color_secondary="#785cea"
-        declare -g color_neutral="#5f5f87"
+        declare -g color_neutral="#6B9E6B"
         declare -g color_global
 
         declare -g glyph_badge_left=""

@@ -7,7 +7,7 @@ function _nixprompt_config
     # Define custom colors
     set -g color_primary "f5992e"
     set -g color_secondary "785cea"
-    set -g color_neutral "5f5f87"
+    set -g color_neutral "6B9E6B"
     set -g color_global ""
 
     set -g glyph_badge_left ""
