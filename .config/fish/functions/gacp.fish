@@ -5,5 +5,5 @@ function gacp
   else
     git commit -m "$argv"
   end
-  git push
+  git push -u
 end

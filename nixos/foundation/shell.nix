@@ -11,6 +11,38 @@
     shell = pkgs.fish;
   };
 
+  documentation = {
+    enable = true;
+    man.enable = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    package = pkgs.zoxide;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    fish # User-friendly shell with powerful features and plugins
+    lolcat # Colorful text output using rainbow gradients
+    ripgrep # Fast recursive text search tool (rg)
+  ];
+
+  environment.sessionVariables = {
+    PAGER = "nvim -";
+    COLORTERM = "truecolor";
+
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_CACHE_HOME = "$HOME/.cache";
+
+    LESSHISTFILE = "$HOME/.cache/less_history";
+    PYTHON_HISTORY = "$HOME/.local/share/python/history";
+  };
+
+  environment.localBinInPath = true;
+
   programs.bash = {
     enable = true;
     completion.enable = true;
@@ -63,9 +95,9 @@
 
       # Dev & tools
       ga = "git add";
-      gp = "git push";
       gd = "git diff";
       gs = "git status";
+      gp = "git push -u";
       myip = "curl ifconfig.me";
       oc = "opencode --port 3000";
       bright = "brightnessctl set";
@@ -414,36 +446,4 @@
       config && init
     '';
   };
-
-  documentation = {
-    enable = true;
-    man.enable = true;
-  };
-
-  programs.zoxide = {
-    enable = true;
-    package = pkgs.zoxide;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    fish # User-friendly shell with powerful features and plugins
-    lolcat # Colorful text output using rainbow gradients
-    ripgrep # Fast recursive text search tool (rg)
-  ];
-
-  environment.sessionVariables = {
-    PAGER = "nvim -";
-    COLORTERM = "truecolor";
-
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_CACHE_HOME = "$HOME/.cache";
-
-    LESSHISTFILE = "$HOME/.cache/less_history";
-    PYTHON_HISTORY = "$HOME/.local/share/python/history";
-  };
-
-  environment.localBinInPath = true;
 }

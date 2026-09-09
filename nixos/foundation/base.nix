@@ -7,13 +7,13 @@
   environment.systemPackages = with pkgs; [
     # === Essential CLI Tools ===
     jq # JSON processor
-    btop # Modern resource monitor (CPU, RAM, disk, network)
-    wget # Non-interactive file downloader
-    curl # Data transfer tool for URLs
-    dust # Disk usage analyzer (du alternative)
-    stow # Symlink-based dotfile manager
-    tree # Display directory structure as a tree
     file # Determine file type
+    curl # Data transfer tool for URLs
+    stow # Symlink-based dotfile manager
+    wget # Non-interactive file downloader
+    dust # Disk usage analyzer (du alternative)
+    tree # Display directory structure as a tree
+    btop # Modern resource monitor (CPU, RAM, disk, network)
     gnupg # Encryption and signing tool
     socat # Swiss army knife for data relay between anything
     ffmpeg # Multimedia framework for encoding, decoding, and processing media

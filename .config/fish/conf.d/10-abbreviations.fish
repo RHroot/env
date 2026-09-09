@@ -45,9 +45,9 @@ abbr -a own "sudo chown -R $USER"
 
 # Dev & tools
 abbr -a ga "git add"
-abbr -a gp "git push"
 abbr -a gd "git diff"
 abbr -a gs "git status"
+abbr -a gp "git push -u"
 abbr -a myip "curl ifconfig.me"
 abbr -a oc "opencode --port 3000"
 abbr -a bright "brightnessctl set"
