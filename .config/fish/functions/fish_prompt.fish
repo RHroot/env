@@ -369,7 +369,7 @@ function fish_prompt
         set -g _nixprompt_configured 1
     end
 
-    set -l segments identity timestamp path git prompt
+    set -l segments identity path git prompt
     for segment in $segments
         set -l renderer "render_$segment"
         if functions -q "$renderer"

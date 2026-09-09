@@ -124,7 +124,7 @@
     promptInit = ''
       config() {
         # Define prompt segments
-        declare -ag segments=(identity timestamp path git prompt)
+        declare -ag segments=(identity path git prompt)
         declare -ag dynamics=(identity git)
 
         # Define active features
