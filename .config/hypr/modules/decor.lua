@@ -1,13 +1,27 @@
 hl.config({
 	general = {
-		border_size = 0,
-		gaps_in = 3,
-		gaps_out = 6,
+		gaps_in = 1,
+		gaps_out = 3,
+		border_size = 2,
+		allow_tearing = false,
+		resize_on_border = false,
+		col = {
+			active_border = {
+				colors = {
+					"rgba(660000ff)", -- Dark Red
+					"rgba(8b4500ff)", -- Dark Orange/Rust
+					"rgba(666600ff)", -- Dark Yellow/Olive
+					"rgba(004d00ff)", -- Dark Green
+					"rgba(000066ff)", -- Dark Blue
+					"rgba(330066ff)", -- Dark Purple
+				},
+				angle = 45,
+			},
+		},
 	},
 })
 
 hl.config({
-
 	decoration = {
 		rounding = 16,
 
@@ -17,11 +31,7 @@ hl.config({
 		dim_inactive = false,
 
 		shadow = {
-			enabled = true,
-			range = 16,
-			render_power = 10,
-			color = "#000000",
-			color_inactive = "#000000",
+			enabled = false,
 		},
 
 		blur = {
