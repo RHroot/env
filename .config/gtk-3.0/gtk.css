@@ -1,0 +1,40 @@
+/* === MIN-MAX: Pure B&W GTK Canvas (Ultra Dark Selection) === */
+
+@define-color accent_color #1A1A1A;
+@define-color accent_fg_color #888888;
+@define-color accent_bg_color #1A1A1A;
+
+@define-color window_bg_color #0A0A0A;
+@define-color window_fg_color #EAEAEA;
+@define-color headerbar_bg_color #141414;
+@define-color headerbar_fg_color #EAEAEA;
+@define-color popover_bg_color #1E1E1E;
+@define-color popover_fg_color #EAEAEA;
+@define-color view_bg_color #0A0A0A;
+@define-color view_fg_color #EAEAEA;
+@define-color card_bg_color #141414;
+@define-color card_fg_color #EAEAEA;
+@define-color sidebar_bg_color @window_bg_color;
+@define-color sidebar_fg_color @window_fg_color;
+@define-color sidebar_border_color @window_bg_color;
+@define-color sidebar_backdrop_color @window_bg_color;
+
+/* === Kill libadwaita blue selection - ultra dark === */
+:selected,
+.selection,
+selection {
+  background-color: #1a1a1a;
+  color: #888888;
+}
+
+:focus:selected,
+:focus .selection {
+  background-color: #1a1a1a;
+  color: #888888;
+}
+
+.sidebar:selected,
+.sidebar .selection {
+  background-color: #1a1a1a;
+  color: #888888;
+}

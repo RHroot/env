@@ -4,7 +4,7 @@
   ...
 }:
 let
-  themeName = "Flat-Remix-GTK-Magenta-Darkest";
+  themeName = "Flat-Remix-GTK-White-Darkest";
   iconTheme = "Papirus-Dark";
   cursorTheme = "Bibata-Modern-Ice";
   cursorSize = 30;
@@ -14,6 +14,7 @@ let
 in
 {
   programs.dconf.enable = true;
+
   fonts = {
     packages = with pkgs; [
       noto-fonts
@@ -39,9 +40,7 @@ in
     gtk4
     adwaita-qt
     bibata-cursors
-    flat-remix-gtk
     papirus-icon-theme
-    adwaita-icon-theme
   ];
   environment.etc = {
     "xdg/gtk-3.0/settings.ini".text = ''
