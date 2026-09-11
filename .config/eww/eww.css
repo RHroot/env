@@ -3,8 +3,8 @@
 }
 
 window#hyprbar {
-  background-color: rgba(10, 10, 10, 0.92);
-  border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+  background-color: rgba(10, 10, 10, 0.95);
+  border-bottom: 1px solid rgba(234, 234, 234, 0.1);
   font-family: "FiraCode Nerd Font", "Noto Sans", "Merriweather", sans-serif;
   font-size: 16px;
   color: #eaeaea;
@@ -15,19 +15,8 @@ window#hyprbar {
 .module-hyprnight,
 .module-clock,
 .module-metric,
-.module-tray,
-.metric-cpu,
-.metric-net,
-.metric-ram,
-.metric-battery,
-.metric-battery .charging-icon,
-.metric-disk {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.module-hyprnight,
-.module-metric,
 .module-tray {
+  background: rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
 }
 
@@ -35,34 +24,42 @@ window#hyprbar {
 .module-clock:hover,
 .module-metric:hover,
 .module-tray > *:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.75);
 }
 
 /* ─── Layout ──────────────────────────────────────────────── */
 .bar-left,
 .bar-right {
-  padding: 0 6px;
+  padding: 0 8px;
 }
 
 /* ─── Modules ─────────────────────────────────────────────── */
 .module-hyprnight {
   color: #6f0000;
-  padding: 2px 18px;
+  padding: 4px 20px;
   font-size: 20px;
   font-weight: 700;
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .module-workspaces {
   font-size: 16px;
-  padding: 0 4px;
+  padding: 0 6px;
 }
 
 .workspace-btn {
   font-size: 16px;
+  color: #666666;
+  opacity: 0.6;
+  padding: 4px 8px;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+}
+
+.workspace-btn:hover {
   color: #8a8a8a;
-  opacity: 0.5;
-  padding: 2px 6px;
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .workspace-btn.active {
@@ -70,89 +67,96 @@ window#hyprbar {
   color: #6f0000;
   opacity: 1;
   font-weight: 700;
-  text-shadow:
-    0 0 8px #6f0000,
-    0 0 12px #6f0000;
+  background: rgba(111, 0, 0, 0.15);
 }
 
 .module-clock {
   font-size: 16px;
   font-weight: 500;
   color: #6f0000;
-  padding: 4px 22px;
-  border-radius: 14px;
-  border: 1px solid rgba(234, 234, 234, 0.1);
-  letter-spacing: 0.5px;
-  transition: all 0.2s ease-in-out;
+  padding: 6px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(111, 0, 0, 0.3);
 }
 
 .module-clock:hover {
-  border-color: rgba(234, 234, 234, 0.2);
+  border-color: rgba(111, 0, 0, 0.6);
+  background: rgba(111, 0, 0, 0.1);
 }
 
 /* ─── Hardware Metrics ────────────────────────────────────── */
 .module-metric {
-  font-size: 16px;
-  padding: 4px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(234, 234, 234, 0.06);
-  min-width: 30px;
+  font-size: 15px;
+  padding: 5px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(234, 234, 234, 0.08);
+  min-width: 35px;
 }
 
 .module-metric:hover {
-  border-color: rgba(234, 234, 234, 0.15);
+  border-color: rgba(234, 234, 234, 0.2);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .module-metric .icon {
-  margin-right: 5px;
+  margin-right: 6px;
+  font-size: 16px;
 }
+
 .module-metric .label {
-  opacity: 0.9;
+  opacity: 0.95;
+  font-weight: 500;
 }
 
 .metric-net {
-  color: #6f0000;
+  color: #8a8a8a;
 }
 
 .metric-cpu {
   color: #cc0000;
 }
+
 .metric-ram {
-  color: #aaaaaa;
+  color: #b8b8b8;
 }
+
 .metric-disk {
-  color: #8a8a8a;
+  color: #9a9a9a;
 }
+
 .metric-battery {
-  color: #cccccc;
+  color: #d0d0d0;
 }
+
 .metric-battery .charging-icon {
-  color: #9a0000;
-  margin-left: 2px;
+  color: #6f0000;
+  margin-left: 4px;
+  font-size: 14px;
 }
 
 /* ─── Utilities ───────────────────────────────────────────── */
 .module-tray {
-  margin: 0 4px;
-  padding: 4px 6px;
-  border-radius: 10px;
-  min-width: 22px;
-  min-height: 22px;
+  margin: 0 6px;
+  padding: 6px 8px;
+  border-radius: 16px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .module-separator {
-  color: rgba(234, 234, 234, 0.12);
-  padding: 0 2px;
+  color: rgba(234, 234, 234, 0.15);
+  padding: 0 4px;
   font-weight: 100;
+  font-size: 18px;
 }
 
 /* --- Locks ------------------------------------------------- */
 .warning-badge {
   color: #ffffff;
-  font-weight: bold;
-  font-size: 12px;
+  font-weight: 700;
+  font-size: 13px;
   background-color: #6f0000;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 16px;
   border: 2px solid #cc0000;
 }
@@ -160,48 +164,49 @@ window#hyprbar {
 /* --- OSD --------------------------------------------------- */
 .osd-box {
   background-color: #1a1a1a;
-  border-radius: 10px;
+  border-radius: 16px;
   border: 2px solid #6f0000;
-  padding: 10px 20px;
+  padding: 12px 24px;
 }
 
 .osd-icon {
   color: #eaeaea;
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .osd-scale trough {
   background-color: #2a2a2a;
-  border-radius: 5px;
-  min-height: 10px;
-  min-width: 200px;
+  border-radius: 16px;
+  min-height: 12px;
+  min-width: 220px;
 }
 
 .osd-scale highlight {
   background-color: #6f0000;
-  border-radius: 5px;
+  border-radius: 16px;
 }
 
 .osd-text {
   color: #eaeaea;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 17px;
+  font-weight: 700;
 }
 
 /* --- Power Menu --------------------------------------------- */
 .powermenu-box {
   background-color: #1a1a1a;
-  border-radius: 10px;
+  border-radius: 16px;
   border: 2px solid #6f0000;
-  padding: 20px;
+  padding: 24px;
 }
 
 .pwr-btn {
   color: #eaeaea;
-  font-size: 50px;
+  font-size: 48px;
   background-color: #2a2a2a;
-  padding: 15px 25px;
-  border-radius: 8px;
+  padding: 18px 28px;
+  border-radius: 16px;
+  transition: all 0.2s ease;
 }
 
 .pwr-btn:hover {
