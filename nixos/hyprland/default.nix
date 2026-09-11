@@ -51,9 +51,6 @@
     swaybg # Wallpaper manager for Wayland compositors
     waypaper # Wallpaper manager for Wayland compositors
 
-    # === Theming ===
-    matugen # Generate color schemes from images
-
     # === Terminal emulators ===
     kitty # Feature-rich GPU-based terminal emulator
     alacritty # GPU-accelerated terminal emulator

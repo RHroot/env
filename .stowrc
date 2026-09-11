@@ -4,6 +4,7 @@
 --ignore=\nixos
 --ignore=\LICENSE
 --ignore=\.stowrc
+--ignore=\obsidian
 --ignore=\flake.nix
 --ignore=\README.md
 --ignore=\flake.lock

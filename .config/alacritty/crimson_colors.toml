@@ -1,0 +1,33 @@
+# === Alacritty Crimson Theme ===
+
+[colors.primary]
+background = "#0d0d0d"
+foreground = "#EAEAEA"
+
+[colors.cursor]
+text = "#FFFFFF"
+cursor = "#6f0000"
+
+[colors.selection]
+text = "#FFFFFF"
+background = "#6f0000"
+
+[colors.normal]
+black = "#0d0d0d"
+red = "#4a0000"
+green = "#5a7a5a"
+yellow = "#9a9a9a"
+blue = "#6a6a6a"
+magenta = "#6a1010"
+cyan = "#b8b8b8"
+white = "#eaeaea"
+
+[colors.bright]
+black = "#3a3a3a"
+red = "#7f0000"
+green = "#6a9a6a"
+yellow = "#c8c8c8"
+blue = "#8a8a8a"
+magenta = "#9b0000"
+cyan = "#dcdcdc"
+white = "#ffffff"
