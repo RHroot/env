@@ -1,10 +1,10 @@
 --target=$HOME
---ignore=\Art
 --ignore=\.git
 --ignore=\nixos
 --ignore=\LICENSE
 --ignore=\.stowrc
 --ignore=\obsidian
+--ignore=\Wallpaper
 --ignore=\flake.nix
 --ignore=\README.md
 --ignore=\flake.lock
