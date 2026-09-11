@@ -10,6 +10,7 @@
     xwayland.enable = true;
   };
 
+  programs.uwsm.enable = true;
   programs.hyprlock.enable = true;
 
   xdg.mime.defaultApplications = {
