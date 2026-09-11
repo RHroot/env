@@ -86,7 +86,7 @@ window#hyprbar {
 
 /* ─── Hardware Metrics ────────────────────────────────────── */
 .module-metric {
-  font-size: 15px;
+  font-size: 16px;
   padding: 5px 14px;
   border-radius: 16px;
   border: 1px solid rgba(234, 234, 234, 0.08);
@@ -131,7 +131,7 @@ window#hyprbar {
 .metric-battery .charging-icon {
   color: #6f0000;
   margin-left: 4px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* ─── Utilities ───────────────────────────────────────────── */
