@@ -40,13 +40,6 @@
   xdg.mime = {
     enable = true;
   };
-  programs.bat = {
-    enable = true;
-    package = pkgs.bat;
-    extraPackages = with pkgs.bat-extras; [
-      batman
-    ];
-  };
   programs.nix-index = {
     enable = true;
     enableZshIntegration = true;

@@ -29,9 +29,15 @@
     ripgrep # Fast recursive text search tool (rg)
   ];
 
+  programs.bat = {
+    enable = true;
+    package = pkgs.bat;
+  };
+
   environment.sessionVariables = {
-    PAGER = "nvim -";
+    PAGER = "bat";
     COLORTERM = "truecolor";
+    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
 
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";

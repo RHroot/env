@@ -69,7 +69,7 @@
   #   };
   # };
   environment.variables = {
-    EDITOR = "vi";
-    VISUAL = "vi";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
   };
 }
