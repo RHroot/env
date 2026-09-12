@@ -15,8 +15,8 @@
     ./modules
     # === Window Manager ===
     ./hyprland
-    # === Desktop Manager ===
-    ./XFCE
+    # === Xsessions ===
+    ./xsession
   ];
 
   # === Hardware ===

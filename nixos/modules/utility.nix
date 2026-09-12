@@ -17,6 +17,7 @@
     obs-studio # Open Broadcaster Software for video recording and live streaming
     qbittorrent # Torrent client
     polkit_gnome # GUI Polkit agent
+    google-chrome # Secondary Browser for Exams and Stuff
     telegram-desktop # Messenger
     libreoffice-fresh # Office suite
     kdePackages.kdenlive # Non-linear video editor for creating and editing videos
