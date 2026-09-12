@@ -57,6 +57,7 @@
     xclip
     xrandr
     xidlehook
+    xdotool
 
     feh
     maim
@@ -67,5 +68,6 @@
     clipmenu
     libinput
     playerctl
+    libinput-gestures
   ];
 }
