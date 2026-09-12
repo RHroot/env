@@ -71,6 +71,6 @@ bindsym XF86MonBrightnessDown exec --no-startup-id bash -c 'brightnessctl set 5%
 # === BAR ===
 bar {
     status_command i3status
-    font pango:FiraCode Nerd Font, Noto Sans, Merriweather 10
+    font pango:FiraCode Nerd Font, Noto Sans, Merriweather 12
     position bottom
 }

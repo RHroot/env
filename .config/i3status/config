@@ -14,6 +14,19 @@ order += "memory"
 order += "disk /"
 order += "tztime local"
 
+tztime local {
+    format = "%Y-%m-%d %H:%M:%S"
+}
+
+disk "/" {
+    format = "💾 %avail"
+}
+
+memory {
+    format = "🧩 %used / %available"
+        threshold_degraded = "10%"
+}
+
 wireless wlp0s20f3 {
     format_up = "W:%quality at %essid, %bitrate)"
         format_down = "W: down"
@@ -36,37 +49,28 @@ path_exists DNS {
         format_down = "DNS: down"
 }
 
-battery 0 {
-    format = "%status %percentage %remaining %emptytime"
-        format_down = "No battery"
-        status_chr = "⚡ CHR"
-        status_bat = "🔋 BAT"
-        status_unk = "? UNK"
-        status_full = "☻ FULL"
-        low_threshold = 30
-        threshold_type = "time"
-        path = /sys/class/power_supply/BAT0/uevent
-}
-
-disk "/" {
-    format = "Free %avail"
-}
-
 cpu_usage {
-    format = "CPU: %usage"
+    format = "🧠 %usage"
+    max_threshold = 80
+    format_above_threshold = "Warning above threshold: %usage"
 }
 
 cpu_temperature 0 {
-    format = "T: %degrees °C"
+    format = "🌡️ %degrees °C"
     max_threshold = 80
     format_above_threshold = "Warning T above threshold: %degrees °C"
 }
 
-memory {
-    format = "RAM: %used / %available"
-        threshold_degraded = "10%"
-}
-
-tztime local {
-    format = "%Y-%m-%d %H:%M:%S"
+battery 0 {
+    format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡"
+        status_bat = "🔋"
+        status_unk = "?"
+        status_full = "☻"
+        status_idle = "🔌"
+        low_threshold = 30
+        threshold_type = "time"
+        last_full_capacity = true
+        path = /sys/class/power_supply/BAT0/uevent
 }
