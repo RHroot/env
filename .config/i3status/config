@@ -1,0 +1,72 @@
+general {
+    colors = true
+        interval = 5
+}
+
+order += "wireless wlp0s20f3"
+order += "ethernet enp0s31f6"
+order += "run_watch VPN"
+order += "path_exists DNS"
+order += "battery 0"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "memory"
+order += "disk /"
+order += "tztime local"
+
+wireless wlp0s20f3 {
+    format_up = "W:%quality at %essid, %bitrate)"
+        format_down = "W: down"
+}
+
+ethernet enp0s31f6 {
+    format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+run_watch VPN {
+    pidfile = "/var/run/vpnc/pid"
+        format = "VPN: %title %condition"
+        format_down = "VPN: OFF"
+}
+
+path_exists DNS {
+    path = "/etc/resolv.conf"
+        format = "DNS: active"
+        format_down = "DNS: down"
+}
+
+battery 0 {
+    format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡ CHR"
+        status_bat = "🔋 BAT"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        low_threshold = 30
+        threshold_type = "time"
+        path = /sys/class/power_supply/BAT0/uevent
+}
+
+disk "/" {
+    format = "Free %avail"
+}
+
+cpu_usage {
+    format = "CPU: %usage"
+}
+
+cpu_temperature 0 {
+    format = "T: %degrees °C"
+    max_threshold = 80
+    format_above_threshold = "Warning T above threshold: %degrees °C"
+}
+
+memory {
+    format = "RAM: %used / %available"
+        threshold_degraded = "10%"
+}
+
+tztime local {
+    format = "%Y-%m-%d %H:%M:%S"
+}

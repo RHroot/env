@@ -13,15 +13,15 @@
   programs.uwsm.enable = true;
   programs.hyprlock.enable = true;
 
-  xdg.mime.defaultApplications = {
-    # Images
-    "image/png" = [ "imv.desktop" ];
-    "image/jpeg" = [ "imv.desktop" ];
-    "image/webp" = [ "imv.desktop" ];
-    "image/gif" = [ "imv.desktop" ];
-    # File manager
-    "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
-  };
+  # xdg.mime.defaultApplications = {
+  #   # Images
+  #   "image/png" = [ "imv.desktop" ];
+  #   "image/jpeg" = [ "imv.desktop" ];
+  #   "image/webp" = [ "imv.desktop" ];
+  #   "image/gif" = [ "imv.desktop" ];
+  #   # File manager
+  #   "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+  # };
 
   xdg.portal = {
     enable = true;

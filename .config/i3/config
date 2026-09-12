@@ -1,0 +1,76 @@
+# --- Basic Setup ---
+set $mod Mod4
+default_border none
+default_floating_border none
+font pango:FiraCode Nerd Font, Noto Sans, Merriweather 10
+
+# --- Autostart ---
+exec --no-startup-id dunst
+exec --no-startup-id picom -b
+exec --no-startup-id clipmenud
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id feh --bg-fill ~/env/Wallpaper/Crimson_Batman.jpg
+exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 299 'i3lock-color -c 000000' ''
+
+
+# --- Core Keybinds ---
+bindsym $mod+q kill
+bindsym $mod+Shift+r restart
+bindsym $mod+Return exec kitty
+bindsym $mod+f fullscreen toggle global
+bindsym $mod+b exec brave --ozone-platform=x11
+bindsym $mod+space exec --no-startup-id dmenu_run
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# --- Workspaces ---
+# Switch to workspace
+bindsym $mod+j workspace prev
+bindsym $mod+k workspace next
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# --- Lock State Notifications ---
+bindsym --release Caps_Lock exec --no-startup-id bash -c 'sleep 0.05 && xset q | grep -q "Caps Lock: *on" && dunstify -a CapsLock -r 9995 -t 0 "caps on" || dunstify -C 9995'
+
+bindsym --release Num_Lock exec --no-startup-id bash -c 'sleep 0.05 && xset q | grep -q "Num Lock: *on" && dunstify -a NumLock -r 9996 -t 0 "numl off" || dunstify -C 9996'
+
+# --- Volume Controls ---
+bindsym XF86AudioRaiseVolume exec --no-startup-id bash -c 'wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ && v=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk "{print int(\$2 * 100)}") && dunstify -a Volume -r 9993 -h int:value:$v "Volume: $v%" -t 1000'
+
+bindsym XF86AudioLowerVolume exec --no-startup-id bash -c 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && v=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk "{print int(\$2 * 100)}") && dunstify -a Volume -r 9993 -h int:value:$v "Volume: $v%" -t 1000'
+
+bindsym XF86AudioMute exec --no-startup-id bash -c 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && dunstify -a Volume -r 9993 "Mute Toggled" -t 1000'
+
+# --- Brightness Controls ---
+bindsym XF86MonBrightnessUp exec --no-startup-id bash -c 'brightnessctl set 5%+ && b=$(brightnessctl | grep -o "[0-9]*%" | head -n1 | tr -d %) && dunstify -a Brightness -r 9994 -h int:value:$b "Brightness: $b%" -t 1000'
+
+bindsym XF86MonBrightnessDown exec --no-startup-id bash -c 'brightnessctl set 5%- && b=$(brightnessctl | grep -o "[0-9]*%" | head -n1 | tr -d %) && dunstify -a Brightness -r 9994 -h int:value:$b "Brightness: $b%" -t 1000'
+
+
+# === BAR ===
+bar {
+    status_command i3status
+    font pango:FiraCode Nerd Font, Noto Sans, Merriweather 10
+    position bottom
+}
