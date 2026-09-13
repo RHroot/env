@@ -18,6 +18,7 @@ exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 29
 # --- Core Keybinds ---
 bindsym $mod+q kill
 bindsym $mod+Shift+r restart
+bindsym $mod+v exec clipmenu
 bindsym $mod+Return exec kitty
 bindsym $mod+f fullscreen toggle global
 bindsym $mod+b exec brave --ozone-platform=x11
