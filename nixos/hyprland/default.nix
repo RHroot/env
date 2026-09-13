@@ -19,8 +19,6 @@
     "image/jpeg" = [ "imv.desktop" ];
     "image/webp" = [ "imv.desktop" ];
     "image/gif" = [ "imv.desktop" ];
-    # File manager
-    "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
   };
 
   xdg.portal = {
@@ -55,8 +53,5 @@
     # === Terminal emulators ===
     kitty # Feature-rich GPU-based terminal emulator
     alacritty # GPU-accelerated terminal emulator
-
-    # === File managers ===
-    nautilus # GNOME file manager
   ];
 }

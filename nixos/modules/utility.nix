@@ -8,6 +8,7 @@
     gimp # Advanced image editor (GNU Image Manipulation Program)
     brave # Web browser
     evince # PDF viewer
+    pcmanfm # File Manager
     calibre # Book reader and downloader
     obsidian # Knowledge Manager/Notes
     inkscape # Vector graphics editor
@@ -147,10 +148,12 @@
     # Web
     "x-scheme-handler/http" = [ "brave-browser.desktop" ];
     "x-scheme-handler/https" = [ "brave-browser.desktop" ];
-    # PDF viewer
-    "application/pdf" = [ "org.gnome.Evince.desktop" ];
     # Video
     "video/mp4" = [ "mpv.desktop" ];
     "video/x-matroska" = [ "mpv.desktop" ];
+    # File manager
+    "inode/directory" = [ "pcmanfm.desktop" ];
+    # PDF viewer
+    "application/pdf" = [ "org.gnome.Evince.desktop" ];
   };
 }
