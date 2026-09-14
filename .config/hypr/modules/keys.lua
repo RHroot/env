@@ -1,14 +1,10 @@
 --- VARIABLE DEFINITIONS
 local opts = { repeating = true }
+local browser = "brave"
 local terminal = "kitty"
-local filemanager = "nautilus"
+local filemanager = "pcmanfm"
 local alt_terminal = "alacritty"
 local runmenu = "rofi -show run"
--- local browser = "firefox -P 'Default'"
--- local alt_browser = "firefox -P 'Work'"
-local theme = "$HOME/env/nixos/hyprland/wset"
-local browser = "brave --profile-directory='Default'"
-local alt_browser = "brave --profile-directory='Work'"
 local vanishing_terminal = "kitten quick-access-terminal"
 local menu = "rofi -show combi -modes combi -combi-modes 'window,drun,run'"
 local clipboardmanager = "cliphist list | rofi -dmenu -p 'Clipboard' -theme config | cliphist decode | wl-copy"
@@ -19,17 +15,14 @@ hl.bind("SUPER + B", hl.dsp.exec_cmd(browser))
 hl.bind("SUPER + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(filemanager))
 hl.bind("SUPER + Return", hl.dsp.exec_cmd(terminal))
-hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd(theme))
 hl.bind("SUPER  + V", hl.dsp.exec_cmd(clipboardmanager))
 hl.bind("SUPER + P ", hl.dsp.exec_cmd(vanishing_terminal))
-hl.bind("SUPER + SHIFT + B", hl.dsp.exec_cmd(alt_browser))
 hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd("pavucontrol"))
 hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("emacsclient -c"))
 hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd(alt_terminal))
 
 --- SYSTEM CONTROLS
 -- --- System power and session management
-hl.bind("SUPER + Escape", hl.dsp.exec_cmd("eww open --toggle powermenu"))
 hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind("CTRL + ALT + R", hl.dsp.exec_cmd("systemctl reboot"))
 hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("systemctl poweroff"))
@@ -116,39 +109,67 @@ hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 --- Trigger when the switch is toggled.
 hl.bind("switch:[switch name]", hl.dsp.exec_cmd("hyprlock"), { locked = true })
 
---- BRIGHTNESS CONTROLS
-hl.bind(
-	"XF86MonBrightnessUp",
-	hl.dsp.exec_cmd("sh -c 'brightnessctl set +10% >/dev/null && sh ~/.config/eww/vbosd.sh brightness'"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86MonBrightnessDown",
-	hl.dsp.exec_cmd("sh -c 'brightnessctl set 10%- >/dev/null && sh ~/.config/eww/vbosd.sh brightness'"),
-	{ locked = true, repeating = true }
-)
-
 --- AUDIO CONTROLS
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"), { locked = true })
 
+-- --- Lock Keys (xset replaced with state file for Wayland) ---
+hl.bind(
+	"Caps_Lock",
+	hl.dsp.exec_cmd(
+		[[bash -c 'if [ -f /tmp/caps_state ]; then rm /tmp/caps_state && dunstify -C 9995; else touch /tmp/caps_state && dunstify -a CapsLock -r 9995 -t 0 "Caps On"; fi']]
+	)
+)
+
+hl.bind(
+	"Num_Lock",
+	hl.dsp.exec_cmd(
+		[[bash -c 'if [ -f /tmp/num_state ]; then rm /tmp/num_state && dunstify -C 9996; else touch /tmp/num_state && dunstify -a NumLock -r 9996 -t 0 "Num Off"; fi']]
+	)
+)
+
+-- --- Brightness Controls ---
+hl.bind(
+	"XF86MonBrightnessUp",
+	hl.dsp.exec_cmd(
+		[[bash -c "brightnessctl set 5%+ && b=\$(brightnessctl | grep -o '[0-9]*%' | head -n1 | tr -d %) && dunstify -a Brightness -r 9994 -h int:value:\$b \"Brightness: \$b%\" -t 1000"]]
+	)
+)
+
+hl.bind(
+	"XF86MonBrightnessDown",
+	hl.dsp.exec_cmd(
+		[[bash -c "brightnessctl set 5%- && b=\$(brightnessctl | grep -o '[0-9]*%' | head -n1 | tr -d %) && dunstify -a Brightness -r 9994 -h int:value:\$b \"Brightness: \$b%\" -t 1000"]]
+	)
+)
+
+-- --- Volume Controls ---
 hl.bind(
 	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("sh -c 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ >/dev/null && sh ~/.config/eww/vbosd.sh volume'"),
-	{ repeating = true }
+	hl.dsp.exec_cmd(
+		[[bash -c "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ && v=\$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE '[0-9]+\.[0-9]+' | head -n1 | awk '{print int(\$1*100)}') && dunstify -a Volume -r 9993 -h int:value:\$v \"Volume: \$v%\" -t 1000"]]
+	)
 )
+
 hl.bind(
 	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("sh -c 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- >/dev/null && sh ~/.config/eww/vbosd.sh volume'"),
-	{ repeating = true }
+	hl.dsp.exec_cmd(
+		[[bash -c "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && v=\$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE '[0-9]+\.[0-9]+' | head -n1 | awk '{print int(\$1*100)}') && dunstify -a Volume -r 9993 -h int:value:\$v \"Volume: \$v%\" -t 1000"]]
+	)
 )
+
 hl.bind(
 	"XF86AudioMute",
-	hl.dsp.exec_cmd("sh -c 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && sh ~/.config/eww/vbosd.sh mute'")
+	hl.dsp.exec_cmd(
+		[[bash -c "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && status=\$(wpctl get-volume @DEFAULT_AUDIO_SINK@) && if echo \"\$status\" | grep -q MUTED; then dunstify -a Volume -r 9993 -i audio-volume-muted \"Volume Muted\" -t 1000; else v=\$(echo \"\$status\" | grep -oE '[0-9]+\.[0-9]+' | awk '{print int(\$1*100)}'); dunstify -a Volume -r 9993 -i audio-volume-high -h int:value:\$v \"Volume: \$v%\" -t 1000; fi"]]
+	)
 )
+
 hl.bind(
 	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("sh -c 'wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && sh ~/.config/eww/vbosd.sh mic'")
+	hl.dsp.exec_cmd(
+		[[bash -c "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && status=\$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@) && if echo \"\$status\" | grep -q MUTED; then dunstify -a Mic -r 9997 -i microphone-sensitivity-muted \"Mic Muted\" -t 1000; else v=\$(echo \"\$status\" | grep -oE '[0-9]+\.[0-9]+' | awk '{print int(\$1*100)}'); dunstify -a Mic -r 9997 -i audio-input-microphone-high -h int:value:\$v \"Mic: \$v%\" -t 1000; fi"]]
+	)
 )

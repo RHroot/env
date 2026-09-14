@@ -47,7 +47,6 @@
     clang-tools # Clang static analyzer
 
     # === Utility tools ===
-    eww # ElKovar's Wacky Widget
     tmux # Terminal multiplexer
     lazygit # Terminal UI for Git operations
     opencode # Open source code search engine

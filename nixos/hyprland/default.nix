@@ -40,6 +40,7 @@
     imv # Image viewer for Wayland
     rofi # Application launcher and dmenu replacement
     dunst # Lightweight notification daemon
+    ashell # Status Bar
     cliphist # Clipboard manager for Wayland
     libinput # Input device management library
     playerctl # Media player control via MPRIS

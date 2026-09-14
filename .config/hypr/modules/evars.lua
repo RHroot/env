@@ -37,3 +37,5 @@ hl.env("XCURSOR_SIZE", "30") -- Sets legacy X11/XWayland cursor size fallback
 -- hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 -- hl.env("__GL_GSYNC_ALLOWED", "0")
 -- hl.env("__GL_VRR_ALLOWED", "0")
+
+hl.env("I3SOCK", "${XDG_RUNTIME_DIR}/hypr/${HYPRLAND_INSTANCE_SIGNATURE}/.socket.sock")

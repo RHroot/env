@@ -37,6 +37,8 @@
   environment.sessionVariables = {
     PAGER = "bat";
     COLORTERM = "truecolor";
+
+    MANROFFOPT = "-c";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
 
     XDG_CONFIG_HOME = "$HOME/.config";
