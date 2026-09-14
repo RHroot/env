@@ -1,5 +1,5 @@
+# === Global Stuff ===
 outputs = "All"
-
 layer = "Bottom"
 position = "Bottom"
 
@@ -9,49 +9,7 @@ hibernate_cmd = "systemctl hibernate"
 reboot_cmd = "systemctl reboot"
 logout_cmd = "loginctl kill-user $(whoami)"
 
-[appearance]
-opacity = 1.0
-scale_factor = 1.1
-font_name = "Noto Sans"
-
-# Status colors using varying shades for distinction
-success_color = "#E6E6E6" # Very Light Gray
-warning_color = "#8C8C8C" # Medium Gray
-danger_color = "#FF0033"  # Vivid Crimson
-text_color = "#FFFFFF"    # Pure White
-
-# Workspaces: Dim Gray (Inactive), Pure White (Active), Bright Crimson (Urgent/Hover)
-workspace_colors = [ "#4D4D4D", "#FFFFFF", "#FF1A4B" ]
-
-[appearance.bar]
-surface = "Solid" 
-
-[appearance.menu]
-backdrop = 0.85
-
-[appearance.primary_color]
-# A gradient of crimson shades for accents and interactive elements
-base = "#D90429"   # Core Crimson
-strong = "#FF1A4B" # Bright Crimson (Hover state)
-weak = "#8B0000"   # Deep Blood Red (Inactive/Subtle state)
-text = "#FFFFFF"   # Pure White against red
-
-[appearance.background_color]
-# A full spectrum of blacks and grays to create depth and contrast for modules
-base = "#000000"      # Pure Black (Main bar background)
-weakest = "#080808"   # Barely visible gray 
-weaker = "#121212"    # Dark gray 
-weak = "#1A1A1A"      # Elevated dark gray
-neutral = "#262626"   # Mid-dark gray (Standard module background)
-strong = "#333333"    # Medium gray 
-stronger = "#4D4D4D"  # Light-mid gray
-strongest = "#666666" # Lightest structural gray
-text = "#F2F2F2"      # High-contrast off-white for crisp readability
-
-[media_player]
-max_title_length = 50
-indicator_format = "Icon"
-
+# === Setttings ===
 [settings]
 network_indicator_format = "Icon"
 peripheral_battery_format = "Time"
@@ -62,17 +20,11 @@ brightness_indicator_format = "IconAndPercentage"
 microphone_indicator_format = "IconAndPercentage"
 indicators = ["IdleInhibitor", "PowerProfile", "Audio", "Microphone", "Bluetooth", "Network", "Vpn", "Brightness", "Battery"]
 
-[system_info]
-indicators = [ "DownloadSpeed", "UploadSpeed", "Cpu", "Temperature", "Memory", "MemorySwap", { Disk = "/" } ]
-interval = 10
-
+# === System Info ===
 [system_info.cpu]
 format = "Percentage"
 
 [system_info.memory]
-format = "Fraction"
-
-[system_info.disk]
 format = "Fraction"
 
 [system_info.temperature]
@@ -82,19 +34,65 @@ sensor = "Cpu"
 warn_threshold = 60
 alert_threshold = 80
 
+[system_info]
+indicators = [ "DownloadSpeed", "UploadSpeed", "Cpu", "Temperature", "Memory", "MemorySwap", { Disk = "/", Name = "Nix", format = "Fraction" } ]
+interval = 10
+
+# === More Useful Stuff ===
+[tray]
+right_click = "Menu"
+
 [tempo]
 clock_format = "%a %d %b %I:%M %p"
 weather_location = { Coordinates = [ 29.9679, 77.5452 ] }
 weather_indicator = "Icon"
 
-[tray]
-right_click = "Menu"
-
 [workspaces]
 workspace_names = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 indicator_format = "NameAndIcons"
 
+[media_player]
+max_title_length = 50
+indicator_format = "Icon"
+
+# === Modules(where and order) ===
 [modules]
 left = [ [ "appLauncher", "Workspaces" ] ]
 center = [ [ "MediaPlayer", "Tempo" ] ]
 right = [ "SystemInfo", [ "Privacy", "Settings" ,"Tray" ] ]
+
+# === Appearance ===
+[appearance]
+opacity = 1.0
+scale_factor = 1.1
+font_name = "Noto Sans"
+
+success_color = "#008000"
+warning_color = "#8C8C8C"
+danger_color = "#FF0033"
+text_color = "#FFFFFF"
+
+workspace_colors = [ "#4D4D4D", "#FFFFFF", "#FF1A4B" ]
+
+[appearance.bar]
+surface = "Solid"
+
+[appearance.menu]
+backdrop = 0.40
+
+[appearance.primary_color]
+base = "#D90429"
+strong = "#FF1A4B"
+weak = "#8B0000"
+text = "#FFFFFF"
+
+[appearance.background_color]
+base = "#000000"
+weakest = "#080808"
+weaker = "#121212"
+weak = "#1A1A1A"
+neutral = "#262626"
+strong = "#333333"
+stronger = "#4D4D4D"
+strongest = "#666666"
+text = "#F2F2F2"
