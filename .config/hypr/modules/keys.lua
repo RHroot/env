@@ -23,10 +23,10 @@ hl.bind("SUPER + SHIFT + Return", hl.dsp.exec_cmd(alt_terminal))
 
 --- SYSTEM CONTROLS
 -- --- System power and session management
-hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind("CTRL + ALT + R", hl.dsp.exec_cmd("systemctl reboot"))
-hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("systemctl poweroff"))
 hl.bind("CTRL + ALT + Q", hl.dsp.exit())
+hl.bind("CTRL + ALT + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("shutdown now"))
+hl.bind("CTRL + ALT + R", hl.dsp.exec_cmd("systemctl reboot"))
 
 --- WINDOW MANAGEMENT
 --- Window control and manipulation
