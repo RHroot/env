@@ -1,16 +1,60 @@
-# === Global Stuff ===
+# === General ===
 outputs = "All"
 layer = "Bottom"
 position = "Bottom"
 
+# === Modules ===
+[modules]
+left = [ [ "appLauncher", "Workspaces" ] ]
+center = [ [ "MediaPlayer", "Tempo" ] ]
+right = [ "SystemInfo", [ "Privacy", "Settings" ,"Tray" ] ]
+
+# === Workspaces ===
+[workspaces]
+workspace_names = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+indicator_format = "NameAndIcons"
+
+# === System Info ===
+[system_info]
+indicators = [ "DownloadSpeed", "UploadSpeed", "Cpu", "Memory", "MemorySwap", { Disk = "/", Name = "Nix", format = "Fraction" } ]
+interval = 10
+
+[system_info.cpu]
+format = "Percentage"
+
+[system_info.memory]
+format = "Fraction"
+
+[system_info.disk]
+format = "Fraction"
+mounts = ["/"]
+
+[system_info.threshold_type]
+warn_threshold = 60
+alert_threshold = 80
+
+# === Media Player ===
+[media_player]
+max_title_length = 50
+indicator_format = "Icon"
+
+# === Tray ===
+[tray]
+right_click = "menu"
+
+# === Tempo ===
+[tempo]
+clock_format = "%a %d %b %I:%M %p"
+weather_location = { Coordinates = [ 29.9679, 77.5452 ] }
+weather_indicator = "Icon"
+
+# === Setttings ===
+[settings]
 shutdown_cmd = "shutdown now"
 suspend_cmd = "systemctl suspend"
 hibernate_cmd = "systemctl hibernate"
 reboot_cmd = "systemctl reboot"
 logout_cmd = "loginctl kill-user $(whoami)"
-
-# === Setttings ===
-[settings]
 network_indicator_format = "Icon"
 peripheral_battery_format = "Time"
 battery_format = "IconAndPercentage"
@@ -20,46 +64,16 @@ brightness_indicator_format = "IconAndPercentage"
 microphone_indicator_format = "IconAndPercentage"
 indicators = ["IdleInhibitor", "PowerProfile", "Audio", "Microphone", "Bluetooth", "Network", "Vpn", "Brightness", "Battery"]
 
-# === System Info ===
-[system_info.cpu]
-format = "Percentage"
+# === OSD ===
+[osd]
+enabled = true
+timeout = 1500
+show_volume_percentage = true
+show_brightness_percentage = true
 
-[system_info.memory]
-format = "Fraction"
-
-[system_info.temperature]
-sensor = "Cpu"
-
-[system_info.threshold_type]
-warn_threshold = 60
-alert_threshold = 80
-
-[system_info]
-indicators = [ "DownloadSpeed", "UploadSpeed", "Cpu", "Temperature", "Memory", "MemorySwap", { Disk = "/", Name = "Nix", format = "Fraction" } ]
-interval = 10
-
-# === More Useful Stuff ===
-[tray]
-right_click = "Menu"
-
-[tempo]
-clock_format = "%a %d %b %I:%M %p"
-weather_location = { Coordinates = [ 29.9679, 77.5452 ] }
-weather_indicator = "Icon"
-
-[workspaces]
-workspace_names = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
-indicator_format = "NameAndIcons"
-
-[media_player]
-max_title_length = 50
-indicator_format = "Icon"
-
-# === Modules(where and order) ===
-[modules]
-left = [ [ "appLauncher", "Workspaces" ] ]
-center = [ [ "MediaPlayer", "Tempo" ] ]
-right = [ "SystemInfo", [ "Privacy", "Settings" ,"Tray" ] ]
+# === Animations ===
+[animations]
+enabled = false
 
 # === Appearance ===
 [appearance]
