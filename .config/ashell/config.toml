@@ -81,12 +81,12 @@ opacity = 1.0
 scale_factor = 1.1
 font_name = "Noto Sans"
 
-success_color = "#008000"
-warning_color = "#8C8C8C"
-danger_color = "#FF0033"
-text_color = "#FFFFFF"
+success_color = "#4FD39B"
+warning_color = "#FFC966"
+danger_color = "#FF6B8D"
+text_color = "#F2EEFF"
 
-workspace_colors = [ "#4D4D4D", "#FFFFFF", "#FF1A4B" ]
+workspace_colors = [ "#372E4D", "#F2EEFF", "#B26BFF" ]
 
 [appearance.bar]
 surface = "Solid"
@@ -95,18 +95,18 @@ surface = "Solid"
 backdrop = 0.40
 
 [appearance.primary_color]
-base = "#D90429"
-strong = "#FF1A4B"
-weak = "#8B0000"
+base = "#B26BFF"
+strong = "#D0A4FF"
+weak = "#7C3AED"
 text = "#FFFFFF"
 
 [appearance.background_color]
-base = "#000000"
-weakest = "#080808"
-weaker = "#121212"
-weak = "#1A1A1A"
-neutral = "#262626"
-strong = "#333333"
-stronger = "#4D4D4D"
-strongest = "#666666"
-text = "#F2F2F2"
+base = "#05040A"
+weakest = "#0A0812"
+weaker = "#110F1B"
+weak = "#171029"
+neutral = "#231B38"
+strong = "#2B1E52"
+stronger = "#372E4D"
+strongest = "#4B4263"
+text = "#F2EEFF"

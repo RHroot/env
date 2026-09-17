@@ -3,8 +3,8 @@ configuration {
     show-icons: true;
     scroll-method: 1;
     case-sensitive: false;
-    display-run: " ";
-    display-combi: " ";
+    display-run: " ";
+    display-combi: " ";
     display-window: " Windows";
     display-drun: " Apps";
     drun-url-launcher: "xdg-open";
@@ -15,15 +15,15 @@ configuration {
 }
 
 * {
-    background-colour:           #1a1a1a;
-    foreground-colour:           #eaeaea;
-    border-colour:               #6f0000;
-    handle-colour:               #6f0000;
+    background-colour:           #05040A;
+    foreground-colour:           #F2EEFF;
+    border-colour:               #9D6BFF;
+    handle-colour:               #B26BFF;
 
-    selected-normal-background:  #6f0000;
-    selected-normal-foreground:  #ffffff;
+    selected-normal-background:  #B26BFF;
+    selected-normal-foreground:  #05040A;
 
-    active-indicator:            #cc0000;
+    active-indicator:            #D0A4FF;
 }
 
 window {

@@ -56,4 +56,4 @@ hide_when_typing = true
 
 [general]
 live_config_reload = true
-import = ["./crimson_colors.toml"]
+import = ["./theme.toml"]

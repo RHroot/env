@@ -4,7 +4,7 @@
   ...
 }:
 let
-  themeName = "Flat-Remix-GTK-Red-Darkest";
+  themeName = "Flat-Remix-GTK-Violet-Darkest";
   iconTheme = "Papirus-Dark";
   cursorTheme = "Bibata-Modern-Ice";
   cursorSize = 30;
