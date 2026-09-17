@@ -68,7 +68,6 @@ hl.config({
 	misc = {
 		vrr = 0, --- Variable refresh rate
 		disable_hyprland_logo = true, --- Show Hyprland logo
-		disable_splash_rendering = true, --- Disable splash screen
 		mouse_move_enables_dpms = true, --- Enable DPMS on mouse move
 		enable_swallow = false, --- Window swallowing
 		swallow_regex = "^(kitty|alacritty)$",
