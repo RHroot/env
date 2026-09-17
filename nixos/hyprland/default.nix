@@ -31,6 +31,7 @@
     uwsm # Universal Wayland Session Manager
     hyprlock # Screen locker for Hyprland
     hyprshot # Screenshot utility for Hyprland
+    hyprpaper # Utility to apply wallpapers
     hyprsunset # Nightlight manager for Hyprland
     hyprpicker # Color picker for Wayland/Hyprland
     hyprcursor # Cursor theme support for Hyprland
@@ -46,10 +47,6 @@
     playerctl # Media player control via MPRIS
     libnotify # Desktop notification library
     wl-clipboard # Clipboard utilities for Wayland
-
-    # === Wallpaper ===
-    swaybg # Wallpaper manager for Wayland compositors
-    waypaper # Wallpaper manager for Wayland compositors
 
     # === Terminal emulators ===
     kitty # Feature-rich GPU-based terminal emulator
