@@ -48,8 +48,7 @@
     libnotify # Desktop notification library
     wl-clipboard # Clipboard utilities for Wayland
 
-    # === Terminal emulators ===
+    # === Terminal emulator(s) ===
     kitty # Feature-rich GPU-based terminal emulator
-    alacritty # GPU-accelerated terminal emulator
   ];
 }
