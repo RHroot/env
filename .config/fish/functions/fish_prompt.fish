@@ -5,8 +5,8 @@ function _nixprompt_config
     set -g use_badges true
 
     # Define custom colors
-    set -g color_primary "f5992e"
-    set -g color_secondary "785cea"
+    set -g color_primary "785cea"
+    set -g color_secondary "f5992e"
     set -g color_neutral "6B9E6B"
     set -g color_global ""
 

@@ -141,8 +141,8 @@
         declare -g use_badges=true
 
         # Define custom colors
-        declare -g color_primary="#f5992e"
-        declare -g color_secondary="#785cea"
+        declare -g color_primary="#785cea"
+        declare -g color_secondary="#f5992e"
         declare -g color_neutral="#6B9E6B"
         declare -g color_global
 
