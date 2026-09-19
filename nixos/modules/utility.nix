@@ -37,6 +37,11 @@
   environment.sessionVariables = {
     BROWSER = "brave";
   };
+  environment.etc."xdg/pcmanfm/default/pcmanfm.conf".text = ''
+    [ui]
+    show_thumbnails=1
+    thumbnail_max_size=52428800
+  '';
 
   # programs.localsend = {
   #   enable = true;
