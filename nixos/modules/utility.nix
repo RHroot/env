@@ -72,7 +72,6 @@
 
       # Additional Brave-specific bloat & telemetry to disable
       TorDisabled = true;
-      BraveTalkDisabled = "Disabled"; # Note: Requires string "Disabled"
       BraveP3AEnabled = "Disabled"; # Privacy-preserving analytics
       BraveStatsPingEnabled = false;
       BraveWebDiscoveryEnabled = false;
@@ -93,13 +92,6 @@
       SpellCheckServiceEnabled = false; # Disables cloud spellcheck
       PromotionalTabsEnabled = false;
       ShowHomeButton = false;
-
-      # Background & Resource usage
-      BackgroundModeEnabled = false;
-      DefaultBrowserSettingEnabled = false;
-      SearchSuggestEnabled = false;
-      Disable3DAPIs = true;
-      HardwareAccelerationModeEnabled = true;
 
       # Some More
       SyncDisabled = true;
