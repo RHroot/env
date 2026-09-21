@@ -20,7 +20,7 @@
   ];
 
   # === Hardware ===
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
   fileSystems."/".options = lib.mkIf (config.fileSystems."/".fsType == "btrfs") [
     "compress=zstd:1"
     "noatime"
