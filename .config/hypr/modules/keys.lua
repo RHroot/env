@@ -1,5 +1,4 @@
 --- VARIABLE DEFINITIONS
-local opts = { repeating = true }
 local browser = "brave"
 local terminal = "kitty"
 local filemanager = "pcmanfm"
@@ -45,12 +44,12 @@ hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 
 --- WORKSPACE NAVIGATION
 --- Workspace switching
-hl.bind("SUPER + J", hl.dsp.focus({ workspace = "-1" }), opts)
-hl.bind("SUPER + K", hl.dsp.focus({ workspace = "+1" }), opts)
-hl.bind("SUPER + left", hl.dsp.focus({ workspace = "-1" }), opts)
-hl.bind("SUPER + right", hl.dsp.focus({ workspace = "+1" }), opts)
-hl.bind("SUPER + SHIFT + bracketleft", hl.dsp.focus({ workspace = "m-1" }), opts)
-hl.bind("SUPER + SHIFT + bracketright", hl.dsp.focus({ workspace = "m+1" }), opts)
+hl.bind("SUPER + J", hl.dsp.focus({ workspace = "-1" }), { repeating = true })
+hl.bind("SUPER + K", hl.dsp.focus({ workspace = "+1" }), { repeating = true })
+hl.bind("SUPER + left", hl.dsp.focus({ workspace = "-1" }), { repeating = true })
+hl.bind("SUPER + right", hl.dsp.focus({ workspace = "+1" }), { repeating = true })
+hl.bind("SUPER + SHIFT + bracketleft", hl.dsp.focus({ workspace = "m-1" }), { repeating = true })
+hl.bind("SUPER + SHIFT + bracketright", hl.dsp.focus({ workspace = "m+1" }), { repeating = true })
 
 local directions = {
 	{ key = "j", dir = "d" },
@@ -61,8 +60,8 @@ local directions = {
 
 -- Focus movement
 for _, d in ipairs(directions) do
-	hl.bind("ALT + " .. d.key, hl.dsp.focus({ direction = d.dir }), opts)
-	hl.bind("SUPER + ALT + " .. d.key, hl.dsp.window.swap({ direction = d.dir }), opts)
+	hl.bind("ALT + " .. d.key, hl.dsp.focus({ direction = d.dir }), { repeating = true })
+	hl.bind("SUPER + ALT + " .. d.key, hl.dsp.window.swap({ direction = d.dir }), { repeating = true })
 end
 
 --- WORKSPACE NUMBERS
@@ -71,12 +70,12 @@ local key_codes = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }
 
 -- Focus workspaces
 for i, code in ipairs(key_codes) do
-	hl.bind("SUPER + code:" .. code, hl.dsp.focus({ workspace = i }), opts)
+	hl.bind("SUPER + code:" .. code, hl.dsp.focus({ workspace = i }), { repeating = true })
 end
 
 -- Move windows to workspaces
 for i, code in ipairs(key_codes) do
-	hl.bind("SUPER + SHIFT + code:" .. code, hl.dsp.window.move({ workspace = i }), opts)
+	hl.bind("SUPER + SHIFT + code:" .. code, hl.dsp.window.move({ workspace = i }))
 end
 
 --- WINDOW MANAGEMENT
@@ -92,7 +91,11 @@ local resize_actions = {
 }
 
 for _, r in ipairs(resize_actions) do
-	hl.bind(r.mod .. r.key, hl.dsp.window.resize({ x = r.x, y = r.y, relative = true, repeating = true }), opts)
+	hl.bind(
+		r.mod .. r.key,
+		hl.dsp.window.resize({ x = r.x, y = r.y, relative = true, repeating = true }),
+		{ repeating = true }
+	)
 end
 
 hl.bind("ALT + Tab", function()
