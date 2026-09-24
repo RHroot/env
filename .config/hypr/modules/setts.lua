@@ -35,14 +35,14 @@ hl.config({
 		resize_on_border = true, --- Resize windows by dragging borders
 		layout = "master", --- Default layout
 	},
-	dwindle = {
-		preserve_split = true, --- Preserve split direction
-		special_scale_factor = 0.8, --- Scale factor for special workspaces
-	},
 	master = {
 		new_status = "master", --- New windows become master
 		new_on_top = 1, --- New windows appear on top
 		mfact = 0.51, --- Master area factor (51%)
+	},
+	dwindle = {
+		preserve_split = true, --- Preserve split direction
+		special_scale_factor = 0.8, --- Scale factor for special workspaces
 	},
 	scrolling = {
 		fullscreen_on_one_column = true,
@@ -81,16 +81,12 @@ hl.config({
 hl.config({
 	input = {
 		kb_layout = "us", --- Keyboard layout
-		kb_variant = "", --- Keyboard variant
-		kb_model = "", --- Keyboard model
-		kb_options = "", --- Keyboard options
-		kb_rules = "", --- Keyboard rules
 		repeat_rate = 50, --- Key repeat rate
 		repeat_delay = 200, --- Key repeat delay
 		sensitivity = 0, --- Mouse sensitivity
 		numlock_by_default = false, --- Enable numlock by default
 		left_handed = false, --- Left-handed mouse
-		follow_mouse = 1, --- Focus follows mouse
+		follow_mouse = 0, --- Focus follows mouse
 		mouse_refocus = false,
 		float_switch_override_focus = true, --- Focus override for floating windows
 		--- Touchpad configuration
