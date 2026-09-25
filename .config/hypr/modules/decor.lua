@@ -9,15 +9,15 @@ hl.config({
 		col = {
 			active_border = {
 				colors = {
-					"rgba(b26bffff)",
-					"rgba(9d6bffff)",
+					"rgba(9f5cf2ff)",
+					"rgba(8a4ff0ff)",
 				},
 				angle = 45,
 			},
 
 			inactive_border = {
 				colors = {
-					"rgba(231b38ff)",
+					"rgba(1c152eff)",
 				},
 			},
 		},
@@ -26,7 +26,7 @@ hl.config({
 
 hl.config({
 	decoration = {
-		rounding = 16,
+		rounding = 10,
 
 		active_opacity = 0.95,
 		inactive_opacity = 0.7,
@@ -34,14 +34,17 @@ hl.config({
 		dim_inactive = false,
 
 		shadow = {
-			enabled = false,
+			enabled = true,
+			range = 2,
+			render_power = 4,
+			color = "rgba(ffffff4d)",
 		},
 
 		blur = {
 			enabled = true,
 			size = 2,
 			ignore_opacity = true,
-			passes = 2,
+			passes = 3,
 		},
 	},
 })
