@@ -42,6 +42,12 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	match = { initial_title = "Brawlhalla" },
+	workspace = "7 silent",
+	fullscreen = true,
+})
+
+hl.window_rule({
 	match = { class = "^(steam)$" },
 	workspace = "8 silent",
 	center = true,
