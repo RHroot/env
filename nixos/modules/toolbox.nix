@@ -39,6 +39,12 @@
     python314Packages.ruff # Python linter/formatter
     python314Packages.python-lsp-server # Python language server
 
+    # === Go Development ===
+    go # Go interpreter
+    gopls # Go lsp
+    gofumpt # Go formatter
+    gotools # provides tools like goimports, gorename, etc.
+
     # === C/C++ Development ===
     lldb # Next generation, high-performance debugger
     clang # C/C++/Objective-C compiler
