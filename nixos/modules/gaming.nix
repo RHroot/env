@@ -13,7 +13,7 @@
   programs.gamemode.enable = true;
   programs.gamescope = {
     enable = true;
-    capSysNice = false;
+    capSysNice = false; # Gamescope doesn't work if true
   };
 
   programs.steam = {
