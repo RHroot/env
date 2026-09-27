@@ -42,7 +42,7 @@
     # === Go Development ===
     go # Go interpreter
     gopls # Go lsp
-    gofumpt # Go formatter
+    gofmt # Go formatter
     gotools # provides tools like goimports, gorename, etc.
 
     # === C/C++ Development ===
