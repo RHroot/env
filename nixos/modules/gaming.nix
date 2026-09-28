@@ -10,7 +10,13 @@
     gamemode # Automatically switches to gamemode when a game is running
   ];
 
-  programs.gamemode.enable = true;
+  programs.gamemode = {
+    enable = true;
+    settings.general = {
+      desiredgov = "performance";
+    };
+  };
+
   programs.gamescope = {
     enable = true;
     capSysNice = false; # Gamescope doesn't work if true
@@ -18,13 +24,7 @@
 
   programs.steam = {
     enable = true;
-    package = pkgs.steam.override {
-      extraEnv = {
-        OBS_VKCAPTURE = "1";
-        __NV_PRIME_RENDER_OFFLOAD = "1";
-        __VK_LAYER_NV_optimus = "NVIDIA_only";
-      };
-    };
+    package = pkgs.steam;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
