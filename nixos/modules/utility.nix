@@ -20,6 +20,7 @@
     google-chrome # Secondary Browser for Exams and Stuff
     telegram-desktop # Messenger
     libreoffice-fresh # Office suite
+    lxqt.lxqt-policykit # Polkit Agent
     kdePackages.kdenlive # Non-linear video editor for creating and editing videos
     (symlinkJoin {
       name = "mpv-nvidia";
