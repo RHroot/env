@@ -13,6 +13,7 @@
     obsidian # Knowledge Manager/Notes
     inkscape # Vector graphics editor
     audacity # Free, open-source audio editor and recorder
+    libnotify # Desktop notification library
     megatools # MEGA tools to do big tasks faster through terminal
     mkvtoolnix # MKV tool to create and edit Matroska files
     obs-studio # Open Broadcaster Software for video recording and live streaming

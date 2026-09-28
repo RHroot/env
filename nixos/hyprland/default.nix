@@ -45,7 +45,6 @@
     cliphist # Clipboard manager for Wayland
     libinput # Input device management library
     playerctl # Media player control via MPRIS
-    libnotify # Desktop notification library
     wl-clipboard # Clipboard utilities for Wayland
 
     # === Terminal emulator(s) ===
