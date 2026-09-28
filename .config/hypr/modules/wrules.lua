@@ -31,14 +31,14 @@ hl.window_rule({
 
 hl.window_rule({
 	match = { class = "^cs2$" },
-	workspace = "7 silent",
+	workspace = "7",
 	fullscreen = true,
 	immediate = true,
 })
 
 hl.window_rule({
 	match = { initial_title = "Brawlhalla" },
-	workspace = "7 silent",
+	workspace = "7",
 	fullscreen = true,
 	immediate = true,
 })
