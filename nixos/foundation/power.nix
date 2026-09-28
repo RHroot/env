@@ -4,12 +4,6 @@
   lib,
   ...
 }:
-let
-  # i7-8850H: base ~2600000, turbo ~4300000
-  minFreq = "800000";
-  maxFreq = "3500000"; # 3.5 GHz cap, good balance
-  epp = "balance_performance";
-in
 {
   environment.systemPackages = with pkgs; [
     batsignal
@@ -27,34 +21,22 @@ in
   };
 
   services.thermald.enable = true;
-  powerManagement.cpuFreqGovernor = lib.mkForce "powersave";
 
-  systemd.services.cpu-tuning = {
-    description = "CPU min/max/EPP tuning";
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+
+      CPU_SCALING_MIN_FREQ_ON_AC = "800000";
+      CPU_SCALING_MAX_FREQ_ON_AC = "3500000";
+
+      CPU_SCALING_MIN_FREQ_ON_BAT = "800000";
+      CPU_SCALING_MAX_FREQ_ON_BAT = "2600000";
     };
-    script = ''
-      min_avail=$(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq)
-
-      for f in /sys/devices/system/cpu/cpu*/cpufreq/scaling_min_freq; do
-        echo "$min_avail" > "$f" 2>/dev/null || true
-      done
-
-      for f in /sys/devices/system/cpu/cpu*/cpufreq/scaling_max_freq; do
-        echo ${maxFreq} > "$f" 2>/dev/null || true
-      done
-
-      for f in /sys/devices/system/cpu/cpu*/cpufreq/scaling_min_freq; do
-        echo ${minFreq} > "$f" 2>/dev/null || true
-      done
-
-      for e in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
-        echo ${epp} > "$e" 2>/dev/null || true
-      done
-    '';
   };
 
   systemd.services.battery-charge-thresholds = {

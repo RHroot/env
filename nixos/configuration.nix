@@ -64,6 +64,7 @@
       "wheel"
       "input"
       "podman"
+      "gamemode"
     ];
     subUidRanges = [
       {
