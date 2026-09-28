@@ -20,7 +20,7 @@
   services.thermald.enable = true; # Prevents thermal throttling (Intel only)
 
   powerManagement.powertop.enable = true; # Auto-tunes hardware power savings
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave"; # Default CPU governor
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance"; # Default CPU governor
 
   systemd.services.battery-charge-thresholds = {
     description = "Set battery charge thresholds";

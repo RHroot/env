@@ -7,7 +7,7 @@ hl.config({
 hl.config({
 	xwayland = {
 		enabled = true, --- Enable XWayland
-		force_zero_scaling = false, --- Force zero scaling
+		force_zero_scaling = true, --- Force zero scaling
 	},
 })
 

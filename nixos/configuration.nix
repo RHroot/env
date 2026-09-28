@@ -21,6 +21,11 @@
 
   # === Hardware ===
   boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.kernelParams = [
+    "mitigations=off" # Disables CPU security mitigations (massive FPS boost)
+    "nowatchdog" # Disables hardware watchdog (saves CPU interrupts)
+    "nvidia-drm.fbdev=1" # Required for modern NVIDIA Wayland
+  ];
   fileSystems."/".options = lib.mkIf (config.fileSystems."/".fsType == "btrfs") [
     "compress=zstd:1"
     "noatime"

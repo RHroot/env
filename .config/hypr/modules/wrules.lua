@@ -33,36 +33,24 @@ hl.window_rule({
 	match = { class = "^cs2$" },
 	workspace = "7 silent",
 	fullscreen = true,
-})
-
-hl.window_rule({
-	match = { class = "^steam_app.*" },
-	workspace = "7 silent",
-	fullscreen = true,
+	immediate = true,
 })
 
 hl.window_rule({
 	match = { initial_title = "Brawlhalla" },
 	workspace = "7 silent",
 	fullscreen = true,
+	immediate = true,
 })
 
 hl.window_rule({
 	match = { class = "^(steam)$" },
 	workspace = "8 silent",
-	center = true,
-})
-
-hl.window_rule({
-	match = { title = "^(Steam)(.*)$" },
-	workspace = "8 silent",
-	center = true,
 })
 
 hl.window_rule({
 	match = { class = "^(heroic)$" },
 	workspace = "8 silent",
-	center = true,
 })
 
 hl.window_rule({
