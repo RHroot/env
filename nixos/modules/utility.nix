@@ -17,7 +17,6 @@
     mkvtoolnix # MKV tool to create and edit Matroska files
     obs-studio # Open Broadcaster Software for video recording and live streaming
     qbittorrent # Torrent client
-    polkit_gnome # GUI Polkit agent
     google-chrome # Secondary Browser for Exams and Stuff
     telegram-desktop # Messenger
     libreoffice-fresh # Office suite
@@ -48,18 +47,6 @@
   #   package = pkgs.localsend;
   #   openFirewall = true;
   # };
-
-  systemd.user.services.polkit-gnome = {
-    description = "Polkit GNOME Authentication Agent";
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-    };
-  };
 
   environment.etc."brave/policies/managed/policies.json" = {
     text = builtins.toJSON {
