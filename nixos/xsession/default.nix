@@ -33,7 +33,14 @@
   services.displayManager.sddm.enable = false;
 
   environment.systemPackages = with pkgs; [
-    xset
-    xrandr
+    xev # Test key events (useful for config.h)
+    xset # Keyboard repeat, mouse settings
+    xrdb # Load Xresources
+    xprop # Get window properties (for config.h rules)
+    xrandr # Display resolution/monitor management
+    xinput # Input device config
+    xkill # Kill unresponsive windows
+    xwininfo # Get window info
+    xmessage # Display messages
   ];
 }
