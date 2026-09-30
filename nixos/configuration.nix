@@ -15,6 +15,7 @@
     ./modules
     # === Window Manager ===
     ./hyprland
+    ./niri
     # === Xsessions ===
     ./xsession
   ];
