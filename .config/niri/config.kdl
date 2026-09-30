@@ -1,0 +1,401 @@
+// === STARTUP ===
+spawn-at-startup    "lxqt-policykit-agent"
+spawn-sh-at-startup "systemctl --user enable dunst;systemctl --user start dunst"
+
+// === INPUTS ===
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        repeat-delay 200
+        repeat-rate 40
+        track-layout "global"
+        numlock
+    }
+
+    touchpad {
+        tap
+        scroll-method "two-finger"
+        tap-button-map "left-middle-right"
+        click-method "clickfinger"
+        middle-emulation
+    }
+
+    mouse {
+        natural-scroll
+        middle-emulation
+    }
+
+    trackpoint {
+        natural-scroll
+        middle-emulation
+    }
+
+    trackball {
+        natural-scroll
+        middle-emulation
+    }
+
+    tablet {
+        map-to-output "eDP-1"
+    }
+
+    touch {
+        map-to-output "eDP-1"
+    }
+}
+
+gestures {
+    dnd-edge-view-scroll {
+        trigger-width 30
+        delay-ms 100
+        max-speed 1500
+    }
+
+    dnd-edge-workspace-switch {
+        trigger-height 50
+        delay-ms 100
+        max-speed 1500
+    }
+
+    hot-corners {
+        top-left
+    }
+}
+
+// === Outputs ===
+output "eDP-1" {
+    modeline 148.50  1920 2008 2052 2200  1080 1084 1089 1125 "+hsync" "+vsync"
+    scale 1.0
+    position x=0 y=0
+    focus-at-startup
+    backdrop-color "#001100"
+    variable-refresh-rate on-demand=true
+}
+
+
+output "HDMI-A-4" {
+    mode "1920x1080@60.000"
+    scale 1.0
+    position x=1920 y=0
+}
+
+// === BINDS ===
+binds {
+    // SYSTEM STATE ACTIONS
+    Super+Shift+Q    { quit; }
+    Super+Shift+L    { spawn "loginctl" "lock-session"; }
+
+    // Very Imp bind if you have something that is not letting you move on press it and it will not gobble up your inputs anymore
+    Super+Escape     { toggle-keyboard-shortcuts-inhibit; }
+
+    // CORE ACTIONS
+    Super+Q          { close-window; }
+    Super+B          { spawn "brave"; }
+    Super+Return     { spawn "kitty"; }
+    Super+O          { toggle-overview; }
+    Super+F          { maximize-column; }
+    Super+Shift+F    { fullscreen-window; }
+    Super+R          { spawn-sh "rofi -show run"; }
+    Super+Space      { spawn-sh "rofi -show combi -modes combi -combi-modes 'window,drun,run'"; }
+
+    // SCREENSHOT BINDS
+    Super+Print      { screenshot show-pointer=false; }
+    Ctrl+Print       { screenshot-screen show-pointer=false write-to-disk=false; }
+    Ctrl+Shift+Print { screenshot-window show-pointer=false write-to-disk=false; }
+    Alt+Print        { screenshot-screen show-pointer=false write-to-disk=true; }
+    Alt+Shift+Print  { screenshot-window show-pointer=false write-to-disk=true; }
+
+    // COLUMN/WINDOW BINDS
+    Alt+K            { focus-window-up; }
+    Alt+J            { focus-window-down; }
+    Alt+H            { focus-column-left; }
+    Alt+L            { focus-column-right; }
+
+    Alt+Shift+K      { move-window-up; }
+    Alt+Shift+J      { move-window-down; }
+    Alt+Shift+H      { move-column-left; }
+    Alt+Shift+L      { move-column-right; }
+
+    Alt+Shift+R      { switch-preset-window-height; }
+    Alt+Shift+equal  { switch-preset-column-width; }
+    Alt+Shift+minus  { switch-preset-column-width-back; }
+
+    // WORKSPACE BINDS
+    Super+K          { focus-workspace-up; }
+    Super+J          { focus-workspace-down; }
+
+    Super+Shift+K    { move-workspace-up; }
+    Super+Shift+J    { move-workspace-down; }
+
+    Super+Alt+K      { move-window-to-workspace-up; }
+    Super+Alt+J      { move-window-to-workspace-down; }
+
+    Super+WheelScrollUp      cooldown-ms=300 { focus-workspace-up; }
+    Super+WheelScrollDown    cooldown-ms=300 { focus-workspace-down; }
+    Super+TouchpadScrollUp   cooldown-ms=300 { focus-workspace-up; }
+    Super+TouchpadScrollDown cooldown-ms=300 { focus-workspace-down; }
+
+    Super+1          { focus-workspace 1; }
+    Super+2          { focus-workspace 2; }
+    Super+3          { focus-workspace 3; }
+    Super+4          { focus-workspace 4; }
+    Super+5          { focus-workspace 5; }
+    Super+6          { focus-workspace 6; }
+    Super+7          { focus-workspace 7; }
+    Super+8          { focus-workspace 8; }
+    Super+9          { focus-workspace 9; }
+    Super+0          { focus-workspace 10; }
+
+    Super+Shift+1    { move-column-to-workspace 1; }
+    Super+Shift+2    { move-column-to-workspace 2; }
+    Super+Shift+3    { move-column-to-workspace 3; }
+    Super+Shift+4    { move-column-to-workspace 4; }
+    Super+Shift+5    { move-column-to-workspace 5; }
+    Super+Shift+6    { move-column-to-workspace 6; }
+    Super+Shift+7    { move-column-to-workspace 7; }
+    Super+Shift+8    { move-column-to-workspace 8; }
+    Super+Shift+9    { move-column-to-workspace 9; }
+    Super+Shift+0    { move-column-to-workspace 10; }
+
+    // MONITOR BINDS
+    Super+Ctrl+K     { focus-monitor-up; }
+    Super+Ctrl+J     { focus-monitor-down; }
+    Super+Ctrl+H     { focus-monitor-left; }
+    Super+Ctrl+L     { focus-monitor-right; }
+
+    Alt+Ctrl+K       { move-column-to-monitor-up; }
+    Alt+Ctrl+J       { move-column-to-monitor-down; }
+    Alt+Ctrl+H       { move-column-to-monitor-left; }
+    Alt+Ctrl+L       { move-column-to-monitor-right; }
+
+    Super+Shift+Ctrl+J  { move-workspace-to-monitor-up; }
+    Super+Shift+Ctrl+K  { move-workspace-to-monitor-down; }
+    Super+Shift+Ctrl+H  { move-workspace-to-monitor-left; }
+    Super+Shift+Ctrl+L  { move-workspace-to-monitor-right; }
+
+    // AUDIO CONTROLS
+    XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioStop allow-when-locked=true { spawn "playerctl" "stop"; }
+    XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
+    XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+
+    // BRIGHTNESS
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh r#"brightnessctl set 5%+ && b=$(brightnessctl | grep -o '[0-9]*%' | head -n1 | tr -d %) && dunstify -a Brightness -r 9994 -h int:value:$b "Brightness: $b%" -t 1000"#; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh r#"brightnessctl set 5%- && b=$(brightnessctl | grep -o '[0-9]*%' | head -n1 | tr -d %) && dunstify -a Brightness -r 9994 -h int:value:$b "Brightness: $b%" -t 1000"#; }
+
+    // VOLUME
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh r#"wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ && v=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE '[0-9]+\.[0-9]+' | head -n1 | awk '{print int($1*100)}') && dunstify -a Volume -r 9993 -h int:value:$v "Volume: $v%" -t 1000"#; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh r#"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && v=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE '[0-9]+\.[0-9]+' | head -n1 | awk '{print int($1*100)}') && dunstify -a Volume -r 9993 -h int:value:$v "Volume: $v%" -t 1000"#; }
+    XF86AudioMute allow-when-locked=true { spawn-sh r#"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && status=$(wpctl get-volume @DEFAULT_AUDIO_SINK@) && if echo "$status" | grep -q MUTED; then dunstify -a Volume -r 9993 -i audio-volume-muted "Volume Muted" -t 1000; else v=$(echo "$status" | grep -oE '[0-9]+\.[0-9]+' | awk '{print int($1*100)}'); dunstify -a Volume -r 9993 -i audio-volume-high -h int:value:$v "Volume: $v%" -t 1000; fi"#; }
+    XF86AudioMicMute allow-when-locked=true { spawn-sh r#"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && status=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@) && if echo "$status" | grep -q MUTED; then dunstify -a Mic -r 9997 -i microphone-sensitivity-muted "Mic Muted" -t 1000; else v=$(echo "$status" | grep -oE '[0-9]+\.[0-9]+' | awk '{print int($1*100)}'); dunstify -a Mic -r 9997 -i audio-input-microphone-high -h int:value:$v "Mic: $v%" -t 1000; fi"#; }
+}
+
+// === LAYOUTS ===
+layout {
+    gaps 8
+    center-focused-column "never"
+    always-center-single-column
+    default-column-display "tabbed"
+    background-color "#003300"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    insert-hint {
+        on
+        color "#ffc87f80"
+        gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
+    }
+
+    focus-ring {
+        on
+        width 4
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+        urgent-color "#9b0000"
+        active-gradient from="#80c8ff" to="#bbddff" angle=45
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        urgent-gradient from="#800" to="#a33" angle=45
+    }
+
+    tab-indicator {
+        on
+        gap 5
+        width 4
+        corner-radius 8
+        position "right"
+        gaps-between-tabs 2
+        place-within-column
+        hide-when-single-tab
+        length total-proportion=1.0
+        active-color "red"
+        urgent-color "blue"
+        inactive-color "gray"
+        active-gradient from="#80c8ff" to="#bbddff" angle=45
+        urgent-gradient from="#800" to="#a33" angle=45
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        off
+    }
+}
+
+recent-windows {
+    debounce-ms 750
+    open-delay-ms 150
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 30
+        corner-radius 0
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.4
+    }
+
+    binds {
+        Alt+Tab           { next-window; }
+        Alt+Shift+Tab     { previous-window; }
+        Alt+grave         { next-window     filter="app-id"; }
+        Alt+Shift+grave   { previous-window filter="app-id"; }
+
+        Super+Tab         { next-window; }
+        Super+Shift+Tab   { previous-window; }
+        Super+grave       { next-window     filter="app-id"; }
+        Super+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
+// === ANIMATIONS ===
+animations {
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+
+    exit-confirmation-open-close {
+        spring damping-ratio=0.6 stiffness=500 epsilon=0.01
+    }
+
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+
+    overview-open-close {
+        spring damping-ratio=0.8 stiffness=800 epsilon=0.0001
+    }
+
+    recent-windows-close {
+        spring damping-ratio=0.8 stiffness=800 epsilon=0.001
+    }
+}
+
+// === SWITCH EVENTS ===
+switch-events {
+    lid-close          { spawn "loginctl" "lock-session"; }
+    tablet-mode-on     { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true"; }
+    tablet-mode-off    { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false"; }
+}
+
+// === MISC ===
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+environment {
+    XDG_CURRENT_DESKTOP "niri" // Tells desktop portals (XDG) you are running Niri
+    XDG_SESSION_DESKTOP "niri" // Identifies the current desktop session name
+    XDG_SESSION_TYPE "wayland" // Forces apps to treat the active session as Wayland
+
+    // Electron & Chromium Apps
+    NIXOS_OZONE_WL "1" // Forces NixOS-packaged Electron/Chromium apps to use native Wayland
+    ELECTRON_OZONE_PLATFORM_HINT "wayland" // Hints Electron apps to run natively on Wayland instead of XWayland
+
+    // Firefox / Mozilla (Gecko)
+    MOZ_ENABLE_WAYLAND "1" // Forces Firefox to run natively on Wayland
+    MOZ_WAYLAND_USE_VAAPI "1" // Enables VA-API hardware video acceleration in Firefox
+    MOZ_DBUS_REMOTE "1" // Allows controlling existing Firefox instances via DBus
+    MOZ_USE_XINPUT2 "1" // Enables smooth touchpad scrolling and high-precision input events
+
+    // Toolkit Backends
+    GDK_BACKEND "wayland" // Forces GTK3/GTK4 applications to use Wayland
+    QT_QPA_PLATFORM "wayland;xcb" // Tells Qt apps to prefer Wayland, falling back to XWayland if needed
+    CLUTTER_BACKEND "wayland" // Forces Clutter-based applications to use Wayland
+
+    // Java
+    _JAVA_AWT_WM_NONREPARENTING "1" // Fixes blank/gray window issues in Java GUI apps under tiling WM
+
+    // Hardware Acceleration & Intel VA-API
+    LIBVA_DRIVER_NAME "iHD" // Forces Intel's modern iHD driver for VA-API video decoding
+
+    // Uncomment if want nvidia to render instead of primary one
+    // __NV_PRIME_RENDER_OFFLOAD "1"
+    // __GLX_VENDOR_LIBRARY_NAME "nvidia"
+    __GL_GSYNC_ALLOWED "0"
+    __GL_VRR_ALLOWED "0"
+}
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 30
+
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
+overview {
+    zoom 0.5
+    backdrop-color "#292626"
+
+    workspace-shadow {
+        softness 40
+        spread 10
+        offset x=0 y=10
+        color "#00000050"
+    }
+}
