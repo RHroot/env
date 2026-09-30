@@ -49,5 +49,6 @@
 
     # === Terminal emulator(s) ===
     kitty # Feature-rich GPU-based terminal emulator
+    alacritty # Rust based fast terminal emulator
   ];
 }
