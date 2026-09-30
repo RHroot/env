@@ -8,7 +8,7 @@
     enable = true;
     wacom.enable = true;
     autoRepeatDelay = 200;
-    autoRepeatInterval = 50;
+    autoRepeatInterval = 40;
     desktopManager = {
       xfce = {
         enable = true;
