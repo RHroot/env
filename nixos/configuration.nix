@@ -13,10 +13,10 @@
     ./foundation
     # === Modules ===
     ./modules
-    # === Window Manager ===
-    ./niri
     # === Xsessions ===
     ./xsession
+    # === Window Manager ===
+    ./niri
   ];
 
   # === Hardware ===
