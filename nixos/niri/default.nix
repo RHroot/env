@@ -12,8 +12,10 @@
 
   environment.systemPackages = with pkgs; [
     imv # Image Viewer
+    rofi # Very dynamic launcher
     dunst # Notification daemon
     kitty # Feature-rich GPU-based terminal emulator
+    swaybg # Lightweight wallpaper manager
     cliphist # Clipboard manager for Wayland
     libinput # Input device management library
     alacritty # Rust based fast terminal emulator

@@ -23,7 +23,6 @@ abbr -a openports "netstat -tulanp"
 # System control
 abbr -a shutnow "shutdown now"
 abbr -a reboot "systemctl reboot"
-abbr -a restart-dm "sudo systemctl restart display-manager"
 
 # File operations
 abbr -a rm "rm -iv"
