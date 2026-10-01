@@ -4,7 +4,8 @@ set -euo pipefail
 
 # ── Config ─────────────────────────────────────────────
 FLAKE=".#rhroot"
-LOG_FILE="$HOME/env/nixos-switch.log"
+mkdir -p "$HOME/.cache"
+LOG_FILE="$HOME/.cache/nixos-switch.log"
 HOST_NAME="${FLAKE#*.#}"
 
 cd ~/env/
