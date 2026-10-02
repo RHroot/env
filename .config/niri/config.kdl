@@ -96,8 +96,8 @@ binds {
     Super+Escape             { toggle-keyboard-shortcuts-inhibit; }
 
     // CUSTOM BINDS
-    Super+B                  { spawn "brave"; }
     Super+Return             { spawn "kitty"; }
+    Super+B                  { spawn "brave"; }
     Super+E                  { spawn "pcmanfm"; }
     Super+Shift+Return       { spawn "alacritty"; }
     Super+Shift+V            { spawn "pavucontrol"; }
@@ -150,6 +150,17 @@ binds {
     Super+WheelScrollDown    cooldown-ms=300 { focus-workspace-down; }
     Super+TouchpadScrollUp   cooldown-ms=300 { focus-workspace-up; }
     Super+TouchpadScrollDown cooldown-ms=300 { focus-workspace-down; }
+
+    Alt+1                    { focus-column 1; }
+    Alt+2                    { focus-column 2; }
+    Alt+3                    { focus-column 3; }
+    Alt+4                    { focus-column 4; }
+    Alt+5                    { focus-column 5; }
+    Alt+6                    { focus-column 6; }
+    Alt+7                    { focus-column 7; }
+    Alt+8                    { focus-column 8; }
+    Alt+9                    { focus-column 9; }
+    Alt+0                    { focus-column 10; }
 
     Super+1                  { focus-workspace 1; }
     Super+2                  { focus-workspace 2; }
@@ -208,7 +219,7 @@ binds {
 
 // === LAYOUTS ===
 layout {
-    gaps 8
+    gaps 4
     center-focused-column "never"
     always-center-single-column
     default-column-display "tabbed"
@@ -236,17 +247,6 @@ layout {
         gradient from="#9D6BFF80" to="#B26BFF80" angle=45 relative-to="workspace-view"
     }
 
-    focus-ring {
-        on
-        width 4
-        active-color "#9D6BFF"
-        inactive-color "#231B38"
-        urgent-color "#FF6B8D"
-        active-gradient from="#9D6BFF" to="#B26BFF" angle=45
-        inactive-gradient from="#231B38" to="#372E4D" angle=45 relative-to="workspace-view"
-        urgent-gradient from="#FF6B8D" to="#FF8FAE" angle=45
-    }
-
     tab-indicator {
         on
         gap 5
@@ -266,6 +266,17 @@ layout {
     }
 
     border {
+        on
+        width 3
+        active-color "#9D6BFF"
+        inactive-color "#231B38"
+        urgent-color "#FF6B8D"
+        active-gradient from="#9D6BFF" to="#B26BFF" angle=45
+        inactive-gradient from="#231B38" to="#372E4D" angle=45 relative-to="workspace-view"
+        urgent-gradient from="#FF6B8D" to="#FF8FAE" angle=45
+    }
+
+    focus-ring {
         off
     }
 
@@ -300,6 +311,21 @@ recent-windows {
         Super+Shift+Tab   { previous-window; }
         Super+grave       { next-window     filter="app-id"; }
         Super+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
+// === WINDOW RULES ===
+window-rule {
+    clip-to-geometry true
+    geometry-corner-radius 8 8 0 0
+}
+window-rule {
+    baba-is-float true
+    clip-to-geometry true
+    match is-floating=true
+    geometry-corner-radius 8 8 8 8
+    shadow {
+        on
     }
 }
 

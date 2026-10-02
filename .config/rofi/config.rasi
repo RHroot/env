@@ -3,8 +3,8 @@ configuration {
     show-icons: true;
     scroll-method: 1;
     case-sensitive: false;
-    display-run: " ";
-    display-combi: " ";
+    display-run: ">>";
+    display-combi: ">>>";
     display-window: " Windows";
     display-drun: " Apps";
     drun-url-launcher: "xdg-open";
