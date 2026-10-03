@@ -20,15 +20,19 @@ input {
 
     touchpad {
         tap
-        scroll-method "two-finger"
-        tap-button-map "left-middle-right"
-        click-method "clickfinger"
+        accel-speed 0.4
         middle-emulation
+        accel-profile "flat"
+        scroll-method "two-finger"
+        click-method "clickfinger"
+        tap-button-map "left-middle-right"
     }
 
     mouse {
         natural-scroll
+        accel-speed 0.4
         middle-emulation
+        accel-profile "flat"
     }
 
     trackpoint {

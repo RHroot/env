@@ -128,10 +128,10 @@
       tapping = true;
       naturalScrolling = false;
 
-      clickMethod = "clickfinger"; # better multi-finger clicks
-      scrollMethod = "twofinger"; # standard
-      accelProfile = "flat"; # or "adaptive"
       accelSpeed = "0.4"; # range: -1 to 1
+      accelProfile = "flat"; # or "adaptive"
+      scrollMethod = "twofinger"; # standard
+      clickMethod = "clickfinger"; # better multi-finger clicks
 
       middleEmulation = true; # 3-finger middle click
     };
