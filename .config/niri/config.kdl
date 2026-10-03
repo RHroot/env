@@ -15,7 +15,7 @@ input {
         repeat-delay 200
         repeat-rate 40
         track-layout "global"
-        numlock
+        // numlock
     }
 
     touchpad {
@@ -91,13 +91,13 @@ output "HDMI-A-4" {
 
 // === BINDS ===
 binds {
+    // Keybind overlay
+    Super+Shift+Slash        { show-hotkey-overlay; }
+
     // SYSTEM STATE ACTIONS
     Ctrl+Alt+Q               { quit; }
     Ctrl+Alt+S               { spawn "shutdown" "now"; }
     Ctrl+Alt+R               { spawn "systemctl" "reboot"; }
-
-    // Very Imp bind if you have something that is not letting you move on press it and it will not gobble up your inputs anymore
-    Super+Escape             { toggle-keyboard-shortcuts-inhibit; }
 
     // CUSTOM BINDS
     Super+Return             { spawn "kitty"; }
@@ -203,6 +203,9 @@ binds {
     Super+Alt+Shift+K        { move-workspace-to-monitor-down; }
     Super+Alt+Shift+H        { move-workspace-to-monitor-left; }
     Super+Alt+Shift+L        { move-workspace-to-monitor-right; }
+
+    // Very Imp bind if you have something that is not letting you move on press it and it will not gobble up your inputs anymore
+    Super+Escape             { toggle-keyboard-shortcuts-inhibit; }
 
     // AUDIO CONTROLS
     XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
