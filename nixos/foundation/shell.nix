@@ -47,6 +47,12 @@
 
     LESSHISTFILE = "$HOME/.cache/less_history";
     PYTHON_HISTORY = "$HOME/.local/share/python/history";
+
+    MIRU_PLAYER = "mpv";
+    MIRU_MENU = "rofi";
+    MIRU_QUALITY = "best";
+    MIRU_MODE = "sub";
+    MIRU_DOWNLOAD_DIR = ".";
   };
 
   environment.localBinInPath = true;
