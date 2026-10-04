@@ -120,10 +120,10 @@ binds {
 
     // SCREENSHOT BINDS
     Super+Print              { screenshot show-pointer=false; }
-    Ctrl+Print               { screenshot-screen show-pointer=false write-to-disk=false; }
-    Ctrl+Shift+Print         { screenshot-window show-pointer=false write-to-disk=false; }
-    Alt+Print                { screenshot-screen show-pointer=false write-to-disk=true; }
+    Alt+Print                { screenshot-window show-pointer=false write-to-disk=false; }
     Alt+Shift+Print          { screenshot-window show-pointer=false write-to-disk=true; }
+    Ctrl+Print               { screenshot-screen show-pointer=false write-to-disk=false; }
+    Ctrl+Shift+Print         { screenshot-screen show-pointer=false write-to-disk=true; }
 
     // COLUMN/WINDOW BINDS
     Alt+K                    { focus-window-up; }
