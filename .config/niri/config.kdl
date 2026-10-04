@@ -8,8 +8,7 @@ spawn-sh-at-startup      "swaybg -i ~/env/Art/Wallpapers/Phonebooth-transporter.
 spawn-sh-at-startup      r#"swayidle -w \
     timeout 600 'brightnessctl -s set 10%' resume 'brightnessctl -r' \
     timeout 900 'swaylock' \
-    lock 'swaylock' \
-    before-sleep 'swaylock'"#
+    lock 'swaylock'"#
 
 // === INPUTS ===
 input {
