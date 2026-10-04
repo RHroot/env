@@ -11,6 +11,7 @@
     pcmanfm # File Manager
     calibre # Book reader and downloader
     obsidian # Knowledge Manager/Notes
+    libinput # Input device management library
     inkscape # Vector graphics editor
     audacity # Free, open-source audio editor and recorder
     libnotify # Desktop notification library

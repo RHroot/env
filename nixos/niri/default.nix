@@ -8,22 +8,31 @@
     enable = true;
   };
 
+  programs.xwayland = {
+    enable = true;
+    package = pkgs.xwayland-satellite;
+  };
+
+  services.dunst = {
+    enable = true;
+    package = pkgs.dunst;
+    enableX11 = true;
+    enableWayland = true;
+  };
+
   xdg.portal.enable = true;
 
   environment.systemPackages = with pkgs; [
     imv # Image Viewer
     rofi # Very dynamic launcher
-    dunst # Notification daemon
     kitty # Feature-rich GPU-based terminal emulator
     swaybg # Lightweight wallpaper manager
     swayidle # Idle manager
     cliphist # Clipboard manager for Wayland
-    libinput # Input device management library
     alacritty # Rust based fast terminal emulator
     playerctl # Media player control via MPRIS
     wl-clipboard # Clipboard utilities for Wayland
     swaylock-effects # Lightweight session locker
-    xwayland-satellite # Xwayland for niri works out of the box
   ];
 
   xdg.mime.defaultApplications = {
