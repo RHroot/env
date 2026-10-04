@@ -5,6 +5,11 @@ spawn-sh-at-startup      "systemctl --user start --now dunst.service"
 spawn-sh-at-startup      "wl-paste --type text --watch cliphist store & disown"
 spawn-sh-at-startup      "wl-paste --type image --watch cliphist store & disown"
 spawn-sh-at-startup      "swaybg -i ~/env/Art/Wallpapers/Phonebooth-transporter.png -m fill"
+spawn-sh-at-startup      r#"swayidle -w \
+    timeout 600 'brightnessctl -s set 10%' resume 'brightnessctl -r' \
+    timeout 900 'swaylock' \
+    lock 'swaylock' \
+    before-sleep 'swaylock'"#
 
 // === INPUTS ===
 input {
