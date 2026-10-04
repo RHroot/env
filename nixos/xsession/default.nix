@@ -35,6 +35,7 @@
   environment.systemPackages = with pkgs; [
     # === XOrg ===
     xset # Keyboard repeat, mouse settings
+    xinit # startx
     xrandr # Display resolution/monitor management
   ];
 }
