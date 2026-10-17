@@ -8,7 +8,7 @@ import Niri
 
 ShellRoot {
     component BarText: Text {
-        property int textSize: 20
+        property int textSize: 18
 
         font.family: "Noto Sans"
         font.pixelSize: textSize
