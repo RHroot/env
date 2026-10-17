@@ -1,5 +1,6 @@
 // === STARTUP ===
 spawn-sh-at-startup      "until pgrep -x dunst >/dev/null; do dunst; sleep 0.5; done &"
+spawn-sh-at-startup      "until pgrep -x nm-applet >/dev/null; do dunst; sleep 0.5; done &"
 spawn-sh-at-startup      "until pgrep -x lxqt-policykit-agent >/dev/null; do lxqt-policykit-agent; sleep 0.5; done &"
 
 spawn-sh-at-startup      "xrdb -merge ~/env/home/.Xresources"

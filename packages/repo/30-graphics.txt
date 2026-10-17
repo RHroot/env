@@ -1,6 +1,7 @@
 # Intel / Generic Graphics
 mesa
 clinfo
+mesa-utils
 libva-utils
 vulkan-tools
 vulkan-icd-loader
