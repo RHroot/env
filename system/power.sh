@@ -1,0 +1,140 @@
+#!/bin/sh
+set -eu
+
+msg() { printf '\n==> %s\n' "$*"; }
+info() { printf '  -> %s\n' "$*"; }
+skip() { printf '  -> [SKIP] %s\n' "$*"; }
+update() { printf '  -> [UPDATE] %s\n' "$*"; }
+done_msg() { printf '  -> [DONE] %s\n' "$*"; }
+tip() { printf '\n  -> [TIP] %s\n' "$*"; }
+verify() { printf '  -> [VERIFY] %s\n' "$*"; }
+
+msg "Checking power management packages..."
+# Updated to use -runit packages
+PACKAGES="tlp tlp-runit thermald thermald-runit upower"
+MISSING=""
+for pkg in $PACKAGES; do
+  if ! pacman -Q "$pkg" >/dev/null 2>&1; then
+    MISSING="$MISSING $pkg"
+  fi
+done
+
+if [ -n "$MISSING" ]; then
+  info "Installing missing packages:$MISSING"
+  sudo pacman -S --noconfirm --needed $MISSING >/dev/null
+  done_msg "Packages installed."
+else
+  skip "All power management packages already installed."
+fi
+
+msg "Configuring TLP..."
+TLP_CUSTOM_CONF="/etc/tlp.d/99-custom.conf"
+
+# Check if config needs updating
+NEEDS_UPDATE="false"
+if [ ! -f "$TLP_CUSTOM_CONF" ]; then
+  NEEDS_UPDATE="true"
+else
+  for setting in CPU_SCALING_GOVERNOR_ON_AC="powersave" CPU_SCALING_GOVERNOR_ON_BAT="powersave" CPU_ENERGY_PERF_POLICY_ON_AC="balance_performance" CPU_ENERGY_PERF_POLICY_ON_BAT="balance_power" CPU_SCALING_MAX_FREQ_ON_BAT=2600000 START_CHARGE_THRESH_BAT0=75 STOP_CHARGE_THRESH_BAT0=80 START_CHARGE_THRESH_BAT1=75 STOP_CHARGE_THRESH_BAT1=80; do
+    key=$(echo "$setting" | cut -d= -f1)
+    value=$(echo "$setting" | cut -d= -f2-)
+    if ! grep -q "^${key}=${value}" "$TLP_CUSTOM_CONF" 2>/dev/null; then
+      NEEDS_UPDATE="true"
+      break
+    fi
+  done
+fi
+
+if [ "$NEEDS_UPDATE" = "true" ]; then
+  if [ -f "$TLP_CUSTOM_CONF" ]; then
+    update "TLP configuration changed, updating..."
+  else
+    info "Writing TLP custom configuration..."
+  fi
+  sudo tee "$TLP_CUSTOM_CONF" >/dev/null <<'TLPEOF'
+CPU_SCALING_GOVERNOR_ON_AC="powersave"
+CPU_SCALING_GOVERNOR_ON_BAT="powersave"
+CPU_ENERGY_PERF_POLICY_ON_AC="balance_performance"
+CPU_ENERGY_PERF_POLICY_ON_BAT="balance_power"
+CPU_SCALING_MAX_FREQ_ON_BAT=2600000
+START_CHARGE_THRESH_BAT0=75
+STOP_CHARGE_THRESH_BAT0=80
+START_CHARGE_THRESH_BAT1=75
+STOP_CHARGE_THRESH_BAT1=80
+TLPEOF
+  done_msg "TLP configuration updated."
+  # Apply TLP settings immediately
+  sudo tlp start >/dev/null 2>&1 || true
+else
+  skip "TLP configuration already optimal."
+fi
+
+msg "Configuring UPower..."
+UPOWER_CONF="/etc/UPower/UPower.conf"
+NEEDS_UPDATE="false"
+
+# Check thresholds
+for key in PercentageLow PercentageCritical PercentageAction; do
+  case $key in
+    PercentageLow) val="30" ;;
+    PercentageCritical) val="20" ;;
+    PercentageAction) val="15" ;;
+  esac
+  current=$(grep "^${key}=" "$UPOWER_CONF" 2>/dev/null | cut -d= -f2 || echo "")
+  if [ "$current" != "$val" ]; then
+    NEEDS_UPDATE="true"
+    break
+  fi
+done
+
+# Check suspend enablement
+if ! grep -q "^AllowRiskyCriticalPowerAction=true" "$UPOWER_CONF" 2>/dev/null; then
+  NEEDS_UPDATE="true"
+fi
+
+if ! grep -q "^CriticalPowerAction=Suspend" "$UPOWER_CONF" 2>/dev/null; then
+  NEEDS_UPDATE="true"
+fi
+
+if [ "$NEEDS_UPDATE" = "true" ]; then
+  update "UPower configuration changed, updating..."
+  sudo sed -i 's/^PercentageLow=.*/PercentageLow=30/' "$UPOWER_CONF"
+  sudo sed -i 's/^PercentageCritical=.*/PercentageCritical=20/' "$UPOWER_CONF"
+  sudo sed -i 's/^PercentageAction=.*/PercentageAction=15/' "$UPOWER_CONF"
+  sudo sed -i 's/^AllowRiskyCriticalPowerAction=.*/AllowRiskyCriticalPowerAction=true/' "$UPOWER_CONF"
+  sudo sed -i 's/^CriticalPowerAction=.*/CriticalPowerAction=Suspend/' "$UPOWER_CONF"
+  done_msg "UPower configured to suspend at 15% battery."
+
+  # Restart UPower daemon to apply changes (D-Bus will auto-respawn it)
+  info "Restarting UPower daemon..."
+  sudo pkill -f upowerd 2>/dev/null || true
+  sleep 1
+  upower -d >/dev/null 2>&1 &
+  sleep 2
+  done_msg "UPower daemon restarted."
+else
+  skip "UPower already configured."
+fi
+
+msg "Enabling runit services..."
+for svc in tlp thermald; do
+  if [ -L "/run/runit/service/$svc" ]; then
+    skip "$svc already enabled."
+  else
+    info "Enabling $svc..."
+    sudo ln -s "/etc/runit/sv/$svc" "/run/runit/service/$svc"
+    done_msg "$svc enabled."
+  fi
+
+  # Ensure it's running (or restart to apply any new configs)
+  if ! sv status "$svc" >/dev/null 2>&1; then
+    info "Starting $svc..."
+    sudo sv start "$svc" >/dev/null 2>&1 || true
+    done_msg "$svc started."
+  else
+    skip "$svc is already running."
+  fi
+done
+
+tip "System will suspend at 15% battery."
+verify "upower -d | grep 'critical-action' && grep -E '^(PercentageAction|AllowRiskyCriticalPowerAction|CriticalPowerAction)' /etc/UPower/UPower.conf"

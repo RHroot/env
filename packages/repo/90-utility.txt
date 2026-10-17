@@ -1,0 +1,13 @@
+mpv
+gimp
+steam
+evince
+calibre
+audacity
+libnotify
+obs-studio
+qbittorrent
+brightnessctl
+helium-browser
+telegram-desktop
+libreoffice-fresh

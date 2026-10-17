@@ -1,0 +1,3 @@
+ttf-libron
+papirus-icon-theme
+bibata-cursor-theme-bin

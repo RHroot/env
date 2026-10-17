@@ -1,0 +1,16 @@
+base
+base-devel
+linux
+linux-firmware
+
+btrfs-progs
+
+kbd
+terminus-font
+
+udev
+dbus-runit
+cronie-runit
+elogind-runit
+
+pacman-contrib

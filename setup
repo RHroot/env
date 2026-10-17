@@ -1,0 +1,170 @@
+#!/bin/sh
+set -eu
+
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+
+# ==============================================================================
+# Helper Functions (Matching system scripts)
+# ==============================================================================
+msg() { printf '\n==> %s\n' "$*"; }
+info() { printf '  -> %s\n' "$*"; }
+skip() { printf '  -> [SKIP] %s\n' "$*"; }
+done_msg() { printf '  -> [DONE] %s\n' "$*"; }
+error() { printf '\n[ERROR] %s\n' "$*" >&2; }
+
+# ==============================================================================
+# Package Installation
+# ==============================================================================
+install_packages() {
+  msg "Installing repository packages..."
+
+  if [ -d "$ROOT/packages/repo" ]; then
+    # Read all .txt files, strip comments and empty lines safely
+    pkg_list=$(find "$ROOT/packages/repo" -type f -name '*.txt' -exec cat {} + 2>/dev/null | grep -v '^[[:space:]]*#' | grep -v '^[[:space:]]*$' || true)
+
+    if [ -n "$pkg_list" ]; then
+      info "Processing repository packages..."
+      echo "$pkg_list" | sudo pacman -S --needed --noconfirm -
+      done_msg "Repository packages installed."
+    else
+      skip "No repository packages listed."
+    fi
+  else
+    skip "packages/repo directory not found."
+  fi
+
+  msg "Installing AUR packages..."
+
+  if [ -d "$ROOT/packages/aur" ]; then
+    if ! command -v paru >/dev/null 2>&1; then
+      error "paru is not installed."
+      info "Please run './setup.sh system' first to install paru via aur.sh, or install it manually."
+      return 1
+    fi
+
+    pkg_list=$(find "$ROOT/packages/aur" -type f -name '*.txt' -exec cat {} + 2>/dev/null | grep -v '^[[:space:]]*#' | grep -v '^[[:space:]]*$' || true)
+
+    if [ -n "$pkg_list" ]; then
+      info "Processing AUR packages..."
+      echo "$pkg_list" | paru -S --needed --noconfirm - >/dev/null
+      done_msg "AUR packages installed."
+    else
+      skip "No AUR packages listed."
+    fi
+  else
+    skip "packages/aur directory not found."
+  fi
+}
+
+# ==============================================================================
+# Config Linking
+# ==============================================================================
+link_configs() {
+  msg "Linking config files..."
+
+  [ -d "$ROOT/home" ] || {
+    skip "home directory not found."
+    return 0
+  }
+
+  find "$ROOT/home" -type f | while IFS= read -r src; do
+    rel="${src#$ROOT/home/}"
+    dst="$HOME/$rel"
+    dst_dir="$(dirname "$dst")"
+
+    # 1. Create parent directory if it does not exist
+    if [ ! -d "$dst_dir" ]; then
+      info "Creating directory: $dst_dir"
+      mkdir -p "$dst_dir" || {
+        error "Failed to create $dst_dir"
+        continue
+      }
+    fi
+
+    # 2. Already correct symlink, skip
+    if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
+      skip "Already linked: $dst"
+      continue
+    fi
+
+    # 3. If destination is a real directory, do not touch it automatically
+    if [ -d "$dst" ] && [ ! -L "$dst" ]; then
+      error "$dst is a real directory. Please handle manually."
+      continue
+    fi
+
+    # 4. If file or broken symlink exists, back it up
+    if [ -e "$dst" ] || [ -L "$dst" ]; then
+      stamp="$(date +%Y%m%d-%H%M%S)"
+      bak="${dst}.bak.${stamp}"
+      mv "$dst" "$bak"
+      info "Backed up: $dst -> $bak"
+    fi
+
+    # 5. Create the symlink
+    ln -s "$src" "$dst"
+    done_msg "Linked: $dst -> $src"
+  done
+}
+
+# ==============================================================================
+# System Scripts Execution
+# ==============================================================================
+run_system_scripts() {
+  msg "Running system scripts..."
+
+  [ -d "$ROOT/system" ] || {
+    skip "system directory not found."
+    return 0
+  }
+
+  for script in "$ROOT"/system/*.sh; do
+    # Handle case where no .sh files exist (glob doesn't expand)
+    [ -e "$script" ] || continue
+
+    if [ ! -x "$script" ]; then
+      info "Skipping non-executable: $(basename "$script")"
+      continue
+    fi
+
+    msg "Running $(basename "$script")"
+
+    # Execute script. If it fails, abort the entire setup process cleanly.
+    if ! "$script"; then
+      error "Script $(basename "$script") failed. Aborting setup."
+      return 1
+    fi
+  done
+
+  done_msg "All system scripts completed successfully."
+}
+
+# ==============================================================================
+# Main Entry Point
+# ==============================================================================
+case "${1:-all}" in
+  packages)
+    install_packages
+    ;;
+  configs)
+    link_configs
+    ;;
+  system)
+    run_system_scripts
+    ;;
+  all)
+    install_packages
+    link_configs
+    run_system_scripts
+    ;;
+  *)
+    printf '\nUsage: %s [packages|configs|system|all]\n\n' "$0"
+    printf '  packages  - Install repo and AUR packages from packages/ directory\n'
+    printf '  configs   - Symlink dotfiles from home/ directory with automatic backups\n'
+    printf '  system    - Run all executable scripts in the system/ directory\n'
+    printf '  all       - Run all three steps sequentially (default)\n\n'
+    exit 1
+    ;;
+esac
+
+printf '\n==> Setup completed successfully!\n'

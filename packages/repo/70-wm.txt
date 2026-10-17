@@ -1,0 +1,16 @@
+imv
+niri
+rofi
+dunst
+kitty
+thunar
+swaybg
+swayidle
+cliphist
+playerctl
+quickshell
+xorg-xinit
+xorg-server
+wl-clipboard
+lxqt-policykit
+xwayland-satellite

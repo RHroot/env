@@ -1,0 +1,7 @@
+pipewire
+alsa-utils
+wireplumber
+pavucontrol
+pipewire-alsa
+pipewire-pulse
+alsa-utils-runit
