@@ -4,13 +4,14 @@
   ...
 }:
 let
-  themeName = "Flat-Remix-GTK-Violet-Darkest";
-  iconTheme = "Papirus-Dark";
-  cursorTheme = "Bibata-Modern-Ice";
-  cursorSize = 30;
   seriffont = "Merriweather";
   sansseriffont = "Noto Sans";
   monospacefont = "FiraCode Nerd Font";
+
+  cursorSize = 30;
+  iconTheme = "Papirus-Dark";
+  cursorTheme = "Bibata-Modern-Ice";
+  themeName = "Flat-Remix-GTK-Violet-Darkest";
 in
 {
   programs.dconf.enable = true;
@@ -35,9 +36,6 @@ in
     };
   };
   environment.systemPackages = with pkgs; [
-    gtk2
-    gtk3
-    gtk4
     adwaita-qt
     bibata-cursors
     papirus-icon-theme

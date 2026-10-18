@@ -8,7 +8,7 @@ mkdir -p "$HOME/.cache"
 LOG_FILE="$HOME/.cache/nixos-switch.log"
 HOST_NAME="${FLAKE#*.#}"
 
-cd ~/env/
+cd ~/env/nixos/
 
 # ── Colors ─────────────────────────────────────────────
 RED="\033[1;31m"

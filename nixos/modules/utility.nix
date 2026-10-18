@@ -5,6 +5,7 @@
 }:
 {
   environment.systemPackages = with pkgs; [
+    mpv # Video player
     gimp # Advanced image editor (GNU Image Manipulation Program)
     brave # Web browser
     evince # PDF viewer
@@ -12,28 +13,14 @@
     calibre # Book reader and downloader
     obsidian # Knowledge Manager/Notes
     libinput # Input device management library
-    inkscape # Vector graphics editor
     audacity # Free, open-source audio editor and recorder
     libnotify # Desktop notification library
-    megatools # MEGA tools to do big tasks faster through terminal
-    mkvtoolnix # MKV tool to create and edit Matroska files
     obs-studio # Open Broadcaster Software for video recording and live streaming
     qbittorrent # Torrent client
     google-chrome # Secondary Browser for Exams and Stuff
     telegram-desktop # Messenger
     libreoffice-fresh # Office suite
     lxqt.lxqt-policykit # Polkit Agent
-    kdePackages.kdenlive # Non-linear video editor for creating and editing videos
-    (symlinkJoin {
-      name = "mpv-nvidia";
-      paths = [ mpv ];
-      buildInputs = [ makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/mpv \
-          --set __NV_PRIME_RENDER_OFFLOAD 1 \
-          --set __VK_LAYER_NV_optimus NVIDIA_only
-      '';
-    })
   ];
 
   environment.sessionVariables = {

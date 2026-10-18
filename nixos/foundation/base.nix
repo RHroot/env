@@ -9,7 +9,6 @@
     jq # JSON processor
     file # Determine file type
     curl # Data transfer tool for URLs
-    stow # Symlink-based dotfile manager
     wget # Non-interactive file downloader
     dust # Disk usage analyzer (du alternative)
     tree # Display directory structure as a tree
@@ -19,7 +18,6 @@
     ffmpeg # Multimedia framework for encoding, decoding, and processing media
     img2pdf # Convert images to PDF without re-encoding
     dnsutils # To get cli tools like dig
-    moreutils # Additional Unix utilities not in coreutils
     fastfetch # System information fetch tool
     lm_sensors # Read sensors data from Linux kernel
 
@@ -29,7 +27,7 @@
     unzip # Extract ZIP archives
 
     # === System Utilities ===
-    blueman # Bluetooth manager (GUI)
+    bluetui # Bluetooth tui like nmtui
     imagemagick # Image manipulation tools (convert, mogrify, etc.)
     brightnessctl # Control screen backlight and LEDs
 
@@ -42,8 +40,8 @@
   };
   programs.nix-index = {
     enable = true;
-    enableZshIntegration = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
+    enableZshIntegration = false;
   };
 }

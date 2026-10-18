@@ -4,9 +4,7 @@
   ...
 }:
 {
-  programs.niri = {
-    enable = true;
-  };
+  programs.niri.enable = true;
 
   programs.xwayland = {
     enable = true;
@@ -15,7 +13,6 @@
 
   services.dunst = {
     enable = true;
-    package = pkgs.dunst;
     enableX11 = true;
     enableWayland = true;
   };
@@ -38,8 +35,8 @@
   xdg.mime.defaultApplications = {
     # Images
     "image/png" = [ "imv.desktop" ];
+    "image/gif" = [ "imv.desktop" ];
     "image/jpeg" = [ "imv.desktop" ];
     "image/webp" = [ "imv.desktop" ];
-    "image/gif" = [ "imv.desktop" ];
   };
 }

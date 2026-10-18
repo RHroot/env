@@ -26,42 +26,6 @@
     };
   };
 
-  # WirePlumber runtime enforcement
-  services.pipewire.wireplumber.extraConfig."10-force-quantum" = {
-    "wireplumber.settings" = {
-      "clock.force-quantum" = 512;
-    };
-  };
-
-  services.pipewire.wireplumber.extraConfig."51-audio-priority" = {
-    "monitor.alsa.rules" = [
-      # 1. Boost Intel PCH to guarantee it wins the default election on boot
-      {
-        matches = [
-          { "node.name" = "~alsa_output.pci-0000_00_1f.*"; }
-        ];
-        actions = {
-          update-props = {
-            "priority.driver" = 2000;
-            "priority.session" = 2000;
-          };
-        };
-      }
-      # 2. Demote NVIDIA to a very low priority (it stays available for HDMI)
-      {
-        matches = [
-          { "node.name" = "~alsa_output.pci-0000_01_00.*"; }
-        ];
-        actions = {
-          update-props = {
-            "priority.driver" = 10;
-            "priority.session" = 10;
-          };
-        };
-      }
-    ];
-  };
-
   environment.systemPackages = with pkgs; [
     pavucontrol
     alsa-utils

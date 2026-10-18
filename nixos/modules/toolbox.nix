@@ -11,10 +11,6 @@
     # === Rust Development ===
     rustup # Rust toolchain installer
 
-    # === Web Development ===
-    bun # Fast, modern, all-in-one CLI for web dev
-    prettierd # Formatter for JavaScript, HTML, CSS, JSON, GraphQL, Markdown, YAML, and more
-
     # === Markdown ===
     marksman # Markdown lsp server
     mdformat # Markdown formatter
@@ -23,33 +19,14 @@
     shfmt # Shell script formatter
     bash-language-server # Bash language server
 
-    # === sql ===
-    sqls # SQL language server protocol
-    postgresql # SQL
-    sql-formatter # SQL formatter
+    # === Python Development ===
+    uv # Extremely fast Python package and environment manager
+    python314 # Python interpreter
 
     # === Lua Development ===
     lua # Lua programming language interpreter
     stylua # Lua code formatter
     lua-language-server # Lua language server
-
-    # === Python Development ===
-    python314 # Python interpreter
-    python314Packages.uv # Extremely fast Python package and environment manager
-    python314Packages.ruff # Python linter/formatter
-    python314Packages.python-lsp-server # Python language server
-
-    # === Go Development ===
-    go # Go interpreter
-    gopls # Go lsp
-    gotools # provides tools like goimports, gorename, etc.
-
-    # === C/C++ Development ===
-    lldb # Next generation, high-performance debugger
-    clang # C/C++/Objective-C compiler
-    cmake # Build, test, and package software
-    gnumake # GNU Make
-    clang-tools # Clang static analyzer
 
     # === Utility tools ===
     tmux # Terminal multiplexer
@@ -58,9 +35,6 @@
     pkg-config # Package management tool for libraries
     # podman-compose # Compose multiple containers with a single command
   ];
-  programs.vim = {
-    enable = true;
-  };
   programs.neovim = {
     enable = true;
   };

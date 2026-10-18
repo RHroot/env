@@ -1,0 +1,76 @@
+#!/bin/sh
+set -eu
+
+# Hardcoded source directory
+HOME_DIR="$HOME/env/home"
+
+# ==============================================================================
+# Helper Functions
+# ==============================================================================
+msg() { printf '\n==> %s\n' "$*"; }
+info() { printf '  -> %s\n' "$*"; }
+skip() { printf '  -> [SKIP] %s\n' "$*"; }
+done_msg() { printf '  -> [DONE] %s\n' "$*"; }
+error() { printf '\n[ERROR] %s\n' "$*" >&2; }
+
+# ==============================================================================
+# Config Linking
+# ==============================================================================
+link_configs() {
+  msg "Linking dotfiles from $HOME_DIR..."
+
+  if [ ! -d "$HOME_DIR" ]; then
+    error "'$HOME_DIR' directory not found."
+    exit 1
+  fi
+
+  mkdir -p "$HOME/.cache"
+  backup_dir=""
+
+  find "$HOME_DIR" -type f | while IFS= read -r src; do
+    rel="${src#$HOME_DIR/}"
+    dst="$HOME/$rel"
+    dst_dir="$(dirname "$dst")"
+
+    # 1. Ensure parent directory exists
+    if [ ! -d "$dst_dir" ]; then
+      mkdir -p "$dst_dir"
+    fi
+
+    # 2. If correct symlink exists, skip
+    if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
+      skip "Already linked: $rel"
+      continue
+    fi
+
+    # 3. If destination is a real directory, skip to prevent data loss
+    if [ -d "$dst" ] && [ ! -L "$dst" ]; then
+      error "$dst is a real directory. Skipping."
+      continue
+    fi
+
+    # 4. Backup if file or broken/incorrect symlink exists
+    if [ -e "$dst" ] || [ -L "$dst" ]; then
+      if [ -z "$backup_dir" ]; then
+        backup_dir="$HOME/.cache/dotfiles-bak/$(date +%Y%m%d-%H%M%S)"
+        mkdir -p "$backup_dir"
+        info "Backing up existing files to: $backup_dir"
+      fi
+
+      backup_dest="$backup_dir/$rel"
+      mkdir -p "$(dirname "$backup_dest")"
+      mv "$dst" "$backup_dest"
+      info "Backed up: $rel"
+    fi
+
+    # 5. Create symlink
+    ln -s "$src" "$dst"
+    done_msg "Linked: $rel"
+  done
+}
+
+# ==============================================================================
+# Execution
+# ==============================================================================
+link_configs
+printf '\n==> Dotfiles deployment completed successfully!\n'

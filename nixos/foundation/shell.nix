@@ -18,20 +18,17 @@
 
   programs.zoxide = {
     enable = true;
-    package = pkgs.zoxide;
     enableBashIntegration = true;
     enableFishIntegration = true;
   };
 
   environment.systemPackages = with pkgs; [
-    fish # User-friendly shell with powerful features and plugins
     lolcat # Colorful text output using rainbow gradients
     ripgrep # Fast recursive text search tool (rg)
   ];
 
   programs.bat = {
     enable = true;
-    package = pkgs.bat;
   };
 
   environment.sessionVariables = {
@@ -258,7 +255,7 @@
 
       render_git() {
         local glyph=""
-        
+
         # Prevent if not a repository
         if ! is_git; then return 1; fi
 

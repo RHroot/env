@@ -18,11 +18,12 @@ abbr -a tns "tmux new -s"
 # System helpers
 abbr -a psa "ps auxf"
 abbr -a psg "ps aux | rg"
-abbr -a openports "netstat -tulanp"
+abbr -a openports "ss -tulanp"
 
 # System control
-abbr -a shutnow "shutdown now"
-abbr -a reboot "systemctl reboot"
+abbr -a reboot "loginctl reboot"
+abbr -a suspend "loginctl suspend"
+abbr -a shutnow "loginctl poweroff"
 
 # File operations
 abbr -a rm "rm -iv"
@@ -65,6 +66,6 @@ abbr -a vol "wpctl get-volume @DEFAULT_AUDIO_SINK@"
 
 # LS commands
 abbr -a la "ls -A"
-abbr -a lz "ls -lhAi"
+abbr -a lz "ls -lhA"
 abbr -a lh 'set m .*; and [ "$m" != ".*" ]; and ls -d $m 2>/dev/null'
 abbr -a list "tree -a 2>/dev/null || ls -R"

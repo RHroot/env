@@ -7,7 +7,6 @@
   environment.systemPackages = with pkgs; [
     heroic # Games Launcher
     mangohud # A FPS counter
-    gamemode # Automatically switches to gamemode when a game is running
   ];
 
   programs.gamemode = {

@@ -43,7 +43,7 @@
         specialArgs = { inherit env; };
 
         modules = [
-          ./nixos/configuration.nix
+          ./configuration.nix
           nix-index-database.nixosModules.nix-index
 
           (
