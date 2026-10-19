@@ -1,5 +1,5 @@
 // === STARTUP ===
-spawn-sh-at-startup      "until pgrep -x nm-applet >/dev/null; do dunst; sleep 0.5; done &"
+spawn-sh-at-startup      "until pgrep -x nm-applet >/dev/null; do nm-applet; sleep 0.5; done &"
 spawn-sh-at-startup      "until pgrep -x lxqt-policykit-agent >/dev/null; do lxqt-policykit-agent; sleep 0.5; done &"
 
 spawn-sh-at-startup      "xrdb -merge ~/env/home/.Xresources"
@@ -14,7 +14,7 @@ spawn-sh-at-startup      r#"
 swayidle -w \
   timeout 600 'playerctl -a status 2>/dev/null | grep -qw Playing || brightnessctl -s set 10%' \
   resume 'brightnessctl -r' \
-  timeout 900 'playerctl -a status 2>/dev/null | grep -qw Playing || { swaylock -f && sleep 1 && loginctl suspend; }' \
+  timeout 900 'playerctl -a status 2>/dev/null | grep -qw Playing || { swaylock -f && sleep 1 && systemctl suspend; }' \
   lock 'swaylock -f' \
   before-sleep 'swaylock -f'
 "#
@@ -119,12 +119,12 @@ binds {
 
     // SYSTEM STATE ACTIONS
     Ctrl+Alt+Q               { quit; }
+    Ctrl+Alt+R               { spawn "reboot"; }
     Ctrl+Alt+S               { spawn "shutdown" "now"; }
-    Ctrl+Alt+R               { spawn "loginctl" "reboot"; }
 
     // CUSTOM BINDS
     Super+Return             { spawn "kitty"; }
-    Super+B                  { spawn "helium"; }
+    Super+B                  { spawn "brave"; }
     Super+E                  { spawn "thunar"; }
     Super+Shift+Return       { spawn "alacritty"; }
     Super+Shift+V            { spawn "pavucontrol"; }
@@ -408,7 +408,7 @@ animations {
 
 // === SWITCH EVENTS ===
 switch-events {
-    lid-close          { spawn "loginctl" "lock-session"; }
+    lid-close          { spawn "swaylock -f"; }
     tablet-mode-on     { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true"; }
     tablet-mode-off    { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false"; }
 }

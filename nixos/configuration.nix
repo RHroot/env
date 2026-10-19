@@ -23,19 +23,9 @@
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.kernelParams = [
     "nowatchdog" # Disables hardware watchdog (saves CPU interrupts)
-    "mitigations=off" # Disables CPU security mitigations (massive FPS boost)
-    "nvidia-drm.fbdev=1" # Required for modern NVIDIA Wayland
-    "video=eDP-1:1920x1080@60e" # Forcing the desired resolution
+    "nvidia-drm.fbdev=1" # Enables NVIDIA framebuffer console
+    "nvidia-drm.modeset=1" # Enables NVIDIA DRM KMS (required for modern Wayland)
   ];
-  fileSystems."/".options = lib.mkIf (config.fileSystems."/".fsType == "btrfs") [
-    "compress=zstd:1"
-    "noatime"
-    "discard=async"
-  ];
-  services.btrfs.autoScrub = lib.mkIf (config.fileSystems."/".fsType == "btrfs") {
-    enable = true;
-    interval = "monthly";
-  };
   swapDevices = [
     {
       device = "/swapfile";
@@ -64,28 +54,28 @@
       "networkmanager"
       "wheel"
       "input"
-      "podman"
+      # "podman"
       "gamemode"
     ];
-    subUidRanges = [
-      {
-        startUid = 100000;
-        count = 65536;
-      }
-    ];
-    subGidRanges = [
-      {
-        startGid = 100000;
-        count = 65536;
-      }
-    ];
+    # subUidRanges = [
+    #   {
+    #     startUid = 100000;
+    #     count = 65536;
+    #   }
+    # ];
+    # subGidRanges = [
+    #   {
+    #     startGid = 100000;
+    #     count = 65536;
+    #   }
+    # ];
   };
 
   services.gvfs.enable = true;
   services.fwupd.enable = true;
   services.udisks2.enable = true;
   services.openssh.enable = false;
-  services.getty.autologinUser = env.username;
+  # services.getty.autologinUser = env.username;
 
   security.rtkit.enable = true;
   security.polkit.enable = true;
@@ -108,8 +98,24 @@
   console = {
     enable = true;
     useXkbConfig = true;
-    packages = with pkgs; [ terminus_font ];
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-u32b.psf.gz";
+  };
+
+  systemd.services.console-font-double = {
+    description = "Double console font with setfont -d";
+    wantedBy = [ "multi-user.target" ];
+    after = [
+      "systemd-vconsole-setup.service"
+      "console-setup.service"
+    ];
+    before = [ "getty.target" ];
+    serviceConfig.Type = "oneshot";
+    path = [ pkgs.kbd ];
+    script = ''
+      font=${pkgs.terminus_font}/share/consolefonts/ter-v32b.psf.gz
+      for tty in /dev/tty1 /dev/tty2 /dev/tty3 /dev/tty4 /dev/tty5 /dev/tty6; do
+        setfont -C "$tty" -d "$font" || true
+      done
+    '';
   };
 
   hardware.bluetooth = {

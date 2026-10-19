@@ -9,6 +9,11 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    qml-niri = {
+      url = "github:imiric/qml-niri/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -17,6 +22,7 @@
       nixpkgs,
       nixpkgs-unstable,
       nix-index-database,
+      qml-niri,
       ...
     }:
     let
@@ -40,7 +46,7 @@
     in
     {
       nixosConfigurations.${env.hostname} = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit env; };
+        specialArgs = { inherit env qml-niri; };
 
         modules = [
           ./configuration.nix
@@ -48,8 +54,9 @@
 
           (
             {
-              pkgs,
               lib,
+              pkgs,
+              qml-niri,
               ...
             }:
             {
@@ -67,6 +74,7 @@
 
               environment.systemPackages = with pkgs; [
                 unstable.vim
+                qml-niri.packages.${pkgs.stdenv.hostPlatform.system}.default
               ];
             }
           )

@@ -21,9 +21,9 @@ abbr -a psg "ps aux | rg"
 abbr -a openports "ss -tulanp"
 
 # System control
-abbr -a reboot "loginctl reboot"
-abbr -a suspend "loginctl suspend"
-abbr -a shutnow "loginctl poweroff"
+abbr -a reboot "systemctl reboot"
+abbr -a suspend "systemctl suspend"
+abbr -a shutnow "systemctl poweroff"
 
 # File operations
 abbr -a rm "rm -iv"
