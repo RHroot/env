@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/rofi-emoji/emoji.txt"
+FORCE="${1:-}"
+
+cleanup() {
+  rm -f "${py:-}" "${tmp:-}"
+}
+trap cleanup EXIT
+
+if [[ "$FORCE" == "--update" || ! -s "$CACHE" ]]; then
+  mkdir -p "$(dirname "$CACHE")"
+
+  py="$(mktemp)"
+  cat >"$py" <<'PY'
+import emoji
+
+for char in sorted(emoji.EMOJI_DATA):
+    try:
+        name = emoji.demojize(char)
+    except Exception:
+        name = f":{char}:"
+
+    name = name.strip(":").replace(":", " ")
+    print(f"{char} {name}")
+PY
+  tmp="$(mktemp)"
+
+  nix-shell -p python3Packages.emoji --run "python3 '$py'" >"$tmp"
+
+  mv "$tmp" "$CACHE"
+fi
+
+selected="$(
+  rofi -dmenu -i -p "Emoji" -no-custom \
+    <"$CACHE"
+)" || exit 1
+
+emoji="${selected%% *}"
+
+if command -v wl-copy >/dev/null 2>&1; then
+  printf '%s' "$emoji" | wl-copy
+elif command -v xclip >/dev/null 2>&1; then
+  printf '%s' "$emoji" | xclip -selection clipboard
+else
+  echo "Need wl-copy or xclip installed." >&2
+  exit 1
+fi
