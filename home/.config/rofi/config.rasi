@@ -5,12 +5,12 @@ configuration {
     case-sensitive: false;
     display-run: ">>";
     display-combi: ">>>";
-    display-window: " Windows";
-    display-drun: " Apps";
+    display-window: "  Windows";
+    display-drun: "  Apps";
     drun-url-launcher: "xdg-open";
     disable-history: false;
     max-history-size: 3;
-    font: "FiraCode Nerd Font 15";
+    font: "Noto Sans, Noto Color Emoji 16";
     modi: "window,run,drun,combi,filebrowser";
 }
 
