@@ -7,7 +7,7 @@ let
   seriffont = "Merriweather";
   sansseriffont = "Noto Sans";
   emojiFont = "Noto Color Emoji";
-  monospacefont = "FiraCode Nerd Font Mono";
+  monospacefont = "FiraCode Nerd Font";
 
   cursorSize = 30;
   iconTheme = "Papirus-Dark";
