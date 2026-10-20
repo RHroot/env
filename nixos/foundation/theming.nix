@@ -6,7 +6,8 @@
 let
   seriffont = "Merriweather";
   sansseriffont = "Noto Sans";
-  monospacefont = "FiraCode Nerd Font";
+  emojiFont = "Noto Color Emoji";
+  monospacefont = "FiraCode Nerd Font Mono";
 
   cursorSize = 30;
   iconTheme = "Papirus-Dark";
@@ -20,6 +21,7 @@ in
     packages = with pkgs; [
       noto-fonts
       merriweather
+      noto-fonts-emoji
       nerd-fonts.fira-code
     ];
     fontconfig = {
@@ -29,6 +31,7 @@ in
       hinting.style = "full";
       subpixel.rgba = "rgb";
       defaultFonts = {
+        emoji = [ emojiFont ];
         serif = [ seriffont ];
         sansSerif = [ sansseriffont ];
         monospace = [ monospacefont ];
