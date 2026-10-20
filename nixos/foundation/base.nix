@@ -20,6 +20,7 @@
     dnsutils # To get cli tools like dig
     fastfetch # System information fetch tool
     lm_sensors # Read sensors data from Linux kernel
+    doas-sudo-shim # For hardcoded script and only so nothing breaks when sudo is disabled
 
     # === Zip & Archive Tools ===
     gzip # GNU compression utility

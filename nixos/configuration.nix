@@ -79,9 +79,16 @@
 
   security.rtkit.enable = true;
   security.polkit.enable = true;
-  security.sudo = {
+  security.sudo.enable = false;
+  security.doas = {
     enable = true;
-    wheelNeedsPassword = false;
+    extraRules = [
+      {
+        groups = [ "wheel" ];
+        keepEnv = true;
+        persist = true;
+      }
+    ];
   };
 
   nix.gc = {
