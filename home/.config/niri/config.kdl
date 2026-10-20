@@ -127,8 +127,8 @@ binds {
     Super+B                  { spawn "brave"; }
     Super+E                  { spawn "thunar"; }
     Super+Shift+Return       { spawn "alacritty"; }
+    Super+Shift+E            { spawn "emoji-rofi"; }
     Super+Shift+V            { spawn "pavucontrol"; }
-    Super+Shift+E            { spawn "emacsclient -c"; }
     Super+R                  { spawn-sh "rofi -show run"; }
     Super+P                  { spawn-sh "kitten quick-access-terminal"; }
     Super+Space              { spawn-sh "rofi -show combi -modes combi -combi-modes 'window,drun,run'"; }
