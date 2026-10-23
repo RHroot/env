@@ -30,6 +30,12 @@
 
       CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+
+      CPU_SCALING_MIN_FREQ_ON_AC = "800000";
+      CPU_SCALING_MIN_FREQ_ON_BAT = "800000";
+
+      CPU_SCALING_MAX_FREQ_ON_AC = "3500000";
+      CPU_SCALING_MAX_FREQ_ON_BAT = "3000000";
     };
   };
 

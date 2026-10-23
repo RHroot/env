@@ -38,54 +38,9 @@
   #   openFirewall = true;
   # };
 
-  environment.etc."brave/policies/managed/policies.json" = {
-    text = builtins.toJSON {
-      # Corrected Brave-specific debloat features
-      BraveRewardsDisabled = true;
-      BraveWalletDisabled = true;
-      BraveVPNDisabled = true;
-      BraveAIChatEnabled = false;
-      BraveNewsDisabled = true;
-
-      # Additional Brave-specific bloat & telemetry to disable
-      TorDisabled = true;
-      BraveP3AEnabled = "Disabled"; # Privacy-preserving analytics
-      BraveStatsPingEnabled = false;
-      BraveWebDiscoveryEnabled = false;
-      BraveSpeedreaderEnabled = false;
-      BraveWaybackMachineEnabled = false;
-      BravePlaylistEnabled = false;
-
-      # Corrected Chromium standard features
-      MetricsReportingEnabled = false;
-      SafeBrowsingExtendedReportingEnabled = false;
-      CloudReportingEnabled = false;
-
-      PasswordManagerEnabled = false; # Changed from PasswordManager
-      AutofillAddressEnabled = false;
-      AutofillCreditCardEnabled = false;
-      TranslateEnabled = false;
-      SpellcheckEnabled = false; # Disables local spellcheck
-      SpellCheckServiceEnabled = false; # Disables cloud spellcheck
-      PromotionalTabsEnabled = false;
-      ShowHomeButton = false;
-
-      # Some More
-      SyncDisabled = true;
-      ClearBrowsingDataOnExitList = [
-        "download_history"
-        "cached_images_and_files"
-      ];
-
-      # Disable auto-updates
-      AutoUpdateEnabled = false;
-    };
-    mode = "0644";
-  };
-
   # programs.firefox = {
   #   enable = true;
-  #   # package = pkgs.firefox;
+  #   package = pkgs.firefox;
   #
   #   autoConfig = ''
   #     // --- Privacy Overrides ---
