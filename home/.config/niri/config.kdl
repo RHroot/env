@@ -206,6 +206,17 @@ binds {
     Super+9                  { focus-workspace 9; }
     Super+0                  { focus-workspace 10; }
 
+    Alt+Shift+1                    { focus-column 1; }
+    Alt+Shift+2                    { focus-column 2; }
+    Alt+Shift+3                    { focus-column 3; }
+    Alt+Shift+4                    { focus-column 4; }
+    Alt+Shift+5                    { focus-column 5; }
+    Alt+Shift+6                    { focus-column 6; }
+    Alt+Shift+7                    { focus-column 7; }
+    Alt+Shift+8                    { focus-column 8; }
+    Alt+Shift+9                    { focus-column 9; }
+    Alt+Shift+0                    { focus-column 10; }
+
     Super+Shift+1            { move-column-to-workspace 1; }
     Super+Shift+2            { move-column-to-workspace 2; }
     Super+Shift+3            { move-column-to-workspace 3; }
