@@ -7,7 +7,6 @@
   environment.systemPackages = with pkgs; [
     mpv # Video player
     gimp # Advanced image editor (GNU Image Manipulation Program)
-    brave # Web browser
     evince # PDF viewer
     pcmanfm # File Manager
     calibre # Book reader and downloader
@@ -38,45 +37,58 @@
   #   openFirewall = true;
   # };
 
-  # programs.firefox = {
-  #   enable = true;
-  #   package = pkgs.firefox;
-  #
-  #   autoConfig = ''
-  #     // --- Privacy Overrides ---
-  #     defaultPref("privacy.resistFingerprinting", false);
-  #     defaultPref("signon.rememberSignons", false);
-  #
-  #     // --- UI & Dark Theme ---
-  #     defaultPref("devtools.theme", "dark");
-  #     defaultPref("ui.systemUsesDarkTheme", 1);
-  #     defaultPref("browser.theme.dark-private-windows", true);
-  #     defaultPref("layout.css.prefers-color-scheme.content-override", 0);
-  #
-  #     // --- Native Vertical Tabs ---
-  #     defaultPref("sidebar.revamp", true);
-  #     defaultPref("sidebar.verticalTabs", true);
-  #     defaultPref("browser.tabs.verticalTabs.enabled", true);
-  #
-  #     // --- Cache & Memory Tuning ---
-  #     defaultPref("browser.cache.disk.capacity", 512000);
-  #     defaultPref("browser.cache.memory.capacity", 51200);
-  #     defaultPref("browser.sessionstore.interval", 30000);
-  #     defaultPref("browser.sessionhistory.max_entries", 10);
-  #
-  #     // --- Hardware Acceleration ---
-  #     defaultPref("media.ffmpeg.vaapi.enabled", true);
-  #     defaultPref("gfx.webrender.all", true);
-  #     defaultPref("widget.use-aspect-ratio", true);
-  #   '';
-  # };
+  programs.firefox = {
+    enable = true;
+
+    # Preferences (User defaults, can still be toggled in about:config)
+    preferences = {
+      # UI & Dark Theme
+      "devtools.theme" = "dark";
+      "ui.systemUsesDarkTheme" = 1;
+      "browser.theme.dark-private-windows" = true;
+      "layout.css.prefers-color-scheme.content-override" = 0;
+
+      # Native Vertical Tabs (Requires Firefox 130+)
+      "sidebar.revamp" = true;
+      "sidebar.verticalTabs" = true;
+
+      # RAM & Performance (Prevents Chromium-style bloat)
+      "browser.cache.memory.capacity" = 512000; # 500MB memory cache
+      "browser.sessionstore.interval" = 30000; # Write to disk less often
+      "browser.sessionhistory.max_entries" = 10; # Limit back/forward history
+
+      # Hardware Acceleration (Wayland)
+      "media.ffmpeg.vaapi.enabled" = true;
+      "gfx.webrender.all" = true;
+      "widget.dmabuf.force-enabled" = true;
+
+      # Remove Bloat
+      "extensions.pocket.enabled" = false;
+    };
+
+    policies = {
+      DisableTelemetry = true;
+      DisableFirefoxStudies = true;
+      PasswordManagerEnabled = false;
+      OfferToSaveLogins = false;
+      EnableTrackingProtection = {
+        Value = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
+      Preferences = {
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "widget.use-xdg-desktop-portal.mime-types" = 1;
+      };
+    };
+  };
 
   xdg.mime.defaultApplications = {
     # # Text
-    "text/html" = [ "brave-browser.desktop" ];
+    "text/html" = [ "firefox.desktop" ];
     # Web
-    "x-scheme-handler/http" = [ "brave-browser.desktop" ];
-    "x-scheme-handler/https" = [ "brave-browser.desktop" ];
+    "x-scheme-handler/http" = [ "firefox.desktop" ];
+    "x-scheme-handler/https" = [ "firefox.desktop" ];
     # Video
     "video/mp4" = [ "mpv.desktop" ];
     "video/x-matroska" = [ "mpv.desktop" ];

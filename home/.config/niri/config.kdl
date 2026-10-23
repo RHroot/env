@@ -128,8 +128,8 @@ binds {
 
     // CUSTOM BINDS
     Super+Return             { spawn "kitty"; }
-    Super+B                  { spawn "brave"; }
     Super+E                  { spawn "thunar"; }
+    Super+B                  { spawn "firefox"; }
     Super+Shift+Return       { spawn "alacritty"; }
     Super+Shift+E            { spawn "emoji-rofi"; }
     Super+Shift+V            { spawn "pavucontrol"; }
