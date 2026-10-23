@@ -53,13 +53,13 @@
       "sidebar.verticalTabs" = true;
 
       # RAM & Performance (Prevents Chromium-style bloat)
-      "browser.cache.memory.capacity" = 512000; # 500MB memory cache
       "browser.sessionstore.interval" = 30000; # Write to disk less often
+      "browser.cache.memory.capacity" = 512000; # 500MB memory cache
       "browser.sessionhistory.max_entries" = 10; # Limit back/forward history
 
       # Hardware Acceleration (Wayland)
-      "media.ffmpeg.vaapi.enabled" = true;
       "gfx.webrender.all" = true;
+      "media.ffmpeg.vaapi.enabled" = true;
       "widget.dmabuf.force-enabled" = true;
 
       # Remove Bloat
@@ -68,17 +68,17 @@
 
     policies = {
       DisableTelemetry = true;
+      OfferToSaveLogins = false;
       DisableFirefoxStudies = true;
       PasswordManagerEnabled = false;
-      OfferToSaveLogins = false;
       EnableTrackingProtection = {
         Value = true;
         Cryptomining = true;
         Fingerprinting = true;
       };
       Preferences = {
-        "widget.use-xdg-desktop-portal.file-picker" = 1;
         "widget.use-xdg-desktop-portal.mime-types" = 1;
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
       };
     };
   };
