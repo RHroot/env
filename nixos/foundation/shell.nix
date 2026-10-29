@@ -38,17 +38,17 @@
     MANROFFOPT = "-c";
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
 
+    XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_CACHE_HOME = "$HOME/.cache";
 
     LESSHISTFILE = "$HOME/.cache/less_history";
     PYTHON_HISTORY = "$HOME/.local/share/python/history";
 
-    MIRU_PLAYER = "mpv";
-    MIRU_MENU = "rofi";
-    MIRU_QUALITY = "best";
     MIRU_MODE = "sub";
+    MIRU_MENU = "rofi";
+    MIRU_PLAYER = "mpv";
+    MIRU_QUALITY = "best";
     MIRU_DOWNLOAD_DIR = ".";
   };
 

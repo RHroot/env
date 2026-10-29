@@ -31,19 +31,15 @@
         "[::1]:53"
       ];
 
-      server_names = [
-        "google"
-        "google-ipv6"
-        "cloudflare"
-        "cloudflare-ipv6"
-      ];
+      server_names = [ ];
 
       # Privacy & Protocols
       doh_servers = true;
       ipv4_servers = true;
       ipv6_servers = true;
-      require_nolog = false;
-      require_nofilter = false;
+      require_nolog = true;
+      require_dnssec = true;
+      require_nofilter = true; # For Ad blocking and Malware blocking set this to false
 
       # Caching
       cache = true;
