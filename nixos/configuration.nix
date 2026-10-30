@@ -32,7 +32,11 @@
       size = 4096; # Size in MB(4Gb)
     }
   ];
-  boot.kernel.sysctl."vm.swappiness" = 60; # It tells the Linux kernel how aggressively to use your disk's swap space instead of physical RAM from 0 to 100
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 60; # It tells the Linux kernel how aggressively to use your disk's swap space instead of physical RAM from 0 to 100
+    "fs.inotify.max_user_watches" = 524288;
+    "fs.inotify.max_user_instances" = 1024;
+  };
 
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
