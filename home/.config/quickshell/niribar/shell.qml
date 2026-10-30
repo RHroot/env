@@ -18,7 +18,7 @@ ShellRoot {
 
     PanelWindow {
         id: bar
-        anchors { top: true; left: true; right: true }
+        anchors { bottom: true; left: true; right: true }
         implicitHeight: 28
         color: "#05040A"
 
