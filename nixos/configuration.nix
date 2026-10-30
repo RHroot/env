@@ -23,8 +23,10 @@
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.kernelParams = [
     "nowatchdog" # Disables hardware watchdog (saves CPU interrupts)
+    "pcie_aspm=off" # Prevents PCIe bus timeout on wake
     "nvidia-drm.fbdev=1" # Enables NVIDIA framebuffer console
     "nvidia-drm.modeset=1" # Enables NVIDIA DRM KMS (required for modern Wayland)
+    "nvme_core.default_ps_max_latency_us=0" # Prevents NVMe sleep hangs
   ];
   swapDevices = [
     {
