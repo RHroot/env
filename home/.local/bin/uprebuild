@@ -4,7 +4,7 @@ set -euo pipefail
 FLAKE=".#rhroot"
 LOG_FILE="$HOME/.cache/nixos-switch.log"
 HOST_NAME="${FLAKE#*.#}"
-mkdir -p "$HOME/.cache"
+mkdir -p "$HOME/.cache/nix"
 cd ~/env/nixos/ || exit 1
 
 # Colors
@@ -21,6 +21,8 @@ printf "\n%b\n" "${BOLD}${MAGENTA}NixOS Upgrade${RESET}"
 printf "%b\n" "${DIM}──────────────────────────────${RESET}"
 printf "%b\n" "${DIM}target ${RESET}nixosConfigurations.${HOST_NAME}"
 printf "%b\n\n" "${DIM}log    ${RESET}${LOG_FILE}"
+
+sudo chown -R "$USER" ~/.cache/nix
 
 printf "%b\n" "${YELLOW}󰚰 Updating flake inputs${RESET}"
 nix flake update
