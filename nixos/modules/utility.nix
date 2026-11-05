@@ -39,7 +39,7 @@
 
   programs.firefox = {
     enable = true;
-    package = firefox-bin;
+    package = pkgs.firefox-bin;
 
     # Preferences (User defaults, can still be toggled in about:config)
     preferences = {
