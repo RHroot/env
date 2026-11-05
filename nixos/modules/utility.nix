@@ -91,7 +91,7 @@
     "video/mp4" = [ "mpv.desktop" ];
     "video/x-matroska" = [ "mpv.desktop" ];
     # File manager
-    "inode/directory" = [ "caja.desktop" ];
+    "inode/directory" = [ "thunar.desktop" ];
     # PDF viewer
     "application/pdf" = [ "org.gnome.Evince.desktop" ];
   };
