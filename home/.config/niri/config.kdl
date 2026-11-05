@@ -127,8 +127,8 @@ binds {
     Ctrl+Alt+S               { spawn "shutdown" "now"; }
 
     // CUSTOM BINDS
+    Super+E                  { spawn "caja"; }
     Super+Return             { spawn "kitty"; }
-    Super+E                  { spawn "thunar"; }
     Super+B                  { spawn "firefox"; }
     Super+Shift+Return       { spawn "alacritty"; }
     Super+Shift+E            { spawn "emoji-rofi"; }

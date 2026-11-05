@@ -6,9 +6,9 @@
 {
   environment.systemPackages = with pkgs; [
     mpv # Video player
+    caja # File Manager
     gimp # Advanced image editor (GNU Image Manipulation Program)
     evince # PDF viewer
-    pcmanfm # File Manager
     calibre # Book reader and downloader
     obsidian # Knowledge Manager/Notes
     libinput # Input device management library
@@ -16,14 +16,14 @@
     libnotify # Desktop notification library
     obs-studio # Open Broadcaster Software for video recording and live streaming
     qbittorrent # Torrent client
+    libreoffice # Office suite
     google-chrome # Secondary Browser for Exams and Stuff
     telegram-desktop # Messenger
-    libreoffice-fresh # Office suite
     lxqt.lxqt-policykit # Polkit Agent
   ];
 
   environment.sessionVariables = {
-    BROWSER = "brave";
+    BROWSER = "firefox";
   };
   environment.etc."xdg/pcmanfm/default/pcmanfm.conf".text = ''
     [ui]
