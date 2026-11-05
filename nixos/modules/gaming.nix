@@ -28,11 +28,4 @@
       proton-ge-bin
     ];
   };
-
-  xdg.desktopEntries."steam" = {
-    name = "Steam";
-    exec = "steam -nofriendsui %U";
-    icon = "steam";
-    categories = [ "Game" ];
-  };
 }
