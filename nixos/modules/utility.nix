@@ -8,6 +8,8 @@
     mpv # Video player
     gimp # Advanced image editor (GNU Image Manipulation Program)
     evince # PDF viewer
+    thunar # File Manager
+    tumbler # Background service for thunar to use ffmpegthumbnailer
     calibre # Book reader and downloader
     obsidian # Knowledge Manager/Notes
     libinput # Input device management library
@@ -16,8 +18,6 @@
     obs-studio # Open Broadcaster Software for video recording and live streaming
     qbittorrent # Torrent client
     libreoffice # Office suite
-    xfce.thunar # File Manager
-    xfce.tumbler # Background service for thunar to use ffmpegthumbnailer
     google-chrome # Secondary Browser for Exams and Stuff
     telegram-desktop # Messenger
     ffmpegthumbnailer # thumbnailer
