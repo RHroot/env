@@ -153,30 +153,30 @@ binds {
     Ctrl+Shift+Print         { screenshot-screen show-pointer=false write-to-disk=true; }
 
     // COLUMN/WINDOW/WORKSPACE BINDS
-    Super+K                  { focus-window-or-workspace-up; }
-    Super+J                  { focus-window-or-workspace-down; }
-    Super+H                  { focus-column-or-monitor-left; }
-    Super+L                  { focus-column-or-monitor-right; }
-
-    Super+Shift+K            { move-workspace-up; }
-    Super+Shift+J            { move-workspace-down; }
-
-    Super+Shift+H            { move-column-left-or-to-monitor-left; }
-    Super+Shift+L            { move-column-right-or-to-monitor-right; }
-
     Alt+K                    { focus-window-up; }
     Alt+J                    { focus-window-down; }
     Alt+H                    { focus-column-left; }
     Alt+L                    { focus-column-right; }
 
-    Super+Alt+K              { move-window-up-or-to-workspace-up; }
-    Super+Alt+J              { move-window-down-or-to-workspace-down; }
+    Super+Shift+K            { move-workspace-up; }
+    Super+Shift+J            { move-workspace-down; }
+
+    Super+K                  { focus-window-or-workspace-up; }
+    Super+H                  { focus-column-or-monitor-left; }
+    Super+L                  { focus-column-or-monitor-right; }
+    Super+J                  { focus-window-or-workspace-down; }
 
     Super+equal              { switch-preset-column-width; }
     Super+minus              { switch-preset-column-width-back; }
 
     Super+BracketLeft        { consume-or-expel-window-left; }
     Super+BracketRight       { consume-or-expel-window-right; }
+
+    Super+Shift+H            { move-column-left-or-to-monitor-left; }
+    Super+Shift+L            { move-column-right-or-to-monitor-right; }
+
+    Super+Alt+K              { move-window-up-or-to-workspace-up; }
+    Super+Alt+J              { move-window-down-or-to-workspace-down; }
 
     // MONITOR BINDS
     Super+Ctrl+K             { focus-monitor-up; }
