@@ -18,6 +18,7 @@
     ffmpeg # Multimedia framework for encoding, decoding, and processing media
     img2pdf # Convert images to PDF without re-encoding
     dnsutils # To get cli tools like dig
+    moreutils # For things like vidir etc
     fastfetch # System information fetch tool
     lm_sensors # Read sensors data from Linux kernel
     doas-sudo-shim # For hardcoded script and only so nothing breaks when sudo is disabled
