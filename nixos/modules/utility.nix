@@ -55,10 +55,13 @@
       "browser.cache.memory.capacity" = 512000; # 500MB memory cache
       "browser.sessionhistory.max_entries" = 10; # Limit back/forward history
 
-      # Hardware Acceleration (Wayland)
+      # Hardware Acceleration & Streaming Buffers
       "gfx.webrender.all" = true;
       "media.ffmpeg.vaapi.enabled" = true;
       "widget.dmabuf.force-enabled" = true;
+      "media.av1.enabled" = false; # Forces fallback to hardware-accelerated VP9/H.264
+      "media.cache_readahead_limit" = 120;
+      "media.cache_resume_threshold" = 30;
 
       # Remove Bloat
       "extensions.pocket.enabled" = false;
