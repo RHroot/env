@@ -59,8 +59,10 @@
       "gfx.webrender.all" = true;
       "media.ffmpeg.vaapi.enabled" = true;
       "widget.dmabuf.force-enabled" = true;
+
+      # Buffer & Decoding Fixes
       "media.av1.enabled" = false; # Forces fallback to hardware-accelerated VP9/H.264
-      "media.cache_readahead_limit" = 120;
+      "media.cache_readahead_limit" = 120; # Increases pre-buffered window limit
       "media.cache_resume_threshold" = 30;
 
       # Remove Bloat
