@@ -23,7 +23,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    lolcat # Colorful text output using rainbow gradients
     ripgrep # Fast recursive text search tool (rg)
   ];
 

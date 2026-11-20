@@ -11,6 +11,9 @@
     # === Rust Development ===
     rustup # Rust toolchain installer
 
+    # === Python Development ===
+    uv # Extremely fast Python package and environment manager
+
     # === Markdown ===
     marksman # Markdown lsp server
     mdformat # Markdown formatter
@@ -18,10 +21,6 @@
     # === bash/sh ===
     shfmt # Shell script formatter
     bash-language-server # Bash language server
-
-    # === Python Development ===
-    uv # Extremely fast Python package and environment manager
-    python314 # Python interpreter
 
     # === Lua Development ===
     lua # Lua programming language interpreter
@@ -31,7 +30,6 @@
     # === Utility tools ===
     tmux # Terminal multiplexer
     lazygit # Terminal UI for Git operations
-    opencode # Open source code search engine
     pkg-config # Package management tool for libraries
     # podman-compose # Compose multiple containers with a single command
   ];

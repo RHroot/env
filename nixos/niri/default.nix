@@ -26,7 +26,6 @@
     swaybg # Lightweight wallpaper manager
     swayidle # Idle manager
     cliphist # Clipboard manager for Wayland
-    alacritty # Rust based fast terminal emulator
     playerctl # Media player control via MPRIS
     quickshell # To make widgets/bars
     wl-clipboard # Clipboard utilities for Wayland

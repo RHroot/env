@@ -14,7 +14,7 @@
     networkmanager = {
       enable = true;
       dns = "none";
-      wifi.powersave = false;
+      wifi.powersave = true;
       insertNameservers = [ ];
     };
   };
@@ -62,8 +62,4 @@
     proton-vpn # Official ProtonVPN graphical client
     networkmanagerapplet # System tray applet for managing NetworkManager connections
   ];
-
-  boot.extraModprobeConfig = ''
-    options iwlwifi power_save=0
-  '';
 }
