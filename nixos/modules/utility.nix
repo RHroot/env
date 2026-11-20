@@ -1,39 +1,54 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 {
   environment.systemPackages = with pkgs; [
-    mpv # Video player
-    gimp # Advanced image editor (GNU Image Manipulation Program)
-    evince # PDF viewer
-    thunar # File Manager
-    tumbler # Background service for thunar to use ffmpegthumbnailer
-    calibre # Book reader and downloader
-    obsidian # Knowledge Manager/Notes
-    libinput # Input device management library
-    audacity # Free, open-source audio editor and recorder
-    libnotify # Desktop notification library
-    obs-studio # Open Broadcaster Software for video recording and live streaming
-    qbittorrent # Torrent client
-    libreoffice # Office suite
-    google-chrome # Secondary Browser for Exams and Stuff
-    telegram-desktop # Messenger
-    ffmpegthumbnailer # thumbnailer
-    lxqt.lxqt-policykit # Polkit Agent
-    (pkgs.ungoogled-chromium.override {
+    # Media
+    mpv
+    gimp
+    audacity
+    obs-studio
+
+    # Documents and research
+    evince
+    zotero
+    libreoffice
+    stirling-pdf-desktop
+
+    # File management
+    thunar
+
+    # Communication
+    whatsie
+    thunderbird-bin
+    telegram-desktop
+
+    # Productivity and learning
+    anki-bin
+    joplin-desktop
+
+    # Utilities
+    libnotify
+    qbittorrent
+    ffmpegthumbnailer
+    lxqt.lxqt-policykit
+
+    # Browser
+    google-chrome
+    (ungoogled-chromium.override {
       commandLineArgs = lib.concatStringsSep " " [
-        "--force-dark-mode" # ui.systemUsesDarkTheme
+        "--force-dark-mode"
         "--enable-zero-copy"
-        "--ignore-gpu-blocklist"
-        "--enable-gpu-rasterization"
-        "--disable-features=MediaRouter" # no cast/discovery bloat
-        "--disable-features=Dav1dVideoDecoder,MediaRouter" # kill AV1 sw decode + cast bloat
+        "--disable-features=MediaRouter"
         "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL"
       ];
     })
   ];
+
+  services.tumbler.enable = true;
 
   environment.sessionVariables = {
     BROWSER = "chromium";
@@ -60,7 +75,7 @@
 
       # RAM / perf / session
       RestoreOnStartup = 1;
-      MemorySaverModeSavings = 1;
+      MemorySaverModeSavings = 2;
       HighEfficiencyModeEnabled = true; # native tab freezing, no Auto Tab Discard needed
 
       # Privacy / no phone-home
@@ -68,10 +83,10 @@
       SyncDisabled = true;
       TranslateEnabled = false;
       SearchSuggestEnabled = false;
+      NetworkPredictionOptions = 2;
       BlockThirdPartyCookies = true;
       DefaultGeolocationSetting = 2; # block location
       MetricsReportingEnabled = false;
-      NetworkPredictionEnabled = false;
       AlternateErrorPagesEnabled = false;
       UrlKeyedAnonymizedDataCollectionEnabled = false;
 
