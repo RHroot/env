@@ -14,7 +14,7 @@
     networkmanager = {
       enable = true;
       dns = "none";
-      wifi.powersave = true;
+      wifi.powersave = false;
       insertNameservers = [ ];
     };
   };
