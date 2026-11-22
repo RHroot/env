@@ -22,9 +22,9 @@
     thunar
 
     # Communication
-    whatsie
     thunderbird-bin
     telegram-desktop
+    whatsapp-electron
 
     # Productivity and learning
     anki-bin
