@@ -46,7 +46,9 @@
     in
     {
       nixosConfigurations.${env.hostname} = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit env qml-niri; };
+        specialArgs = {
+          inherit env qml-niri;
+        };
 
         modules = [
           ./configuration.nix

@@ -24,7 +24,6 @@
     # Communication
     thunderbird-bin
     telegram-desktop
-    whatsapp-electron
 
     # Productivity and learning
     anki-bin
@@ -49,6 +48,11 @@
   ];
 
   services.tumbler.enable = true;
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 
   environment.sessionVariables = {
     BROWSER = "chromium";
