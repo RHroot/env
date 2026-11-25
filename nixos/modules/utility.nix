@@ -13,10 +13,9 @@
     obs-studio
 
     # Documents and research
-    evince
     zotero
+    pdf4qt
     libreoffice
-    stirling-pdf-desktop
 
     # File management
     thunar
