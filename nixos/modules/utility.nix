@@ -166,6 +166,6 @@
     # File manager
     "inode/directory" = [ "thunar.desktop" ];
     # PDF viewer
-    "application/pdf" = [ "org.gnome.Evince.desktop" ];
+    "application/pdf" = [ "io.github.JakubMelka.Pdf4qt.Pdf4QtViewer.desktop" ];
   };
 }
