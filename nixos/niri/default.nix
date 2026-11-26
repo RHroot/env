@@ -7,7 +7,7 @@
   programs.niri.enable = true;
 
   programs.xwayland = {
-    enable = false;
+    enable = true;
     package = pkgs.xwayland-satellite;
   };
 
