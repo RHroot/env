@@ -18,7 +18,7 @@
 
   programs.gamescope = {
     enable = true;
-    capSysNice = false; # Gamescope doesn't work if true
+    capSysNice = false; # Gamescope doesn't work on wayland if true
   };
 
   programs.steam = {
