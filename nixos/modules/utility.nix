@@ -21,7 +21,6 @@
     thunar
 
     # Communication
-    unstable.whisrs
     thunderbird-bin
     telegram-desktop
 
